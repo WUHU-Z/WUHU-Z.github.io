@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="啊哈算法的一己之见（1.1）, SOX">
+    <meta name="keywords" content="啊哈算法的一己之见（4.4）, SOX">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>啊哈算法的一己之见（1.1） | SOX</title>
+    <title>啊哈算法的一己之见（4.4） | SOX</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">啊哈算法的一己之见（1.1）</h1>
+                    <h1 class="description center-align post-title">啊哈算法的一己之见（4.4）</h1>
                 </div>
             </div>
         </div>
@@ -457,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-24
+                    2021-08-25
                 </div>
                 
 
@@ -478,28 +478,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序–最常用"><a href="#快速排序–最常用" class="headerlink" title="快速排序–最常用"></a>快速排序–最常用</h2><p><strong>1、原则</strong>：首先将序列中随便一个数作为准基数，然后比该数大的放在一边，比该数小的放在另一边。</p>
-<p><strong>2、原理</strong>：每一轮处理其实就是将这一轮的基数进行归位，直到所有数都归位为止，排序就结束了。</p>
-<p><strong>3、核心</strong>：基于“二分”的思想。</p>
-<p><strong>4、要点</strong>：基准数为最左边的数，则从右边开始；反之亦然。（会在i与j比较大小时产生矛盾）</p>
-<p>举例：</p>
-<p>假设对如下进行排序：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/1.jpeg" alt="小兵-基准数"></p>
-<p>如上图，6在左，9在右  我们将6作为基数。</p>
-<p>假设从左边开始（与正确程序正好相反）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">while</span> (nums[i] &lt;= index &amp;&amp; i &lt; j) </span><br><span class="line"></span><br><span class="line">&#123;    </span><br><span class="line"> 	i++;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (nums[j] &gt;= index &amp;&amp; j &gt; i) </span><br><span class="line"></span><br><span class="line">&#123;   </span><br><span class="line">	j--; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><h2 id="4-再遇炸弹人"><a href="#4-再遇炸弹人" class="headerlink" title="4.再遇炸弹人"></a>4.再遇炸弹人</h2><p><strong>题目：</strong></p>
+<p>就是之前的炸弹人</p>
+<p><strong>思路：</strong></p>
+<p>因为之前的解法中有可能得出小人无法走到的点，所以用bfs或dfs统计出小人能走过的点，然后在这些可以到达的点上来分别统计可以消灭的敌人数</p>
+<p><strong>代码:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">char a[20][20];</span><br><span class="line">int book[21][21],maxn,mx,my,n,m;</span><br><span class="line"></span><br><span class="line">int getnum(int i,int j)</span><br><span class="line">&#123;</span><br><span class="line">    int sum,x,y;</span><br><span class="line">    sum&#x3D;0;&#x2F;&#x2F;sum用来计数（消灭的敌人数），所以需要初始化为0</span><br><span class="line">    &#x2F;&#x2F;将坐标i,j复制到两个新变量x,y中，以便以后向四方统计</span><br><span class="line">    &#x2F;&#x2F;向上统计</span><br><span class="line">    x&#x3D;i;y&#x3D;j;</span><br><span class="line">    while(a[x][y]!&#x3D;&#39;#&#39;)&#x2F;&#x2F;判断是不是墙，如果不是墙就继续</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;如果当前点是敌人，则进行计数</span><br><span class="line">        if(a[x][y]&#x3D;&#x3D;&#39;G&#39;)sum++;</span><br><span class="line">        &#x2F;&#x2F;x--的作用就是向上继续统计</span><br><span class="line">        x--;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;向下统计</span><br><span class="line">    x&#x3D;i;y&#x3D;j;</span><br><span class="line">    while(a[x][y]!&#x3D;&#39;#&#39;)&#x2F;&#x2F;判断是不是墙，如果不是墙就继续</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;如果当前点是敌人，则进行计数</span><br><span class="line">        if(a[x][y]&#x3D;&#x3D;&#39;G&#39;)sum++;</span><br><span class="line">        &#x2F;&#x2F;x++的作用就是向下继续统计</span><br><span class="line">        x++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;向左统计</span><br><span class="line">    x&#x3D;i;y&#x3D;j;</span><br><span class="line">    while(a[x][y]!&#x3D;&#39;#&#39;)&#x2F;&#x2F;判断是不是墙，如果不是墙就继续</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;如果当前点是敌人，则进行计数</span><br><span class="line">        if(a[x][y]&#x3D;&#x3D;&#39;G&#39;)sum++;</span><br><span class="line">        &#x2F;&#x2F;y--的作用就是向左继续统计</span><br><span class="line">        y--;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;向右统计</span><br><span class="line">    x&#x3D;i;y&#x3D;j;</span><br><span class="line">    while(a[x][y]!&#x3D;&#39;#&#39;)&#x2F;&#x2F;判断是不是墙，如果不是墙就继续</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;如果当前点是敌人，则进行计数</span><br><span class="line">        if(a[x][y]&#x3D;&#x3D;&#39;G&#39;)sum++;</span><br><span class="line">        &#x2F;&#x2F;y++的作用就是向右继续统计</span><br><span class="line">        y++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dfs(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;定义一个用于表示走的方向的数组</span><br><span class="line">    int next[4][2]&#x3D;&#123;0,1,1,0,-1,0,0,-1&#125;;</span><br><span class="line">    int k,sum,tx,ty;</span><br><span class="line">    &#x2F;&#x2F;计算当前这个点可以消灭的敌人总数</span><br><span class="line">    sum&#x3D;getnum(x,y);</span><br><span class="line">    &#x2F;&#x2F;更新maxn的值</span><br><span class="line">    if(sum&gt;maxn)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;如果当前的点统计出的所能消灭的敌人数大于maxn，则更新maxn，并用mx和my记录当前点的坐标</span><br><span class="line">        maxn&#x3D;sum;</span><br><span class="line">        mx&#x3D;x;</span><br><span class="line">        my&#x3D;y;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;枚举4个方向</span><br><span class="line">    for(k&#x3D;0;k&lt;&#x3D;3;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;下一个点的坐标</span><br><span class="line">        tx&#x3D;x+next[k][0];</span><br><span class="line">        ty&#x3D;y+next[k][1];</span><br><span class="line">        &#x2F;&#x2F;判断是否越界</span><br><span class="line">        if(tx&lt;0||tx&gt;n-1||ty&lt;0||ty&gt;m-1)continue;</span><br><span class="line">        &#x2F;&#x2F;判断是否是围墙或者已经走过</span><br><span class="line">        if(a[tx][ty]&#x3D;&#x3D;&#39;.&#39;&amp;&amp;book[tx][ty]&#x3D;&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            book[tx][ty]&#x3D;1;&#x2F;&#x2F;标记这个点已经走过</span><br><span class="line">            dfs(tx,ty);&#x2F;&#x2F;开始尝试下一个点;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,startx,starty;</span><br><span class="line">    &#x2F;&#x2F;读入n和m，n表示行，m表示列</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;startx&gt;&gt;starty;</span><br><span class="line">    for(int i&#x3D;0;i&lt;&#x3D;n-1;i++)</span><br><span class="line">        scanf(&quot;%s&quot;,a[i]);</span><br><span class="line">        &#x2F;&#x2F;小人所站的位置开始尝试</span><br><span class="line">    book[startx][starty]&#x3D;1;</span><br><span class="line">    maxn&#x3D;getnum(startx,starty);</span><br><span class="line">    mx&#x3D;startx;</span><br><span class="line">    my&#x3D;starty;</span><br><span class="line">    dfs(startx,starty);</span><br><span class="line">    cout&lt;&lt;&quot;将炸弹放置在（&quot;&lt;&lt;mx&lt;&lt;&#39;,&#39;&lt;&lt;my&lt;&lt;&quot;),最多可以消灭&quot;&lt;&lt;maxn&lt;&lt;&quot;个敌人&quot;&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>按照这个代码逻辑，走一遍，i 就会移动到现在的 数字 7 那个位置停下来，而  j 原来在 数字 9 那个位置</p>
-<p>于是，j 也会停留在数字7 那个位置，然后 i == j了，这时候交换基准数 和 nums[i]</p>
-<p>交换后的数组为：7 1 2 6 9 </p>
-<p>这时候，你会发现问题来了，这结果不对呀！！！</p>
-<p>问题在于当我们先从在边开始时，那么 i 所停留的那个位置肯定是大于基数6的</p>
-<p>而在上述例子中，为了满足 i&lt;j 于是 j也停留在7的位置，但最后交换回去的时候，7就到了左边</p>
-<p>不行，因为我们原本 交换后数字6在边应该是全部小于6，右边全部大于6，但现在不行了。</p>
-<p>所以，我们必须从右边开始，也就是从基准数的对面开始。</p>
-<p><strong>5、代码举例：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/2.jpg"></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/3.jpg"></p>
+<p>Input</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">13 13 1 3</span><br><span class="line">#############</span><br><span class="line">#GG.GGG#GGG.#</span><br><span class="line">###.#G#G#G#G#</span><br><span class="line">#.......#..G#</span><br><span class="line">#G#.###.#G#G#</span><br><span class="line">#GG.GGG.#.GG#</span><br><span class="line">#G#.#G#.#.###</span><br><span class="line">##G...G.....#</span><br><span class="line">#G#.#G###.#G#</span><br><span class="line">#...G#GGG.GG#</span><br><span class="line">#G#.#G#G#.#G#</span><br><span class="line">#GG.GGG#G.GG#</span><br><span class="line">#############</span><br></pre></td></tr></table></figure>
+
+<p>Output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将炸弹放置在（9,9),最多可以消灭8个敌人</span><br></pre></td></tr></table></figure>
+
 
                 
             </div>
@@ -526,7 +517,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://WUHU-Z.github.io/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.1%EF%BC%89/">http://WUHU-Z.github.io/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.1%EF%BC%89/</a>
+                    <a href="http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%884.4%EF%BC%89/">http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%884.4%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -741,13 +732,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.2%EF%BC%89/">
+                <a href="/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%884.5%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="啊哈算法的一己之见（1.2）">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="啊哈算法的一己之见（4.4）">
                         
-                        <span class="card-title">啊哈算法的一己之见（1.2）</span>
+                        <span class="card-title">啊哈算法的一己之见（4.4）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -758,7 +749,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
                         </span>
                         <span class="publish-author">
                             
@@ -786,13 +777,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/03/%E2%80%9C%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9%E2%80%9D/">
+                <a href="/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%884.3%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="算法提高知识点">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="啊哈算法的一己之见（4.3）">
                         
-                        <span class="card-title">算法提高知识点</span>
+                        <span class="card-title">啊哈算法的一己之见（4.3）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -803,7 +794,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
                             </span>
                         <span class="publish-author">
                             

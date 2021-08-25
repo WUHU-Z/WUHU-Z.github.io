@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="啊哈算法的一己之见（1.1）, SOX">
+    <meta name="keywords" content="啊哈算法的一己之见（6.3）, SOX">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>啊哈算法的一己之见（1.1） | SOX</title>
+    <title>啊哈算法的一己之见（6.3） | SOX</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">啊哈算法的一己之见（1.1）</h1>
+                    <h1 class="description center-align post-title">啊哈算法的一己之见（6.3）</h1>
                 </div>
             </div>
         </div>
@@ -457,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-24
+                    2021-08-25
                 </div>
                 
 
@@ -478,28 +478,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序–最常用"><a href="#快速排序–最常用" class="headerlink" title="快速排序–最常用"></a>快速排序–最常用</h2><p><strong>1、原则</strong>：首先将序列中随便一个数作为准基数，然后比该数大的放在一边，比该数小的放在另一边。</p>
-<p><strong>2、原理</strong>：每一轮处理其实就是将这一轮的基数进行归位，直到所有数都归位为止，排序就结束了。</p>
-<p><strong>3、核心</strong>：基于“二分”的思想。</p>
-<p><strong>4、要点</strong>：基准数为最左边的数，则从右边开始；反之亦然。（会在i与j比较大小时产生矛盾）</p>
-<p>举例：</p>
-<p>假设对如下进行排序：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/1.jpeg" alt="小兵-基准数"></p>
-<p>如上图，6在左，9在右  我们将6作为基数。</p>
-<p>假设从左边开始（与正确程序正好相反）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">while</span> (nums[i] &lt;= index &amp;&amp; i &lt; j) </span><br><span class="line"></span><br><span class="line">&#123;    </span><br><span class="line"> 	i++;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (nums[j] &gt;= index &amp;&amp; j &gt; i) </span><br><span class="line"></span><br><span class="line">&#123;   </span><br><span class="line">	j--; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <h1 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h1><h2 id="3-Bellman-Ford–解决负权边"><a href="#3-Bellman-Ford–解决负权边" class="headerlink" title="3.Bellman-Ford–解决负权边"></a>3.Bellman-Ford–解决负权边</h2><p><strong>简介：</strong></p>
+<ol>
+<li>基于Dijkstra中新的更新点更新源点到其余各点的最短路径思想。</li>
+<li>因为<strong>第i轮更新得到的是从起始点”只能经过i条边”到达其余个顶点的最短路径长度</strong>，所以需要进行n-1轮的更新，因为在一个含有n个顶点的图中，任意两点的最短路径<strong>最多包含n-1条边</strong>（<strong>不可能有回路的产生</strong>，因为对于正权回路去掉其还有更短路径，对于负权回路则因为越循环越短的特性而没有最短路径）。</li>
+<li>因为Bellman-Ford算法的时间复杂度是 MN ,这个复杂度貌似大于Dijkstra算法，我们可以对其进行优化：在实际操作中，该算法经常会在未达到n-1轮松弛前就已经算出最短路，因此可以添加一个备份的dis数组来检测是否发生变化，从而提前跳出循环</li>
+<li>对于负权回路的检测，也使用从终点倒退的方式进行比较</li>
+</ol>
+<p><strong>代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 9999999</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int dis[10],bak[10],i,k,n,m,u[10],v[10],w[10],check,flag;</span><br><span class="line">    &#x2F;&#x2F;n表示顶点数,m表示边数</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    &#x2F;&#x2F;读入边</span><br><span class="line">    for(i&#x3D;1;i&lt;&#x3D;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;u[i]&gt;&gt;v[i]&gt;&gt;w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;初始化dis数组，这里是1号顶点到其余各点的初始路程</span><br><span class="line">    for(i&#x3D;1;i&lt;&#x3D;n;i++)dis[i]&#x3D;INF;</span><br><span class="line">    dis[1]&#x3D;0;</span><br><span class="line">    &#x2F;&#x2F;核心语句</span><br><span class="line">    for(k&#x3D;1;k&lt;&#x3D;n-1;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;将dis备份入bak数组中</span><br><span class="line">        for(i&#x3D;1;i&lt;&#x3D;n;i++)bak[i]&#x3D;dis[i];</span><br><span class="line">        &#x2F;&#x2F;进行一轮更新</span><br><span class="line">        for(i&#x3D;1;i&lt;&#x3D;m;i++)</span><br><span class="line">            if(dis[v[i]]&gt;dis[u[i]]+w[i])</span><br><span class="line">            dis[v[i]]&#x3D;dis[u[i]]+w[i];</span><br><span class="line">        &#x2F;&#x2F;更新完毕后检测dis数组是否有更新</span><br><span class="line">        check&#x3D;0;</span><br><span class="line">        for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        if(bak[i]!&#x3D;dis[i])&#123;check&#x3D;1;break;&#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;如果dis数组没有更新，提前退出循环结束算法</span><br><span class="line">        if(check&#x3D;&#x3D;0)break;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;检测负权回路</span><br><span class="line">    flag&#x3D;0;</span><br><span class="line">    for(i&#x3D;1;i&lt;&#x3D;m;i++)</span><br><span class="line">        if(dis[v[i]]&gt;dis[u[i]]+w[i])flag&#x3D;1;</span><br><span class="line">    if(flag&#x3D;&#x3D;1)cout&lt;&lt;&quot;此图含有负权回路&quot;&lt;&lt;endl;</span><br><span class="line">    else</span><br><span class="line">    &#x2F;&#x2F;输出最终结果</span><br><span class="line">    for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        cout&lt;&lt;dis[i]&lt;&lt;&#39; &#39;;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>按照这个代码逻辑，走一遍，i 就会移动到现在的 数字 7 那个位置停下来，而  j 原来在 数字 9 那个位置</p>
-<p>于是，j 也会停留在数字7 那个位置，然后 i == j了，这时候交换基准数 和 nums[i]</p>
-<p>交换后的数组为：7 1 2 6 9 </p>
-<p>这时候，你会发现问题来了，这结果不对呀！！！</p>
-<p>问题在于当我们先从在边开始时，那么 i 所停留的那个位置肯定是大于基数6的</p>
-<p>而在上述例子中，为了满足 i&lt;j 于是 j也停留在7的位置，但最后交换回去的时候，7就到了左边</p>
-<p>不行，因为我们原本 交换后数字6在边应该是全部小于6，右边全部大于6，但现在不行了。</p>
-<p>所以，我们必须从右边开始，也就是从基准数的对面开始。</p>
-<p><strong>5、代码举例：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/2.jpg"></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/3.jpg"></p>
 
                 
             </div>
@@ -526,7 +514,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://WUHU-Z.github.io/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.1%EF%BC%89/">http://WUHU-Z.github.io/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.1%EF%BC%89/</a>
+                    <a href="http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%886.3%EF%BC%89/">http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%886.3%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -741,13 +729,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.2%EF%BC%89/">
+                <a href="/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%886.4%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="啊哈算法的一己之见（1.2）">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="啊哈算法的一己之见（6.4）">
                         
-                        <span class="card-title">啊哈算法的一己之见（1.2）</span>
+                        <span class="card-title">啊哈算法的一己之见（6.4）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -758,7 +746,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
                         </span>
                         <span class="publish-author">
                             
@@ -786,13 +774,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/03/%E2%80%9C%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9%E2%80%9D/">
+                <a href="/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%886.2%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="算法提高知识点">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="啊哈算法的一己之见（6.2）">
                         
-                        <span class="card-title">算法提高知识点</span>
+                        <span class="card-title">啊哈算法的一己之见（6.2）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -803,7 +791,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
                             </span>
                         <span class="publish-author">
                             

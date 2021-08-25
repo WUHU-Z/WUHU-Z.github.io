@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="啊哈算法的一己之见（1.1）, SOX">
+    <meta name="keywords" content="啊哈算法的一己之见（2.3）, SOX">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>啊哈算法的一己之见（1.1） | SOX</title>
+    <title>啊哈算法的一己之见（2.3） | SOX</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">啊哈算法的一己之见（1.1）</h1>
+                    <h1 class="description center-align post-title">啊哈算法的一己之见（2.3）</h1>
                 </div>
             </div>
         </div>
@@ -457,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-24
+                    2021-08-25
                 </div>
                 
 
@@ -478,28 +478,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序–最常用"><a href="#快速排序–最常用" class="headerlink" title="快速排序–最常用"></a>快速排序–最常用</h2><p><strong>1、原则</strong>：首先将序列中随便一个数作为准基数，然后比该数大的放在一边，比该数小的放在另一边。</p>
-<p><strong>2、原理</strong>：每一轮处理其实就是将这一轮的基数进行归位，直到所有数都归位为止，排序就结束了。</p>
-<p><strong>3、核心</strong>：基于“二分”的思想。</p>
-<p><strong>4、要点</strong>：基准数为最左边的数，则从右边开始；反之亦然。（会在i与j比较大小时产生矛盾）</p>
-<p>举例：</p>
-<p>假设对如下进行排序：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/1.jpeg" alt="小兵-基准数"></p>
-<p>如上图，6在左，9在右  我们将6作为基数。</p>
-<p>假设从左边开始（与正确程序正好相反）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">while</span> (nums[i] &lt;= index &amp;&amp; i &lt; j) </span><br><span class="line"></span><br><span class="line">&#123;    </span><br><span class="line"> 	i++;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (nums[j] &gt;= index &amp;&amp; j &gt; i) </span><br><span class="line"></span><br><span class="line">&#123;   </span><br><span class="line">	j--; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <h1 id="练习：纸牌游戏—小猫钓鱼"><a href="#练习：纸牌游戏—小猫钓鱼" class="headerlink" title="练习：纸牌游戏—小猫钓鱼"></a>练习：纸牌游戏—小猫钓鱼</h1><p><strong>题目：</strong></p>
+<p>将一副扑克牌平均分成两份，每人拿一份。A先拿出手中的第一张牌放入在桌子上，B再拿出手中的牌放在A的牌上，两人交替出牌。出牌时，如果某人打出的牌与桌上某张牌的牌面相同，即可将两张相同的牌即其中间所夹的牌全部取走，并依次放入到自己手中牌的末尾，当手中的牌全部出完时，对手获胜（A,B手中的牌面为1~9）</p>
+<p><strong>思路：</strong></p>
+<p>出牌和赢牌对应的就是出队和入队，而桌子就相当于一个栈，所以需要两个队列、一个栈来模拟整个游戏                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </p>
+<p><strong>代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct queue</span><br><span class="line">&#123;</span><br><span class="line">    int data[1000];&#x2F;&#x2F;队列的主题，用来存储内容</span><br><span class="line">    int head;&#x2F;&#x2F;队首</span><br><span class="line">    int tail;&#x2F;&#x2F;队尾</span><br><span class="line">&#125;;</span><br><span class="line">struct stack</span><br><span class="line">&#123;</span><br><span class="line">    int date[10];</span><br><span class="line">    int top;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    queue q1,q2;&#x2F;&#x2F;定义并初始化玩家</span><br><span class="line">    q1.head&#x3D;1;q1.tail&#x3D;1;</span><br><span class="line">    q2.head&#x3D;1;q2.tail&#x3D;1;</span><br><span class="line">    stack s;&#x2F;&#x2F;定义并初始化桌面</span><br><span class="line">    s.top&#x3D;0;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;初始化用来标记的数组，表示哪些牌已经在桌面上了</span><br><span class="line">    int book[10];</span><br><span class="line">    memset(book,0,sizeof book);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;依次向两个玩家中分别插入对应手牌，这里默认为6</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;6;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;q1.data[q1.tail];</span><br><span class="line">        q1.tail++;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;6;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;q2.data[q2.tail];</span><br><span class="line">        q2.tail++;</span><br><span class="line">    &#125;</span><br><span class="line">    int t;</span><br><span class="line"></span><br><span class="line">    while(q1.head&lt;q1.tail&amp;&amp;q2.head&lt;q2.tail)&#x2F;&#x2F;当队列不为空的时候执行循环</span><br><span class="line">    &#123;</span><br><span class="line">        t&#x3D;q1.data[q1.head];&#x2F;&#x2F;A出一张牌</span><br><span class="line">            &#x2F;&#x2F;判断A是否能赢牌</span><br><span class="line">            if(book[t]&#x3D;&#x3D;0)</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;A此轮没有赢牌</span><br><span class="line">                q1.head++;&#x2F;&#x2F;A已经打出了一张牌，所以要把打出的牌出队</span><br><span class="line">                s.top++;</span><br><span class="line">                s.date[s.top]&#x3D;t;&#x2F;&#x2F;再把打出的牌放入桌面，即入栈</span><br><span class="line">                book[t]&#x3D;1;&#x2F;&#x2F;标记桌上现在已经有牌面为t的牌</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;A此轮可以赢牌</span><br><span class="line">                q1.head++;&#x2F;&#x2F;A已经打出了一张牌，所以要把打出的牌出队</span><br><span class="line">                q1.data[q1.tail]&#x3D;t;&#x2F;&#x2F;紧接着把打出的牌放入手中牌的末尾</span><br><span class="line">                q1.tail++;</span><br><span class="line">                while(s.date[s.top]!&#x3D;t)&#x2F;&#x2F;把桌上可以赢的牌全部依次放入到手中牌的末尾</span><br><span class="line">                &#123;</span><br><span class="line">                    book[s.date[s.top]]&#x3D;0;&#x2F;&#x2F;取消标记</span><br><span class="line">                    q1.data[q1.tail]&#x3D;s.date[s.top];&#x2F;&#x2F;依次放入队尾</span><br><span class="line">                    q1.tail++;</span><br><span class="line">                    s.top--;&#x2F;&#x2F;栈中每少一张牌，栈顶要减1</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          t&#x3D;q2.data[q2.head];&#x2F;&#x2F;B出一张牌</span><br><span class="line">            &#x2F;&#x2F;判断B是否能赢牌</span><br><span class="line">            if(book[t]&#x3D;&#x3D;0)</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;B此轮没有赢牌</span><br><span class="line">                q2.head++;&#x2F;&#x2F;B已经打出了一张牌，所以要把打出的牌出队</span><br><span class="line">                s.top++;</span><br><span class="line">                s.date[s.top]&#x3D;t;&#x2F;&#x2F;再把打出的牌放入桌面，即入栈</span><br><span class="line">                book[t]&#x3D;1;&#x2F;&#x2F;标记桌上现在已经有牌面为t的牌</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                &#x2F;&#x2F;B此轮可以赢牌</span><br><span class="line">                q2.head++;&#x2F;&#x2F;B已经打出了一张牌，所以要把打出的牌出队</span><br><span class="line">                q2.data[q2.tail]&#x3D;t;&#x2F;&#x2F;紧接着把打出的牌放入手中牌的末尾</span><br><span class="line">                q2.tail++;</span><br><span class="line">                while(s.date[s.top]!&#x3D;t)&#x2F;&#x2F;把桌上可以赢的牌全部依次放入到手中牌的末尾</span><br><span class="line">                &#123;</span><br><span class="line">                    book[s.date[s.top]]&#x3D;0;&#x2F;&#x2F;取消标记</span><br><span class="line">                    q2.data[q2.tail]&#x3D;s.date[s.top];&#x2F;&#x2F;依次放入队尾</span><br><span class="line">                    q2.tail++;</span><br><span class="line">                    s.top--;&#x2F;&#x2F;栈中每少一张牌，栈顶要减1</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(q2.head&#x3D;&#x3D;q2.tail)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;A Win&quot;&lt;&lt;endl;</span><br><span class="line">        cout&lt;&lt;&quot;该玩家手牌为：&quot;&lt;&lt;endl;</span><br><span class="line">        for(int i&#x3D;q1.head;i&lt;&#x3D;q1.tail-1;i++)cout&lt;&lt;q1.data[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">        if(s.top&gt;0)&#x2F;&#x2F;如果桌子上还有牌</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;&quot;桌上的牌是：&quot;&lt;&lt;endl;</span><br><span class="line">            for(int i&#x3D;1;i&lt;&#x3D;s.top;i++)cout&lt;&lt;s.date[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">            cout&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">        else cout&lt;&lt;&quot;桌上无牌&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;&quot;B Win&quot;&lt;&lt;endl;</span><br><span class="line">        cout&lt;&lt;&quot;该玩家手牌为：&quot;&lt;&lt;endl;</span><br><span class="line">        for(int i&#x3D;q2.head;i&lt;&#x3D;q2.tail-1;i++)cout&lt;&lt;q2.data[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">        if(s.top&gt;0)&#x2F;&#x2F;如果桌子上还有牌</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;&quot;桌上的牌是：&quot;&lt;&lt;endl;</span><br><span class="line">            for(int i&#x3D;1;i&lt;&#x3D;s.top;i++)cout&lt;&lt;s.date[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">            cout&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">        else cout&lt;&lt;&quot;桌上无牌&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>按照这个代码逻辑，走一遍，i 就会移动到现在的 数字 7 那个位置停下来，而  j 原来在 数字 9 那个位置</p>
-<p>于是，j 也会停留在数字7 那个位置，然后 i == j了，这时候交换基准数 和 nums[i]</p>
-<p>交换后的数组为：7 1 2 6 9 </p>
-<p>这时候，你会发现问题来了，这结果不对呀！！！</p>
-<p>问题在于当我们先从在边开始时，那么 i 所停留的那个位置肯定是大于基数6的</p>
-<p>而在上述例子中，为了满足 i&lt;j 于是 j也停留在7的位置，但最后交换回去的时候，7就到了左边</p>
-<p>不行，因为我们原本 交换后数字6在边应该是全部小于6，右边全部大于6，但现在不行了。</p>
-<p>所以，我们必须从右边开始，也就是从基准数的对面开始。</p>
-<p><strong>5、代码举例：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/2.jpg"></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/3.jpg"></p>
+<p><strong>样例：</strong></p>
+<p>Input:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2 4 1 2 5 6</span><br><span class="line">3 1 3 5 6 4</span><br></pre></td></tr></table></figure>
+
+<p>Output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A Win</span><br><span class="line">该玩家手牌为：</span><br><span class="line">5 6 2 3 1 4 6 5</span><br><span class="line">桌上的牌是：</span><br><span class="line">2 1 3 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>依照此代码游戏可能无法结束，需要添加其他设定解决此问题</p>
 
                 
             </div>
@@ -526,7 +520,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://WUHU-Z.github.io/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.1%EF%BC%89/">http://WUHU-Z.github.io/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.1%EF%BC%89/</a>
+                    <a href="http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%882.3%EF%BC%89/">http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%882.3%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -741,13 +735,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.2%EF%BC%89/">
+                <a href="/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%882.4%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="啊哈算法的一己之见（1.2）">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="啊哈算法的一己之见（2.4）">
                         
-                        <span class="card-title">啊哈算法的一己之见（1.2）</span>
+                        <span class="card-title">啊哈算法的一己之见（2.4）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -758,7 +752,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
                         </span>
                         <span class="publish-author">
                             
@@ -786,13 +780,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/03/%E2%80%9C%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9%E2%80%9D/">
+                <a href="/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%882.2%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="算法提高知识点">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="啊哈算法的一己之见（2.2）">
                         
-                        <span class="card-title">算法提高知识点</span>
+                        <span class="card-title">啊哈算法的一己之见（2.2）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -803,7 +797,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
                             </span>
                         <span class="publish-author">
                             

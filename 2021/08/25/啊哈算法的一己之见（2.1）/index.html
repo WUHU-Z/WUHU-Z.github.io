@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="啊哈算法的一己之见（1.1）, SOX">
+    <meta name="keywords" content="啊哈算法的一己之见（2.1）, SOX">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>啊哈算法的一己之见（1.1） | SOX</title>
+    <title>啊哈算法的一己之见（2.1） | SOX</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">啊哈算法的一己之见（1.1）</h1>
+                    <h1 class="description center-align post-title">啊哈算法的一己之见（2.1）</h1>
                 </div>
             </div>
         </div>
@@ -457,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-24
+                    2021-08-25
                 </div>
                 
 
@@ -478,28 +478,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序–最常用"><a href="#快速排序–最常用" class="headerlink" title="快速排序–最常用"></a>快速排序–最常用</h2><p><strong>1、原则</strong>：首先将序列中随便一个数作为准基数，然后比该数大的放在一边，比该数小的放在另一边。</p>
-<p><strong>2、原理</strong>：每一轮处理其实就是将这一轮的基数进行归位，直到所有数都归位为止，排序就结束了。</p>
-<p><strong>3、核心</strong>：基于“二分”的思想。</p>
-<p><strong>4、要点</strong>：基准数为最左边的数，则从右边开始；反之亦然。（会在i与j比较大小时产生矛盾）</p>
-<p>举例：</p>
-<p>假设对如下进行排序：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/1.jpeg" alt="小兵-基准数"></p>
-<p>如上图，6在左，9在右  我们将6作为基数。</p>
-<p>假设从左边开始（与正确程序正好相反）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">while</span> (nums[i] &lt;= index &amp;&amp; i &lt; j) </span><br><span class="line"></span><br><span class="line">&#123;    </span><br><span class="line"> 	i++;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (nums[j] &gt;= index &amp;&amp; j &gt; i) </span><br><span class="line"></span><br><span class="line">&#123;   </span><br><span class="line">	j--; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p><strong>1.首先：</strong></p>
+<p><strong>提出问题</strong></p>
+<p>给出问题：给出一组数字，规则为：将第一个数字删除的同时，第二个数字挪到这串数字的末尾，然后第三个数字删除….最后当所有数字都被删去之后，按照删除的顺序将数组输出</p>
+<p><strong>对于删除操作：</strong></p>
+<p>我们可以将删除操作看做是将后面所有的数字向前挪动一位，将前一位数字进行覆盖（当然要事先对删除的数字做好记录），然而我们发现这样做的时间复杂度过高，所以我们引入了head和tail两个整型变量，head用于记录队首，tail用于记录队尾的下一个位置（因为如果表示最后一个元素，会导致重合时的队列状态表示产生麻烦），所以这样记录的话，当队首与队尾重合即代表队列为空。</p>
+<p><strong>然后通过将head向后移动一位即可做到删除操作。</strong></p>
+<p><strong>对于挪后操作：</strong></p>
+<p><strong>将head向后移动一位的同时，将该数字赋值给tail下标表示的数组位置，然后tail向后移动一位。</strong></p>
+<p><strong>生成代码如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">int array[500];&#x2F;&#x2F;存储数字串的数组,因为因为涉及转移的操作，所以数组开的大一些</span><br><span class="line">int head,tail;&#x2F;&#x2F;记录队首以及队尾后一位的下标</span><br><span class="line"></span><br><span class="line">void deletenum()&#x2F;&#x2F;删除操作</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;打印队首并将队首出队</span><br><span class="line">    cout&lt;&lt;array[head]&lt;&lt;&#39; &#39;;</span><br><span class="line">    head++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void reversenum()&#x2F;&#x2F;转移操作</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;先将队首的数添加到队尾</span><br><span class="line">    array[tail]&#x3D;array[head];</span><br><span class="line">    tail++;</span><br><span class="line">    &#x2F;&#x2F;再将队首出队表示转移</span><br><span class="line">    head++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;初始化数组</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;49;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        array[i]&#x3D;i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;初始化队列</span><br><span class="line">    head&#x3D;1;</span><br><span class="line">    tail&#x3D;49;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;当队列不为空的时候结束循环</span><br><span class="line">    while(head&lt;tail)</span><br><span class="line">    &#123;</span><br><span class="line">        deletenum();</span><br><span class="line">        reversenum();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>按照这个代码逻辑，走一遍，i 就会移动到现在的 数字 7 那个位置停下来，而  j 原来在 数字 9 那个位置</p>
-<p>于是，j 也会停留在数字7 那个位置，然后 i == j了，这时候交换基准数 和 nums[i]</p>
-<p>交换后的数组为：7 1 2 6 9 </p>
-<p>这时候，你会发现问题来了，这结果不对呀！！！</p>
-<p>问题在于当我们先从在边开始时，那么 i 所停留的那个位置肯定是大于基数6的</p>
-<p>而在上述例子中，为了满足 i&lt;j 于是 j也停留在7的位置，但最后交换回去的时候，7就到了左边</p>
-<p>不行，因为我们原本 交换后数字6在边应该是全部小于6，右边全部大于6，但现在不行了。</p>
-<p>所以，我们必须从右边开始，也就是从基准数的对面开始。</p>
-<p><strong>5、代码举例：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/2.jpg"></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/3.jpg"></p>
+<p><strong>总结：</strong></p>
+<p>队列是一种特殊的线性结构，只允许在队列的首部进行删除操作，这被称为“出队”，只允许在队列的尾部进行插入操作，这被称为“入队”。当队列中没有元素时(head==tail)，称为空队列。</p>
+<p><strong>2.队列的其他表示：</strong></p>
+<p><strong>结构体：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct queue</span><br><span class="line">&#123;</span><br><span class="line">    int data[100];&#x2F;&#x2F;队列的主题，用来存储内容</span><br><span class="line">    int head;&#x2F;&#x2F;队首</span><br><span class="line">    int tail;&#x2F;&#x2F;队尾</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>STl库：</strong></p>
+<p>queue容器，进阶的还有deque容器</p>
 
                 
             </div>
@@ -526,7 +523,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://WUHU-Z.github.io/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.1%EF%BC%89/">http://WUHU-Z.github.io/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.1%EF%BC%89/</a>
+                    <a href="http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%882.1%EF%BC%89/">http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%882.1%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -741,13 +738,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.2%EF%BC%89/">
+                <a href="/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%882.2%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="啊哈算法的一己之见（1.2）">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="啊哈算法的一己之见（2.2）">
                         
-                        <span class="card-title">啊哈算法的一己之见（1.2）</span>
+                        <span class="card-title">啊哈算法的一己之见（2.2）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -758,7 +755,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
                         </span>
                         <span class="publish-author">
                             
@@ -786,13 +783,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/03/%E2%80%9C%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9%E2%80%9D/">
+                <a href="/2021/08/24/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%881.3%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="算法提高知识点">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="啊哈算法的一己之见（1.3）">
                         
-                        <span class="card-title">算法提高知识点</span>
+                        <span class="card-title">啊哈算法的一己之见（1.3）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -803,7 +800,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-24
                             </span>
                         <span class="publish-author">
                             
