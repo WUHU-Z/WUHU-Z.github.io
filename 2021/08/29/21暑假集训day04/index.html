@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="啊哈算法的一己之见（8.1）, SOX">
+    <meta name="keywords" content="暑假集训 day04, SOX">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>啊哈算法的一己之见（8.1） | SOX</title>
+    <title>暑假集训 day04 | SOX</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">啊哈算法的一己之见（8.1）</h1>
+                    <h1 class="description center-align post-title">暑假集训 day04</h1>
                 </div>
             </div>
         </div>
@@ -447,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-25
+                    2021-08-29
                 </div>
                 
 
@@ -468,22 +468,83 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h1><h2 id="1-镖局运镖–克鲁斯卡尔算法"><a href="#1-镖局运镖–克鲁斯卡尔算法" class="headerlink" title="1.镖局运镖–克鲁斯卡尔算法"></a>1.镖局运镖–克鲁斯卡尔算法</h2><p><strong>概念：</strong>给定一个无向图,如果他的某个子图中,任意两个顶点都能互相连通并且是一棵树,那么这棵树就叫做生成树,如果边上有权值,那么使得边权和最小的生成树叫做最小生成树。</p>
-<p><strong>目的：</strong>用最短的边将点连接</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/0261e44d34a448a49287aea1069ab4b8.jpg"></p>
-<p><strong>题目：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/IMG_20210824_134745_1_edit_22131542407559(1).jpg"></p>
+                <h2 id="母函数"><a href="#母函数" class="headerlink" title="母函数"></a>母函数</h2><h2 id="普通母函数"><a href="#普通母函数" class="headerlink" title="普通母函数"></a>普通母函数</h2><p><strong>首先给出母函数的定义（详细怎么得出省略）</strong></p>
+<p>对于序列a0，a1，a2，…构造一函数：</p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/2f284fb_720w.png"></p>
+<p>称函数G(x)是序列a0，a1，a2，…的母函数。</p>
+<p>那么母函数到底有什么用呢？怎么用呢？</p>
+<p>给出大家一个典型例题：</p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/5643f3_720w.jpeg"></p>
+<p><strong>普通母函数</strong></p>
+<p>那么我们直觉的想到，有没有可能用多项式乘法来表示组合的情况呢？我们再来看题目，题目需要的是几种砝码组合后的重量，是一个加法关系，但是在上式中“&amp;&amp;”是一种类似于乘法的运算关系，这怎么办呢？有没有什么这样一种运算关系，以乘法的形式运算，但是结果表现出类似于加法的关系呢？正好有一个，那就是幂运算。Xm 乘上Xn结果是Xm+n，他完美的符合了我们的要求。那么以次数表示砝码的质量， 就可以以多项式的形式表示砝码组合的所有方案。</p>
+<p>还是以前两个砝码为例说明，表示1g砝码的两种状态的多项式就是（x0+x1），表示2g的就是（x0+x2），x0表示没有使用砝码，所以重量为0，当然了因为x0 =1，所以也可以写成1，后面为了方便我会这么写。注意，砝码的质量是以次数表示的，而不是直觉上的用下标表示为x1，x2。这点很重要，不然的话就无法表现出幂运算的关系了。</p>
+<p>（x0+x1）*（x0+x2）</p>
+<p>=x0<em>x0 + x1</em>x0 + x0<em>x2 + x1</em>x2</p>
+<p>=x0 + x1 + x2 + x3</p>
+<p>很显然，有四种方案，0g、1g、2g、3g，结果与我们穷举的结果相同，而如果结果中有相同的项，那么合并同类项后每一项的系数就是这种重量有几种实现方案，这会在我们用此方法解决4个砝码问题的时候得到证明。</p>
+<p>那么接下来试试用这种表达式表示4个砝码的组合情况</p>
+<p>（x0+x1）* （x0+x2） * （x0+x3）* （x0+x4）</p>
+<p>=x0 + x1 + x2 + 2x3 + 2x4 + 2x5 + 2x6 + 2x7 + x8+ x9 + x10 </p>
+<p>具体的计算过程我就不细写了，多项式乘法大家都应该会。</p>
+<p>结果与上面穷举的结果是相同的，次数代表组合后可称出的质量，系数代表组合出这种质量的方案的数量。至此也就得出了答案。这就是普通母函数，现在你可以回头去看看我前面说的那两句话——把组合问题的加法法则和幂级数的的乘幂的相加对应起来，把离散数列间的相互结合关系对应成为幂级数间的运算关系，最后由幂级数形式来确定离散数列的构造。是不是明白了母函数的本质了呢？是不是恍然大悟了呢？</p>
+<p>接下来我们把开始的题目稍稍变化一下：</p>
+<p>求用1g、2g、3g的砝码称出不同重量的方案数 。</p>
+<p>大家把这种情况和第一种比较有何区别？第一种每种是一个，而这里每种是无限的。</p>
+<p>怎样在母函数里表现出无限这种性质呢？很简单，我们以2g砝码为例，因为我们有无限个2g砝码，所以我们可以把2个2g砝码看成是4g砝码，3个2g砝码看成是6g砝码，依次类推，把m个n g砝码看成是一个n*m g砝码，还是先以前两个砝码为例，那么多项式相应的就变成</p>
+<p>（x0 +x1 + x2 + x3 + x4 + x5 + …… ）*（x0 + x2 + x4 + x6 + x8+ x10 + ……）</p>
+<p>结果自然也是无限的，但是这种问题在实际问题中，一定会给出一个确定的值，比如说求组成10g的方案有几种。那么我们就只要在合并后的结果求到最高次的项是x10即可，后面的项可以忽略不计。那么要结果中最高为10次方，开始每一种砝码的无限项的表达式该写到几次呢？也是10次，因为表达式中最低的项有x0 ，所以想在结果中不漏掉出现x10 的项，必须乘之前的项最高的项不能小于x10，而表达式中不可能出现x-1,，所以x11 和任何一项相乘都会大于x10，所以x11 是不需要的，但写上也无妨，不影响结果，但是如果可以有x10（比如3g的砝码组合不出10g的，但是2g的就可以），那就必须写，不然就会漏掉一些方案。</p>
+<p>那么如果题目是求用1g、2g、3g的砝码称出10g的方案数 。</p>
+<p>表达式就是：</p>
+<p>（x0 +x1 + x2 + x3 + x4 + x5 + ……x10 ）*（x0 + x2 + x4 + x6 + x8+ x10 ）</p>
+<p>结果就是合并同类项后x10的系数。</p>
+<p>多项式乘法显然是一种运算时间规模在n2级别的运算，但是如果循环生成无限的砝码，也就是上面用小砝码组合出每一种可能的大砝码，那么生成多项式就又需要n的规模，在此基础上进行多项式乘法，最后无限砝码的问题需要的运算时间规模就是n3级别。</p>
+<p>这样母函数就把这类组合问题从nn级别转化成了n3级别。这便是母函数的奇妙与威力。</p>
+<p>知道了母函数的原理，用程序来实现也就不是什么困难的事了，其实就是做多项式乘法的程序</p>
+<p>用c++实现算出无限砝码情况下的某种重量的方案数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;    </span><br><span class="line">using namespace std;    </span><br><span class="line">&#x2F;&#x2F; Author: WUHU-Z    </span><br><span class="line">&#x2F;&#x2F;     </span><br><span class="line">const int max &#x3D; 1000;     </span><br><span class="line">&#x2F;&#x2F; sup是保存多项式的数组，sup[n]中的值代表xn的系数  </span><br><span class="line">&#x2F;&#x2F; temp是临时多项式，保存相乘的临时中间情况    </span><br><span class="line">int sup[max], temp[max];     </span><br><span class="line">&#x2F;* </span><br><span class="line">程序始终只计算两个多项式之间的乘积，多个多项式的情况 </span><br><span class="line">先计算前两个的乘积，将结果作为第一个多项式，再与第三个相乘 </span><br><span class="line">依次类推，sup始终存放当前运算后的结果然后作为被乘多项式， </span><br><span class="line">*&#x2F;    </span><br><span class="line">int main()    </span><br><span class="line">&#123;     </span><br><span class="line">    int target;   &#x2F;&#x2F;  目标重量， 比如上面的例子里就是10，要&lt;max的值  </span><br><span class="line">    int i, j, k;    </span><br><span class="line">     </span><br><span class="line">    while(cin &gt;&gt; target)    </span><br><span class="line">    &#123;    </span><br><span class="line">        for(i&#x3D;0; i&lt;&#x3D;target; ++i)       </span><br><span class="line">        &#123;    </span><br><span class="line">            sup[i] &#x3D; 1;     </span><br><span class="line">&#x2F;&#x2F;初始化第一个多项式，也就是用1g砝码的多项式,  </span><br><span class="line">&#x2F;&#x2F;注意如果题目没给1g的砝码那么就不能++i，而要加上砝码的质量  </span><br><span class="line">            temp[i] &#x3D; 0;    </span><br><span class="line">&#x2F;&#x2F;将临时区清空，无论第一个多项式质量是几都要全部置零  </span><br><span class="line">        &#125;    </span><br><span class="line">        for(i&#x3D;2; i&lt;&#x3D;target; ++i)     </span><br><span class="line">&#x2F;&#x2F; 生成后续的第i个多项式，此题中是2g，i从2开始。  </span><br><span class="line">&#x2F;&#x2F;如果砝码的值不是规律增长，i可能需要取决于输入  </span><br><span class="line">        &#123;    </span><br><span class="line">     </span><br><span class="line">            for(j&#x3D;0; j&lt;&#x3D;target; ++j)     </span><br><span class="line">&#x2F;&#x2F; 遍历当前结果多项式的每一项（当前结果的第j项）与第i个多项式相乘，  </span><br><span class="line">                for(k&#x3D;0; k+j&lt;&#x3D;target; k+&#x3D;i)   </span><br><span class="line">&#x2F;&#x2F; 遍历第i个多项式的每一项，此处构造用小砝码组成大砝码的多项式  </span><br><span class="line">                &#123;    </span><br><span class="line">                    temp[j+k] +&#x3D; sup[j];    </span><br><span class="line">&#x2F;&#x2F;幂运算，注意理解  </span><br><span class="line">                &#125;    </span><br><span class="line">            for(j&#x3D;0; j&lt;&#x3D;target; ++j)      </span><br><span class="line">&#x2F;&#x2F; 将临时的结果覆盖当前结果，同时把临时结果置零，为下次做准备  </span><br><span class="line">            &#123;    </span><br><span class="line">                sup[j] &#x3D; temp[j];    </span><br><span class="line">                temp[j] &#x3D; 0;    </span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;    </span><br><span class="line">        cout &lt;&lt; sup[target] &lt;&lt; endl;  &#x2F;&#x2F;输出结果  </span><br><span class="line">    &#125;    </span><br><span class="line">    return 0;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="指数母函数"><a href="#指数母函数" class="headerlink" title="指数母函数"></a>指数母函数</h2><p><strong>指数函数母函数：</strong></p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/713165044874.png"></p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/33997D2BA364407DADC602D5A71FD454.jpg"></p>
+<p><img src="C:\Users\26328\AppData\Local\YNote\data\qqEA62E1C92793270880C3B145842ADD43\2bd27df7a40e46a7bbba375595bd39f4\27558f00bcd7445fb1c5a438c7d2ed03.jpg" alt="img"></p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/713165212235.png"></p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/713165749619.png"></p>
+<h2 id="hdu1709"><a href="#hdu1709" class="headerlink" title="hdu1709"></a>hdu1709</h2><p><strong>题目（我擦，暴力杯！）：</strong></p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/4D74EB80016342C89782791533EA9BFE.jpg"></p>
+<p><strong>思路：</strong></p>
+<p>将天平的左边看做是+号，右边看作为-号，那么将所有被使用的砝码加上求绝对值的值，即为能测出来的值。</p>
 <p><strong>代码：</strong></p>
-<p>我评价c代码就是g8，有更方便的c艹不用我用c？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N&#x3D;200010,M&#x3D;100010;</span><br><span class="line"></span><br><span class="line">int p[M];</span><br><span class="line">int n,m;</span><br><span class="line"></span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int a,b,w;</span><br><span class="line"></span><br><span class="line">     bool operator&lt; (const Edge &amp;W)const</span><br><span class="line">    &#123;</span><br><span class="line">        return w &lt; W.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;edges[N];</span><br><span class="line"></span><br><span class="line">int find(int x)</span><br><span class="line">&#123;</span><br><span class="line">    if(p[x]!&#x3D;x)&#123; p[x]&#x3D;find(p[x]);return p[x];&#125;</span><br><span class="line">    else return x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int Kruskal()</span><br><span class="line">&#123;</span><br><span class="line">    int res&#x3D;0,cnt&#x3D;0;&#x2F;&#x2F;res记录最小生成树的树边权重之和,cnt记录的是全部加入到树的集合中边的数量(可能有多个集合)</span><br><span class="line">    for(int i&#x3D;0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int a&#x3D;edges[i].a,b&#x3D;edges[i].b,w&#x3D;edges[i].w;</span><br><span class="line">        if(find(a)!&#x3D;find(b))</span><br><span class="line">        &#x2F;*</span><br><span class="line">        具体可以参考连通块中点的数量,如果a和b已经在一个集合当中了,说明这两个点已经被一种方式连接起来了,</span><br><span class="line">        如果加入a-b这条边,会导致集合中有环的生成,而树中不允许有环生成,所以一个连通块中的点的数量假设</span><br><span class="line">        为x,那么里面x个节点应该是被串联起来的,有x-1条边,所以只有当a,b所属的集合不同时,才能将a-b这条</span><br><span class="line">        边加入到总集合当中去</span><br><span class="line">        *&#x2F;</span><br><span class="line">        &#123;</span><br><span class="line">            p[find(a)]&#x3D;p[find(b)];&#x2F;&#x2F;将a,b所在的两个集合连接起来</span><br><span class="line">            cnt++;&#x2F;&#x2F;因为加入的是a-b的这一条边,将a,b所在的两个集合连接之后,全部集合中的边数加1</span><br><span class="line">            res+&#x3D;w;&#x2F;&#x2F;加入到集合中的边的权重之和</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(cnt&#x3D;&#x3D;n-1) return res;&#x2F;&#x2F;可以生成最小生成树</span><br><span class="line">    else return 0x3f3f;&#x2F;&#x2F;树中有n个节点便有n-1条边,如果cnt不等于n-1的话,说明无法生成有n个节点的树</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line"></span><br><span class="line">    for(int i&#x3D;0;i&lt;n;i++) p[i]&#x3D;i;&#x2F;&#x2F;初始化并查集</span><br><span class="line"></span><br><span class="line">    for(int i&#x3D;0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,w;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;w);</span><br><span class="line">        edges[i]&#x3D;&#123;a,b,w&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sort(edges,edges+m);&#x2F;&#x2F;将边的权重按照大小一一排序,从小到大</span><br><span class="line"></span><br><span class="line">    int t&#x3D;Kruskal();</span><br><span class="line">    if(t&#x3D;&#x3D;0x3f3f) printf(&quot;impossible\n&quot;);</span><br><span class="line">    else printf(&quot;%d\n&quot;,t);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int c1[10010];&#x2F;&#x2F;是保存多项式的数组，sup[n]中的值代表xn的系数</span><br><span class="line">int c2[10010];&#x2F;&#x2F;是临时多项式，保存相乘的临时中间情况 </span><br><span class="line">int Num[110];&#x2F;&#x2F;记录每一位个砝码</span><br><span class="line">int Ans[10010];&#x2F;&#x2F;记录不能被表示出的数组</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int N;</span><br><span class="line">    while(cin &gt;&gt; N)</span><br><span class="line">    &#123;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; N; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; Num[i];</span><br><span class="line">            sum +&#x3D; Num[i];</span><br><span class="line">        &#125;</span><br><span class="line">        memset(c1,0,sizeof(c1));</span><br><span class="line">        memset(c2,0,sizeof(c2));</span><br><span class="line">        for(int i &#x3D; 0; i &lt;&#x3D; Num[0]; i +&#x3D; Num[0])&#x2F;&#x2F;对两种情况设1</span><br><span class="line">            c1[i] &#x3D; 1;</span><br><span class="line">        for(int i &#x3D; 1; i &lt; N; ++i)  &#x2F;&#x2F;i代表第i个表达式</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j &#x3D; 0; j &lt;&#x3D; sum; ++j)   &#x2F;&#x2F;j表示每个表达式的第i项</span><br><span class="line">            &#123;</span><br><span class="line">                for(int k &#x3D; 0; k+j &lt;&#x3D; sum &amp;&amp; k &lt;&#x3D; Num[i]; k +&#x3D; Num[i])&#x2F;&#x2F;k有+和-两种情况 </span><br><span class="line">                &#123;    &#x2F;&#x2F;k代表每个表达式第i项的指数</span><br><span class="line">                    if(k &gt;&#x3D; j)</span><br><span class="line">                        c2[k-j] +&#x3D; c1[j];</span><br><span class="line">                    else</span><br><span class="line">                        c2[j-k] +&#x3D; c1[j];</span><br><span class="line">                    c2[j+k] +&#x3D; c1[j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for(int j &#x3D; 0; j &lt;&#x3D; sum; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                c1[j] &#x3D; c2[j];</span><br><span class="line">                c2[j] &#x3D; 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int s &#x3D; 0;</span><br><span class="line">        for(int i &#x3D; 0; i &lt;&#x3D; sum; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            if(c1[i] &#x3D;&#x3D; 0)</span><br><span class="line">            &#123;</span><br><span class="line">                Ans[s++] &#x3D; i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; s; ++i)</span><br><span class="line">            if(i !&#x3D; s-1)</span><br><span class="line">                cout &lt;&lt; Ans[i] &lt;&lt; &#39; &#39;;</span><br><span class="line">            else</span><br><span class="line">                cout &lt;&lt; Ans[i] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>复杂度：MlogM</p>
-<p>Input</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">6 9</span><br><span class="line">2 4 11</span><br><span class="line">3 5 13</span><br><span class="line">4 6 3</span><br><span class="line">5 6 4</span><br><span class="line">2 3 6</span><br><span class="line">4 5 7</span><br><span class="line">1 2 1</span><br><span class="line">3 4 9</span><br><span class="line">1 3 2</span><br></pre></td></tr></table></figure>
+<p><strong>代码思路：</strong></p>
+<p>通过母函数，得出答案</p>
+<h2 id="hdu1085"><a href="#hdu1085" class="headerlink" title="hdu1085"></a>hdu1085</h2><p><strong>题目：</strong></p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/CD74FD854166478F80ACB158040763CF.jpg"></p>
+<p><strong>思路：</strong></p>
+<p>母函数模板</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn&#x3D;8e3+5;</span><br><span class="line">struct node&#123;</span><br><span class="line">	int val,cnt;</span><br><span class="line">&#125;num[3];</span><br><span class="line">int c1[maxn],c2[maxn];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	num[0].val&#x3D;1,num[1].val&#x3D;2,num[2].val&#x3D;5;</span><br><span class="line">	while(~scanf(&quot;%d%d%d&quot;,&amp;num[0].cnt,&amp;num[1].cnt,&amp;num[2].cnt))</span><br><span class="line">	&#123;</span><br><span class="line">		if(num[0].cnt&#x3D;&#x3D;0 &amp;&amp; num[1].cnt&#x3D;&#x3D;0 &amp;&amp; num[2].cnt&#x3D;&#x3D;0)break;</span><br><span class="line"></span><br><span class="line">		int mav&#x3D;num[0].cnt*num[0].val+num[1].cnt*num[1].val+num[2].cnt*num[2].val;</span><br><span class="line">		memset(c1,0,sizeof(c1));</span><br><span class="line">		memset(c2,0,sizeof(c2));</span><br><span class="line">		for(int i&#x3D;0; i&lt;&#x3D;num[0].cnt; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			c1[i]&#x3D;1;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i&#x3D;1; i&lt;3; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			for(int j&#x3D;0; j&lt;&#x3D;mav; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				for(int k&#x3D;0; k+j&lt;&#x3D;mav &amp;&amp; k&lt;&#x3D;num[i].cnt*num[i].val; k+&#x3D;num[i].val)</span><br><span class="line">				&#123;</span><br><span class="line">					c2[j+k]+&#x3D;c1[j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			for(int j&#x3D;0; j&lt;&#x3D;mav; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				c1[j]&#x3D;c2[j];</span><br><span class="line">				c2[j]&#x3D;0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int i;</span><br><span class="line">		for(i&#x3D;1; i&lt;&#x3D;mav; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(!c1[i])break;</span><br><span class="line">		&#125;</span><br><span class="line">		cout&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>Output</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">19</span><br></pre></td></tr></table></figure>
+<p><strong>代码思路：</strong></p>
+<p>按照模板做即可</p>
+<h2 id="hdu1171"><a href="#hdu1171" class="headerlink" title="hdu1171"></a>hdu1171</h2><p><strong>题目：</strong></p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/1FA695AB0C1F4990B507DB1448CDC8B4.jpg"></p>
+<p><strong>思路：</strong></p>
+<p>逆天的母函数，怎么看都是背包；变量sum求出所有物品的总价值，题目即为求解在sum/2的范围内我能凑出的最大价值，母函数筛选一下方案数，则在sum/2以下最大的数即为答案的一个。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int c1[250000],c2[250000],v[1005],m[1005];&#x2F;&#x2F;与1709类似的数组声明</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    while(cin&gt;&gt;n,n&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        int sum&#x3D;0;</span><br><span class="line">        memset(c1,0,sizeof(c1));</span><br><span class="line">        memset(c2,0,sizeof(c2));</span><br><span class="line">        memset(v,0,sizeof(v));</span><br><span class="line">        memset(m,0,sizeof(m));</span><br><span class="line"></span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin&gt;&gt;v[i]&gt;&gt;m[i];</span><br><span class="line">            sum+&#x3D;v[i]*m[i];</span><br><span class="line">        &#125;</span><br><span class="line">        c1[0]&#x3D;1;</span><br><span class="line">        for(int i&#x3D;1;i&lt;&#x3D;n;i++)&#x2F;&#x2F;有N组商品</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j&#x3D;0;j&lt;&#x3D;sum;j++)&#x2F;&#x2F;前多项式</span><br><span class="line">                for(int k&#x3D;0;k&lt;&#x3D;v[i]*m[i] &amp;&amp; k+j&lt;&#x3D;sum;k+&#x3D;v[i])&#x2F;&#x2F;后多项式</span><br><span class="line">                    c2[k+j]+&#x3D;c1[j];</span><br><span class="line">            memcpy(c1,c2,sizeof(c2));</span><br><span class="line">            memset(c2,0,sizeof(c2));</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;sum&#x2F;2;i&gt;&#x3D;0;i--)</span><br><span class="line">            if(c1[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cout&lt;&lt;max(i,sum-i)&lt;&lt;&quot; &quot;&lt;&lt;min(i,sum-i)&lt;&lt;endl;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><strong>代码思路：</strong></p>
+<p>背包似乎好想一些</p>
+<h2 id="hdu1398"><a href="#hdu1398" class="headerlink" title="hdu1398"></a>hdu1398</h2><p><strong>题目：</strong></p>
+<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/2A2264B54B4B4855932BA610D5BC8FC8.jpg"></p>
+<p><strong>思路：</strong></p>
+<p>母函数即可</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int MAXN&#x3D;310;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int N,a[MAXN],b[MAXN];</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;N),N)&#123;</span><br><span class="line">        for(int i&#x3D;0;i&lt;&#x3D;N;i++)</span><br><span class="line">            a[i]&#x3D;1,b[i]&#x3D;0;</span><br><span class="line">        for(int i&#x3D;2;i&lt;&#x3D;17;i++)&#123;&#x2F;&#x2F;最大硬币值是289</span><br><span class="line">            for(int j&#x3D;0;j&lt;&#x3D;N;j++)</span><br><span class="line">            for(int k&#x3D;0;k+j&lt;&#x3D;N;k+&#x3D;i*i)</span><br><span class="line">                b[j+k]+&#x3D;a[j];</span><br><span class="line">            for(int j&#x3D;0;j&lt;&#x3D;N;j++)</span><br><span class="line">                a[j]&#x3D;b[j],b[j]&#x3D;0;</span><br><span class="line">        &#125;</span><br><span class="line">            cout&lt;&lt;a[N]&lt;&lt;endl;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码思路：</strong></p>
+<p>母函数模板</p>
 
                 
             </div>
@@ -510,7 +571,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%888.1%EF%BC%89/">http://WUHU-Z.github.io/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%888.1%EF%BC%89/</a>
+                    <a href="http://WUHU-Z.github.io/2021/08/29/21%E6%9A%91%E5%81%87%E9%9B%86%E8%AE%ADday04/">http://WUHU-Z.github.io/2021/08/29/21%E6%9A%91%E5%81%87%E9%9B%86%E8%AE%ADday04/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -599,13 +660,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%888.2%EF%BC%89/">
+                <a href="/2021/08/29/21%E6%9A%91%E5%81%87%E9%9B%86%E8%AE%ADday05/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="啊哈算法的一己之见（8.2）">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="暑假集训 day05">
                         
-                        <span class="card-title">啊哈算法的一己之见（8.2）</span>
+                        <span class="card-title">暑假集训 day05</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -616,7 +677,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-29
                         </span>
                         <span class="publish-author">
                             
@@ -644,13 +705,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/25/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%887.4%EF%BC%89/">
+                <a href="/2021/08/26/21%E6%9A%91%E5%81%87%E9%9B%86%E8%AE%ADday03/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="啊哈算法的一己之见（7.4）">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="暑假集训 day03">
                         
-                        <span class="card-title">啊哈算法的一己之见（7.4）</span>
+                        <span class="card-title">暑假集训 day03</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -661,7 +722,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-26
                             </span>
                         <span class="publish-author">
                             
