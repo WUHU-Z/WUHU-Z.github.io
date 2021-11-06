@@ -33,6 +33,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://steamcommunity.com/profiles/76561198394034179/);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -310,7 +320,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/56.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -496,6 +506,13 @@
 <ul>
 <li>我们可以发现使用邻接表存储图的空间复杂度为m，遍历每一条边的时间复杂度也是m，若果是稀疏图的话，远比邻接矩阵的n^2要好很多</li>
 </ul>
+<p><strong>堆优化：</strong></p>
+<p>这个堆优化其实很容易理解，将枚举最小值改为从堆中取出最小值，改变dis时入堆即可</p>
+<p>用单调队列维护时必须有两个值：点的编号和当前的距离</p>
+<p>以距离为标准从小到大排序， 每次去除最小的</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">#define INF 9999999</span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line"></span><br><span class="line">int h[100],e[100],ne[100],w[100],idx;</span><br><span class="line">int n,m,t1,t2,t3;</span><br><span class="line">bool book[100];</span><br><span class="line">priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;</span><br><span class="line"></span><br><span class="line">void add(int a,int b,int c)&#x2F;&#x2F;邻接表加边</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]&#x3D;b,w[idx]&#x3D;c,ne[idx]&#x3D;h[a],h[a]&#x3D;idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dijkstra()</span><br><span class="line">&#123;</span><br><span class="line">    int dist[100];&#x2F;&#x2F;初始化距离数组</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[1]&#x3D;0;&#x2F;&#x2F;这里默认从1开始</span><br><span class="line">    heap.push(&#123;0,1&#125;);&#x2F;&#x2F;入堆</span><br><span class="line">    while(heap.size())</span><br><span class="line">    &#123;</span><br><span class="line">        auto t&#x3D;heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        if(book[t.second])continue;</span><br><span class="line">        book[t.second]&#x3D;true;&#x2F;&#x2F;标记该点走过</span><br><span class="line">        for(int i&#x3D;h[t.second];~i;i&#x3D;ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j&#x3D;e[i];</span><br><span class="line">            if(dist[j]&gt;t.first+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]&#x3D;t.first+w[i];</span><br><span class="line">                heap.push(&#123;dist[j],j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;输出所有结果</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;dist[i]&lt;&lt;&#39; &#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;</span><br><span class="line">        add(t1,t2,t3);</span><br><span class="line">        add(t2,t1,t3);</span><br><span class="line">    &#125;</span><br><span class="line">    dijkstra();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
                 
             </div>
@@ -660,7 +677,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="啊哈算法的一己之见（6.1）">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="啊哈算法的一己之见（6.1）">
                         
                         <span class="card-title">啊哈算法的一己之见（6.1）</span>
                     </div>

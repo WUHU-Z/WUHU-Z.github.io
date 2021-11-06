@@ -33,6 +33,16 @@
 
 
 
+   <style>
+    body{
+       background-image: url(https://steamcommunity.com/profiles/76561198394034179/);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
 
 <body>
     <header class="navbar-fixed">
@@ -310,7 +320,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -491,6 +501,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;并1</span><br><span class="line">void merge(int x,int y,int*parent)</span><br><span class="line">&#123;</span><br><span class="line">    int m&#x3D;find(x);</span><br><span class="line">    int n&#x3D;find(n);</span><br><span class="line">    if(height[x]&#x3D;&#x3D;height[y])&#x2F;&#x2F;此处无需判断x，y根结点是否一致	</span><br><span class="line">    &#123;</span><br><span class="line">        height[x]++;</span><br><span class="line">        parent[y]&#x3D;x;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(height[x]&gt;height[y])</span><br><span class="line">    &#123;</span><br><span class="line">        parent[y]&#x3D;x;</span><br><span class="line">    &#125;</span><br><span class="line">    else parent[x]&#x3D;y;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;并2</span><br><span class="line">void merge(int x,int y,int*parent)</span><br><span class="line">&#123;</span><br><span class="line">    int m&#x3D;find(x);</span><br><span class="line">    int n&#x3D;find(n);</span><br><span class="line">    if(m&#x3D;&#x3D;n)return;</span><br><span class="line">    if(height[i]&gt;height[j])parent[j]&#x3D;i;</span><br><span class="line">    else&#123;</span><br><span class="line">        if(height[i]&#x3D;&#x3D;height[j])height[j]++;</span><br><span class="line">        parent[i]&#x3D;j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>拓展二：</strong></p>
+<p> 对于之前的查询程序，查询元素i是需要搜索路径找到根结点，返回的结果是根结点。</p>
+<p>这条搜索路径可能很长。如果返回的时候顺便把元素i所属的结点改为根节点，那么在下次搜索时就能够在O(1)的时间内得到结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int find (int x, int *parent)&#123;</span><br><span class="line">    if(x !&#x3D; parent[x])&#123;</span><br><span class="line">		parent[x] &#x3D; find(parent[x] ,parent);</span><br><span class="line">                x&#x3D;parent[x];</span><br><span class="line">    &#125;</span><br><span class="line">	return parent[x];   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>上面路径压缩的代码：虽然优化了下次查询，而且还优化了合并；但是使用非递归实现，如果数据规模较大，有可能会爆栈，非递归代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int Find(int x, int* parent)&#123;</span><br><span class="line">	int r &#x3D; x;</span><br><span class="line">    while(parent[r] !&#x3D; r)&#123;&#x2F;&#x2F;找到根结点</span><br><span class="line">		r &#x3D; parent[r];</span><br><span class="line">    &#125;</span><br><span class="line">	int i &#x3D; x;</span><br><span class="line">    int j;</span><br><span class="line">    while(i !&#x3D; r)&#123;&#x2F;&#x2F;循环修改这条路径上的根结点</span><br><span class="line">		j &#x3D; parent[i];&#x2F;&#x2F;j记录元素i此时的父亲</span><br><span class="line">		parent[i] &#x3D; r;&#x2F;&#x2F;将i的父亲改为根结点</span><br><span class="line">		i &#x3D; j;&#x2F;&#x2F;i记录为要“查询”的结点</span><br><span class="line">    &#125;</span><br><span class="line">    return r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -619,7 +633,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="啊哈算法的一己之见（8.1）">
+                        <img src="/medias/featureimages/40.jpg" class="responsive-img" alt="啊哈算法的一己之见（8.1）">
                         
                         <span class="card-title">啊哈算法的一己之见（8.1）</span>
                     </div>
@@ -664,7 +678,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="啊哈算法的一己之见（7.3）">
+                        <img src="/medias/featureimages/33.jpg" class="responsive-img" alt="啊哈算法的一己之见（7.3）">
                         
                         <span class="card-title">啊哈算法的一己之见（7.3）</span>
                     </div>
