@@ -480,11 +480,11 @@
             <div id="articleContent">
                 <h2 id="母函数"><a href="#母函数" class="headerlink" title="母函数"></a>母函数</h2><h2 id="普通母函数"><a href="#普通母函数" class="headerlink" title="普通母函数"></a>普通母函数</h2><p><strong>首先给出母函数的定义（详细怎么得出省略）</strong></p>
 <p>对于序列a0，a1，a2，…构造一函数：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/2f284fb_720w.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/2f284fb_720w.png"></p>
 <p>称函数G(x)是序列a0，a1，a2，…的母函数。</p>
 <p>那么母函数到底有什么用呢？怎么用呢？</p>
 <p>给出大家一个典型例题：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/5643f3_720w.jpeg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/5643f3_720w.jpeg"></p>
 <p><strong>普通母函数</strong></p>
 <p>那么我们直觉的想到，有没有可能用多项式乘法来表示组合的情况呢？我们再来看题目，题目需要的是几种砝码组合后的重量，是一个加法关系，但是在上式中“&amp;&amp;”是一种类似于乘法的运算关系，这怎么办呢？有没有什么这样一种运算关系，以乘法的形式运算，但是结果表现出类似于加法的关系呢？正好有一个，那就是幂运算。Xm 乘上Xn结果是Xm+n，他完美的符合了我们的要求。那么以次数表示砝码的质量， 就可以以多项式的形式表示砝码组合的所有方案。</p>
 <p>还是以前两个砝码为例说明，表示1g砝码的两种状态的多项式就是（x0+x1），表示2g的就是（x0+x2），x0表示没有使用砝码，所以重量为0，当然了因为x0 =1，所以也可以写成1，后面为了方便我会这么写。注意，砝码的质量是以次数表示的，而不是直觉上的用下标表示为x1，x2。这点很重要，不然的话就无法表现出幂运算的关系了。</p>
@@ -514,13 +514,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;    </span><br><span class="line">using namespace std;    </span><br><span class="line">&#x2F;&#x2F; Author: WUHU-Z    </span><br><span class="line">&#x2F;&#x2F;     </span><br><span class="line">const int max &#x3D; 1000;     </span><br><span class="line">&#x2F;&#x2F; sup是保存多项式的数组，sup[n]中的值代表xn的系数  </span><br><span class="line">&#x2F;&#x2F; temp是临时多项式，保存相乘的临时中间情况    </span><br><span class="line">int sup[max], temp[max];     </span><br><span class="line">&#x2F;* </span><br><span class="line">程序始终只计算两个多项式之间的乘积，多个多项式的情况 </span><br><span class="line">先计算前两个的乘积，将结果作为第一个多项式，再与第三个相乘 </span><br><span class="line">依次类推，sup始终存放当前运算后的结果然后作为被乘多项式， </span><br><span class="line">*&#x2F;    </span><br><span class="line">int main()    </span><br><span class="line">&#123;     </span><br><span class="line">    int target;   &#x2F;&#x2F;  目标重量， 比如上面的例子里就是10，要&lt;max的值  </span><br><span class="line">    int i, j, k;    </span><br><span class="line">     </span><br><span class="line">    while(cin &gt;&gt; target)    </span><br><span class="line">    &#123;    </span><br><span class="line">        for(i&#x3D;0; i&lt;&#x3D;target; ++i)       </span><br><span class="line">        &#123;    </span><br><span class="line">            sup[i] &#x3D; 1;     </span><br><span class="line">&#x2F;&#x2F;初始化第一个多项式，也就是用1g砝码的多项式,  </span><br><span class="line">&#x2F;&#x2F;注意如果题目没给1g的砝码那么就不能++i，而要加上砝码的质量  </span><br><span class="line">            temp[i] &#x3D; 0;    </span><br><span class="line">&#x2F;&#x2F;将临时区清空，无论第一个多项式质量是几都要全部置零  </span><br><span class="line">        &#125;    </span><br><span class="line">        for(i&#x3D;2; i&lt;&#x3D;target; ++i)     </span><br><span class="line">&#x2F;&#x2F; 生成后续的第i个多项式，此题中是2g，i从2开始。  </span><br><span class="line">&#x2F;&#x2F;如果砝码的值不是规律增长，i可能需要取决于输入  </span><br><span class="line">        &#123;    </span><br><span class="line">     </span><br><span class="line">            for(j&#x3D;0; j&lt;&#x3D;target; ++j)     </span><br><span class="line">&#x2F;&#x2F; 遍历当前结果多项式的每一项（当前结果的第j项）与第i个多项式相乘，  </span><br><span class="line">                for(k&#x3D;0; k+j&lt;&#x3D;target; k+&#x3D;i)   </span><br><span class="line">&#x2F;&#x2F; 遍历第i个多项式的每一项，此处构造用小砝码组成大砝码的多项式  </span><br><span class="line">                &#123;    </span><br><span class="line">                    temp[j+k] +&#x3D; sup[j];    </span><br><span class="line">&#x2F;&#x2F;幂运算，注意理解  </span><br><span class="line">                &#125;    </span><br><span class="line">            for(j&#x3D;0; j&lt;&#x3D;target; ++j)      </span><br><span class="line">&#x2F;&#x2F; 将临时的结果覆盖当前结果，同时把临时结果置零，为下次做准备  </span><br><span class="line">            &#123;    </span><br><span class="line">                sup[j] &#x3D; temp[j];    </span><br><span class="line">                temp[j] &#x3D; 0;    </span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;    </span><br><span class="line">        cout &lt;&lt; sup[target] &lt;&lt; endl;  &#x2F;&#x2F;输出结果  </span><br><span class="line">    &#125;    </span><br><span class="line">    return 0;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="指数母函数"><a href="#指数母函数" class="headerlink" title="指数母函数"></a>指数母函数</h2><p><strong>指数函数母函数：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/713165044874.png"></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/33997D2BA364407DADC602D5A71FD454.jpg"></p>
-<p><img src="C:\Users\26328\AppData\Local\YNote\data\qqEA62E1C92793270880C3B145842ADD43\2bd27df7a40e46a7bbba375595bd39f4\27558f00bcd7445fb1c5a438c7d2ed03.jpg" alt="img"></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/713165212235.png"></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/713165749619.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/713165044874.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/33997D2BA364407DADC602D5A71FD454.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/27558F00BCD7445FB1C5A438C7D2ED03.jpg" alt="img"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/713165212235.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/713165749619.png"></p>
 <h2 id="hdu1709"><a href="#hdu1709" class="headerlink" title="hdu1709"></a>hdu1709</h2><p><strong>题目（我擦，暴力杯！）：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/4D74EB80016342C89782791533EA9BFE.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/4D74EB80016342C89782791533EA9BFE.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>将天平的左边看做是+号，右边看作为-号，那么将所有被使用的砝码加上求绝对值的值，即为能测出来的值。</p>
 <p><strong>代码：</strong></p>
@@ -529,7 +529,7 @@
 <p><strong>代码思路：</strong></p>
 <p>通过母函数，得出答案</p>
 <h2 id="hdu1085"><a href="#hdu1085" class="headerlink" title="hdu1085"></a>hdu1085</h2><p><strong>题目：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/CD74FD854166478F80ACB158040763CF.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/CD74FD854166478F80ACB158040763CF.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>母函数模板</p>
 <p><strong>代码：</strong></p>
@@ -538,7 +538,7 @@
 <p><strong>代码思路：</strong></p>
 <p>按照模板做即可</p>
 <h2 id="hdu1171"><a href="#hdu1171" class="headerlink" title="hdu1171"></a>hdu1171</h2><p><strong>题目：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/1FA695AB0C1F4990B507DB1448CDC8B4.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/1FA695AB0C1F4990B507DB1448CDC8B4.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>逆天的母函数，怎么看都是背包；变量sum求出所有物品的总价值，题目即为求解在sum/2的范围内我能凑出的最大价值，母函数筛选一下方案数，则在sum/2以下最大的数即为答案的一个。</p>
 <p><strong>代码：</strong></p>
@@ -547,7 +547,7 @@
 <p><strong>代码思路：</strong></p>
 <p>背包似乎好想一些</p>
 <h2 id="hdu1398"><a href="#hdu1398" class="headerlink" title="hdu1398"></a>hdu1398</h2><p><strong>题目：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/b003b1cec5f3b8a2094c683328c7a9a9a5bc0f2c/2A2264B54B4B4855932BA610D5BC8FC8.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/2A2264B54B4B4855932BA610D5BC8FC8.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>母函数即可</p>
 <p><strong>代码：</strong></p>

@@ -479,12 +479,12 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>题目：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/6c4041f6ebc1a846954040c0721313a3116b60cb/E0AC7FD2D37B4CC8A576A4F51CD2058A.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/E0AC7FD2D37B4CC8A576A4F51CD2058A.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>1.起初是想暴力解决，但是发现10^9的数据大小后认为一定会超时，再由于肉眼可见的大量重复计算导致向着递归与位运算方向思考，最后实在不会了</p>
 <p><strong>Leetcode题解：</strong></p>
 <p>可以将所有小于等于n的数字建立字典数存储起来，然后找到从跟节点到叶结点且满足不出现连续1的路径的数目</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/6c4041f6ebc1a846954040c0721313a3116b60cb/dsgggsgseg.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/dsgggsgseg.png"></p>
 <p>由图我们可以找到如下关系</p>
 <ol>
 <li>若a、b两个树中的节点中，a是b的子结点，并且他们的值都是1，那么所有经过a和b的从根节点到叶节点的路径一定包含连续的1。</li>
@@ -498,7 +498,7 @@
 <p><strong>算法：</strong></p>
 <p>对于问题1（动态规划dp–数位dp）：找到节点间与路径的关系：dp[t]表示高度为 t、根结点为 0 的满二叉树中，不包含连续 1 的从根结点到叶结点的路径数量。</p>
 <p>可得到状态转移方程：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/6c4041f6ebc1a846954040c0721313a3116b60cb/zzddafefsf.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/zzddafefsf.jpg"></p>
 <p>对于问题2：考虑到 01 字典树作为完全二叉树所具有的性质，我们可以从根结点开始处理。如果当前结点包含两个子结点，则用问题 1 的解决方法计算其左子结点中不包含连续 11 的从根结点到叶结点的路径数量，并继续处理其右子结点；如果当前结点只包含一个左子结点，那么继续处理其左子结点。</p>
 <p>-—————————————————————————————————————</p>
 <p>在实现中，需要注意如果已经出现连续 11 则不用继续处理；<strong>另外，叶结点没有子结点，需要作为特殊情况单独处理。</strong></p>

@@ -492,10 +492,10 @@
 <p>缺点是遇到复杂的区间问题还是不能解决，功能还是有限。</p>
 <p><strong>一、树状数组介绍</strong></p>
 <p>二叉树大家一定都知道，如下图</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/ded93647f74a031fe5a9245423316c5a19cff738/845-81274925.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master//845-81274925.png"></p>
 <p>如果每个父亲都存的是两个儿子的值，是不是就可以解决这类区间问题了呢。是的没错，但是这样的树形结构，叫做线段树。</p>
 <p>那真的的树形结构是怎样的，和上图类似，但省去了一些节点，以达到用数组建树。</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/ded93647f74a031fe5a9245423316c5a19cff738/44-268531484.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/44-268531484.png"></p>
 <p>黑色数组代表原来的数组（下面用A[i]代替），红色结构代表我们的树状数组(下面用C[i]代替)，发现没有，每个位置只有一个方框，令每个位置存的就是子节点的值的和，则有</p>
 <ul>
 <li>C[1] = A[1];</li>
@@ -575,7 +575,7 @@
 <p>区间修改、单点查询模板题目：<a target="_blank" rel="noopener" href="https://www.luogu.org/problem/show?pid=3368">https://www.luogu.org/problem/show?pid=3368</a></p>
 <p>区间修改、区间查询模板题目：<a target="_blank" rel="noopener" href="https://vjudge.net/problem/POJ-3468">https://vjudge.net/problem/POJ-3468</a></p>
 <h2 id="hdu1556"><a href="#hdu1556" class="headerlink" title="hdu1556"></a>hdu1556</h2><p><strong>题目：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/ded93647f74a031fe5a9245423316c5a19cff738/7113399A82BD4C2ABC8922D69539BD9F.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/7113399A82BD4C2ABC8922D69539BD9F.jpg"></p>
 <p><strong>理解：</strong></p>
 <ol>
 <li>首先，思考暴力做法，发现N过大，所以放弃</li>
@@ -586,7 +586,7 @@
 
 <p><strong>题解：</strong>通过记录每一位与前一位之差，只改变第一位与最后一位后一个的数字，即可达到更新的目的</p>
 <h2 id="hdu1166"><a href="#hdu1166" class="headerlink" title="hdu1166"></a>hdu1166</h2><p><strong>题目：</strong></p>
-<p><img src="C:\Users\26328\AppData\Local\YNote\data\qqEA62E1C92793270880C3B145842ADD43\f8275fe42c9b443ab103805f6ae2ffea\a83e32dcf922473992a836540b921c80.jpg" alt="img"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/A83E32DCF922473992A836540B921C80.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>比起1556像是模板，对于3号命令要用求和相减</p>
 <p><strong>代码：</strong></p>

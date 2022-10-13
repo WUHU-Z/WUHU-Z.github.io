@@ -487,34 +487,34 @@
 </ol>
 <p><strong>操作过程：</strong></p>
 <p>下面我们采用SPFA算法对下图求v1到各个顶点的最短路径，通过手动的方式来模拟SPFA每个步骤的过程</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/c835fc0665108efd6dfe953ec37ef1960feab67a/adadadadad.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/adadadadad.png"></p>
 <p><strong>初始化：</strong></p>
 <p>首先我们先初始化数组dis如下图所示：（除了起点赋值为0外，其他顶点的对应的dis的值都赋予无穷大，这样有利于后续的松弛）</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/c835fc0665108efd6dfe953ec37ef1960feab67a/adadadaqdq.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/adadadaqdq.png"></p>
 <p>此时，我们还要把v1如队列：{v1}</p>
 <p>现在进入循环，直到队列为空才退出循环。</p>
 <p><strong>第一次循环：</strong></p>
 <p>首先，队首元素出队列，即是v1出队列，然后，对以v1为弧尾的边对应的弧头顶点进行松弛操作，可以发现v1到v3，v5，v6三个顶点的最短路径变短了，更新dis数组的值，得到如下结果：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/c835fc0665108efd6dfe953ec37ef1960feab67a/asfwafewf.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/asfwafewf.png"></p>
 <p>我们发现v3，v5，v6都被松弛了，而且不在队列中，所以要他们都加入到队列中：{v3，v5，v6}</p>
 <p><strong>第二次循环：</strong></p>
 <p>此时，队首元素为v3，v3出队列，然后，对以v3为弧尾的边对应的弧头顶点进行松弛操作，可以发现v1到v4的边，经过v3松弛变短了，所以更新dis数组，得到如下结果：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/c835fc0665108efd6dfe953ec37ef1960feab67a/sfsafaafaf.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/sfsafaafaf.png"></p>
 <p>此时只有v4对应的值被更新了，而且v4不在队列中，则把它加入到队列中：{v5,v6,v4}</p>
 <p><strong>第三次循环：</strong></p>
 <p>此时，队首元素为v5，v5出队列，然后，对以v5为弧尾的边对应的弧头顶点进行松弛操作，发现v1到v4和v6的最短路径，经过v5的松弛都变短了，更新dis的数组，得到如下结果：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/c835fc0665108efd6dfe953ec37ef1960feab67a/asfafafaaf.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/asfafafaaf.png"></p>
 <p>我们发现v4、v6对应的值都被更新了 ，但是他们都在队列中了，所以不用对队列做任何操作。队列值为：{v6，v4}</p>
 <p><strong>第四次循环：</strong></p>
 <p>此时，队首元素为v6，v6出队列，然后，对以v6为弧尾的边对应的弧头顶点进行松弛操作，发现v6出度为0，所以我们不用对dis数组做任何操作，其结果和上图一样，队列同样不用做任何操作，它的值为：{v4}</p>
 <p><strong>第五次循环：</strong></p>
 <p>此时，队首元素为v4，v4出队列，然后，对以v4为弧尾的边对应的弧头顶点进行松弛操作，可以发现v1到v6的最短路径，经过v4松弛变短了，所以更新dis数组，得到如下结果：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/c835fc0665108efd6dfe953ec37ef1960feab67a/affwefwfw.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/affwefwfw.png"></p>
 <p>因为我修改了v6对应的值，而且v6也不在队列中，所以我们把v6加入队列，{v6}</p>
 <p><strong>第六次循环：</strong></p>
 <p>此时，队首元素为v6，v6出队列，然后，对以v6为弧尾的边对应的弧头顶点进行松弛操作，发现v6出度为0，所以我们不用对dis数组做任何操作，其结果和上图一样，队列同样不用做任何操作。所以此时队列为空。</p>
 <p>OK，队列循环结果，此时我们也得到了v1到各个顶点的最短路径的值了，它就是dis数组各个顶点对应的值，如下图：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/c835fc0665108efd6dfe953ec37ef1960feab67a/sffsfsfsf.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/sffsfsfsf.png"></p>
 <p><strong>代码实现（例题acwing1129.热浪）：</strong></p>
 <p><strong>spfa用数组模拟队列是要用循环队列的，因为不确定一个点要入队多少次，所以无法确定数组大小</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N&#x3D;2510,M&#x3D;6200*2+10;&#x2F;&#x2F;N表示城镇数，M表示路径数</span><br><span class="line">int n,m,S,T;</span><br><span class="line">int h[N],e[M],w[M],ne[N],idx&#x3D;0;</span><br><span class="line">int dist[N];&#x2F;&#x2F;距离</span><br><span class="line">int q[N];&#x2F;&#x2F;循环队列</span><br><span class="line">bool st[N];&#x2F;&#x2F;判重数组</span><br><span class="line"></span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]&#x3D;b,w[idx]&#x3D;c,ne[idx]&#x3D;h[a],h[a]&#x3D;idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void spfa()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[S]&#x3D;0;&#x2F;&#x2F;初始化起点距离</span><br><span class="line">    int hh&#x3D;0,tt&#x3D;1;&#x2F;&#x2F;初始化循环队列队头队尾</span><br><span class="line">    q[0]&#x3D;S,st[S]&#x3D;true;&#x2F;&#x2F;入队并标记该点已经走过</span><br><span class="line">    while(hh!&#x3D;tt)</span><br><span class="line">    &#123;</span><br><span class="line">        int t &#x3D; q[hh++];</span><br><span class="line">        if(hh&#x3D;&#x3D;N)hh&#x3D;0;</span><br><span class="line">        st[t]&#x3D;false;</span><br><span class="line">        for(int i&#x3D;h[t];~i;i&#x3D;ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j&#x3D;e[i];</span><br><span class="line">            if(dist[j]&gt;dist[t]+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]&#x3D;dist[t]+w[i];</span><br><span class="line">                if(!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q[tt++]&#x3D;j;</span><br><span class="line">                    if(tt&#x3D;&#x3D;N)tt&#x3D;0;</span><br><span class="line">                    st[j]&#x3D;true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;S&gt;&gt;T;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    for(int i&#x3D;0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,c;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">        add(a,b,c);&#x2F;&#x2F;因为路径是双向的</span><br><span class="line">        add(b,a,c);</span><br><span class="line">    &#125;</span><br><span class="line">    spfa();</span><br><span class="line">    cout&lt;&lt;dist[T]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

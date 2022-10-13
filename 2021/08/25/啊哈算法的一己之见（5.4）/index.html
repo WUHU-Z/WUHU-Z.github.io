@@ -488,7 +488,7 @@
 <ol>
 <li>割点算法：因为当深度优先遍历时一定会访问到割点：</li>
 </ol>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/IMG_20210824_170622_edit_28702489063848.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/IMG_20210824_170622_edit_28702489063848.jpg"></p>
 <p><strong>所以关键就是</strong>：如何判断顶点v在不经过顶点u的情况下能否还能回到之前访问过的任意一个点–对v再进行深度优先遍历，但此次遍历时不允许经过顶点u看看能否找到除u外之前已经访问到的点。如果不能则证明u是割点。</p>
 <p>对于某个顶点u，如果存在至少一个顶点v(顶点u的子结点)，使得low[v]&gt;=num[u],即不能回到祖先，那么u为割点。</p>
 <p><strong>代码：</strong></p>

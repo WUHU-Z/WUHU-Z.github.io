@@ -484,7 +484,7 @@
 <p><strong>4、要点</strong>：基准数为最左边的数，则从右边开始；反之亦然。（会在i与j比较大小时产生矛盾）</p>
 <p>举例：</p>
 <p>假设对如下进行排序：</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/1.jpeg" alt="小兵-基准数"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/1.jpeg" alt="小兵-基准数"></p>
 <p>如上图，6在左，9在右  我们将6作为基数。</p>
 <p>假设从左边开始（与正确程序正好相反）</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">while</span> (nums[i] &lt;= index &amp;&amp; i &lt; j) </span><br><span class="line"></span><br><span class="line">&#123;    </span><br><span class="line"> 	i++;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (nums[j] &gt;= index &amp;&amp; j &gt; i) </span><br><span class="line"></span><br><span class="line">&#123;   </span><br><span class="line">	j--; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -498,8 +498,8 @@
 <p>不行，因为我们原本 交换后数字6在边应该是全部小于6，右边全部大于6，但现在不行了。</p>
 <p>所以，我们必须从右边开始，也就是从基准数的对面开始。</p>
 <p><strong>5、代码举例：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/2.jpg"></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/master/3.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/2.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/3.jpg"></p>
 
                 
             </div>

@@ -496,13 +496,13 @@
 <p>　　现在请各位不要带着线段树只是为了解决区间问题的数据结构，事实上，是线段树多用于解决区间问题，并不是线段树只能解决区间问题，首先，我们得先明白几件事情。</p>
 <p>　　每个结点存什么，结点下标是什么，如何建树。</p>
 <p>　　下面我以一个简单的区间最大值来阐述上面的三个概念。</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/7-1072441805.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/7-1072441805.png"></p>
 <p>　　对于A[1:6] = {1,8,6,4,3,5}来说，线段树如上所示，红色代表每个结点存储的区间，蓝色代表该区间最值。</p>
 <p>　　可以发现，<strong>每个叶子结点的值就是数组的值，每个非叶子结点的度都为二，且左右两个孩子分别存储父亲一半的区间。每个父亲的存储的值也就是两个孩子存储的值的最大值。</strong></p>
 <p>　　上面的每条结论应该都容易看出来。那么结点到底是如何存储区间的呢，以及如何快速找到非叶子结点的孩子以及非根节点的父亲呢，这里也就是理解线段树的重点以及难点所在，如同树状数组你理解了lowbit就能很快理解树状数组一样，线段树你只要理解了结点与结点之间的关系便能很快理解线段树的基本知识。</p>
 <p>　　对于一个区间[l,r]来说，最重要的数据当然就是区间的左右端点l和r，但是大部分的情况我们并不会去存储这两个数值，而是通过递归的传参方式进行传递。这种方式用指针好实现，定义两个左右子树递归即可，但是指针表示过于繁琐，而且不方便各种操作，大部分的线段树都是使用数组进行表示，那这里怎么快速使用下标找到左右子树呢。</p>
 <p>　　对于上述线段树，我们增加绿色数字为每个结点的下标</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/69-105750075.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/69-105750075.png"></p>
 <p>　　则每个结点下标如上所示，这里你可能会问，为什么最下一排的下标直接从9跳到了12，道理也很简单，中间其实是有两个空间的呀！！虽然没有使用，但是他已经开了两个空间，这也是为什么无优化的线段树建树需要2<em>2k（2k-1 &lt; n &lt; 2k)空间，一般会开到4</em>n的空间防止RE。</p>
 <p>　　仔细观察每个父亲和孩子下标的关系，有发现什么联系吗？不难发现，每个左子树的下标都是偶数，右子树的下标都是奇数且为左子树下标+1，而且不难发现以下规律</p>
 <ul>
@@ -527,14 +527,14 @@
 <p>　　基本操作有哪些，你应该也能想出来，在线的二叉搜索树，所拥有的操作当然有，更新和询问两种。</p>
 <p>　　<strong>1.点更新</strong></p>
 <p>　　如何实现点更新，我们先不急看代码，还是对于上面那个线段树，假使我把a[3]+7，则更新后的线段树应该变成</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/23-550264929.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/23-550264929.png"></p>
 <p>　　更新了a[3]后，则每个包含此值的结点都需要更新，那么有多少个结点需要更新呢？根据二叉树的性质，不难发现是log(k)个结点，这也正是为什么每次更新的时间复杂度为O(logN)，那应该如何实现呢，我们发现，无论你更新哪个叶子节点，最终都是会到根结点的，而把这个往上推的过程逆过来就是从根结点开始，找到左子树还是右子树包含需要更新的叶子节点，往下更新即可，所以我们还是可以使用递归的方法实现线段树的点更新</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;递归方式更新 updata(p,v,1,n,1);</span><br><span class="line">void updata(int p,int v,int l,int r,int k)&#123;    &#x2F;&#x2F;p为下标，v为要加上的值，l，r为结点区间，k为结点下标</span><br><span class="line">    if(l &#x3D;&#x3D; r)    &#x2F;&#x2F;左端点等于右端点，即为叶子结点，直接加上v即可</span><br><span class="line">        a[k] +&#x3D; v,t[k] +&#x3D; v;    &#x2F;&#x2F;原数组和线段树数组都得到更新</span><br><span class="line">    else&#123;</span><br><span class="line">        int m &#x3D; l + ((r-l)&gt;&gt;1);    &#x2F;&#x2F;m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]</span><br><span class="line">        if(p &lt;&#x3D; m)    &#x2F;&#x2F;如果需要更新的结点在左子树区间</span><br><span class="line">            updata(p,v,l,m,k&lt;&lt;1);</span><br><span class="line">        else    &#x2F;&#x2F;如果需要更新的结点在右子树区间</span><br><span class="line">            updata(p,v,m+1,r,k&lt;&lt;1|1);</span><br><span class="line">        Pushup(k);    &#x2F;&#x2F;更新父节点的值</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>　　看完代码是不是很清晰，这里也建议自己再次手动实现一遍理解递归的思路。</p>
 <p>　　<strong>2.区间查询</strong></p>
 <p>　　说完了单点更新肯定就要来说区间查询了，我们知道线段树的每个结点存储的都是一段区间的信息 ，如果我们刚好要查询这个区间，那么则直接返回这个结点的信息即可，比如对于上面线段树，如果我直接查询[1,6]这个区间的最值，那么直接返回根节点信息返回13即可，但是一般我们不会凑巧刚好查询那些区间，比如现在我要查询[2,5]区间的最值，这时候该怎么办呢，我们来看看哪些区间是[2,5]的真子集，</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/8-1647694310.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/8-1647694310.png"></p>
 <p>　　一共有5个区间，而且我们可以发现[4,5]这个区间已经包含了两个子树的信息，所以我们需要查询的区间只有三个，分别是[2,2],[3,3],[4,5]，到这里你能通过更新的思路想出来查询的思路吗? 我们还是从根节点开始往下递归，如果当前结点是要查询的区间的真子集，则返回这个结点的信息且不需要再往下递归了，这样从根节点往下递归，时间复杂度也是O(logN)。那么代码则为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;递归方式区间查询 query(L,R,1,n,1);</span><br><span class="line">int query(int L,int R,int l,int r,int k)&#123;    &#x2F;&#x2F;[L,R]即为要查询的区间，l，r为结点区间，k为结点下标</span><br><span class="line">    if(L &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; R)    &#x2F;&#x2F;如果当前结点的区间真包含于要查询的区间内，则返回结点信息且不需要往下递归</span><br><span class="line">        return t[k];</span><br><span class="line">    else&#123;</span><br><span class="line">        int res &#x3D; -INF;    &#x2F;&#x2F;返回值变量，根据具体线段树查询的什么而自定义</span><br><span class="line">        int mid &#x3D; l + ((r-l)&gt;&gt;1);    &#x2F;&#x2F;m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]</span><br><span class="line">        if(L &lt;&#x3D; m)    &#x2F;&#x2F;如果左子树和需要查询的区间交集非空</span><br><span class="line">            res &#x3D; max(res, query(L,R,l,m,k&lt;&lt;1));</span><br><span class="line">        if(R &gt; m)    &#x2F;&#x2F;如果右子树和需要查询的区间交集非空，注意这里不是else if，因为查询区间可能同时和左右区间都有交集</span><br><span class="line">            res &#x3D; max(res, query(L,R,m+1,r,k&lt;&lt;1|1));</span><br><span class="line"></span><br><span class="line">        return res;    &#x2F;&#x2F;返回当前结点得到的信息</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -569,23 +569,23 @@
 <p>　　<strong>2.区间第K大</strong></p>
 <p>　　给定n个数，每次询问问[l,r]区间内的第K大数，这个问题有很多方法，但是用线段树应该如何解决呢。</p>
 <p>　　利用了线段树划分区间的思想，线段树的每个结点存的不只是区间端点，而是这个区间内所有的数，并且是按照递增顺序有序排列的，建树过程是一个归并排序的过程，从叶子结点自底向上进行归并，对于一个长度为6的数组[4, 3, 2, 1, 5, 6]，建立线段树如图所示。</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/52-646112470.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/52-646112470.png"></p>
 <p>　　从图中可以看出，线段树的任何一个结点存储了对应区间的数，并且进行有序排列，所以根结点存储的一定是一个长度为数组总长的有序数组，叶子结点存储的递增序列为原数组元素。</p>
 <p>　　每次询问，我们将给定区间拆分成一个个线段树上的子区间，然后二分枚举答案T，再利用二分查找统计这些子区间中大于等于T的数的个数，从而确定T是否是第K大的。</p>
 <p>　　对于区间K大数的问题，还有很多数据结构都能解决，这里仅作简单介绍。</p>
 <p>　　<strong>3.矩阵面积并</strong></p>
 <p>　　对于给定的n(n&lt;=100000)个平行于XY轴的矩形，求他们的面积并。</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/4-1208065318.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/4-1208065318.png"></p>
 <p>　　这是一个二维的问题，如果我告诉你这道题使用线段树解决，你该如何入手呢，首先线段树是一维的，所以我们需要化二维为一维，所以我们可以使用x的坐标或者y的坐标建立线段树，另一坐标用来进行枚举操作。</p>
 <p>　　我们用x的坐标来建树的化，那么我们把矩阵平行于x轴的线段舍去，则变成了</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/7-1167080951.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/7-1167080951.png"></p>
 <p>　　每个矩形都剩下两条边，定义x坐标较小的为入边（值为+1），较大为出边（值为-1），然后用x的升序，记第i条线段的x坐标即为X[i]</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/6-1991656451.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/6-1991656451.png"></p>
 <p>　　接下来将所有矩形端点的y坐标进行重映射(也可以叫离散化)，原因是坐标有可能很大而且不一定是整数，将原坐标映射成小范围的整数可以作为数组下标，更方便计算，映射可以将所有y坐标进行排序去重，然后二分查找确定映射后的值，离散化的具体步骤下文会详细讲解。如图所示，蓝色数字表示的是离散后的坐标，即1、2、3、4分别对应原先的5、10、23、25（需支持正查和反查）。假设离散后的y方向的坐标个数为m，则y方向被分割成m-1个独立单元，下文称这些独立单元为“单位线段”，分别记为&lt;1-2&gt;、&lt;2-3&gt;、&lt;3-4&gt;。</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/27-683305051.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/27-683305051.png"></p>
 <p>　　以x坐标递增的方式枚举每条垂直线段，y方向用一个长度为m-1的数组来维护“单位线段”的权值，如图所示，展示了每条线段按x递增方式插入之后每个“单位线段”的权值。</p>
 <p>　　当枚举到第i条线段时，检查所有“单位线段”的权值，所有权值大于零的“单位线段”的实际长度之和(离散化前的长度)被称为“合法长度”，记为L，那么(X[i] - X[i-1]) * L，就是第i条线段和第i-1条线段之间的矩形面积和，计算完第i条垂直线段后将它插入，所谓”插入”就是利用该线段的权值更新该线段对应的“单位线段”的权值和（这里的更新就是累加）。</p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/7-1033235603.png"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/7-1033235603.png"></p>
 <p>　　如图四-4-6所示：红色、黄色、蓝色三个矩形分别是3对相邻线段间的矩形面积和，其中红色部分的y方向由&lt;1-2&gt;、&lt;2-3&gt;两个“单位线段”组成，黄色部分的y方向由&lt;1-2&gt;、&lt;2-3&gt;、&lt;3-4&gt;三个“单位线段”组成，蓝色部分的y方向由&lt;2-3&gt;、&lt;3-4&gt;两个“单位线段”组成。特殊的，在计算蓝色部分的时候，&lt;1-2&gt;部分的权值由于第3条线段的插入(第3条线段权值为-1)而变为零，所以不能计入“合法长度”。</p>
 <p>　　以上所有相邻线段之间的面积和就是最后要求的矩形面积并。</p>
 <p>　　优化自然就是用线段树了，之前提到了降维的思想，x方向我们继续采用枚举，而y方向的“单位线段”则可以采用线段树来维护，</p>
@@ -631,7 +631,7 @@
 </li>
 <li><p>Poj 2761 （区间第K大）</p>
 <h2 id="hdu1754"><a href="#hdu1754" class="headerlink" title="hdu1754"></a>hdu1754</h2><p><strong>题目：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/36BAE5B83D9147C682A0BCC09862ACCF.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/36BAE5B83D9147C682A0BCC09862ACCF.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>标准线段树模板，分开一步步作答即可</p>
 <p><strong>代码：</strong></p>
@@ -642,7 +642,7 @@
 <h2 id="hdu3308"><a href="#hdu3308" class="headerlink" title="hdu3308"></a>hdu3308</h2></li>
 </ul>
 <p><strong>题目：</strong></p>
-<p><img src="https://gitee.com/Vagray/wuhu-z/raw/dbff0c40d5dd0a03dbb656a851ec08539425cc71/A2C1F7D461AA4E118D7805236480A9FB.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/A2C1F7D461AA4E118D7805236480A9FB.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>类似于1754，连续子序列需要判断连续减和连续增</p>
 <p><strong>代码：</strong></p>
