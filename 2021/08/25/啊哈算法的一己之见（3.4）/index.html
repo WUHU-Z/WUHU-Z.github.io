@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 
@@ -484,7 +484,7 @@
 <p>c++的话有stl:next_permutation函数：将按字母表顺序生成给定序列的下一个较大的排列，知道整个序列为降序为止，而prev_permutation函数与之相反</p>
 <p>c中就只能暴力枚举了</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i&#x3D;1;i&lt;&#x3D;4;i++)</span><br><span class="line">    for(int j&#x3D;1;j&lt;&#x3D;4;j++)</span><br><span class="line">    for(int n&#x3D;1;n&lt;&#x3D;4;n++)</span><br><span class="line">    for(int m&#x3D;1;m&lt;&#x3D;4;m++)</span><br><span class="line">        if(i!&#x3D;j&amp;&amp;i!&#x3D;n&amp;&amp;i!&#x3D;m&amp;&amp;j!&#x3D;n&amp;&amp;j!&#x3D;m&amp;&amp;n!&#x3D;m)printf(&quot;%d%d%d%d\n&quot;,i,j,n,m);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=1;i&lt;=4;i++)</span><br><span class="line">    for(int j=1;j&lt;=4;j++)</span><br><span class="line">    for(int n=1;n&lt;=4;n++)</span><br><span class="line">    for(int m=1;m&lt;=4;m++)</span><br><span class="line">        if(i!=j&amp;&amp;i!=n&amp;&amp;i!=m&amp;&amp;j!=n&amp;&amp;j!=m&amp;&amp;n!=m)printf(&quot;%d%d%d%d\n&quot;,i,j,n,m);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
                 
@@ -845,7 +845,7 @@
                    type="playlist"
                    id="503838841"
                    fixed='true'
-                   autoplay='true'
+                   autoplay='false'
                    theme='#42b983'
                    loop='all'
                    order='random'
@@ -1097,6 +1097,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
 
 </html>
