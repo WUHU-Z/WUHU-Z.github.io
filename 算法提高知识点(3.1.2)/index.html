@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="算法提高知识点(3.1.2), 隐迹札记">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>算法提高知识点(3.1.2) | 隐迹札记</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+  <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+ 
+
+	<body>
+		<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">隐迹札记</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Medias</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Musics</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Movies</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Books</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Galleries</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">隐迹札记</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Medias
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/musics " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Musics</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Movies</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Books</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Galleries</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+ 
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/35.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">算法提高知识点(3.1.2)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98-%E5%9B%BE%E8%AE%BA/">
+                                <span class="chip bg-color">算法提高--图论</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                算法学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-09-23
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="3-1-2单源最短路的综合应用"><a href="#3-1-2单源最短路的综合应用" class="headerlink" title="3.1.2单源最短路的综合应用"></a>3.1.2单源最短路的综合应用</h1><h1 id="1-Acwing1135-新年好"><a href="#1-Acwing1135-新年好" class="headerlink" title="1.Acwing1135.新年好"></a><strong>1.Acwing1135.新年好</strong></h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/AE9ADF85655E4C1FAE11C1C11FD0C946.jpg"></p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>若先要考虑的就是走的顺序，总共120种方式，然后对每种方式上的每一个点进行单源最短路算法，由于时间复杂度过高，所以选择改变顺序。<strong>先对每个亲戚点进行单源最短路计算，然后再通过查表的方式（DFS）考虑顺序</strong>。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a><strong>代码:</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">#define INF 9999999</span><br><span class="line"></span><br><span class="line">const int N=5e4+5,M=2e5+5;</span><br><span class="line"></span><br><span class="line">int m,n,a,b,c;</span><br><span class="line">int h[N],e[M],ne[M],w[M],idx;</span><br><span class="line">int parent[6];</span><br><span class="line">int dist[6][N];</span><br><span class="line">bool st[N];</span><br><span class="line">bool book[6];</span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    ne[idx]=h[a],w[idx]=c,e[idx]=b,h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dijkstra(int start)</span><br><span class="line">&#123;</span><br><span class="line">    memset(st,0,sizeof st);</span><br><span class="line">    priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;</span><br><span class="line">    int zz=parent[start];</span><br><span class="line">    memset(dist[start],0x3f,sizeof dist[start]);</span><br><span class="line">    dist[start][zz]=0;</span><br><span class="line">    heap.push(&#123;0,zz&#125;);</span><br><span class="line">    while(heap.size())</span><br><span class="line">    &#123;</span><br><span class="line">        auto t=heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        if(st[t.second])continue;</span><br><span class="line">        st[t.second]=true;</span><br><span class="line">        for(int i=h[t.second];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[start][j]&gt;t.first+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[start][j]=t.first+w[i];</span><br><span class="line">                heap.push(&#123;dist[start][j],j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int dfs(int u,int start,int distance)//u标记这是第几个亲戚</span><br><span class="line">&#123;</span><br><span class="line">    if(u==6)return distance;</span><br><span class="line">    int res=INF;</span><br><span class="line">    for(int i=1;i&lt;=5;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(!book[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int next = parent[i];</span><br><span class="line">            book[i]=true;</span><br><span class="line">            res=min(res,dfs(u+1,i,distance+dist[start][next]));</span><br><span class="line">            book[i]=false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    parent[0]=1;</span><br><span class="line">    for(int i=1;i&lt;=5;i++)cin&gt;&gt;parent[i];</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    for(int i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">        add(a,b,c);</span><br><span class="line">        add(b,a,c);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;=5;i++)</span><br><span class="line">        dijkstra(i);</span><br><span class="line">    memset(book,0,sizeof book);</span><br><span class="line">    cout&lt;&lt;dfs(1,0,0)&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-Acwing340-通信线路"><a href="#2-Acwing340-通信线路" class="headerlink" title="2.Acwing340.通信线路"></a><strong>2.Acwing340.通信线路</strong></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目:"></a><strong>题目:</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/842FD2FE79354DB9BA684B664F0C859E.jpg"></p>
+<h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>可以规定【0,1000001】这个区间中的如下性质：</p>
+<p>对于区间中的某一个点x，求出从1走到N,最少经过的长度大于x的边的数量是否小于等于K</p>
+<ul>
+<li>可以将所有边分类：如果边长大于x，则边权看成1，否则边权看成0，使用双端队列bfs来求1~N最短路</li>
+</ul>
+<p>区间范围的设立：</p>
+<ol>
+<li>当k=1000时，所有边都会被报销，0可以作为答案出现</li>
+<li>因为1<del>N无论连通与否，最后都会返回1e6,导致无法判断是否有解，所以设1e6+1。若为连通，则最大只能达到1e6，而不连通，由于1</del>N距离为正无穷，所以就会达到1e6+1。</li>
+</ol>
+<h2 id="代码（双端队列BFS）："><a href="#代码（双端队列BFS）：" class="headerlink" title="代码（双端队列BFS）："></a><strong>代码（双端队列BFS）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">#define INF 9999999</span><br><span class="line"></span><br><span class="line">const int N=1010,M=20010;</span><br><span class="line">int n,m,k;</span><br><span class="line">int h[N],e[M],w[M],ne[M],idx;</span><br><span class="line">deque&lt;int&gt;q;</span><br><span class="line">int dist[N];</span><br><span class="line">bool st[N];</span><br><span class="line"></span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool check(int bound)//看着有点像Dijkstra的双端队列bfs</span><br><span class="line">&#123;</span><br><span class="line">    memset(st,0,sizeof st);</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[1]=0;</span><br><span class="line">    q.push_back(1);</span><br><span class="line">    while(q.size())</span><br><span class="line">    &#123;</span><br><span class="line">        int t=q.front();</span><br><span class="line">        q.pop_front();</span><br><span class="line">        if(st[t])continue;</span><br><span class="line">        st[t]=true;</span><br><span class="line">        for(int i=h[t];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i],v=w[i]&gt;bound;</span><br><span class="line">            if(dist[j]&gt;dist[t]+v)</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=dist[t]+v;</span><br><span class="line">                if(!v)q.push_front(j);</span><br><span class="line">                else q.push_back(j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dist[n]&lt;=k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,c;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">        add(a,b,c);</span><br><span class="line">        add(b,a,c);</span><br><span class="line">    &#125;</span><br><span class="line">    int l=0,r=1e6+1;</span><br><span class="line">    while(l&lt;r)</span><br><span class="line">    &#123;</span><br><span class="line">        int mid=l+r&gt;&gt;1;</span><br><span class="line">        if(check(mid))r=mid;</span><br><span class="line">        else l=mid+1;</span><br><span class="line">    &#125;</span><br><span class="line">    if(r==1e6+1)r=-1;</span><br><span class="line">    cout&lt;&lt;r&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><strong>注意：</strong></h2><p>要看清题目，农场主只需要支付剩余电缆中最贵的那个即可</p>
+<h1 id="3-Acwing342-道路与航线"><a href="#3-Acwing342-道路与航线" class="headerlink" title="3.Acwing342.道路与航线"></a><strong>3.Acwing342.道路与航线</strong></h1><h2 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/84C9A0D67E164F59A2CF688B92A6965F.jpg"></p>
+<h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>已知spfa会被卡！！！</p>
+<p>创造团，团是一堆城镇的集合，团之中是没有航线的，团之间是依靠航线相连，且不形成回路。</p>
+<p>已知：</p>
+<ol>
+<li>如果边权非负：可以使用Dijkstra算法（所以对团之内使用Dijkstra算法）</li>
+<li>如果是拓扑图（点与点之间不形成回路—单向），不论边权是正是负，均可使用拓扑序扫描的方式（所以对团之间可以使用拓扑扫描）</li>
+</ol>
+<p>如何创建团：</p>
+<ol>
+<li>bfs</li>
+<li>dfs</li>
+<li>并查集</li>
+</ol>
+<h2 id="过程："><a href="#过程：" class="headerlink" title="过程："></a><strong>过程：</strong></h2><ol>
+<li> 先输入所有双向道路，然后DFS出所有的连通块，计算两个数组：id[ ]存储每个点属于哪个连通块，vector<int>block[ ]存储每个连通块里有哪些点。</li>
+<li>输入所有航线，同时统计出每个连通块的入度。</li>
+<li>按照拓扑排序一次处理每个连通块。先将所有入度为0的连通块的编号加入队列中。</li>
+<li>每次从队头中取出一个连通块的编号bid。</li>
+<li>将该block[bid]中的所有点加入堆中，然后对堆中所有点跑Dijkstra算法。</li>
+<li>在Dijkstra算法中，每次取出堆中距离最小的点ver</li>
+<li>然后遍历ver的所有邻点j，如果id[ver]==id[j]（j在该连通块中）,那么如果j能被更新，则将j插入堆中，如果id[ver]!=id<a href="%E8%AF%B4%E6%98%8E%E8%AE%BF%E9%97%AE%E5%88%B0%E8%88%AA%E7%BA%BF">j</a>,则将id[j]这个连通块的入度-1，如果减为0了，将其插入拓扑排序的队列中</li>
+</ol>
+<h2 id="代码（堆优化Dijkstra-DFS-拓扑排序）"><a href="#代码（堆优化Dijkstra-DFS-拓扑排序）" class="headerlink" title="代码（堆优化Dijkstra+DFS+拓扑排序）:"></a><strong>代码（堆优化Dijkstra+DFS+拓扑排序）:</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">const int N=25010,M=150030;</span><br><span class="line">int n,mr,mp,S;</span><br><span class="line">int h[N],e[M],ne[M],w[M],idx;</span><br><span class="line">int id[N],din[N];</span><br><span class="line">int bcnt;</span><br><span class="line">int dist[N];</span><br><span class="line">bool st[N];</span><br><span class="line">queue&lt;int&gt;q;</span><br><span class="line">vector&lt;int&gt;block[N];</span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,ne[idx]=h[a],w[idx]=c,h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line">void dfs(int u,int cnt)</span><br><span class="line">&#123;</span><br><span class="line">    id[u]=cnt;</span><br><span class="line">    block[cnt].push_back(u);</span><br><span class="line">    for(int i=h[u];~i;i=ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        int j=e[i];</span><br><span class="line">        if(!id[j])dfs(j,cnt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dijkstra(int bid)</span><br><span class="line">&#123;</span><br><span class="line">    priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;</span><br><span class="line">    for(auto ver:block[bid])heap.push(&#123;dist[ver],ver&#125;);</span><br><span class="line">    while(heap.size())</span><br><span class="line">    &#123;</span><br><span class="line">        auto t=heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        int ver = t.y;</span><br><span class="line">        int distance = t.x;</span><br><span class="line">        if(st[ver])continue;</span><br><span class="line">        st[ver]=true;</span><br><span class="line">        for(int i=h[ver];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j]&gt;dist[ver]+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=dist[ver]+w[i];</span><br><span class="line">                if(id[j]==id[ver])</span><br><span class="line">                &#123;</span><br><span class="line">                    heap.push(&#123;dist[j],j&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(id[j]!=id[ver]&amp;&amp;--din[id[j]]==0)q.push(id[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void topsort()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[S]=0;</span><br><span class="line">    for(int i=1;i&lt;=bcnt;i++)</span><br><span class="line">        if(!din[i])q.push(i);</span><br><span class="line">    while(q.size())</span><br><span class="line">    &#123;</span><br><span class="line">        int t=q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        dijkstra(t);//对每一个连通块内部进行堆优化Dijkstra</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;mr,&amp;mp,&amp;S);</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    while(mr--)//首先是所有路</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,c;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        add(a,b,c);</span><br><span class="line">        add(b,a,c);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)//搜索出所有的联通块，并标记</span><br><span class="line">    &#123;</span><br><span class="line">        if(!id[i])dfs(i,++bcnt);</span><br><span class="line">    &#125;</span><br><span class="line">    while(mp--)//然后是所有航线的数量</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,c;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        add(a,b,c);</span><br><span class="line">        din[id[b]]++;//记录入度</span><br><span class="line">    &#125;</span><br><span class="line">    topsort();//拓扑排序</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">        if(dist[i]&gt;INF/2)puts(&quot;NO PATH&quot;);</span><br><span class="line">        else cout&lt;&lt;dist[i]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-Acwing341-最优贸易"><a href="#4-Acwing341-最优贸易" class="headerlink" title="4.Acwing341.最优贸易"></a><strong>4.Acwing341.最优贸易</strong></h1><h2 id="题目：-2"><a href="#题目：-2" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/9ACB59C0D93B4BF4B55E10EDFD1ABD83.jpg"></p>
+<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a><strong>思路：</strong></h2><h3 id="1-分层图"><a href="#1-分层图" class="headerlink" title="1.分层图"></a>1.分层图</h3><h3 id="2-dp"><a href="#2-dp" class="headerlink" title="2.dp"></a>2.dp</h3><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/3FDFB998770A496CB842E1D90C1796B7.jpg"></p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/120F43FF2ADD4508948EFB5B0814B692.jpg"></p>
+<h2 id="代码（spfa-DP）："><a href="#代码（spfa-DP）：" class="headerlink" title="代码（spfa+DP）："></a><strong>代码（spfa+DP）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">const int N=100010,M=2000010;</span><br><span class="line">int n,m;</span><br><span class="line">int w[N];</span><br><span class="line">int hs[N],ht[N],e[M],ne[M],idx;</span><br><span class="line">int dmin[N],dmax[N];</span><br><span class="line">bool st[N];</span><br><span class="line">int q[N];</span><br><span class="line">void add(int h[],int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void spfa(int h[],int dist[],int type)</span><br><span class="line">&#123;</span><br><span class="line">    int hh=0,tt=1;</span><br><span class="line">    if(type==0)//若是要求最小值</span><br><span class="line">    &#123;</span><br><span class="line">        memset(dist,0x3f,sizeof dmin);</span><br><span class="line">        dist[1]=w[1];</span><br><span class="line">        q[0]=1;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        memset(dist,-0x3f,sizeof dmax);</span><br><span class="line">        dist[n]=w[n];</span><br><span class="line">        q[0]=n;</span><br><span class="line">    &#125;</span><br><span class="line">    while(hh!=tt)</span><br><span class="line">    &#123;</span><br><span class="line">        int t=q[hh++];</span><br><span class="line">        if(hh==N)hh=0;</span><br><span class="line">        st[t]=false;</span><br><span class="line">        for(int i=h[t];~i;i=ne[i])//遍历所有邻边</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(type==0&amp;&amp;dist[j]&gt;min(dist[t],w[j])||type==1&amp;&amp;dist[j]&lt;max(dist[t],w[j]))</span><br><span class="line">            &#123;</span><br><span class="line">                if(type==0)dist[j]=min(dist[t],w[j]);</span><br><span class="line">                else dist[j]=max(dist[t],w[j]);</span><br><span class="line">                if(!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q[tt++]=j;</span><br><span class="line">                    if(tt==N)tt=0;</span><br><span class="line">                    st[j]=true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">    for(int i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;w[i]);</span><br><span class="line">    memset(hs,-1,sizeof hs);</span><br><span class="line">    memset(ht,-1,sizeof ht);</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,c;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        add(hs,a,b);</span><br><span class="line">        add(ht,b,a);</span><br><span class="line">        if(c==2)//说明是双向边，需要反向建立一次</span><br><span class="line">            add(hs,b,a),add(ht,a,b);</span><br><span class="line">    &#125;</span><br><span class="line">    spfa(hs,dmin,0);//从起点开始寻找最小花费</span><br><span class="line">    spfa(ht,dmax,1);//从终点开始寻找最大赚的钱数</span><br><span class="line">    int res=0;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)res=max(res,dmax[i]-dmin[i]);</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Mr.Z</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://WUHU-Z.github.io/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9(3.1.2)/">http://WUHU-Z.github.io/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9(3.1.2)/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Mr.Z</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98-%E5%9B%BE%E8%AE%BA/">
+                                    <span class="chip bg-color">算法提高--图论</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9(3.1.3)/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="算法提高知识点(3.1.3)">
+                        
+                        <span class="card-title">算法提高知识点(3.1.3)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    算法学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98-%E5%9B%BE%E8%AE%BA/">
+                        <span class="chip bg-color">算法提高--图论</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9(3.1.1)/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/42.jpg" class="responsive-img" alt="算法提高知识点(3.1.1)">
+                        
+                        <span class="card-title">算法提高知识点(3.1.1)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    算法学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98-%E5%9B%BE%E8%AE%BA/">
+                        <span class="chip bg-color">算法提高--图论</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+ <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="7747893098"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2025</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Mr.Z</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ddd@mail.nwpu.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2632851304" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2632851304" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+ <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+ <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+		<script src="/libs/materialize/materialize.min.js"></script>
+		<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+		<script src="/libs/aos/aos.js"></script>
+		<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+		<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+		<script src="/js/matery.js"></script>
+
+		<!-- Baidu Analytics -->
+ <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+ 
+		<script
+			src="/libs/others/clicklove.js"
+			async="async"
+		></script>
+		 
+		<script
+			async
+			src="/libs/others/busuanzi.pure.mini.js"
+		></script>
+		      
+		<script
+			type="text/javascript"
+			size="150"
+			alpha="0.6"
+			zIndex="-1"
+			src="/libs/background/ribbon.min.js"
+			async="async"
+		></script>
+		 
+		<script
+			type="text/javascript"
+			src="/libs/background/ribbon-dynamic.js"
+			async="async"
+		></script>
+		 
+		<script
+			src="/libs/instantpage/instantpage.js"
+			type="module"
+		></script>
+		
+		<!-- 雪花特效 -->
+		
+		<script type="text/javascript" src="/libs/others/snow.js"></script>
+		
+
+		<script type="text/javascript">
+			var OriginTitile = document.title,
+				st;
+			document.addEventListener("visibilitychange", function () {
+				document.hidden
+					? ((document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！"),
+					  clearTimeout(st))
+					: ((document.title = "φ(゜▽゜*)♪咦，又好了！"),
+					  (st = setTimeout(function () {
+							document.title = OriginTitile;
+					  }, 3e3)));
+			});
+		</script>
+	<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
