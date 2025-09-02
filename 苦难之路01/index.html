@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -614,8 +615,36 @@
 <p>-—————————————————————————————————————</p>
 <p>在实现中，需要注意如果已经出现连续 11 则不用继续处理；<strong>另外，叶结点没有子结点，需要作为特殊情况单独处理。</strong></p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    int dp[31];</span><br><span class="line">    dp[0]=dp[1]=1;</span><br><span class="line">    //预处理第i层满二叉树的路径数量</span><br><span class="line">    for(int i=2;i&lt;31;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[i]=dp[i-1]+dp[i-2];</span><br><span class="line">    &#125;</span><br><span class="line">    int pre=0,res=0;//pre记录上一层的根节点的值,res记录最终的路径数</span><br><span class="line">    for(int i=29;i&gt;=0;i--)//由于之前已经递归过了，所以直接从上到下加即可</span><br><span class="line">    &#123;</span><br><span class="line">        int val=1&lt;&lt;i;</span><br><span class="line">        if((n&amp;val)!=0)</span><br><span class="line">        &#123;</span><br><span class="line">            res+=dp[i+1];//先将左子树（满二叉树）的路径加到结果中</span><br><span class="line">            if(pre==1)break;//上一层为1，这一层的右子树节点也为1，不合题意，舍去</span><br><span class="line">            pre=1;//标记当前根节点为1</span><br><span class="line">        &#125;</span><br><span class="line">        else pre=0;//无右子树，此时不能保证左子树是否为满二叉树，所以要在下一层继续再判断</span><br><span class="line">        if(i==0)res++;//对于单个子叶节点1，予以加上</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+using namespace std;
 
+int main()&#123;
+    int n;
+    cin&gt;&gt;n;
+    int dp[31];
+    dp[0]=dp[1]=1;
+    //预处理第i层满二叉树的路径数量
+    for(int i=2;i&lt;31;i++)
+    &#123;
+        dp[i]=dp[i-1]+dp[i-2];
+    &#125;
+    int pre=0,res=0;//pre记录上一层的根节点的值,res记录最终的路径数
+    for(int i=29;i&gt;=0;i--)//由于之前已经递归过了，所以直接从上到下加即可
+    &#123;
+        int val=1&lt;&lt;i;
+        if((n&amp;val)!=0)
+        &#123;
+            res+=dp[i+1];//先将左子树（满二叉树）的路径加到结果中
+            if(pre==1)break;//上一层为1，这一层的右子树节点也为1，不合题意，舍去
+            pre=1;//标记当前根节点为1
+        &#125;
+        else pre=0;//无右子树，此时不能保证左子树是否为满二叉树，所以要在下一层继续再判断
+        if(i==0)res++;//对于单个子叶节点1，予以加上
+    &#125;
+    cout&lt;&lt;res&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>

@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -596,8 +597,51 @@
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/7a9385ec41fe4534b94d5b6933c29370.jpg"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/a6a882c25b804c818f3bfb64fb11b8c9.jpg"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/aa57c171960f48ae830cacf18efcd1f5.jpg"></p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a><strong>代码：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=25;</span><br><span class="line">int R[N],H[N];</span><br><span class="line">int m,n;</span><br><span class="line">int minV[N],minS[N];</span><br><span class="line">int ans=0x3f3f3f3f;</span><br><span class="line"></span><br><span class="line">void dfs(int u,int s,int v)</span><br><span class="line">&#123;</span><br><span class="line">    if(s+minS[u]&gt;=ans)return;//1.如果估计面积已经大于已知解，则剪枝</span><br><span class="line">    if(v+minV[u]&gt;n)return;//2.如果已知体积大于规定值，则剪枝</span><br><span class="line">    if(s+2*(n-v)/R[u+1]&gt;=ans)return;//3.※如果估计面积大于已知解，则剪枝</span><br><span class="line">    if(!u)</span><br><span class="line">    &#123;</span><br><span class="line">        if(v==n)ans=s;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int r=min(R[u+1]-1,(int)sqrt(n-v));r&gt;=u;r--)//从大到小枚举</span><br><span class="line">    for (int h=min(H[u+1]-1,(n-v)/r/r);h&gt;=u;h--)//从大到小枚举</span><br><span class="line">    &#123;</span><br><span class="line">        int t=0;</span><br><span class="line">        if(u==m)t=r*r;</span><br><span class="line">        R[u]=r,H[u]=h;</span><br><span class="line">        dfs(u-1,s+2*r*h+t,v+r*r*h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">    for(int i=1;i&lt;=m;i++)//预处理每一层的最小体积和最小面积</span><br><span class="line">    &#123;</span><br><span class="line">        minS[i]=minS[i-1]+i*i*2;</span><br><span class="line">        minV[i]=minV[i-1]+i*i*i;</span><br><span class="line">    &#125;</span><br><span class="line">    R[m+1]=H[m+1]=0x3f3f3f3f;//设置半径特判</span><br><span class="line">    dfs(m,0,0);//开搜</span><br><span class="line">    if(ans!=0x3f3f3f3f)printf(&quot;%d\n&quot;,ans);</span><br><span class="line">    else printf(&quot;%d\n&quot;,0);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a><strong>代码：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+using namespace std;
+const int N=25;
+int R[N],H[N];
+int m,n;
+int minV[N],minS[N];
+int ans=0x3f3f3f3f;
 
+void dfs(int u,int s,int v)
+&#123;
+    if(s+minS[u]&gt;=ans)return;//1.如果估计面积已经大于已知解，则剪枝
+    if(v+minV[u]&gt;n)return;//2.如果已知体积大于规定值，则剪枝
+    if(s+2*(n-v)/R[u+1]&gt;=ans)return;//3.※如果估计面积大于已知解，则剪枝
+    if(!u)
+    &#123;
+        if(v==n)ans=s;
+        return ;
+    &#125;
+    for (int r=min(R[u+1]-1,(int)sqrt(n-v));r&gt;=u;r--)//从大到小枚举
+    for (int h=min(H[u+1]-1,(n-v)/r/r);h&gt;=u;h--)//从大到小枚举
+    &#123;
+        int t=0;
+        if(u==m)t=r*r;
+        R[u]=r,H[u]=h;
+        dfs(u-1,s+2*r*h+t,v+r*r*h);
+    &#125;
+&#125;
+
+int main()
+&#123;
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=m;i++)//预处理每一层的最小体积和最小面积
+    &#123;
+        minS[i]=minS[i-1]+i*i*2;
+        minV[i]=minV[i-1]+i*i*i;
+    &#125;
+    R[m+1]=H[m+1]=0x3f3f3f3f;//设置半径特判
+    dfs(m,0,0);//开搜
+    if(ans!=0x3f3f3f3f)printf(&quot;%d\n&quot;,ans);
+    else printf(&quot;%d\n&quot;,0);
+    return 0;
+&#125;
+</code></pre>
 <h1 id="B-Robot"><a href="#B-Robot" class="headerlink" title="B - Robot"></a>B - Robot</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/82fdebe1f565473ea86854d112a27034.jpg"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/0a2f34d743614f76bc0c537203c508ed.jpg"></p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>1、它一秒可以执行2种命令，一种是向现在所面向的方向走1-3步，另外一种是向左或向右90度转向（不能向后转）。</p>
@@ -605,15 +649,293 @@
 <p>3、对搜索进行去重操作的时候需要记录所处位置的方向，因为这个题存在方向的问题，需要注意下，可以设置数组为vis[100][100][4]，4代表4个方向。</p>
 <p>4、还可以直接做一个优化，如果终点所在的四个块存在障碍，则始终不可达。</p>
 <p><strong>朝某一个方向走时，如果走一步不行，后面的2,3步也不用走了。</strong></p>
-<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a><strong>代码：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;unordered_map&gt;</span><br><span class="line">#include&lt;unordered_set&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">//#define x first</span><br><span class="line">//#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">typedef unsigned long long ull;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int N=55,M=1e7+5;</span><br><span class="line">const double DInf=1e20;</span><br><span class="line">const double eps=1e-8;</span><br><span class="line"></span><br><span class="line">//每秒可执行1、2、3步</span><br><span class="line">//1.向前走1、2、3步</span><br><span class="line">//2.向左或向右转90°</span><br><span class="line"></span><br><span class="line">int graph[N][N];//存图</span><br><span class="line">bool st[N][N][4];//遍历该点是否以这种方向走过</span><br><span class="line">int n,m;</span><br><span class="line">int dir[4][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;0,-1&#125;,&#123;-1,0&#125;&#125;;//遍历四个方向</span><br><span class="line">struct point</span><br><span class="line">&#123;</span><br><span class="line">    int x,y;//记录坐标</span><br><span class="line">    int dir;//记录方向</span><br><span class="line">    int step;//记录步数</span><br><span class="line">    bool ok()//判断是否是边界</span><br><span class="line">    &#123;</span><br><span class="line">        return x&gt;0&amp;&amp;x&lt;n&amp;&amp;y&gt;0&amp;&amp;y&lt;m;</span><br><span class="line">    &#125;</span><br><span class="line">    bool operator ==(const point &amp;b)const//判断两点是否相等</span><br><span class="line">    &#123;</span><br><span class="line">        return x==b.x&amp;&amp;y==b.y;</span><br><span class="line">    &#125;</span><br><span class="line">    //重载了==运算符就必须重载&lt;，不然会报错</span><br><span class="line">    bool operator &lt;(const point &amp;b)const//判断step是否能被更新</span><br><span class="line">    &#123;</span><br><span class="line">        return step&gt;b.step;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;s,e;</span><br><span class="line"></span><br><span class="line">int getdir(char* s)//四种状态</span><br><span class="line">&#123;</span><br><span class="line">    if(s[0]==&#x27;e&#x27;)return 0;</span><br><span class="line">    if(s[0]==&#x27;s&#x27;)return 1;</span><br><span class="line">    if(s[0]==&#x27;w&#x27;)return 2;</span><br><span class="line">    if(s[0]==&#x27;n&#x27;)return 3;</span><br><span class="line">    return -1;//不返回-1会报错，编译器很严格的说..</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int BFS()</span><br><span class="line">&#123;</span><br><span class="line">    if(s==e)return 0;//特判：如果起点和终点相同</span><br><span class="line">    priority_queue&lt;point&gt; Q;</span><br><span class="line">    memset(st,0,sizeof st);</span><br><span class="line">    st[s.x][s.y][s.dir]=true;</span><br><span class="line">    Q.push(s);</span><br><span class="line">    while(!Q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        point pre=Q.top();</span><br><span class="line">        Q.pop();</span><br><span class="line">        //printf(&quot;x==%d,y==%d,step==%d\n&quot;,pre.x,pre.y,pre.step);//debug</span><br><span class="line">        point now;</span><br><span class="line">        for(int i=1;i&lt;4;i++)//判断向前的步伐：1、2、3</span><br><span class="line">        &#123;</span><br><span class="line">            now.x=pre.x+i*dir[pre.dir][0];//走过相应步伐后点的位置</span><br><span class="line">            now.y=pre.y+i*dir[pre.dir][1];//走过相应步伐后点的位置</span><br><span class="line">            if(!now.ok()||graph[now.x][now.y]||graph[now.x][now.y-1]||graph[now.x-1][now.y]||graph[now.x-1][now.y-1])//判断该点是否为边界点且可到达</span><br><span class="line">            break;//剪枝2.如果向前走一步有障碍物或越界，那么走多步也无从谈起</span><br><span class="line">            //如果该位置可以被到达</span><br><span class="line">            now.dir=pre.dir;//继承方向</span><br><span class="line">            if(!st[now.x][now.y][now.dir])//如果该位置被走过</span><br><span class="line">            &#123;</span><br><span class="line">                now.step=pre.step+1;//继承步数，且步数增加</span><br><span class="line">                Q.push(now);//入队</span><br><span class="line">                if(now==e)return now.step;//如果是终点，直接返回</span><br><span class="line">                st[now.x][now.y][now.dir]=true;//表示该点以此状态走过</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //向左转</span><br><span class="line">        now = pre;</span><br><span class="line">        now.dir++;</span><br><span class="line">        now.step++;</span><br><span class="line">        if(now.dir==4)now.dir=0;//方向循环</span><br><span class="line">        if(!st[now.x][now.y][now.dir])//如果该点没有以此方向被走过</span><br><span class="line">        &#123;</span><br><span class="line">            Q.push(now);</span><br><span class="line">            st[now.x][now.y][now.dir]=true;</span><br><span class="line">        &#125;</span><br><span class="line">        //向右转</span><br><span class="line">        now = pre;</span><br><span class="line">        now.dir--;</span><br><span class="line">        now.step++;</span><br><span class="line">        if(now.dir&lt;0)now.dir=3;</span><br><span class="line">        if(!st[now.x][now.y][now.dir])//如果该点没有以此方向被走过</span><br><span class="line">        &#123;</span><br><span class="line">            Q.push(now);</span><br><span class="line">            st[now.x][now.y][now.dir]=true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  return -1;//不返回-1会报错，编译器很严格的说..</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    char c[10];</span><br><span class="line">    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m)&amp;&amp;n&amp;&amp;m)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=0;i&lt;n;i++)</span><br><span class="line">        for(int j=0;j&lt;m;j++)</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;graph[i][j]);</span><br><span class="line">        scanf(&quot;%d%d&quot;,&amp;s.x,&amp;s.y);</span><br><span class="line">        scanf(&quot;%d%d&quot;,&amp;e.x,&amp;e.y);</span><br><span class="line">        scanf(&quot;%s&quot;,c);</span><br><span class="line">        s.dir=getdir(c);//记录起始方向</span><br><span class="line">        s.step=0;</span><br><span class="line">        //1.剪枝，判断终点是否可达</span><br><span class="line">        if(e.x==0||e.y==0||graph[e.x][e.y]||graph[e.x-1][e.y]||graph[e.x][e.y-1]||graph[e.x-1][e.y-1])</span><br><span class="line">        printf(&quot;-1\n&quot;);</span><br><span class="line">        else</span><br><span class="line">        printf(&quot;%d\n&quot;,BFS());</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a><strong>代码：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;unordered_map&gt;
+#include&lt;unordered_set&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;set&gt;
 
+#define INF 0x3f3f3f3f
+//#define x first
+//#define y second
+
+using namespace std;
+
+typedef pair&lt;int,int&gt; PII;
+typedef unsigned long long ull;
+typedef long long ll;
+const int N=55,M=1e7+5;
+const double DInf=1e20;
+const double eps=1e-8;
+
+//每秒可执行1、2、3步
+//1.向前走1、2、3步
+//2.向左或向右转90°
+
+int graph[N][N];//存图
+bool st[N][N][4];//遍历该点是否以这种方向走过
+int n,m;
+int dir[4][2]=&#123;&#123;0,1&#125;,&#123;1,0&#125;,&#123;0,-1&#125;,&#123;-1,0&#125;&#125;;//遍历四个方向
+struct point
+&#123;
+    int x,y;//记录坐标
+    int dir;//记录方向
+    int step;//记录步数
+    bool ok()//判断是否是边界
+    &#123;
+        return x&gt;0&amp;&amp;x&lt;n&amp;&amp;y&gt;0&amp;&amp;y&lt;m;
+    &#125;
+    bool operator ==(const point &amp;b)const//判断两点是否相等
+    &#123;
+        return x==b.x&amp;&amp;y==b.y;
+    &#125;
+    //重载了==运算符就必须重载&lt;，不然会报错
+    bool operator &lt;(const point &amp;b)const//判断step是否能被更新
+    &#123;
+        return step&gt;b.step;
+    &#125;
+&#125;s,e;
+
+int getdir(char* s)//四种状态
+&#123;
+    if(s[0]==&#39;e&#39;)return 0;
+    if(s[0]==&#39;s&#39;)return 1;
+    if(s[0]==&#39;w&#39;)return 2;
+    if(s[0]==&#39;n&#39;)return 3;
+    return -1;//不返回-1会报错，编译器很严格的说..
+&#125;
+
+int BFS()
+&#123;
+    if(s==e)return 0;//特判：如果起点和终点相同
+    priority_queue&lt;point&gt; Q;
+    memset(st,0,sizeof st);
+    st[s.x][s.y][s.dir]=true;
+    Q.push(s);
+    while(!Q.empty())
+    &#123;
+        point pre=Q.top();
+        Q.pop();
+        //printf(&quot;x==%d,y==%d,step==%d\n&quot;,pre.x,pre.y,pre.step);//debug
+        point now;
+        for(int i=1;i&lt;4;i++)//判断向前的步伐：1、2、3
+        &#123;
+            now.x=pre.x+i*dir[pre.dir][0];//走过相应步伐后点的位置
+            now.y=pre.y+i*dir[pre.dir][1];//走过相应步伐后点的位置
+            if(!now.ok()||graph[now.x][now.y]||graph[now.x][now.y-1]||graph[now.x-1][now.y]||graph[now.x-1][now.y-1])//判断该点是否为边界点且可到达
+            break;//剪枝2.如果向前走一步有障碍物或越界，那么走多步也无从谈起
+            //如果该位置可以被到达
+            now.dir=pre.dir;//继承方向
+            if(!st[now.x][now.y][now.dir])//如果该位置被走过
+            &#123;
+                now.step=pre.step+1;//继承步数，且步数增加
+                Q.push(now);//入队
+                if(now==e)return now.step;//如果是终点，直接返回
+                st[now.x][now.y][now.dir]=true;//表示该点以此状态走过
+            &#125;
+        &#125;
+        //向左转
+        now = pre;
+        now.dir++;
+        now.step++;
+        if(now.dir==4)now.dir=0;//方向循环
+        if(!st[now.x][now.y][now.dir])//如果该点没有以此方向被走过
+        &#123;
+            Q.push(now);
+            st[now.x][now.y][now.dir]=true;
+        &#125;
+        //向右转
+        now = pre;
+        now.dir--;
+        now.step++;
+        if(now.dir&lt;0)now.dir=3;
+        if(!st[now.x][now.y][now.dir])//如果该点没有以此方向被走过
+        &#123;
+            Q.push(now);
+            st[now.x][now.y][now.dir]=true;
+        &#125;
+    &#125;
+  return -1;//不返回-1会报错，编译器很严格的说..
+&#125;
+
+int main()
+&#123;
+    char c[10];
+    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m)&amp;&amp;n&amp;&amp;m)
+    &#123;
+        for(int i=0;i&lt;n;i++)
+        for(int j=0;j&lt;m;j++)
+        scanf(&quot;%d&quot;,&amp;graph[i][j]);
+        scanf(&quot;%d%d&quot;,&amp;s.x,&amp;s.y);
+        scanf(&quot;%d%d&quot;,&amp;e.x,&amp;e.y);
+        scanf(&quot;%s&quot;,c);
+        s.dir=getdir(c);//记录起始方向
+        s.step=0;
+        //1.剪枝，判断终点是否可达
+        if(e.x==0||e.y==0||graph[e.x][e.y]||graph[e.x-1][e.y]||graph[e.x][e.y-1]||graph[e.x-1][e.y-1])
+        printf(&quot;-1\n&quot;);
+        else
+        printf(&quot;%d\n&quot;,BFS());
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <h1 id="C-Cleaning-Robot"><a href="#C-Cleaning-Robot" class="headerlink" title="C - Cleaning Robot"></a>C - Cleaning Robot</h1><h2 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/941ec13e19ac420ab5d046d1b10b0b1d.jpg"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/1cf9adf370d9468b9f6543dfa18fbbaf.jpg"></p>
 <h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>首先从起点bfs遍历，找到其距离其他点的距离，并判断能否到达，如果不能到达，直接输出-1。</p>
 <p>然后再从每个<em>点bfs其他的</em>点（起始点也看作*点），由此得到点与点之间的距离。</p>
 <p>然后由起始点直接根据已知的点与点之间的距离dfs，找到最优解。</p>
-<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a><strong>代码：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;unordered_map&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">typedef unsigned long long ull;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int N=25,M=2*N;</span><br><span class="line">const double DInf=1e20;</span><br><span class="line">char gp[N][N];</span><br><span class="line">int n,m,sum,v,ans;</span><br><span class="line">int dist[N][N];//邻接矩阵求出每两个点的距离</span><br><span class="line">int book[N][N];</span><br><span class="line">struct nd</span><br><span class="line">&#123;</span><br><span class="line">    int x,y;</span><br><span class="line">&#125;jd[N];//记录有多少个要清理的点</span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int x,y,step;</span><br><span class="line">    node(int xx,int yy,int st)</span><br><span class="line">    &#123;</span><br><span class="line">        x=xx;</span><br><span class="line">        y=yy;</span><br><span class="line">        step=st;</span><br><span class="line">    &#125;</span><br><span class="line">    friend bool operator &lt;(const node ss,const node qq)</span><br><span class="line">    &#123;</span><br><span class="line">        return ss.step&gt;qq.step;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">priority_queue&lt;node&gt;q;</span><br><span class="line">int bfs(const nd &amp;qd,const nd &amp;zd)</span><br><span class="line">&#123;</span><br><span class="line">    int fx[4][2]=&#123;&#123;-1,0&#125;,&#123;0,-1&#125;,&#123;1,0&#125;,&#123;0,1&#125;&#125;;</span><br><span class="line">    while(!q.empty())q.pop();</span><br><span class="line">    q.push(node(qd.x,qd.y,0));</span><br><span class="line">    bool st[N][N];</span><br><span class="line">    memset(st,0,sizeof st);</span><br><span class="line">    st[qd.x][qd.y]=1;</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        node cl=q.top();</span><br><span class="line">        q.pop();</span><br><span class="line">        if(cl.x==zd.x&amp;&amp;cl.y==zd.y)return cl.step;</span><br><span class="line">        for(int i=0;i&lt;4;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int zx,zy;</span><br><span class="line">            zx=cl.x+fx[i][0];</span><br><span class="line">            zy=cl.y+fx[i][1];</span><br><span class="line">            if(zx&lt;0||zx&gt;=n||zy&lt;0||zy&gt;=m)continue;</span><br><span class="line">            if(gp[zx][zy]!=&#x27;x&#x27;&amp;&amp;st[zx][zy]==0)</span><br><span class="line">            &#123;</span><br><span class="line">                st[zx][zy]=1;</span><br><span class="line">                q.push(node(zx,zy,cl.step+1));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//传入：起始点，已走过的路径长度，走过的点的数目</span><br><span class="line">void dfs(int qs,int anns,int sum)</span><br><span class="line">&#123;</span><br><span class="line">    if(sum==v)</span><br><span class="line">    &#123;</span><br><span class="line">        if(anns&lt;ans)ans=anns;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    book[jd[qs].x][jd[qs].y]=1;</span><br><span class="line">    for(int i=0;i&lt;=v;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        //重要的剪枝，不加会超时-&gt;就离铺，前面那么多bfs不会超时吗</span><br><span class="line">        if(anns+dist[qs][i]&gt;=ans)continue;</span><br><span class="line">        if(book[jd[i].x][jd[i].y]==0)dfs(i,anns+dist[qs][i],sum+1);</span><br><span class="line">    &#125;</span><br><span class="line">    book[jd[qs].x][jd[qs].y]=0;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(~scanf(&quot;%d%d&quot;,&amp;m,&amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        if(m==0&amp;&amp;n==0)break;</span><br><span class="line">        int flag=0;</span><br><span class="line">        v=0;</span><br><span class="line">        int sx,sy;</span><br><span class="line">        memset(dist,0,sizeof dist);</span><br><span class="line">        for(int i=0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%s&quot;,gp[i]);</span><br><span class="line">            for(int j=0;j&lt;m;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(gp[i][j]==&#x27;o&#x27;)//找到起点</span><br><span class="line">                &#123;</span><br><span class="line">                    sx=i;</span><br><span class="line">                    sy=j;</span><br><span class="line">                    jd[0].x=i;</span><br><span class="line">                    jd[0].y=j;</span><br><span class="line">                &#125;</span><br><span class="line">                if(gp[i][j]==&#x27;*&#x27;)//找到污渍</span><br><span class="line">                &#123;</span><br><span class="line">                    v++;</span><br><span class="line">                    jd[v].x=i;</span><br><span class="line">                    jd[v].y=j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;=v;i++)</span><br><span class="line">        for(int j=0;j&lt;=v;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(j&gt;=i)break;</span><br><span class="line">            if(dist[i][j]==0)</span><br><span class="line">            &#123;</span><br><span class="line">                //求出每两个点之间的距离</span><br><span class="line">                dist[i][j]=dist[j][i]=bfs(jd[i],jd[j]);//这都不会超时QWQ</span><br><span class="line">                if(dist[i][j]==-1)//走不通</span><br><span class="line">                &#123;</span><br><span class="line">                    flag=1;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(flag==1)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;-1\n&quot;);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        ans=INF;</span><br><span class="line">        memset(book,0,sizeof book);</span><br><span class="line">        dfs(0,0,0);</span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码：-2"><a href="#代码：-2" class="headerlink" title="代码："></a><strong>代码：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;unordered_map&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;set&gt;
 
+#define INF 0x3f3f3f3f
+#define x first
+#define y second
+
+using namespace std;
+
+typedef pair&lt;int,int&gt; PII;
+typedef unsigned long long ull;
+typedef long long ll;
+const int N=25,M=2*N;
+const double DInf=1e20;
+char gp[N][N];
+int n,m,sum,v,ans;
+int dist[N][N];//邻接矩阵求出每两个点的距离
+int book[N][N];
+struct nd
+&#123;
+    int x,y;
+&#125;jd[N];//记录有多少个要清理的点
+struct node
+&#123;
+    int x,y,step;
+    node(int xx,int yy,int st)
+    &#123;
+        x=xx;
+        y=yy;
+        step=st;
+    &#125;
+    friend bool operator &lt;(const node ss,const node qq)
+    &#123;
+        return ss.step&gt;qq.step;
+    &#125;
+&#125;;
+
+priority_queue&lt;node&gt;q;
+int bfs(const nd &amp;qd,const nd &amp;zd)
+&#123;
+    int fx[4][2]=&#123;&#123;-1,0&#125;,&#123;0,-1&#125;,&#123;1,0&#125;,&#123;0,1&#125;&#125;;
+    while(!q.empty())q.pop();
+    q.push(node(qd.x,qd.y,0));
+    bool st[N][N];
+    memset(st,0,sizeof st);
+    st[qd.x][qd.y]=1;
+    while(!q.empty())
+    &#123;
+        node cl=q.top();
+        q.pop();
+        if(cl.x==zd.x&amp;&amp;cl.y==zd.y)return cl.step;
+        for(int i=0;i&lt;4;i++)
+        &#123;
+            int zx,zy;
+            zx=cl.x+fx[i][0];
+            zy=cl.y+fx[i][1];
+            if(zx&lt;0||zx&gt;=n||zy&lt;0||zy&gt;=m)continue;
+            if(gp[zx][zy]!=&#39;x&#39;&amp;&amp;st[zx][zy]==0)
+            &#123;
+                st[zx][zy]=1;
+                q.push(node(zx,zy,cl.step+1));
+            &#125;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+
+//传入：起始点，已走过的路径长度，走过的点的数目
+void dfs(int qs,int anns,int sum)
+&#123;
+    if(sum==v)
+    &#123;
+        if(anns&lt;ans)ans=anns;
+        return ;
+    &#125;
+    book[jd[qs].x][jd[qs].y]=1;
+    for(int i=0;i&lt;=v;i++)
+    &#123;
+        //重要的剪枝，不加会超时-&gt;就离铺，前面那么多bfs不会超时吗
+        if(anns+dist[qs][i]&gt;=ans)continue;
+        if(book[jd[i].x][jd[i].y]==0)dfs(i,anns+dist[qs][i],sum+1);
+    &#125;
+    book[jd[qs].x][jd[qs].y]=0;
+&#125;
+int main()
+&#123;
+    while(~scanf(&quot;%d%d&quot;,&amp;m,&amp;n))
+    &#123;
+        if(m==0&amp;&amp;n==0)break;
+        int flag=0;
+        v=0;
+        int sx,sy;
+        memset(dist,0,sizeof dist);
+        for(int i=0;i&lt;n;i++)
+        &#123;
+            scanf(&quot;%s&quot;,gp[i]);
+            for(int j=0;j&lt;m;j++)
+            &#123;
+                if(gp[i][j]==&#39;o&#39;)//找到起点
+                &#123;
+                    sx=i;
+                    sy=j;
+                    jd[0].x=i;
+                    jd[0].y=j;
+                &#125;
+                if(gp[i][j]==&#39;*&#39;)//找到污渍
+                &#123;
+                    v++;
+                    jd[v].x=i;
+                    jd[v].y=j;
+                &#125;
+            &#125;
+        &#125;
+        for(int i=0;i&lt;=v;i++)
+        for(int j=0;j&lt;=v;j++)
+        &#123;
+            if(j&gt;=i)break;
+            if(dist[i][j]==0)
+            &#123;
+                //求出每两个点之间的距离
+                dist[i][j]=dist[j][i]=bfs(jd[i],jd[j]);//这都不会超时QWQ
+                if(dist[i][j]==-1)//走不通
+                &#123;
+                    flag=1;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+        if(flag==1)
+        &#123;
+            printf(&quot;-1\n&quot;);
+            continue;
+        &#125;
+        ans=INF;
+        memset(book,0,sizeof book);
+        dfs(0,0,0);
+        printf(&quot;%d\n&quot;,ans);
+    &#125;
+
+    return 0;
+&#125;
+</code></pre>
 <h1 id="D-Bloxorz-I"><a href="#D-Bloxorz-I" class="headerlink" title="D - Bloxorz I"></a>D - Bloxorz I</h1><h2 id="题目：-2"><a href="#题目：-2" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/13a51ff04a824fc5b61099920c5b9171.jpg"></p>
 <p><img src="https://gitee.com/Vagray/wuhu-z/raw/1021aca8608fbab9f90d93c9686bb2eeeeb76c0d/d5c01dc088a041bcb367adc7cc683439.jpg"></p>
 <h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>简单的bfs找终点问题，就是状态表示和移动判断需要思考</p>
@@ -635,23 +957,315 @@
 <li>next_x[i][j] 表示 lie = i 时朝方向j 滚动后lie的变化情况</li>
 </ul>
 <p>4、 每一种状态 State， 进行有效性判断</p>
-<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a><strong>代码：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;unordered_map&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">typedef unsigned long long ull;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int N=510,M=1e7+5;</span><br><span class="line">const double DInf=1e20;</span><br><span class="line">struct State</span><br><span class="line">&#123;</span><br><span class="line">    int x, y, lie;</span><br><span class="line">&#125;;</span><br><span class="line">queue&lt;State&gt; q;</span><br><span class="line">State st, ed;   // 起点，终点</span><br><span class="line">int n,m;</span><br><span class="line">char s[N][N];//记图</span><br><span class="line">int dist[N][N][3];</span><br><span class="line">const int dx[4] = &#123;0, 0, -1, 1&#125;, dy[4] = &#123;-1, 1, 0, 0&#125;;//左右上下</span><br><span class="line">const int next_x[3][4] = &#123;&#123;0, 0, -2, 1&#125;, &#123;0, 0, -1, 1&#125;, &#123;0, 0, -1, 2&#125;&#125;;//next_x[i][j] 表示 lie = i 时朝方向j 滚动后x的变化情况</span><br><span class="line">const int next_y[3][4] = &#123;&#123;-2, 1, 0, 0&#125;, &#123;-1, 2, 0, 0&#125;, &#123;-1, 1, 0, 0&#125;&#125;;//next_x[i][j] 表示 lie = i 时朝方向j 滚动后y的变化情况</span><br><span class="line">const int next_lie[3][4] = &#123;&#123;1, 1, 2, 2&#125;, &#123;0, 0, 1, 1&#125;, &#123;2, 2, 0, 0&#125;&#125;;//next_x[i][j] 表示 lie = i 时朝方向j 滚动后lie的变化情况</span><br><span class="line">//lie=0,竖直直立；lie=1,沿y轴方向水平放置；lie=2,沿x轴方向水平放置</span><br><span class="line"></span><br><span class="line">void parse_st_ed()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    for(int j=1;j&lt;=m;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(&#x27;O&#x27;==s[i][j])//若找到终点</span><br><span class="line">        &#123;</span><br><span class="line">            ed.x=i,ed.y=j,ed.lie=0;</span><br><span class="line">            s[i][j]=&#x27;.&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(&#x27;X&#x27;==s[i][j])//若找到起始点</span><br><span class="line">            &#123;</span><br><span class="line">                int a,b,lie=0;</span><br><span class="line">                for(int k=0;k&lt;4;++k)</span><br><span class="line">                &#123;</span><br><span class="line">                    a=i+dx[k],b=j+dy[k];</span><br><span class="line">                    if(a &gt;= 1 &amp;&amp; a &lt;= n &amp;&amp; b &gt;= 1 &amp;&amp; b &lt;= m &amp;&amp; &#x27;X&#x27; == s[a][b])//这里的 &#x27;X&#x27; 是第二个</span><br><span class="line">                    &#123;</span><br><span class="line">                        if(k == 1)  </span><br><span class="line">                        &#123;</span><br><span class="line">                            lie = 1;    </span><br><span class="line">                        &#125;else if(k == 3)</span><br><span class="line">                        &#123;</span><br><span class="line">                            lie = 2;</span><br><span class="line">                        &#125;   </span><br><span class="line">                        s[a][b] = &#x27;.&#x27;;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                st.x = i, st.y = j, st.lie = lie, s[i][j] = &#x27;.&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool judge_xy(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">    return x &gt;= 1 &amp;&amp; x &lt;= n &amp;&amp; y &gt;= 1 &amp;&amp; y &lt;= m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool judge(State next)</span><br><span class="line">&#123;</span><br><span class="line">    if(!judge_xy(next.x, next.y))//首先判断是否越界</span><br><span class="line">    return false;</span><br><span class="line">    if(s[next.x][next.y] == &#x27;#&#x27;)//如果下一个格子是空格</span><br><span class="line">    return false;</span><br><span class="line">    if(next.lie == 0 &amp;&amp; s[next.x][next.y] != &#x27;.&#x27;)//如果下一个格子不是刚性且状态为竖直</span><br><span class="line">    return false;</span><br><span class="line">    if(next.lie == 1 &amp;&amp; s[next.x][next.y + 1] == &#x27;#&#x27;)//若是水平放置且延伸位置是空点</span><br><span class="line">    return false;</span><br><span class="line">    if(next.lie == 2 &amp;&amp; s[next.x + 1][next.y] == &#x27;#&#x27;)//若是竖直放置且延伸位置是空点</span><br><span class="line">    return false;</span><br><span class="line">    return true;//经过重重考验，说明是可以走的</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int bfs()</span><br><span class="line">&#123;</span><br><span class="line">    while(q.size())</span><br><span class="line">    &#123;</span><br><span class="line">        q.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    memset(dist,-1,sizeof(dist));</span><br><span class="line">    State s,next;</span><br><span class="line">    q.push(st);//起始点入队</span><br><span class="line">    dist[st.x][st.y][st.lie]=0;</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        s=q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        for(int j=0;j&lt;4;j++)//枚举4个方向</span><br><span class="line">        &#123;</span><br><span class="line">            int i = s.lie;</span><br><span class="line">            next.x = next_x[i][j] + s.x;</span><br><span class="line">            next.y = next_y[i][j] + s.y;</span><br><span class="line">            next.lie = next_lie[i][j];</span><br><span class="line">            if(judge(next)&amp;&amp;dist[next.x][next.y][next.lie]==-1)//注意判断易碎地面或者该点是否以该状态被走过</span><br><span class="line">            &#123;</span><br><span class="line">                dist[next.x][next.y][next.lie]=dist[s.x][s.y][s.lie]+1;</span><br><span class="line">                q.push(next);</span><br><span class="line">                if(next.x == ed.x &amp;&amp; next.y == ed.y &amp;&amp; next.lie == ed.lie)</span><br><span class="line">                &#123;</span><br><span class="line">                    return dist[next.x][next.y][next.lie];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m)&amp;&amp;n)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%s&quot;,s[i]+1);</span><br><span class="line">        &#125;</span><br><span class="line">        parse_st_ed();//找终点，起始点及其状态</span><br><span class="line">        int ans = bfs();//bfs搜答案</span><br><span class="line">        if(ans==-1)puts(&quot;Impossible&quot;);</span><br><span class="line">        else printf(&quot;%d\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码：-3"><a href="#代码：-3" class="headerlink" title="代码："></a><strong>代码：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;unordered_map&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;set&gt;
 
+#define INF 0x3f3f3f3f
+#define x first
+#define y second
+
+using namespace std;
+
+typedef pair&lt;int,int&gt; PII;
+typedef unsigned long long ull;
+typedef long long ll;
+const int N=510,M=1e7+5;
+const double DInf=1e20;
+struct State
+&#123;
+    int x, y, lie;
+&#125;;
+queue&lt;State&gt; q;
+State st, ed;   // 起点，终点
+int n,m;
+char s[N][N];//记图
+int dist[N][N][3];
+const int dx[4] = &#123;0, 0, -1, 1&#125;, dy[4] = &#123;-1, 1, 0, 0&#125;;//左右上下
+const int next_x[3][4] = &#123;&#123;0, 0, -2, 1&#125;, &#123;0, 0, -1, 1&#125;, &#123;0, 0, -1, 2&#125;&#125;;//next_x[i][j] 表示 lie = i 时朝方向j 滚动后x的变化情况
+const int next_y[3][4] = &#123;&#123;-2, 1, 0, 0&#125;, &#123;-1, 2, 0, 0&#125;, &#123;-1, 1, 0, 0&#125;&#125;;//next_x[i][j] 表示 lie = i 时朝方向j 滚动后y的变化情况
+const int next_lie[3][4] = &#123;&#123;1, 1, 2, 2&#125;, &#123;0, 0, 1, 1&#125;, &#123;2, 2, 0, 0&#125;&#125;;//next_x[i][j] 表示 lie = i 时朝方向j 滚动后lie的变化情况
+//lie=0,竖直直立；lie=1,沿y轴方向水平放置；lie=2,沿x轴方向水平放置
+
+void parse_st_ed()
+&#123;
+    for(int i=1;i&lt;=n;i++)
+    for(int j=1;j&lt;=m;j++)
+    &#123;
+        if(&#39;O&#39;==s[i][j])//若找到终点
+        &#123;
+            ed.x=i,ed.y=j,ed.lie=0;
+            s[i][j]=&#39;.&#39;;
+        &#125;
+        else if(&#39;X&#39;==s[i][j])//若找到起始点
+            &#123;
+                int a,b,lie=0;
+                for(int k=0;k&lt;4;++k)
+                &#123;
+                    a=i+dx[k],b=j+dy[k];
+                    if(a &gt;= 1 &amp;&amp; a &lt;= n &amp;&amp; b &gt;= 1 &amp;&amp; b &lt;= m &amp;&amp; &#39;X&#39; == s[a][b])//这里的 &#39;X&#39; 是第二个
+                    &#123;
+                        if(k == 1)  
+                        &#123;
+                            lie = 1;    
+                        &#125;else if(k == 3)
+                        &#123;
+                            lie = 2;
+                        &#125;   
+                        s[a][b] = &#39;.&#39;;
+                    &#125;
+                &#125;
+                st.x = i, st.y = j, st.lie = lie, s[i][j] = &#39;.&#39;;
+            &#125;
+    &#125;
+&#125;
+
+bool judge_xy(int x, int y)
+&#123;
+    return x &gt;= 1 &amp;&amp; x &lt;= n &amp;&amp; y &gt;= 1 &amp;&amp; y &lt;= m;
+&#125;
+
+bool judge(State next)
+&#123;
+    if(!judge_xy(next.x, next.y))//首先判断是否越界
+    return false;
+    if(s[next.x][next.y] == &#39;#&#39;)//如果下一个格子是空格
+    return false;
+    if(next.lie == 0 &amp;&amp; s[next.x][next.y] != &#39;.&#39;)//如果下一个格子不是刚性且状态为竖直
+    return false;
+    if(next.lie == 1 &amp;&amp; s[next.x][next.y + 1] == &#39;#&#39;)//若是水平放置且延伸位置是空点
+    return false;
+    if(next.lie == 2 &amp;&amp; s[next.x + 1][next.y] == &#39;#&#39;)//若是竖直放置且延伸位置是空点
+    return false;
+    return true;//经过重重考验，说明是可以走的
+&#125;
+
+int bfs()
+&#123;
+    while(q.size())
+    &#123;
+        q.pop();
+    &#125;
+    memset(dist,-1,sizeof(dist));
+    State s,next;
+    q.push(st);//起始点入队
+    dist[st.x][st.y][st.lie]=0;
+    while(!q.empty())
+    &#123;
+        s=q.front();
+        q.pop();
+        for(int j=0;j&lt;4;j++)//枚举4个方向
+        &#123;
+            int i = s.lie;
+            next.x = next_x[i][j] + s.x;
+            next.y = next_y[i][j] + s.y;
+            next.lie = next_lie[i][j];
+            if(judge(next)&amp;&amp;dist[next.x][next.y][next.lie]==-1)//注意判断易碎地面或者该点是否以该状态被走过
+            &#123;
+                dist[next.x][next.y][next.lie]=dist[s.x][s.y][s.lie]+1;
+                q.push(next);
+                if(next.x == ed.x &amp;&amp; next.y == ed.y &amp;&amp; next.lie == ed.lie)
+                &#123;
+                    return dist[next.x][next.y][next.lie];
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+
+int main()
+&#123;
+    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m)&amp;&amp;n)
+    &#123;
+        for(int i=1;i&lt;=n;i++)
+        &#123;
+            scanf(&quot;%s&quot;,s[i]+1);
+        &#125;
+        parse_st_ed();//找终点，起始点及其状态
+        int ans = bfs();//bfs搜答案
+        if(ans==-1)puts(&quot;Impossible&quot;);
+        else printf(&quot;%d\n&quot;,ans);
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <h1 id="E-Network-Saboteur"><a href="#E-Network-Saboteur" class="headerlink" title="E - Network Saboteur"></a>E - Network Saboteur</h1><h2 id="题目：-3"><a href="#题目：-3" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/9ad72f4de60c476e8ff70b12152b05cb.jpg"></p>
 <h2 id="思路（dfs）："><a href="#思路（dfs）：" class="headerlink" title="思路（dfs）："></a><strong>思路（dfs）：</strong></h2><p>也就是说要将网络节点 划分为两个不相交的子集A和B，比如一共有4个节点，即1，2，3，4.那么A集合为1，B集合为2，3，4.那么组成的队为(1,2),(1,3),(1,4).如果将2从B集合移入A集合，那么现在的队为(1,3),(1,4),(2,3),(2,4).比起之前2还没有移动的时候，两者相差了(1,2)，(2,3),(2,4)，从第一步开始计算的sum而言，sum=sum-(1,2)+(2,3)+(2,4)才会达到第二部的sum真实数据。从此以下类推</p>
 <p>同时，注意回溯</p>
-<h2 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a><strong>代码：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;unordered_map&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">typedef unsigned long long ull;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int N=22,M=1e7+5;</span><br><span class="line">const double DInf=1e20;</span><br><span class="line">int mate[N][N];</span><br><span class="line">bool st[N];</span><br><span class="line">int n,ans;</span><br><span class="line"></span><br><span class="line">void dfs(int x,int sum)</span><br><span class="line">&#123;</span><br><span class="line">    st[x]=true;</span><br><span class="line">    for(int i=0;i&lt;n;i++)//将第i个数加入数组时的总和</span><br><span class="line">    &#123;</span><br><span class="line">        if(st[i])sum-=mate[x][i];</span><br><span class="line">        else sum+=mate[x][i];</span><br><span class="line">    &#125;</span><br><span class="line">    if(sum&gt;ans)ans=sum;//更新最大值</span><br><span class="line">    for(int i=x+1;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dfs(i,sum);//继续搜索</span><br><span class="line">        st[i]=false;//回溯</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(cin&gt;&gt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=0;i&lt;n;i++)</span><br><span class="line">        for(int j=0;j&lt;n;j++)</span><br><span class="line">        cin&gt;&gt;mate[i][j];</span><br><span class="line">        memset(st,0,sizeof st);</span><br><span class="line">        ans=0;</span><br><span class="line">        dfs(0,0);</span><br><span class="line">        cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码：-4"><a href="#代码：-4" class="headerlink" title="代码："></a><strong>代码：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;unordered_map&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;set&gt;
 
+#define INF 0x3f3f3f3f
+#define x first
+#define y second
+
+using namespace std;
+
+typedef pair&lt;int,int&gt; PII;
+typedef unsigned long long ull;
+typedef long long ll;
+const int N=22,M=1e7+5;
+const double DInf=1e20;
+int mate[N][N];
+bool st[N];
+int n,ans;
+
+void dfs(int x,int sum)
+&#123;
+    st[x]=true;
+    for(int i=0;i&lt;n;i++)//将第i个数加入数组时的总和
+    &#123;
+        if(st[i])sum-=mate[x][i];
+        else sum+=mate[x][i];
+    &#125;
+    if(sum&gt;ans)ans=sum;//更新最大值
+    for(int i=x+1;i&lt;n;i++)
+    &#123;
+        dfs(i,sum);//继续搜索
+        st[i]=false;//回溯
+    &#125;
+&#125;
+
+int main()
+&#123;
+    while(cin&gt;&gt;n)
+    &#123;
+        for(int i=0;i&lt;n;i++)
+        for(int j=0;j&lt;n;j++)
+        cin&gt;&gt;mate[i][j];
+        memset(st,0,sizeof st);
+        ans=0;
+        dfs(0,0);
+        cout&lt;&lt;ans&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <h1 id="F-Shredding-Company"><a href="#F-Shredding-Company" class="headerlink" title="F - Shredding Company"></a>F - Shredding Company</h1><h2 id="题目：-4"><a href="#题目：-4" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/4da20151afb149d780562da498340c8a.jpg"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/8e53796bd843433793f2c3b862d35b72.jpg"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/ee64549c6d104b78a81de23616761b15.jpg"></p>
 <h2 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>记录从头记录每一位的数字，然后dfs每一种相连的情况</p>
 <p>注意只能够求每一位的和，然后若和超过target，输出error（相当于剪枝）</p>
 <p>不能够出现和==target，然后直接输出每一位数字的情况</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">6 1104</span><br><span class="line">可以被分成 1 1 0 4和1 1 04两种情况</span><br><span class="line">离谱！</span><br></pre></td></tr></table></figure>
-
-<h2 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a><strong>代码：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int INF =0x3f3f3f3f;</span><br><span class="line">const double eps =1e-8;</span><br><span class="line">const int Max =3000;</span><br><span class="line">int n,m;</span><br><span class="line">int Arr[15];</span><br><span class="line">int b[15];</span><br><span class="line">int c[15];</span><br><span class="line">int MM;</span><br><span class="line">bool flag;</span><br><span class="line">int top;</span><br><span class="line">int nn;</span><br><span class="line">void DFS(int site,int num)</span><br><span class="line">&#123;</span><br><span class="line">    if(site==top)</span><br><span class="line">    &#123;</span><br><span class="line">        int sum=0;</span><br><span class="line">        for(int i=0;i&lt;num;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum+=Arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        if(sum&lt;=n)</span><br><span class="line">        &#123;</span><br><span class="line">            if(sum==MM)</span><br><span class="line">            &#123;</span><br><span class="line">                flag=true;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(sum&gt;MM)</span><br><span class="line">            &#123;</span><br><span class="line">                for(int i=0;i&lt;num;i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    c[i]=Arr[i];</span><br><span class="line">                &#125;</span><br><span class="line">                MM=sum;</span><br><span class="line">                nn=num;</span><br><span class="line">                flag=false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Arr[num]=0;</span><br><span class="line">    for(int i=site;i&lt;top;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Arr[num]=(Arr[num]*10+b[i]);</span><br><span class="line">        DFS(i+1,num+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)&amp;&amp;(n||m))</span><br><span class="line">    &#123;</span><br><span class="line">        if(n==m)//特判</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%d %d\n&quot;,n,m);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        top=0;</span><br><span class="line">        while(m)</span><br><span class="line">        &#123;</span><br><span class="line">            Arr[top++]=m%10;</span><br><span class="line">            m/=10;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=top-1,j=0;i&gt;=0;i--,j++)</span><br><span class="line">        &#123;</span><br><span class="line">            b[j]=Arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        MM=0;</span><br><span class="line">        flag=false;</span><br><span class="line">        memset(Arr,0,sizeof(Arr));</span><br><span class="line">        DFS(0,0);</span><br><span class="line">        if(MM==0)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;error\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            if(flag)</span><br><span class="line">            &#123;</span><br><span class="line">                printf(&quot;rejected\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                printf(&quot;%d&quot;,MM);</span><br><span class="line">                for(int i=0;i&lt;nn;i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    printf(&quot; %d&quot;,c[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                printf(&quot;\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>6 1104
+可以被分成 1 1 0 4和1 1 04两种情况
+离谱！
+</code></pre>
+<h2 id="代码：-5"><a href="#代码：-5" class="headerlink" title="代码："></a><strong>代码：</strong></h2><pre><code>#include &lt;map&gt;
+#include &lt;cmath&gt;
+#include &lt;queue&gt;
+#include &lt;stack&gt;
+#include &lt;string&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int INF =0x3f3f3f3f;
+const double eps =1e-8;
+const int Max =3000;
+int n,m;
+int Arr[15];
+int b[15];
+int c[15];
+int MM;
+bool flag;
+int top;
+int nn;
+void DFS(int site,int num)
+&#123;
+    if(site==top)
+    &#123;
+        int sum=0;
+        for(int i=0;i&lt;num;i++)
+        &#123;
+            sum+=Arr[i];
+        &#125;
+        if(sum&lt;=n)
+        &#123;
+            if(sum==MM)
+            &#123;
+                flag=true;
+            &#125;
+            else if(sum&gt;MM)
+            &#123;
+                for(int i=0;i&lt;num;i++)
+                &#123;
+                    c[i]=Arr[i];
+                &#125;
+                MM=sum;
+                nn=num;
+                flag=false;
+            &#125;
+        &#125;
+    &#125;
+    Arr[num]=0;
+    for(int i=site;i&lt;top;i++)
+    &#123;
+        Arr[num]=(Arr[num]*10+b[i]);
+        DFS(i+1,num+1);
+    &#125;
+&#125;
+int main()
+&#123;
+    while(scanf(&quot;%d %d&quot;,&amp;n,&amp;m)&amp;&amp;(n||m))
+    &#123;
+        if(n==m)//特判
+        &#123;
+            printf(&quot;%d %d\n&quot;,n,m);
+            continue;
+        &#125;
+        top=0;
+        while(m)
+        &#123;
+            Arr[top++]=m%10;
+            m/=10;
+        &#125;
+        for(int i=top-1,j=0;i&gt;=0;i--,j++)
+        &#123;
+            b[j]=Arr[i];
+        &#125;
+        MM=0;
+        flag=false;
+        memset(Arr,0,sizeof(Arr));
+        DFS(0,0);
+        if(MM==0)
+        &#123;
+            printf(&quot;error\n&quot;);
+        &#125;
+        else
+        &#123;
+            if(flag)
+            &#123;
+                printf(&quot;rejected\n&quot;);
+            &#125;
+            else
+            &#123;
+                printf(&quot;%d&quot;,MM);
+                for(int i=0;i&lt;nn;i++)
+                &#123;
+                    printf(&quot; %d&quot;,c[i]);
+                &#125;
+                printf(&quot;\n&quot;);
+            &#125;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>

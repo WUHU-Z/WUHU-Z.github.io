@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -595,19 +596,198 @@
 <h2 id="扩展："><a href="#扩展：" class="headerlink" title="扩展："></a><strong>扩展：</strong></h2><p>若是将题目看做有不同终点与不同起点，求起点与终点间的最短距离</p>
 <p>我们可以通过创建<strong>虚拟源点</strong>的做法来解决该题目（又变成单源最短路径即可）。</p>
 <p>虚拟源点到各个起点之间的距离都为0</p>
-<h2 id="代码（堆优化Dijkstra）："><a href="#代码（堆优化Dijkstra）：" class="headerlink" title="代码（堆优化Dijkstra）："></a><strong>代码（堆优化Dijkstra）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">const int N=1e3+5,M=3e4;</span><br><span class="line">int n,m,t,S;</span><br><span class="line">int h[N],e[M],ne[M],w[M],idx;</span><br><span class="line">int dist[N];</span><br><span class="line">bool st[N];</span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,ne[idx]=h[a],w[idx]=c,h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int dijkstra()</span><br><span class="line">&#123;</span><br><span class="line">    priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[0]=0;//从虚拟源点开始</span><br><span class="line">    heap.push(&#123;0,0&#125;);//虚拟源点入队</span><br><span class="line">    while(heap.size())</span><br><span class="line">    &#123;</span><br><span class="line">        auto t=heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        int distance=t.x;</span><br><span class="line">        int ver=t.y;</span><br><span class="line">        if(st[ver])continue;//表示该点已经在最短路径之中</span><br><span class="line">        st[ver]=true;</span><br><span class="line">        for(int i=h[ver];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j]&gt;distance+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=distance+w[i];</span><br><span class="line">                heap.push(&#123;dist[j],j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(dist[S]==INF)return -1;</span><br><span class="line">    else return dist[S];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;S)!=-1)</span><br><span class="line">    &#123;</span><br><span class="line">        idx=0;</span><br><span class="line">        memset(h,-1,sizeof h);</span><br><span class="line">        memset(st,0,sizeof st);</span><br><span class="line">        while(m--)</span><br><span class="line">        &#123;</span><br><span class="line">            int a,b,c;</span><br><span class="line">            scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">            add(a,b,c);</span><br><span class="line">        &#125;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">        while(t--)</span><br><span class="line">        &#123;</span><br><span class="line">            int a;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;a);</span><br><span class="line">            add(0,a,0);</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;dijkstra()&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="代码（堆优化Dijkstra）："><a href="#代码（堆优化Dijkstra）：" class="headerlink" title="代码（堆优化Dijkstra）："></a><strong>代码（堆优化Dijkstra）：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
 
+#define INF 0x3f3f3f3f
+#define x first
+#define y second
 
+using namespace std;
 
+typedef pair&lt;int,int&gt; PII;
+const int N=1e3+5,M=3e4;
+int n,m,t,S;
+int h[N],e[M],ne[M],w[M],idx;
+int dist[N];
+bool st[N];
+void add(int a,int b,int c)
+&#123;
+    e[idx]=b,ne[idx]=h[a],w[idx]=c,h[a]=idx++;
+&#125;
+
+int dijkstra()
+&#123;
+    priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;
+    memset(dist,0x3f,sizeof dist);
+    dist[0]=0;//从虚拟源点开始
+    heap.push(&#123;0,0&#125;);//虚拟源点入队
+    while(heap.size())
+    &#123;
+        auto t=heap.top();
+        heap.pop();
+        int distance=t.x;
+        int ver=t.y;
+        if(st[ver])continue;//表示该点已经在最短路径之中
+        st[ver]=true;
+        for(int i=h[ver];~i;i=ne[i])
+        &#123;
+            int j=e[i];
+            if(dist[j]&gt;distance+w[i])
+            &#123;
+                dist[j]=distance+w[i];
+                heap.push(&#123;dist[j],j&#125;);
+            &#125;
+        &#125;
+    &#125;
+    if(dist[S]==INF)return -1;
+    else return dist[S];
+&#125;
+
+int main()
+&#123;
+    while(scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;S)!=-1)
+    &#123;
+        idx=0;
+        memset(h,-1,sizeof h);
+        memset(st,0,sizeof st);
+        while(m--)
+        &#123;
+            int a,b,c;
+            scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);
+            add(a,b,c);
+        &#125;
+        scanf(&quot;%d&quot;,&amp;t);
+        while(t--)
+        &#123;
+            int a;
+            scanf(&quot;%d&quot;,&amp;a);
+            add(0,a,0);
+        &#125;
+        cout&lt;&lt;dijkstra()&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <h1 id="2-Acwing1131-拯救大兵瑞恩"><a href="#2-Acwing1131-拯救大兵瑞恩" class="headerlink" title="2.Acwing1131.拯救大兵瑞恩"></a><strong>2.Acwing1131.拯救大兵瑞恩</strong></h1><h2 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/288C20357F1143E8BCD8839CED3B155F.jpg"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/2315161651616.png"></p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>先将最短路问题转化为dp，然后由于环的存在，又转化为最短路问题</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/48193A4616EA4EE3975BE09465B79240.jpg"></p>
 <p><strong>图中边权只有0和1建议使用双端队列</strong></p>
-<h2 id="代码（双端队列的BFS）："><a href="#代码（双端队列的BFS）：" class="headerlink" title="代码（双端队列的BFS）："></a><strong>代码（双端队列的BFS）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line"></span><br><span class="line">const int N=11,M=N*N,E=400,P=1&lt;&lt;10;//N表示点数，M表示下标范围，E表示总的边数，P表示钥匙</span><br><span class="line">int n,m,p,k;</span><br><span class="line">int h[M],e[E],ne[E],w[E],idx;</span><br><span class="line">int g[N][N],key[M];</span><br><span class="line">int dist[M][P];</span><br><span class="line">bool st[M][P];</span><br><span class="line"></span><br><span class="line">set&lt;PII&gt;edges;</span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void build()//创建其他边--可连通的空白边</span><br><span class="line">&#123;</span><br><span class="line">    int dx[4]=&#123;-1,0,1,0&#125;,dy[4]=&#123;0,1,0,-1&#125;;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">        for(int j=1;j&lt;=m;j++)</span><br><span class="line">            //枚举所有格子</span><br><span class="line">            for(int u=0;u&lt;4;u++)//枚举4个方向</span><br><span class="line">            &#123;</span><br><span class="line">                int x=i+dx[u],y=j+dy[u];</span><br><span class="line">                if(!x||x&gt;n||!y||y&gt;m)continue;//判断是否越界</span><br><span class="line">                int a = g[i][j],b=g[x][y];//获取对应的一维坐标</span><br><span class="line">                if(edges.count(&#123;a,b&#125;)==0)add(a,b,0);//若是之间没有墙，则建路</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int bfs()//双端队列求最短路径</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[1][0]=0;</span><br><span class="line">    deque&lt;PII&gt;q;</span><br><span class="line">    q.push_back(&#123;1,0&#125;);</span><br><span class="line">    while(q.size())</span><br><span class="line">    &#123;</span><br><span class="line">        PII t = q.front();</span><br><span class="line">        q.pop_front();</span><br><span class="line">        if(st[t.x][t.y])continue;//如果已经以该状态走过，便不用再走一遍</span><br><span class="line">        st[t.x][t.y]=true;//类似DIjkstra</span><br><span class="line"></span><br><span class="line">        if(t.x==n*m)return dist[t.x][t.y];//如果达到终点,则返回最短路径</span><br><span class="line">        if(key[t.x])// 这个格子有钥匙, 那么来一发状态转移,捡起钥匙</span><br><span class="line">        &#123;</span><br><span class="line">            int state=t.y|key[t.x];//有钥匙我就拿，哎，就是贪</span><br><span class="line">            if(dist[t.x][state]&gt;dist[t.x][t.y])// 更新一下在这个格子t.x下,到达状态state的路径的最短距离</span><br><span class="line">            &#123;</span><br><span class="line">                dist[t.x][state]=dist[t.x][t.y];// 捡钥匙是不费时间的</span><br><span class="line">                q.push_front(&#123;t.x,state&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //捡完钥匙（或者压根没有）,走四方，来一发状态转移</span><br><span class="line">        for(int i=h[t.x];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];// 去下一个临近的点</span><br><span class="line">            if(w[i]&amp;&amp;!(t.y&gt;&gt;w[i]-1&amp;1))continue;// 有锁并且当前状态无钥匙</span><br><span class="line">            // 有钥匙,并且可以更新状态</span><br><span class="line">            if(dist[j][t.y]&gt;dist[t.x][t.y]+1)</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j][t.y]=dist[t.x][t.y]+1;</span><br><span class="line">                q.push_back(&#123;j,t.y&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;p&gt;&gt;k;</span><br><span class="line">    for(int i=1,t=1;i&lt;=n;i++)</span><br><span class="line">        for(int j=1;j&lt;=m;j++)</span><br><span class="line">        g[i][j]=t++;//标记每一个单元格对应的一维坐标编号</span><br><span class="line">    memset(h,-1,sizeof h);//初始化路径</span><br><span class="line">    while(k--)</span><br><span class="line">    &#123;</span><br><span class="line">        int x1,y1,x2,y2,c;</span><br><span class="line">        cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2&gt;&gt;c;</span><br><span class="line">        int a = g[x1][y1],b=g[x2][y2];//获取对应的一维坐标</span><br><span class="line">        edges.insert(&#123;a,b&#125;),edges.insert(&#123;b,a&#125;);//加入到存储障碍物的组中</span><br><span class="line">        if(c)add(a,b,c),add(b,a,c);//记录门的种类</span><br><span class="line">    &#125;</span><br><span class="line">    build();</span><br><span class="line">    int s;</span><br><span class="line">    cin&gt;&gt;s;</span><br><span class="line">    // 处理钥匙</span><br><span class="line">    while(s--)</span><br><span class="line">    &#123;</span><br><span class="line">        int x,y,id;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y&gt;&gt;id;</span><br><span class="line">        key[g[x][y]]|=1&lt;&lt;id-1;//记录对应一维坐标上的钥匙种类</span><br><span class="line">        // 状态压缩,存储该地图有的钥匙</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;bfs()&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码（双端队列的BFS）："><a href="#代码（双端队列的BFS）：" class="headerlink" title="代码（双端队列的BFS）："></a><strong>代码（双端队列的BFS）：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
 
+#define INF 0x3f3f3f3f
+#define x first
+#define y second
 
+using namespace std;
 
+typedef pair&lt;int,int&gt; PII;
+
+const int N=11,M=N*N,E=400,P=1&lt;&lt;10;//N表示点数，M表示下标范围，E表示总的边数，P表示钥匙
+int n,m,p,k;
+int h[M],e[E],ne[E],w[E],idx;
+int g[N][N],key[M];
+int dist[M][P];
+bool st[M][P];
+
+set&lt;PII&gt;edges;
+void add(int a,int b,int c)
+&#123;
+    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;
+&#125;
+
+void build()//创建其他边--可连通的空白边
+&#123;
+    int dx[4]=&#123;-1,0,1,0&#125;,dy[4]=&#123;0,1,0,-1&#125;;
+    for(int i=1;i&lt;=n;i++)
+        for(int j=1;j&lt;=m;j++)
+            //枚举所有格子
+            for(int u=0;u&lt;4;u++)//枚举4个方向
+            &#123;
+                int x=i+dx[u],y=j+dy[u];
+                if(!x||x&gt;n||!y||y&gt;m)continue;//判断是否越界
+                int a = g[i][j],b=g[x][y];//获取对应的一维坐标
+                if(edges.count(&#123;a,b&#125;)==0)add(a,b,0);//若是之间没有墙，则建路
+            &#125;
+
+&#125;
+
+int bfs()//双端队列求最短路径
+&#123;
+    memset(dist,0x3f,sizeof dist);
+    dist[1][0]=0;
+    deque&lt;PII&gt;q;
+    q.push_back(&#123;1,0&#125;);
+    while(q.size())
+    &#123;
+        PII t = q.front();
+        q.pop_front();
+        if(st[t.x][t.y])continue;//如果已经以该状态走过，便不用再走一遍
+        st[t.x][t.y]=true;//类似DIjkstra
+
+        if(t.x==n*m)return dist[t.x][t.y];//如果达到终点,则返回最短路径
+        if(key[t.x])// 这个格子有钥匙, 那么来一发状态转移,捡起钥匙
+        &#123;
+            int state=t.y|key[t.x];//有钥匙我就拿，哎，就是贪
+            if(dist[t.x][state]&gt;dist[t.x][t.y])// 更新一下在这个格子t.x下,到达状态state的路径的最短距离
+            &#123;
+                dist[t.x][state]=dist[t.x][t.y];// 捡钥匙是不费时间的
+                q.push_front(&#123;t.x,state&#125;);
+            &#125;
+        &#125;
+        //捡完钥匙（或者压根没有）,走四方，来一发状态转移
+        for(int i=h[t.x];~i;i=ne[i])
+        &#123;
+            int j=e[i];// 去下一个临近的点
+            if(w[i]&amp;&amp;!(t.y&gt;&gt;w[i]-1&amp;1))continue;// 有锁并且当前状态无钥匙
+            // 有钥匙,并且可以更新状态
+            if(dist[j][t.y]&gt;dist[t.x][t.y]+1)
+            &#123;
+                dist[j][t.y]=dist[t.x][t.y]+1;
+                q.push_back(&#123;j,t.y&#125;);
+            &#125;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;p&gt;&gt;k;
+    for(int i=1,t=1;i&lt;=n;i++)
+        for(int j=1;j&lt;=m;j++)
+        g[i][j]=t++;//标记每一个单元格对应的一维坐标编号
+    memset(h,-1,sizeof h);//初始化路径
+    while(k--)
+    &#123;
+        int x1,y1,x2,y2,c;
+        cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2&gt;&gt;c;
+        int a = g[x1][y1],b=g[x2][y2];//获取对应的一维坐标
+        edges.insert(&#123;a,b&#125;),edges.insert(&#123;b,a&#125;);//加入到存储障碍物的组中
+        if(c)add(a,b,c),add(b,a,c);//记录门的种类
+    &#125;
+    build();
+    int s;
+    cin&gt;&gt;s;
+    // 处理钥匙
+    while(s--)
+    &#123;
+        int x,y,id;
+        cin&gt;&gt;x&gt;&gt;y&gt;&gt;id;
+        key[g[x][y]]|=1&lt;&lt;id-1;//记录对应一维坐标上的钥匙种类
+        // 状态压缩,存储该地图有的钥匙
+    &#125;
+    cout&lt;&lt;bfs()&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <h1 id="3-Acwing1134-最短路计数"><a href="#3-Acwing1134-最短路计数" class="headerlink" title="3.Acwing1134.最短路计数"></a><strong>3.Acwing1134.最短路计数</strong></h1><h2 id="题目：-2"><a href="#题目：-2" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/58C70083E81D4372ADBF5749C4AD05CB.jpg"></p>
 <h2 id="做法："><a href="#做法：" class="headerlink" title="做法："></a><strong>做法：</strong></h2><p>图中含有正环，但不影响求最短路径（一定不会在重复更新已经走过的点）</p>
 <p><strong>若无负权边</strong>：直接使用BFS或者Dijkstra来做即可</p>
@@ -621,20 +801,270 @@
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/483E5BC1698D4F42B23CEFC00308765D.jpg"></p>
 <p>但如果图中存在负权边只能用该算法做，也能做但是比较麻烦</p>
 <p>先跑一遍spfa找到每个点的最短距离,把最短路拓扑树建立出来，看哪一条边dist[j] == dist[t] + w[i],然后更新它。</p>
-<h2 id="代码（bfs）："><a href="#代码（bfs）：" class="headerlink" title="代码（bfs）："></a><strong>代码（bfs）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">const int N = 100010,M=400010,mod=100003;</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int h[N],e[M],ne[M],idx;</span><br><span class="line">int dist[N],cnt[N];</span><br><span class="line">int q[N];</span><br><span class="line"></span><br><span class="line">void add(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void bfs()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[1]=0,cnt[1]=1;</span><br><span class="line">    int hh=0,tt=1;</span><br><span class="line">    q[0]=1;</span><br><span class="line">    while(hh!=tt)</span><br><span class="line">    &#123;</span><br><span class="line">        int t=q[hh++];</span><br><span class="line">        for(int i=h[t];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j = e[i];</span><br><span class="line">            if(dist[j]&gt;dist[t]+1)</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=dist[t]+1;</span><br><span class="line">                cnt[j]=cnt[t];</span><br><span class="line">                q[tt++]=j;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(dist[j]==dist[t]+1)</span><br><span class="line">            &#123;</span><br><span class="line">                cnt[j]=(cnt[j]+cnt[t])%mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        add(a,b);</span><br><span class="line">        add(b,a);</span><br><span class="line">    &#125;</span><br><span class="line">    bfs();</span><br><span class="line">    for(int i=1;i&lt;=n;i++)cout&lt;&lt;cnt[i]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码（bfs）："><a href="#代码（bfs）：" class="headerlink" title="代码（bfs）："></a><strong>代码（bfs）：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
 
+#define INF 0x3f3f3f3f
+#define x first
+#define y second
 
+using namespace std;
 
-<h2 id="代码（spfa）"><a href="#代码（spfa）" class="headerlink" title="代码（spfa）"></a><strong>代码（spfa）</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">const int N = 100010,M=400010,mod=100003;</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int h[N],e[M],ne[M],idx;</span><br><span class="line">int dist[N],cnt[N];</span><br><span class="line">int q[N];</span><br><span class="line">bool st[N];</span><br><span class="line">void add(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void spfa()</span><br><span class="line">&#123;</span><br><span class="line">    int hh=0,tt=1;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[1]=0;</span><br><span class="line">    cnt[1]=1;</span><br><span class="line">    q[0]=1;</span><br><span class="line">    st[1]=true;</span><br><span class="line">    while(hh!=tt)</span><br><span class="line">    &#123;</span><br><span class="line">        int t=q[hh++];</span><br><span class="line">        if(hh==N)hh=0;</span><br><span class="line">        st[t]=false;</span><br><span class="line">        for(int i=h[t];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j =e[i];</span><br><span class="line">            if(dist[j]&gt;dist[t]+1)</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=dist[t]+1;</span><br><span class="line">                if(!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q[tt++]=j;</span><br><span class="line">                    if(tt==N)tt=0;</span><br><span class="line">                    st[j]=true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int flag=n;</span><br><span class="line">    while(flag--)</span><br><span class="line">    &#123;</span><br><span class="line">        int wuhu=-1;</span><br><span class="line">        int distance=INF;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(!st[i]&amp;&amp;((wuhu==-1)||(dist[i]&lt;=distance)))</span><br><span class="line">            &#123;</span><br><span class="line">                wuhu=i;</span><br><span class="line">                distance=dist[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        st[wuhu]=true;</span><br><span class="line">        for(int i=h[wuhu];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j]==dist[wuhu]+1)cnt[j]=(cnt[j]+cnt[wuhu])%mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        add(a,b);</span><br><span class="line">        add(b,a);</span><br><span class="line">    &#125;</span><br><span class="line">    spfa();</span><br><span class="line">    for(int i=1;i&lt;=n;i++)cout&lt;&lt;cnt[i]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+typedef pair&lt;int,int&gt; PII;
+const int N = 100010,M=400010,mod=100003;
 
+int n,m;
+int h[N],e[M],ne[M],idx;
+int dist[N],cnt[N];
+int q[N];
 
+void add(int a,int b)
+&#123;
+    e[idx]=b,ne[idx]=h[a],h[a]=idx++;
+&#125;
 
+void bfs()
+&#123;
+    memset(dist,0x3f,sizeof dist);
+    dist[1]=0,cnt[1]=1;
+    int hh=0,tt=1;
+    q[0]=1;
+    while(hh!=tt)
+    &#123;
+        int t=q[hh++];
+        for(int i=h[t];~i;i=ne[i])
+        &#123;
+            int j = e[i];
+            if(dist[j]&gt;dist[t]+1)
+            &#123;
+                dist[j]=dist[t]+1;
+                cnt[j]=cnt[t];
+                q[tt++]=j;
+            &#125;
+            else if(dist[j]==dist[t]+1)
+            &#123;
+                cnt[j]=(cnt[j]+cnt[t])%mod;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    memset(h,-1,sizeof h);
+    while(m--)
+    &#123;
+        int a,b;
+        cin&gt;&gt;a&gt;&gt;b;
+        add(a,b);
+        add(b,a);
+    &#125;
+    bfs();
+    for(int i=1;i&lt;=n;i++)cout&lt;&lt;cnt[i]&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
+<h2 id="代码（spfa）"><a href="#代码（spfa）" class="headerlink" title="代码（spfa）"></a><strong>代码（spfa）</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+
+#define INF 0x3f3f3f3f
+#define x first
+#define y second
+
+using namespace std;
+
+typedef pair&lt;int,int&gt; PII;
+const int N = 100010,M=400010,mod=100003;
+
+int n,m;
+int h[N],e[M],ne[M],idx;
+int dist[N],cnt[N];
+int q[N];
+bool st[N];
+void add(int a,int b)
+&#123;
+    e[idx]=b,ne[idx]=h[a],h[a]=idx++;
+&#125;
+
+void spfa()
+&#123;
+    int hh=0,tt=1;
+    memset(dist,0x3f,sizeof dist);
+    dist[1]=0;
+    cnt[1]=1;
+    q[0]=1;
+    st[1]=true;
+    while(hh!=tt)
+    &#123;
+        int t=q[hh++];
+        if(hh==N)hh=0;
+        st[t]=false;
+        for(int i=h[t];~i;i=ne[i])
+        &#123;
+            int j =e[i];
+            if(dist[j]&gt;dist[t]+1)
+            &#123;
+                dist[j]=dist[t]+1;
+                if(!st[j])
+                &#123;
+                    q[tt++]=j;
+                    if(tt==N)tt=0;
+                    st[j]=true;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    int flag=n;
+    while(flag--)
+    &#123;
+        int wuhu=-1;
+        int distance=INF;
+        for(int i=1;i&lt;=n;i++)
+        &#123;
+            if(!st[i]&amp;&amp;((wuhu==-1)||(dist[i]&lt;=distance)))
+            &#123;
+                wuhu=i;
+                distance=dist[i];
+            &#125;
+        &#125;
+        st[wuhu]=true;
+        for(int i=h[wuhu];~i;i=ne[i])
+        &#123;
+            int j=e[i];
+            if(dist[j]==dist[wuhu]+1)cnt[j]=(cnt[j]+cnt[wuhu])%mod;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    memset(h,-1,sizeof h);
+    while(m--)
+    &#123;
+        int a,b;
+        cin&gt;&gt;a&gt;&gt;b;
+        add(a,b);
+        add(b,a);
+    &#125;
+    spfa();
+    for(int i=1;i&lt;=n;i++)cout&lt;&lt;cnt[i]&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <h1 id="4-Acwing383-观光"><a href="#4-Acwing383-观光" class="headerlink" title="4.Acwing383.观光"></a><strong>4.Acwing383.观光</strong></h1><h2 id="题目：-3"><a href="#题目：-3" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/6F8406E61D184D97BF2E87E05292DA5D.jpg"></p>
 <p><img src="C:\Users\26328\AppData\Local\YNote\data\qqEA62E1C92793270880C3B145842ADD43\f06edb45b05444c78955503a41af92ae\c760b86482c24d02afe43b55b4b9d2a5.jpg" alt="img"></p>
 <h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>利用dijkstra代码，寻找最短路径与次短路径，然后判断次短路径是否等于最短路径+1，依此加上对应道路数</p>
 <p>由于需要判断最短路与次短路，需要对应创建相关结构体，并且重载比较操作符</p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a><strong>代码：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">const int N=1e3+5,M=1e4+5;</span><br><span class="line">struct Ver</span><br><span class="line">&#123;</span><br><span class="line">    int ver,type,dist;</span><br><span class="line">    bool operator&gt;(const Ver &amp;w)const</span><br><span class="line">    &#123;</span><br><span class="line">        return dist&gt;w.dist;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">int n,m;</span><br><span class="line">int h[N],w[M],e[M],ne[M],idx;</span><br><span class="line">int S,E;</span><br><span class="line">int dist[N][2],cnt[N][2];//dist记录距离，cnt记录条数</span><br><span class="line">bool st[N][2];</span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    w[idx]=c,ne[idx]=h[a],e[idx]=b,h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line">int dijkstra()</span><br><span class="line">&#123;</span><br><span class="line">    memset(cnt,0,sizeof cnt);</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    priority_queue&lt;Ver,vector&lt;Ver&gt;,greater&lt;Ver&gt;&gt;heap;</span><br><span class="line">    dist[S][0]=0;</span><br><span class="line">    cnt[S][0]=1;</span><br><span class="line">    heap.push(&#123;S,0,0&#125;);</span><br><span class="line">    while(!heap.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        auto t = heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        int ver=t.ver;</span><br><span class="line">        int type=t.type;</span><br><span class="line">        int distance=t.dist;</span><br><span class="line">        int counte=cnt[ver][type];//记录以dist距离到达ver点的道路数目</span><br><span class="line">        if(st[ver][type])continue;</span><br><span class="line">        st[ver][type]=true;</span><br><span class="line">        for(int i=h[ver];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j][0]&gt;distance+w[i])//若发现还有比当前最小值还小的</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j][1]=dist[j][0];//当前最小值变次小值</span><br><span class="line">                cnt[j][1]=cnt[j][0];</span><br><span class="line">                dist[j][0]=distance+w[i];</span><br><span class="line">                cnt[j][0]=counte;</span><br><span class="line">                heap.push(&#123;j,1,dist[j][1]&#125;);</span><br><span class="line">                heap.push(&#123;j,0,dist[j][0]&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(dist[j][0]==distance+w[i])//找到一个新的最短路的路径</span><br><span class="line">            &#123;</span><br><span class="line">               cnt[j][0]+=counte;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(dist[j][1]&gt;distance+w[i])//找到了大于最小值，但是小于次小值的路径</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j][1]=distance+w[i];</span><br><span class="line">                cnt[j][1]=counte;</span><br><span class="line">                heap.push(&#123;j,1,dist[j][1]&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(dist[j][1]==distance+w[i])cnt[j][1]+=counte;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int res=cnt[E][0];</span><br><span class="line">    if(dist[E][0]+1==dist[E][1])res+=cnt[E][1];</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        memset(h,-1,sizeof h);</span><br><span class="line">        memset(st,0,sizeof st);</span><br><span class="line">        idx=0;</span><br><span class="line">       cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">       while(m--)</span><br><span class="line">       &#123;</span><br><span class="line">           int a,b,c;</span><br><span class="line">           scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">           add(a,b,c);</span><br><span class="line">       &#125;</span><br><span class="line">       cin&gt;&gt;S&gt;&gt;E;</span><br><span class="line">       cout&lt;&lt;dijkstra()&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a><strong>代码：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
 
+#define INF 0x3f3f3f3f
+#define x first
+#define y second
+
+using namespace std;
+
+typedef pair&lt;int,int&gt; PII;
+const int N=1e3+5,M=1e4+5;
+struct Ver
+&#123;
+    int ver,type,dist;
+    bool operator&gt;(const Ver &amp;w)const
+    &#123;
+        return dist&gt;w.dist;
+    &#125;
+&#125;;
+int n,m;
+int h[N],w[M],e[M],ne[M],idx;
+int S,E;
+int dist[N][2],cnt[N][2];//dist记录距离，cnt记录条数
+bool st[N][2];
+void add(int a,int b,int c)
+&#123;
+    w[idx]=c,ne[idx]=h[a],e[idx]=b,h[a]=idx++;
+&#125;
+int dijkstra()
+&#123;
+    memset(cnt,0,sizeof cnt);
+    memset(dist,0x3f,sizeof dist);
+    priority_queue&lt;Ver,vector&lt;Ver&gt;,greater&lt;Ver&gt;&gt;heap;
+    dist[S][0]=0;
+    cnt[S][0]=1;
+    heap.push(&#123;S,0,0&#125;);
+    while(!heap.empty())
+    &#123;
+        auto t = heap.top();
+        heap.pop();
+        int ver=t.ver;
+        int type=t.type;
+        int distance=t.dist;
+        int counte=cnt[ver][type];//记录以dist距离到达ver点的道路数目
+        if(st[ver][type])continue;
+        st[ver][type]=true;
+        for(int i=h[ver];~i;i=ne[i])
+        &#123;
+            int j=e[i];
+            if(dist[j][0]&gt;distance+w[i])//若发现还有比当前最小值还小的
+            &#123;
+                dist[j][1]=dist[j][0];//当前最小值变次小值
+                cnt[j][1]=cnt[j][0];
+                dist[j][0]=distance+w[i];
+                cnt[j][0]=counte;
+                heap.push(&#123;j,1,dist[j][1]&#125;);
+                heap.push(&#123;j,0,dist[j][0]&#125;);
+            &#125;
+            else if(dist[j][0]==distance+w[i])//找到一个新的最短路的路径
+            &#123;
+               cnt[j][0]+=counte;
+            &#125;
+            else if(dist[j][1]&gt;distance+w[i])//找到了大于最小值，但是小于次小值的路径
+            &#123;
+                dist[j][1]=distance+w[i];
+                cnt[j][1]=counte;
+                heap.push(&#123;j,1,dist[j][1]&#125;);
+            &#125;
+            else if(dist[j][1]==distance+w[i])cnt[j][1]+=counte;
+
+
+        &#125;
+    &#125;
+    int res=cnt[E][0];
+    if(dist[E][0]+1==dist[E][1])res+=cnt[E][1];
+    return res;
+&#125;
+int main()
+&#123;
+    int t;
+    cin&gt;&gt;t;
+    while(t--)
+    &#123;
+        memset(h,-1,sizeof h);
+        memset(st,0,sizeof st);
+        idx=0;
+       cin&gt;&gt;n&gt;&gt;m;
+       while(m--)
+       &#123;
+           int a,b,c;
+           scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);
+           add(a,b,c);
+       &#125;
+       cin&gt;&gt;S&gt;&gt;E;
+       cout&lt;&lt;dijkstra()&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>

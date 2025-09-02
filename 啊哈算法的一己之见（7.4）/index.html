@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -595,30 +596,145 @@
 <p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/IMG_20210824_113025_edit_13956810516619(1).jpg"></p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">int f[1000]=&#123;0&#125;,n,m,k,sum=0;</span><br><span class="line">void init()//初始化创建森林</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        f[i]=i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int getf(int v)</span><br><span class="line">&#123;</span><br><span class="line">    if(f[v]==v)return v;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        //路径压缩，在每一次函数返回时顺便将路上的人改为最后找到的祖先的编号，以此提速</span><br><span class="line">        f[v]=getf(f[v]);</span><br><span class="line">        return f[v];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void merge(int v,int u)</span><br><span class="line">&#123;</span><br><span class="line">    int t1,t2;</span><br><span class="line">    t2=getf(u);</span><br><span class="line">    t1=getf(v);</span><br><span class="line">    if(t1!=t2)//判断两个结点是否在同一个集合中，即是否为同一个祖先</span><br><span class="line">    &#123;</span><br><span class="line">        f[t2]=t1;</span><br><span class="line">        //靠左原则，左边变成邮编的boss，即把右边的集合作为左边集合的子集和</span><br><span class="line">        //经过路径压缩以后将f[u]的根的值也赋值为v的祖先f[t1]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,x,y;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line"></span><br><span class="line">    //初始化</span><br><span class="line">    init();</span><br><span class="line"></span><br><span class="line">    for(i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        merge(x,y);//开始合并</span><br><span class="line">    &#125;</span><br><span class="line">    //最后扫描有多少独立的犯罪团伙</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(f[i]==i)sum++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include &lt;iostream&gt;
 
+using namespace std;
+int f[1000]=&#123;0&#125;,n,m,k,sum=0;
+void init()//初始化创建森林
+&#123;
+    int i;
+    for(i=1;i&lt;=n;i++)
+        f[i]=i;
+&#125;
+
+int getf(int v)
+&#123;
+    if(f[v]==v)return v;
+    else
+    &#123;
+        //路径压缩，在每一次函数返回时顺便将路上的人改为最后找到的祖先的编号，以此提速
+        f[v]=getf(f[v]);
+        return f[v];
+    &#125;
+&#125;
+
+void merge(int v,int u)
+&#123;
+    int t1,t2;
+    t2=getf(u);
+    t1=getf(v);
+    if(t1!=t2)//判断两个结点是否在同一个集合中，即是否为同一个祖先
+    &#123;
+        f[t2]=t1;
+        //靠左原则，左边变成邮编的boss，即把右边的集合作为左边集合的子集和
+        //经过路径压缩以后将f[u]的根的值也赋值为v的祖先f[t1]
+    &#125;
+&#125;
+
+int main()
+&#123;
+    int i,x,y;
+    cin&gt;&gt;n&gt;&gt;m;
+
+    //初始化
+    init();
+
+    for(i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;x&gt;&gt;y;
+        merge(x,y);//开始合并
+    &#125;
+    //最后扫描有多少独立的犯罪团伙
+    for(i=1;i&lt;=n;i++)
+    &#123;
+        if(f[i]==i)sum++;
+    &#125;
+    cout&lt;&lt;sum&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p>Input</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">10 9</span><br><span class="line">1 2</span><br><span class="line">3 4</span><br><span class="line">5 2</span><br><span class="line">4 6</span><br><span class="line">2 6</span><br><span class="line">8 7</span><br><span class="line">9 7</span><br><span class="line">1 6</span><br><span class="line">2 4</span><br></pre></td></tr></table></figure>
-
+<pre><code>10 9
+1 2
+3 4
+5 2
+4 6
+2 6
+8 7
+9 7
+1 6
+2 4
+</code></pre>
 <p>Output</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-
+<pre><code>3
+</code></pre>
 <p><strong>拓展一：</strong></p>
 <p>其实，盲目靠左会导致将大树接到小数的根节点下，出现头重脚轻的现象，导致树的生长不平衡，那么，将小树接到大树的根节点下就可以避免</p>
 <p>1.首先（是犯下傲慢之罪的…）是初始化</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int parent[len];</span><br><span class="line">int hight[len];</span><br><span class="line">for(int i = 0; i &lt; len; i++)&#123;</span><br><span class="line">	parent[i] = i;</span><br><span class="line">    height[i] = 1;//初始深度为1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>int parent[len];
+int hight[len];
+for(int i = 0; i &lt; len; i++)&#123;
+    parent[i] = i;
+    height[i] = 1;//初始深度为1
+&#125;
+</code></pre>
 <p>2.并的优化</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//并1</span><br><span class="line">void merge(int x,int y,int*parent)</span><br><span class="line">&#123;</span><br><span class="line">    int m=find(x);</span><br><span class="line">    int n=find(n);</span><br><span class="line">    if(height[x]==height[y])//此处无需判断x，y根结点是否一致	</span><br><span class="line">    &#123;</span><br><span class="line">        height[x]++;</span><br><span class="line">        parent[y]=x;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(height[x]&gt;height[y])</span><br><span class="line">    &#123;</span><br><span class="line">        parent[y]=x;</span><br><span class="line">    &#125;</span><br><span class="line">    else parent[x]=y;</span><br><span class="line">&#125;</span><br><span class="line">//并2</span><br><span class="line">void merge(int x,int y,int*parent)</span><br><span class="line">&#123;</span><br><span class="line">    int m=find(x);</span><br><span class="line">    int n=find(n);</span><br><span class="line">    if(m==n)return;</span><br><span class="line">    if(height[i]&gt;height[j])parent[j]=i;</span><br><span class="line">    else&#123;</span><br><span class="line">        if(height[i]==height[j])height[j]++;</span><br><span class="line">        parent[i]=j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>//并1
+void merge(int x,int y,int*parent)
+&#123;
+    int m=find(x);
+    int n=find(n);
+    if(height[x]==height[y])//此处无需判断x，y根结点是否一致    
+    &#123;
+        height[x]++;
+        parent[y]=x;
+    &#125;
+    else if(height[x]&gt;height[y])
+    &#123;
+        parent[y]=x;
+    &#125;
+    else parent[x]=y;
+&#125;
+//并2
+void merge(int x,int y,int*parent)
+&#123;
+    int m=find(x);
+    int n=find(n);
+    if(m==n)return;
+    if(height[i]&gt;height[j])parent[j]=i;
+    else&#123;
+        if(height[i]==height[j])height[j]++;
+        parent[i]=j;
+    &#125;
+&#125;
+</code></pre>
 <p><strong>拓展二：</strong></p>
 <p> 对于之前的查询程序，查询元素i是需要搜索路径找到根结点，返回的结果是根结点。</p>
 <p>这条搜索路径可能很长。如果返回的时候顺便把元素i所属的结点改为根节点，那么在下次搜索时就能够在O(1)的时间内得到结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int find (int x, int *parent)&#123;</span><br><span class="line">    if(x != parent[x])&#123;</span><br><span class="line">		parent[x] = find(parent[x] ,parent);</span><br><span class="line">                x=parent[x];</span><br><span class="line">    &#125;</span><br><span class="line">	return parent[x];   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>int find (int x, int *parent)&#123;
+    if(x != parent[x])&#123;
+        parent[x] = find(parent[x] ,parent);
+                x=parent[x];
+    &#125;
+    return parent[x];   
+&#125;
+</code></pre>
 <p>上面路径压缩的代码：虽然优化了下次查询，而且还优化了合并；但是使用非递归实现，如果数据规模较大，有可能会爆栈，非递归代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int Find(int x, int* parent)&#123;</span><br><span class="line">	int r = x;</span><br><span class="line">    while(parent[r] != r)&#123;//找到根结点</span><br><span class="line">		r = parent[r];</span><br><span class="line">    &#125;</span><br><span class="line">	int i = x;</span><br><span class="line">    int j;</span><br><span class="line">    while(i != r)&#123;//循环修改这条路径上的根结点</span><br><span class="line">		j = parent[i];//j记录元素i此时的父亲</span><br><span class="line">		parent[i] = r;//将i的父亲改为根结点</span><br><span class="line">		i = j;//i记录为要“查询”的结点</span><br><span class="line">    &#125;</span><br><span class="line">    return r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>int Find(int x, int* parent)&#123;
+    int r = x;
+    while(parent[r] != r)&#123;//找到根结点
+        r = parent[r];
+    &#125;
+    int i = x;
+    int j;
+    while(i != r)&#123;//循环修改这条路径上的根结点
+        j = parent[i];//j记录元素i此时的父亲
+        parent[i] = r;//将i的父亲改为根结点
+        i = j;//i记录为要“查询”的结点
+    &#125;
+    return r;
+&#125;
+</code></pre>
 <p><strong>经过以上两个优化，查找和合并的时间复杂度都小于</strong>O( <strong>log</strong> <strong>2</strong> <strong>n</strong>)</p>
 <p><strong>拓展三：</strong></p>
 <p><strong>加权并查集：</strong>使用上面两种优化，在面对超级大的数据时，还tm会被爆</p>

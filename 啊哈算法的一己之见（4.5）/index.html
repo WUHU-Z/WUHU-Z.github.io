@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -594,14 +595,85 @@
 <p><strong>思路：</strong></p>
 <p>bfs</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct note</span><br><span class="line">&#123;</span><br><span class="line">    int x;//横坐标</span><br><span class="line">    int y;//纵坐标</span><br><span class="line">&#125;que[2501];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int head,tail;</span><br><span class="line">    int a[51][51];</span><br><span class="line">    int book[51][51]=&#123;0&#125;;</span><br><span class="line">    int i,j,k,sum,maxn=0,mx,my,m,n,startx,starty,tx,ty;</span><br><span class="line">    int next[4][2]=&#123;1,0,0,1,-1,0,0,-1&#125;;//方向数组</span><br><span class="line">    //读入n行m列以及给定坐标</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;startx&gt;&gt;starty;</span><br><span class="line">    //读入地图</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        for(j=1;j&lt;=n;j++)</span><br><span class="line">        cin&gt;&gt;a[i][j];</span><br><span class="line">    //队列初始化</span><br><span class="line">    head=1;</span><br><span class="line">    tail=1;</span><br><span class="line">    //往队列插入起始坐标</span><br><span class="line">    que[tail].x=startx;</span><br><span class="line">    que[tail].y=starty;</span><br><span class="line">    tail++;</span><br><span class="line">    book[startx][starty]=1;</span><br><span class="line">    sum=1;</span><br><span class="line">    //当队列不为空的时候</span><br><span class="line">    while(head&lt;tail)</span><br><span class="line">    &#123;</span><br><span class="line">        //走四方</span><br><span class="line">        for(k=0;k&lt;=3;k++)</span><br><span class="line">        &#123;</span><br><span class="line">            //计算下一步的坐标</span><br><span class="line">            tx=que[head].x+next[k][0];</span><br><span class="line">            ty=que[head].y+next[k][1];</span><br><span class="line">            //判断是否越界</span><br><span class="line">            if(tx&lt;1||tx&gt;n||ty&lt;1||ty&gt;m)continue;</span><br><span class="line">            //判断是否是陆地或者已经走过</span><br><span class="line">            if(a[tx][ty]&gt;0&amp;&amp;book[tx][ty]==0)</span><br><span class="line">            &#123;</span><br><span class="line">                sum++;</span><br><span class="line">                //每一个点只入队一次</span><br><span class="line">                book[tx][ty]=1;</span><br><span class="line">                //将新扩展的点加入队列</span><br><span class="line">                que[tail].x=tx;</span><br><span class="line">                que[tail].y=ty;</span><br><span class="line">                tail++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        head++;//该点扩展结束，出队</span><br><span class="line">    &#125;</span><br><span class="line">    //最后输出陆地大小</span><br><span class="line">    cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
 
+struct note
+&#123;
+    int x;//横坐标
+    int y;//纵坐标
+&#125;que[2501];
+
+int main()
+&#123;
+    int head,tail;
+    int a[51][51];
+    int book[51][51]=&#123;0&#125;;
+    int i,j,k,sum,maxn=0,mx,my,m,n,startx,starty,tx,ty;
+    int next[4][2]=&#123;1,0,0,1,-1,0,0,-1&#125;;//方向数组
+    //读入n行m列以及给定坐标
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;startx&gt;&gt;starty;
+    //读入地图
+    for(i=1;i&lt;=n;i++)
+        for(j=1;j&lt;=n;j++)
+        cin&gt;&gt;a[i][j];
+    //队列初始化
+    head=1;
+    tail=1;
+    //往队列插入起始坐标
+    que[tail].x=startx;
+    que[tail].y=starty;
+    tail++;
+    book[startx][starty]=1;
+    sum=1;
+    //当队列不为空的时候
+    while(head&lt;tail)
+    &#123;
+        //走四方
+        for(k=0;k&lt;=3;k++)
+        &#123;
+            //计算下一步的坐标
+            tx=que[head].x+next[k][0];
+            ty=que[head].y+next[k][1];
+            //判断是否越界
+            if(tx&lt;1||tx&gt;n||ty&lt;1||ty&gt;m)continue;
+            //判断是否是陆地或者已经走过
+            if(a[tx][ty]&gt;0&amp;&amp;book[tx][ty]==0)
+            &#123;
+                sum++;
+                //每一个点只入队一次
+                book[tx][ty]=1;
+                //将新扩展的点加入队列
+                que[tail].x=tx;
+                que[tail].y=ty;
+                tail++;
+            &#125;
+        &#125;
+        head++;//该点扩展结束，出队
+    &#125;
+    //最后输出陆地大小
+    cout&lt;&lt;sum&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p>Input</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">10 10 6 8</span><br><span class="line">1 2 1 0 0 0 0 0 2 3</span><br><span class="line">3 0 2 0 1 2 1 0 1 2</span><br><span class="line">4 0 1 0 1 2 3 2 0 1</span><br><span class="line">3 2 0 0 0 1 2 4 0 0</span><br><span class="line">0 0 0 0 0 0 1 5 3 0</span><br><span class="line">0 1 2 1 0 1 5 4 3 0</span><br><span class="line">0 1 2 3 1 3 6 2 1 0</span><br><span class="line">0 0 3 4 8 9 7 5 0 0</span><br><span class="line">0 0 0 3 7 8 6 0 1 2</span><br><span class="line">0 0 0 0 0 0 0 0 1 0</span><br></pre></td></tr></table></figure>
-
+<pre><code>10 10 6 8
+1 2 1 0 0 0 0 0 2 3
+3 0 2 0 1 2 1 0 1 2
+4 0 1 0 1 2 3 2 0 1
+3 2 0 0 0 1 2 4 0 0
+0 0 0 0 0 0 1 5 3 0
+0 1 2 1 0 1 5 4 3 0
+0 1 2 3 1 3 6 2 1 0
+0 0 3 4 8 9 7 5 0 0
+0 0 0 3 7 8 6 0 1 2
+0 0 0 0 0 0 0 0 1 0
+</code></pre>
 <p>Output</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">38</span><br></pre></td></tr></table></figure>
-
+<pre><code>38
+</code></pre>
 <p>还有bfs的做法，然而我懒</p>
 
                 

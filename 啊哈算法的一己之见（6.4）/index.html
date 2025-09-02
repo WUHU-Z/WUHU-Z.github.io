@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -594,8 +595,66 @@
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/IMG_20210823_230047_edit_234695285275645.jpg"></p>
 <p>关键：只有那些前一遍更新中改变了最短路程估计值的顶点，才可能引起它们临接点最短路程的估计值发生改变</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 9999999</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m,i,j,k;</span><br><span class="line">    //u、v和w的数组大小要根据实际情况来设置，要比边数的最大值要大1</span><br><span class="line">    int u[8],v[8],w[8];</span><br><span class="line">    //first要比顶点数的最大值还要大1,next要比边数的最大值要大1</span><br><span class="line">    int first[6],next[8];</span><br><span class="line">    int dis[6]=&#123;0&#125;,book[6]=&#123;0&#125;;//book数组用来记录哪些顶点已经在队列中</span><br><span class="line">    int que[101]=&#123;0&#125;,head=1,tail=1;//定义一个队列并初始化队列</span><br><span class="line"></span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    //初始化first数组下标为1~n的值为-1，表示1~n顶点暂时都没有边</span><br><span class="line">    for(i=1;i&lt;=n;i++)first[i]=-1;</span><br><span class="line">    for(i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;u[i]&gt;&gt;v[i]&gt;&gt;w[i];//读入每一条边</span><br><span class="line">        //核心</span><br><span class="line">        next[i]=first[u[i]];</span><br><span class="line">        first[u[i]]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    //因为dis,book都已经初始化，这里直接标记起始点</span><br><span class="line">    dis[1]=0;</span><br><span class="line">    //1号顶点入队</span><br><span class="line">    que[tail++]=1;</span><br><span class="line">    book[1]=1;//标记1号顶点已经入队</span><br><span class="line">    while(head&lt;tail)</span><br><span class="line">    &#123;</span><br><span class="line">        k=first[que[head]];//当前需要处理的队首的顶点</span><br><span class="line">        while(k!=-1)//扫描当前顶点的所有边</span><br><span class="line">        &#123;</span><br><span class="line">            if(dis[v[k]]&gt;dis[u[k]]+w[k])//判定是否更新</span><br><span class="line">            &#123;</span><br><span class="line">                dis[v[k]]=dis[u[k]]+w[k];//更新顶点1到顶点v[k]的路程</span><br><span class="line">                //这里book数组用来判断顶点v[k]是否在队列中</span><br><span class="line">                //如果不适用一个数组来标记的话，判断一个顶点是否在队列中每次都需要从队列head扫描到tail，浪费时间</span><br><span class="line">                if(book[v[k]]==0)//判断是否在队列中</span><br><span class="line">                &#123;</span><br><span class="line">                    que[tail++]=v[k];//入队</span><br><span class="line">                    book[v[k]]=1;//标记</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            k=next[k];</span><br><span class="line">        &#125;</span><br><span class="line">        //出队</span><br><span class="line">        book[que[head]]=0;</span><br><span class="line">        head++;</span><br><span class="line">    &#125;</span><br><span class="line">    //输出最终结果</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        cout&lt;&lt;dis[i]&lt;&lt;&#x27; &#x27;;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define INF 9999999
 
+int main()
+&#123;
+    int n,m,i,j,k;
+    //u、v和w的数组大小要根据实际情况来设置，要比边数的最大值要大1
+    int u[8],v[8],w[8];
+    //first要比顶点数的最大值还要大1,next要比边数的最大值要大1
+    int first[6],next[8];
+    int dis[6]=&#123;0&#125;,book[6]=&#123;0&#125;;//book数组用来记录哪些顶点已经在队列中
+    int que[101]=&#123;0&#125;,head=1,tail=1;//定义一个队列并初始化队列
+
+    cin&gt;&gt;n&gt;&gt;m;
+    //初始化first数组下标为1~n的值为-1，表示1~n顶点暂时都没有边
+    for(i=1;i&lt;=n;i++)first[i]=-1;
+    for(i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;u[i]&gt;&gt;v[i]&gt;&gt;w[i];//读入每一条边
+        //核心
+        next[i]=first[u[i]];
+        first[u[i]]=i;
+    &#125;
+    //因为dis,book都已经初始化，这里直接标记起始点
+    dis[1]=0;
+    //1号顶点入队
+    que[tail++]=1;
+    book[1]=1;//标记1号顶点已经入队
+    while(head&lt;tail)
+    &#123;
+        k=first[que[head]];//当前需要处理的队首的顶点
+        while(k!=-1)//扫描当前顶点的所有边
+        &#123;
+            if(dis[v[k]]&gt;dis[u[k]]+w[k])//判定是否更新
+            &#123;
+                dis[v[k]]=dis[u[k]]+w[k];//更新顶点1到顶点v[k]的路程
+                //这里book数组用来判断顶点v[k]是否在队列中
+                //如果不适用一个数组来标记的话，判断一个顶点是否在队列中每次都需要从队列head扫描到tail，浪费时间
+                if(book[v[k]]==0)//判断是否在队列中
+                &#123;
+                    que[tail++]=v[k];//入队
+                    book[v[k]]=1;//标记
+                &#125;
+            &#125;
+            k=next[k];
+        &#125;
+        //出队
+        book[que[head]]=0;
+        head++;
+    &#125;
+    //输出最终结果
+    for(i=1;i&lt;=n;i++)
+        cout&lt;&lt;dis[i]&lt;&lt;&#39; &#39;;
+
+    return 0;
+&#125;
+</code></pre>
 <p>形式上类似与广度优先算法（bfs），不同的是bfs不会允许顶点的重新入队</p>
 <p><strong>判断负权回路：</strong></p>
 <p>如果某个点进入队列的次数超过n次，那么这个图一定存在负环</p>

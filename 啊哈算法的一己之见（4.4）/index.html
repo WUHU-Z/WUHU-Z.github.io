@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -594,14 +595,133 @@
 <p><strong>思路：</strong></p>
 <p>因为之前的解法中有可能得出小人无法走到的点，所以用bfs或dfs统计出小人能走过的点，然后在这些可以到达的点上来分别统计可以消灭的敌人数</p>
 <p><strong>代码:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">char a[20][20];</span><br><span class="line">int book[21][21],maxn,mx,my,n,m;</span><br><span class="line"></span><br><span class="line">int getnum(int i,int j)</span><br><span class="line">&#123;</span><br><span class="line">    int sum,x,y;</span><br><span class="line">    sum=0;//sum用来计数（消灭的敌人数），所以需要初始化为0</span><br><span class="line">    //将坐标i,j复制到两个新变量x,y中，以便以后向四方统计</span><br><span class="line">    //向上统计</span><br><span class="line">    x=i;y=j;</span><br><span class="line">    while(a[x][y]!=&#x27;#&#x27;)//判断是不是墙，如果不是墙就继续</span><br><span class="line">    &#123;</span><br><span class="line">        //如果当前点是敌人，则进行计数</span><br><span class="line">        if(a[x][y]==&#x27;G&#x27;)sum++;</span><br><span class="line">        //x--的作用就是向上继续统计</span><br><span class="line">        x--;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    //向下统计</span><br><span class="line">    x=i;y=j;</span><br><span class="line">    while(a[x][y]!=&#x27;#&#x27;)//判断是不是墙，如果不是墙就继续</span><br><span class="line">    &#123;</span><br><span class="line">        //如果当前点是敌人，则进行计数</span><br><span class="line">        if(a[x][y]==&#x27;G&#x27;)sum++;</span><br><span class="line">        //x++的作用就是向下继续统计</span><br><span class="line">        x++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //向左统计</span><br><span class="line">    x=i;y=j;</span><br><span class="line">    while(a[x][y]!=&#x27;#&#x27;)//判断是不是墙，如果不是墙就继续</span><br><span class="line">    &#123;</span><br><span class="line">        //如果当前点是敌人，则进行计数</span><br><span class="line">        if(a[x][y]==&#x27;G&#x27;)sum++;</span><br><span class="line">        //y--的作用就是向左继续统计</span><br><span class="line">        y--;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //向右统计</span><br><span class="line">    x=i;y=j;</span><br><span class="line">    while(a[x][y]!=&#x27;#&#x27;)//判断是不是墙，如果不是墙就继续</span><br><span class="line">    &#123;</span><br><span class="line">        //如果当前点是敌人，则进行计数</span><br><span class="line">        if(a[x][y]==&#x27;G&#x27;)sum++;</span><br><span class="line">        //y++的作用就是向右继续统计</span><br><span class="line">        y++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dfs(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    //定义一个用于表示走的方向的数组</span><br><span class="line">    int next[4][2]=&#123;0,1,1,0,-1,0,0,-1&#125;;</span><br><span class="line">    int k,sum,tx,ty;</span><br><span class="line">    //计算当前这个点可以消灭的敌人总数</span><br><span class="line">    sum=getnum(x,y);</span><br><span class="line">    //更新maxn的值</span><br><span class="line">    if(sum&gt;maxn)</span><br><span class="line">    &#123;</span><br><span class="line">        //如果当前的点统计出的所能消灭的敌人数大于maxn，则更新maxn，并用mx和my记录当前点的坐标</span><br><span class="line">        maxn=sum;</span><br><span class="line">        mx=x;</span><br><span class="line">        my=y;</span><br><span class="line">    &#125;</span><br><span class="line">    //枚举4个方向</span><br><span class="line">    for(k=0;k&lt;=3;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        //下一个点的坐标</span><br><span class="line">        tx=x+next[k][0];</span><br><span class="line">        ty=y+next[k][1];</span><br><span class="line">        //判断是否越界</span><br><span class="line">        if(tx&lt;0||tx&gt;n-1||ty&lt;0||ty&gt;m-1)continue;</span><br><span class="line">        //判断是否是围墙或者已经走过</span><br><span class="line">        if(a[tx][ty]==&#x27;.&#x27;&amp;&amp;book[tx][ty]==0)</span><br><span class="line">        &#123;</span><br><span class="line">            book[tx][ty]=1;//标记这个点已经走过</span><br><span class="line">            dfs(tx,ty);//开始尝试下一个点;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,startx,starty;</span><br><span class="line">    //读入n和m，n表示行，m表示列</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;startx&gt;&gt;starty;</span><br><span class="line">    for(int i=0;i&lt;=n-1;i++)</span><br><span class="line">        scanf(&quot;%s&quot;,a[i]);</span><br><span class="line">        //小人所站的位置开始尝试</span><br><span class="line">    book[startx][starty]=1;</span><br><span class="line">    maxn=getnum(startx,starty);</span><br><span class="line">    mx=startx;</span><br><span class="line">    my=starty;</span><br><span class="line">    dfs(startx,starty);</span><br><span class="line">    cout&lt;&lt;&quot;将炸弹放置在（&quot;&lt;&lt;mx&lt;&lt;&#x27;,&#x27;&lt;&lt;my&lt;&lt;&quot;),最多可以消灭&quot;&lt;&lt;maxn&lt;&lt;&quot;个敌人&quot;&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
 
+char a[20][20];
+int book[21][21],maxn,mx,my,n,m;
+
+int getnum(int i,int j)
+&#123;
+    int sum,x,y;
+    sum=0;//sum用来计数（消灭的敌人数），所以需要初始化为0
+    //将坐标i,j复制到两个新变量x,y中，以便以后向四方统计
+    //向上统计
+    x=i;y=j;
+    while(a[x][y]!=&#39;#&#39;)//判断是不是墙，如果不是墙就继续
+    &#123;
+        //如果当前点是敌人，则进行计数
+        if(a[x][y]==&#39;G&#39;)sum++;
+        //x--的作用就是向上继续统计
+        x--;
+
+    &#125;
+    //向下统计
+    x=i;y=j;
+    while(a[x][y]!=&#39;#&#39;)//判断是不是墙，如果不是墙就继续
+    &#123;
+        //如果当前点是敌人，则进行计数
+        if(a[x][y]==&#39;G&#39;)sum++;
+        //x++的作用就是向下继续统计
+        x++;
+
+    &#125;
+
+    //向左统计
+    x=i;y=j;
+    while(a[x][y]!=&#39;#&#39;)//判断是不是墙，如果不是墙就继续
+    &#123;
+        //如果当前点是敌人，则进行计数
+        if(a[x][y]==&#39;G&#39;)sum++;
+        //y--的作用就是向左继续统计
+        y--;
+
+    &#125;
+
+    //向右统计
+    x=i;y=j;
+    while(a[x][y]!=&#39;#&#39;)//判断是不是墙，如果不是墙就继续
+    &#123;
+        //如果当前点是敌人，则进行计数
+        if(a[x][y]==&#39;G&#39;)sum++;
+        //y++的作用就是向右继续统计
+        y++;
+
+    &#125;
+    return sum;
+&#125;
+
+void dfs(int x,int y)
+&#123;
+    //定义一个用于表示走的方向的数组
+    int next[4][2]=&#123;0,1,1,0,-1,0,0,-1&#125;;
+    int k,sum,tx,ty;
+    //计算当前这个点可以消灭的敌人总数
+    sum=getnum(x,y);
+    //更新maxn的值
+    if(sum&gt;maxn)
+    &#123;
+        //如果当前的点统计出的所能消灭的敌人数大于maxn，则更新maxn，并用mx和my记录当前点的坐标
+        maxn=sum;
+        mx=x;
+        my=y;
+    &#125;
+    //枚举4个方向
+    for(k=0;k&lt;=3;k++)
+    &#123;
+        //下一个点的坐标
+        tx=x+next[k][0];
+        ty=y+next[k][1];
+        //判断是否越界
+        if(tx&lt;0||tx&gt;n-1||ty&lt;0||ty&gt;m-1)continue;
+        //判断是否是围墙或者已经走过
+        if(a[tx][ty]==&#39;.&#39;&amp;&amp;book[tx][ty]==0)
+        &#123;
+            book[tx][ty]=1;//标记这个点已经走过
+            dfs(tx,ty);//开始尝试下一个点;
+        &#125;
+    &#125;
+    return ;
+&#125;
+
+int main()
+&#123;
+    int i,startx,starty;
+    //读入n和m，n表示行，m表示列
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;startx&gt;&gt;starty;
+    for(int i=0;i&lt;=n-1;i++)
+        scanf(&quot;%s&quot;,a[i]);
+        //小人所站的位置开始尝试
+    book[startx][starty]=1;
+    maxn=getnum(startx,starty);
+    mx=startx;
+    my=starty;
+    dfs(startx,starty);
+    cout&lt;&lt;&quot;将炸弹放置在（&quot;&lt;&lt;mx&lt;&lt;&#39;,&#39;&lt;&lt;my&lt;&lt;&quot;),最多可以消灭&quot;&lt;&lt;maxn&lt;&lt;&quot;个敌人&quot;&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p>Input</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">13 13 1 3</span><br><span class="line">#############</span><br><span class="line">#GG.GGG#GGG.#</span><br><span class="line">###.#G#G#G#G#</span><br><span class="line">#.......#..G#</span><br><span class="line">#G#.###.#G#G#</span><br><span class="line">#GG.GGG.#.GG#</span><br><span class="line">#G#.#G#.#.###</span><br><span class="line">##G...G.....#</span><br><span class="line">#G#.#G###.#G#</span><br><span class="line">#...G#GGG.GG#</span><br><span class="line">#G#.#G#G#.#G#</span><br><span class="line">#GG.GGG#G.GG#</span><br><span class="line">#############</span><br></pre></td></tr></table></figure>
-
+<pre><code>13 13 1 3
+#############
+#GG.GGG#GGG.#
+###.#G#G#G#G#
+#.......#..G#
+#G#.###.#G#G#
+#GG.GGG.#.GG#
+#G#.#G#.#.###
+##G...G.....#
+#G#.#G###.#G#
+#...G#GGG.GG#
+#G#.#G#G#.#G#
+#GG.GGG#G.GG#
+#############
+</code></pre>
 <p>Output</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将炸弹放置在（9,9),最多可以消灭8个敌人</span><br></pre></td></tr></table></figure>
-
+<pre><code>将炸弹放置在（9,9),最多可以消灭8个敌人
+</code></pre>
 
                 
             </div>

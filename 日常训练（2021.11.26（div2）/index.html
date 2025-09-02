@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -594,8 +595,65 @@
 <p>1.首先将l，r外面的所有商品全都过滤掉</p>
 <p>2.然后将所有剩余的商品价格排序，从小到大</p>
 <p>3.因为每个商品只能买一次，所以向上枚举即可</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a><strong>代码：</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;unordered_map&gt;</span><br><span class="line">#include&lt;unordered_set&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">#include&lt;bitset&gt;</span><br><span class="line"></span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define mod 1000000007</span><br><span class="line">#define x first</span><br><span class="line">#define y second</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">typedef unsigned long long ull;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int N=1e2+5,M=1e7+5;</span><br><span class="line">const double DInf=1e20;</span><br><span class="line">const double eps=1e-8;</span><br><span class="line"></span><br><span class="line">int a[N];</span><br><span class="line">int n,l,r,k;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">	while(t--)</span><br><span class="line">	&#123;</span><br><span class="line">		int index=0;</span><br><span class="line">		scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;l,&amp;r,&amp;k);</span><br><span class="line">		for(int i=1;i&lt;=n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			int temp;</span><br><span class="line">			scanf(&quot;%d&quot;,&amp;temp);</span><br><span class="line">			if(temp&gt;=l&amp;&amp;temp&lt;=r)</span><br><span class="line">			&#123;</span><br><span class="line">				a[index++]=temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		sort(a,a+index);</span><br><span class="line">		int res=0;</span><br><span class="line">		for(int i=0;i&lt;index;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(k-a[i]&gt;=0)</span><br><span class="line">			&#123;</span><br><span class="line">				k-=a[i];</span><br><span class="line">				res++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;%d\n&quot;,res);</span><br><span class="line">	&#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a><strong>代码：</strong></h3><pre><code>#include&lt;iostream&gt;
+#include&lt;unordered_map&gt;
+#include&lt;unordered_set&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;cmath&gt;
+#include&lt;set&gt;
+#include&lt;bitset&gt;
 
+#define INF 0x3f3f3f3f
+#define mod 1000000007
+#define x first
+#define y second
+
+using namespace std;
+
+typedef pair&lt;int,int&gt; PII;
+typedef unsigned long long ull;
+typedef long long ll;
+const int N=1e2+5,M=1e7+5;
+const double DInf=1e20;
+const double eps=1e-8;
+
+int a[N];
+int n,l,r,k;
+int main()
+&#123;
+    int t;
+    scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    &#123;
+        int index=0;
+        scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;l,&amp;r,&amp;k);
+        for(int i=1;i&lt;=n;i++)
+        &#123;
+            int temp;
+            scanf(&quot;%d&quot;,&amp;temp);
+            if(temp&gt;=l&amp;&amp;temp&lt;=r)
+            &#123;
+                a[index++]=temp;
+            &#125;
+        &#125;
+        sort(a,a+index);
+        int res=0;
+        for(int i=0;i&lt;index;i++)
+        &#123;
+            if(k-a[i]&gt;=0)
+            &#123;
+                k-=a[i];
+                res++;
+            &#125;
+        &#125;
+        printf(&quot;%d\n&quot;,res);
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>
@@ -705,18 +763,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/%E6%97%A5%E5%B8%B8%E8%AE%AD%E7%BB%83%EF%BC%882021.11.26%EF%BC%88div2%EF%BC%89/">
+                <a href="/ai%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0%EF%BC%881%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/33.jpg" class="responsive-img" alt="日常训练(2021.11.26(div 2))">
+                        <img src="/medias/featureimages/34.jpg" class="responsive-img" alt="ai开发日记（1）">
                         
-                        <span class="card-title">日常训练(2021.11.26(div 2))</span>
+                        <span class="card-title">ai开发日记（1）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -726,27 +783,26 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-26
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-08-31
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%AD%E7%BB%83/" class="post-category">
-                                    训练
+                            <a href="/categories/%E5%BC%80%E5%8F%91/" class="post-category">
+                                    开发
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/ai%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">ai开发</span>
                     </a>
                     
                 </div>

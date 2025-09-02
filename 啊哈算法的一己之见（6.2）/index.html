@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -597,19 +598,95 @@
 <p>更新：每次取该点到距离其最近的点为下一个更新点，然后更新一维数组，直到所有的点都已经成为过更新点为止</p>
 <p><strong>代码：</strong></p>
 <p>这里默认从顶点1到其他点的距离</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 9999999</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int e[10][10],dis[10],book[10],i,j,n,m,t1,t2,t3,u,v,res;</span><br><span class="line">    //n表示顶点数,m表示边数</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    //初始化图</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">    for(j=1;j&lt;=n;j++)</span><br><span class="line">        if(i==j)e[i][j]=0;</span><br><span class="line">        else e[i][j]=INF;</span><br><span class="line">    //读入边</span><br><span class="line">    for(i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;</span><br><span class="line">        e[t1][t2]=t3;//有向图</span><br><span class="line">    &#125;</span><br><span class="line">    //初始化dis数组，这里是1号顶点到其余各点的初始路程</span><br><span class="line">    for(i=1;i&lt;=n;i++)dis[i]=e[1][i];</span><br><span class="line">    //book数组初始化</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        book[i]=0;</span><br><span class="line">    book[1]=1;</span><br><span class="line">    //核心语句</span><br><span class="line">    for(i=1;i&lt;=n-1;i++)//遍历使所有的点都可以成为更新点</span><br><span class="line">    &#123;</span><br><span class="line">        //找到离更新点最近的顶点，默认初始的更新点为1</span><br><span class="line">        res=INF;</span><br><span class="line">        for(j=1;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(book[j]==0&amp;&amp;dis[j]&lt;res)</span><br><span class="line">            &#123;</span><br><span class="line">                res=dis[j];</span><br><span class="line">                u=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //表示新的更新点的找出</span><br><span class="line">        book[u]=1;</span><br><span class="line"></span><br><span class="line">        //以新的更新点为基准开始更新</span><br><span class="line">        for(v=1;v&lt;=n;v++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(e[u][v]&lt;INF)</span><br><span class="line">            &#123;</span><br><span class="line">                if(dis[v]&gt;dis[u]+e[u][v])</span><br><span class="line">                    dis[v]=dis[u]+e[u][v];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //输出最终结果</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        cout&lt;&lt;dis[i]&lt;&lt;&#x27; &#x27;;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define INF 9999999
 
+int main()
+&#123;
+    int e[10][10],dis[10],book[10],i,j,n,m,t1,t2,t3,u,v,res;
+    //n表示顶点数,m表示边数
+    cin&gt;&gt;n&gt;&gt;m;
+    //初始化图
+    for(i=1;i&lt;=n;i++)
+    for(j=1;j&lt;=n;j++)
+        if(i==j)e[i][j]=0;
+        else e[i][j]=INF;
+    //读入边
+    for(i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;
+        e[t1][t2]=t3;//有向图
+    &#125;
+    //初始化dis数组，这里是1号顶点到其余各点的初始路程
+    for(i=1;i&lt;=n;i++)dis[i]=e[1][i];
+    //book数组初始化
+    for(i=1;i&lt;=n;i++)
+        book[i]=0;
+    book[1]=1;
+    //核心语句
+    for(i=1;i&lt;=n-1;i++)//遍历使所有的点都可以成为更新点
+    &#123;
+        //找到离更新点最近的顶点，默认初始的更新点为1
+        res=INF;
+        for(j=1;j&lt;=n;j++)
+        &#123;
+            if(book[j]==0&amp;&amp;dis[j]&lt;res)
+            &#123;
+                res=dis[j];
+                u=j;
+            &#125;
+        &#125;
+        //表示新的更新点的找出
+        book[u]=1;
+
+        //以新的更新点为基准开始更新
+        for(v=1;v&lt;=n;v++)
+        &#123;
+            if(e[u][v]&lt;INF)
+            &#123;
+                if(dis[v]&gt;dis[u]+e[u][v])
+                    dis[v]=dis[u]+e[u][v];
+            &#125;
+        &#125;
+    &#125;
+    //输出最终结果
+    for(i=1;i&lt;=n;i++)
+        cout&lt;&lt;dis[i]&lt;&lt;&#39; &#39;;
+
+    return 0;
+&#125;
+</code></pre>
 <p><strong>拓展：</strong></p>
 <p>对于边数m小于n^2的稀疏图来说（反之则为稠密图），我们可以用<strong>邻接表</strong>来代替<strong>邻接矩阵</strong>存储图像</p>
 <p>使得整个算法的时间复杂度由n^2变为(m+n)log n。</p>
 <p>对于数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">4 5</span><br><span class="line">1 4 9</span><br><span class="line">2 4 6</span><br><span class="line">1 2 5</span><br><span class="line">4 3 8</span><br><span class="line">1 3 7</span><br></pre></td></tr></table></figure>
-
+<pre><code>4 5
+1 4 9
+2 4 6
+1 2 5
+4 3 8
+1 3 7
+</code></pre>
 <p>现在用邻接表来存储这个图：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int n,m,i;</span><br><span class="line">   //u、v和w的数组大小要根据实际情况来设置，要比边数的最大值要大1</span><br><span class="line">   int u[6]，v[6],w[6];</span><br><span class="line">   //first 和 next 的数组大小要根据...，要比顶点数的最大值还要大1</span><br><span class="line">   int first[5],next[5];</span><br><span class="line">   cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">   //初始化first数组下标为1~n的值为-1，表示1~n顶点暂时都没有边</span><br><span class="line">   for(i=1;i&lt;=n;i++)first[i]=-1;</span><br><span class="line">   for(i=1;i&lt;=m;i++)</span><br><span class="line">   &#123;</span><br><span class="line">       cin&gt;&gt;u[i]&gt;&gt;v[i]&gt;&gt;w[i];//读入每一条边</span><br><span class="line">       //核心</span><br><span class="line">       next[i]=first[u[i]];</span><br><span class="line">       first[u[i]]=i;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-
-
+<pre><code>    int n,m,i;
+    //u、v和w的数组大小要根据实际情况来设置，要比边数的最大值要大1
+    int u[6]，v[6],w[6];
+    //first 和 next 的数组大小要根据...，要比顶点数的最大值还要大1
+    int first[5],next[5];
+    cin&gt;&gt;n&gt;&gt;m;
+    //初始化first数组下标为1~n的值为-1，表示1~n顶点暂时都没有边
+    for(i=1;i&lt;=n;i++)first[i]=-1;
+    for(i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;u[i]&gt;&gt;v[i]&gt;&gt;w[i];//读入每一条边
+        //核心
+        next[i]=first[u[i]];
+        first[u[i]]=i;
+    &#125;
+</code></pre>
 <ol>
 <li>first[u[i]]保存顶点u[i]的第一条边的编号，next[i]存储”编号为i的边”的”下一条边”的编号</li>
 <li>因为first[i]存储的每一个顶点的第一条边，然后根据对应的v,w数组即可知道该边的具体数值然后通过next数组找到第二个边继续得出具体数值，知道next数组对应下标为-1为止。</li>
@@ -622,8 +699,68 @@
 <p>用单调队列维护时必须有两个值：点的编号和当前的距离</p>
 <p>以距离为标准从小到大排序， 每次去除最小的</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">#define INF 9999999</span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line"></span><br><span class="line">int h[100],e[100],ne[100],w[100],idx;</span><br><span class="line">int n,m,t1,t2,t3;</span><br><span class="line">bool book[100];</span><br><span class="line">priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;</span><br><span class="line"></span><br><span class="line">void add(int a,int b,int c)//邻接表加边</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dijkstra()</span><br><span class="line">&#123;</span><br><span class="line">    int dist[100];//初始化距离数组</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[1]=0;//这里默认从1开始</span><br><span class="line">    heap.push(&#123;0,1&#125;);//入堆</span><br><span class="line">    while(heap.size())</span><br><span class="line">    &#123;</span><br><span class="line">        auto t=heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        if(book[t.second])continue;</span><br><span class="line">        book[t.second]=true;//标记该点走过</span><br><span class="line">        for(int i=h[t.second];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j]&gt;t.first+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=t.first+w[i];</span><br><span class="line">                heap.push(&#123;dist[j],j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //输出所有结果</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;dist[i]&lt;&lt;&#x27; &#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    for(int i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;</span><br><span class="line">        add(t1,t2,t3);</span><br><span class="line">        add(t2,t1,t3);</span><br><span class="line">    &#125;</span><br><span class="line">    dijkstra();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+using namespace std;
 
+#define INF 9999999
+typedef pair&lt;int,int&gt; PII;
+
+int h[100],e[100],ne[100],w[100],idx;
+int n,m,t1,t2,t3;
+bool book[100];
+priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;
+
+void add(int a,int b,int c)//邻接表加边
+&#123;
+    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;
+&#125;
+
+void dijkstra()
+&#123;
+    int dist[100];//初始化距离数组
+    memset(dist,0x3f,sizeof dist);
+    dist[1]=0;//这里默认从1开始
+    heap.push(&#123;0,1&#125;);//入堆
+    while(heap.size())
+    &#123;
+        auto t=heap.top();
+        heap.pop();
+        if(book[t.second])continue;
+        book[t.second]=true;//标记该点走过
+        for(int i=h[t.second];~i;i=ne[i])
+        &#123;
+            int j=e[i];
+            if(dist[j]&gt;t.first+w[i])
+            &#123;
+                dist[j]=t.first+w[i];
+                heap.push(&#123;dist[j],j&#125;);
+            &#125;
+        &#125;
+    &#125;
+    //输出所有结果
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        cout&lt;&lt;dist[i]&lt;&lt;&#39; &#39;;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    memset(h,-1,sizeof h);
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;
+        add(t1,t2,t3);
+        add(t2,t1,t3);
+    &#125;
+    dijkstra();
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>

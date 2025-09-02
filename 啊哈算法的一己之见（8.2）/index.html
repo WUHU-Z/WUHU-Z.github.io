@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -623,21 +624,272 @@
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/a380df0a925645c7bd8f7efc7dabc621.jpg"></p>
 <p><strong>代码：</strong></p>
 <p>这里我私自加了生成路径的操作（可以理解为生成所有实际构成的边）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 510;</span><br><span class="line">int g[N][N];//存储图</span><br><span class="line">int dt[N];//存储各个节点到生成树的距离</span><br><span class="line">int st[N];//节点是否被加入到生成树中</span><br><span class="line">int pre[N];//节点的前去节点,方便输出路径</span><br><span class="line">int n, m;//n 个节点，m 条边</span><br><span class="line"></span><br><span class="line">int prim()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dt,0x3f, sizeof(dt));//初始化距离数组为一个很大的数（10亿左右）</span><br><span class="line">    int res= 0;</span><br><span class="line">    dt[1] = 0;//从 1 号节点开始生成</span><br><span class="line">    for(int i = 0; i &lt; n; i++)//每次循环选出一个点加入到生成树</span><br><span class="line">    &#123;</span><br><span class="line">        int t = -1;</span><br><span class="line">        for(int j = 1; j &lt;= n; j++)//每个节点一次判断</span><br><span class="line">        &#123;</span><br><span class="line">            if(!st[j] &amp;&amp; (t == -1 || dt[j] &lt; dt[t]))//如果没有在树中，且到树的距离最短，则选择该点</span><br><span class="line">                t = j;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(dt[t]&gt;=0x3f)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;&quot;impossible&quot;&lt;&lt;endl;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        st[t] = 1;// 选择该点</span><br><span class="line">        res += dt[t];</span><br><span class="line">        for(int j = 1; j &lt;= n; j++)//更新生成树外的点到生成树的距离</span><br><span class="line">        &#123;</span><br><span class="line">            if(dt[j] &gt; g[t][j] &amp;&amp; !st[j])//从 t 到节点 i 的距离小于原来距离，则更新。</span><br><span class="line">            &#123;</span><br><span class="line">                dt[j] = g[t][j];//更新距离</span><br><span class="line">                pre[j] = t;//从 t 到 i 的距离更短，i 的前驱变为 t.</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void getPath()//输出各个边</span><br><span class="line">&#123;</span><br><span class="line">    for(int i = n; i &gt; 1; i--)//n 个节点，所以有 n-1 条边。</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; i &lt;&lt;&quot; &quot; &lt;&lt; pre[i] &lt;&lt; &quot; &quot;&lt;&lt; endl;// i 是节点编号，pre[i] 是 i 节点的前驱节点。他们构成一条边。</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;//输入节点数和边数</span><br><span class="line">   for(int i=1;i&lt;=n;i++)</span><br><span class="line">   for(int j=1;j&lt;=n;j++)</span><br><span class="line">   if(i==j)g[i][j]=0;</span><br><span class="line">   else g[i][j]=0x3f;</span><br><span class="line">     while(m --)</span><br><span class="line">    &#123;</span><br><span class="line">        int a, b, w;</span><br><span class="line">        cin &gt;&gt; a &gt;&gt; b &gt;&gt; w;//输出边的两个顶点和权重</span><br><span class="line">        g[a][b] = g[b][a] = min(g[a][b],w);//存储权重，因为可能有两条路，有的题就是这么恶心人</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int res=prim();//求最下生成树</span><br><span class="line">    if(res!=-1)</span><br><span class="line">   &#123;</span><br><span class="line">        cout&lt;&lt;res&lt;&lt;endl;//输出花费</span><br><span class="line">        getPath();//输出路径</span><br><span class="line">   &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
 
+const int N = 510;
+int g[N][N];//存储图
+int dt[N];//存储各个节点到生成树的距离
+int st[N];//节点是否被加入到生成树中
+int pre[N];//节点的前去节点,方便输出路径
+int n, m;//n 个节点，m 条边
+
+int prim()
+&#123;
+    memset(dt,0x3f, sizeof(dt));//初始化距离数组为一个很大的数（10亿左右）
+    int res= 0;
+    dt[1] = 0;//从 1 号节点开始生成
+    for(int i = 0; i &lt; n; i++)//每次循环选出一个点加入到生成树
+    &#123;
+        int t = -1;
+        for(int j = 1; j &lt;= n; j++)//每个节点一次判断
+        &#123;
+            if(!st[j] &amp;&amp; (t == -1 || dt[j] &lt; dt[t]))//如果没有在树中，且到树的距离最短，则选择该点
+                t = j;
+        &#125;
+
+        if(dt[t]&gt;=0x3f)
+        &#123;
+            cout&lt;&lt;&quot;impossible&quot;&lt;&lt;endl;
+            return -1;
+        &#125;
+        st[t] = 1;// 选择该点
+        res += dt[t];
+        for(int j = 1; j &lt;= n; j++)//更新生成树外的点到生成树的距离
+        &#123;
+            if(dt[j] &gt; g[t][j] &amp;&amp; !st[j])//从 t 到节点 i 的距离小于原来距离，则更新。
+            &#123;
+                dt[j] = g[t][j];//更新距离
+                pre[j] = t;//从 t 到 i 的距离更短，i 的前驱变为 t.
+            &#125;
+        &#125;
+    &#125;
+    return res;
+&#125;
+
+void getPath()//输出各个边
+&#123;
+    for(int i = n; i &gt; 1; i--)//n 个节点，所以有 n-1 条边。
+
+    &#123;
+        cout &lt;&lt; i &lt;&lt;&quot; &quot; &lt;&lt; pre[i] &lt;&lt; &quot; &quot;&lt;&lt; endl;// i 是节点编号，pre[i] 是 i 节点的前驱节点。他们构成一条边。
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin &gt;&gt; n &gt;&gt; m;//输入节点数和边数
+   for(int i=1;i&lt;=n;i++)
+   for(int j=1;j&lt;=n;j++)
+   if(i==j)g[i][j]=0;
+   else g[i][j]=0x3f;
+     while(m --)
+    &#123;
+        int a, b, w;
+        cin &gt;&gt; a &gt;&gt; b &gt;&gt; w;//输出边的两个顶点和权重
+        g[a][b] = g[b][a] = min(g[a][b],w);//存储权重，因为可能有两条路，有的题就是这么恶心人
+    &#125;
+
+    int res=prim();//求最下生成树
+    if(res!=-1)
+   &#123;
+        cout&lt;&lt;res&lt;&lt;endl;//输出花费
+        getPath();//输出路径
+   &#125;
+    return 0;
+&#125;
+</code></pre>
 <p>时间复杂度：n^2</p>
 <p>Input</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">6 9</span><br><span class="line">2 4 11</span><br><span class="line">3 5 13</span><br><span class="line">4 6 3</span><br><span class="line">5 6 4</span><br><span class="line">2 3 6</span><br><span class="line">4 5 7</span><br><span class="line">1 2 1</span><br><span class="line">3 4 9</span><br><span class="line">1 3 2</span><br></pre></td></tr></table></figure>
-
+<pre><code>6 9
+2 4 11
+3 5 13
+4 6 3
+5 6 4
+2 3 6
+4 5 7
+1 2 1
+3 4 9
+1 3 2
+</code></pre>
 <p>Output</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">19</span><br><span class="line">6 4</span><br><span class="line">5 6</span><br><span class="line">4 3</span><br><span class="line">3 1</span><br><span class="line">2 1</span><br></pre></td></tr></table></figure>
-
+<pre><code>19
+6 4
+5 6
+4 3
+3 1
+2 1
+</code></pre>
 <p><strong>拓展：</strong></p>
 <p>使用堆优化：复杂度降低至log M,再使用邻接表优化：复杂度降低至：MlogN</p>
 <p>所以我们决定使用堆+邻接表优化：</p>
 <p>dis数组还是记录生成树到各个顶点的距离，h数组是一个最小堆（根据顶点在dis中对应的值建立），pos数组记录每个顶点在最小堆中的位置，first和next数组构建邻接表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N = 510;</span><br><span class="line">int u[2*N],v[2*N],w[2*N];//因为是无向图，所以要比2*m的最大值大1,但我这里的N开的比原来的大10（假设规定500）所以无所谓了</span><br><span class="line">int first[N],next_[2*N];</span><br><span class="line">int dis[N];//存储各个节点到生成树的距离</span><br><span class="line">int st[N];//节点是否被加入到生成树中</span><br><span class="line">int pre[N];//节点的前去节点,方便输出路径</span><br><span class="line">int h[N];//堆</span><br><span class="line">int pos[N];//各节点于堆中位值</span><br><span class="line">int n, m;//n 个节点，m 条边</span><br><span class="line">int size_h;//堆的大小</span><br><span class="line"></span><br><span class="line">void swap(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    t=h[x];</span><br><span class="line">    h[x]=h[y];</span><br><span class="line">    h[y]=t;</span><br><span class="line">    //同步更新pos</span><br><span class="line">    t=pos[h[x]];</span><br><span class="line">    pos[h[x]]=pos[h[y]];</span><br><span class="line">    pos[h[y]]=t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void siftdown(int i)//传入一个需要向下调整的节点编号，这里传入1，即从堆的顶点开始向下调整</span><br><span class="line">&#123;</span><br><span class="line">    int t,flag=0;//flag用来标记是否需要继续向下调整</span><br><span class="line">    //当i结点有子结点（至少有左子结点）并且需要继续调整的时候，循环就执行</span><br><span class="line">    while(i*2&lt;=size_h&amp;&amp;flag==0)</span><br><span class="line">    &#123;</span><br><span class="line">        //首先判断它跟左子结点的关系，并用t记录较小结点的编号</span><br><span class="line">        if(dis[h[i]]&gt;dis[h[i*2]])t=i*2;</span><br><span class="line">        else t=i;</span><br><span class="line">        //如果它有右子结点，再对右子结点进行讨论</span><br><span class="line">        if(i*2+1&lt;=size_h)</span><br><span class="line">        &#123;</span><br><span class="line">            //如果右子结点的值更小，更新较小的节点编号</span><br><span class="line">            if(dis[h[t]]&gt;dis[h[i*2+1]])t=i*2+1;</span><br><span class="line">        &#125;</span><br><span class="line">        //如果发现最小的节点编号不是自己，说明子结点中有比父结点更小的</span><br><span class="line">        if(t!=i)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(t,i);//交换他们的结点值，并不是原来的swap函数，需要自己写</span><br><span class="line">            i=t;//更新i为刚才与它交换的子结点的编号，便于接下来继续向下调整</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            flag=1;//说明不需要再向下进行调整了</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void siftup(int i)</span><br><span class="line">&#123;</span><br><span class="line">    int flag=0;//用来标记是否需要继续向上调整</span><br><span class="line">    if(i==1)return ;//如果是堆顶，就返回，不再需要调整了</span><br><span class="line">    //不在堆顶，并且当前结点i的值比父结点小的时候就继续向上调整</span><br><span class="line">    while(i!=1&amp;&amp;flag==0)</span><br><span class="line">    &#123;</span><br><span class="line">        //判断是否比父结点的小</span><br><span class="line">        if(dis[h[i]]&lt;dis[h[i/2]])</span><br><span class="line">            swap(i,i/2);//交换他们的结点值，并不是原来的swap函数，需要自己写</span><br><span class="line">        else flag=1;//表示已经不需要继续调整了，当前结点的值比父结点的值要大</span><br><span class="line">        i/=2;//更新编号i为其父结点的编号，从而便于下一次继续向上调整</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int pop()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    t=h[1];//用一个临时变量记录堆顶点的值</span><br><span class="line"></span><br><span class="line">    pos[t]=0;//这句不要也无所谓</span><br><span class="line"></span><br><span class="line">    h[1]=h[size_h];//将堆的最后一个点赋值到堆顶</span><br><span class="line">    pos[h[1]]=1;</span><br><span class="line">    size_h--;//堆的元素减少1</span><br><span class="line">    siftdown(1);//向下调整</span><br><span class="line">    return t;</span><br><span class="line">&#125;</span><br><span class="line">int prim()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dis,0x3f, sizeof(dis));//初始化距离数组为一个很大的数（10亿左右）</span><br><span class="line">    int res= 0;</span><br><span class="line">    dis[1] = 0;//从 1 号节点开始生成</span><br><span class="line"></span><br><span class="line">    //初始化堆</span><br><span class="line">    size_h=n;</span><br><span class="line">    for(int i=1;i&lt;=size_h;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        h[i]=i;</span><br><span class="line">        pos[i]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=size_h/2;i&gt;=1;i--)</span><br><span class="line">        siftdown(i);</span><br><span class="line"></span><br><span class="line">    for(int i = 0; i &lt; n; i++)//每次循环选出一个点加入到生成树，因为之前1已经进入树中，所以减少1的循环</span><br><span class="line">    &#123;</span><br><span class="line">        int j=pop();</span><br><span class="line">        if(dis[j]&gt;=0x3f)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;&quot;impossible&quot;&lt;&lt;endl;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">        st[j]=1;</span><br><span class="line">        res+=dis[j];</span><br><span class="line">        //扫描当前顶点j所有的边，再以j为中间结点，进行更新</span><br><span class="line">        int k=first[j];</span><br><span class="line">        while(k!=-1)</span><br><span class="line">        &#123;</span><br><span class="line">            if(st[v[k]]==0&amp;&amp;dis[v[k]]&gt;w[k])</span><br><span class="line">            &#123;</span><br><span class="line">                dis[v[k]]=w[k];//更新距离</span><br><span class="line">                siftup(pos[v[k]]);//对该点在堆中向上调整</span><br><span class="line">                //pos[v[k]]存储顶点v[k]在堆中的位置</span><br><span class="line">                pre[v[k]]=u[k];</span><br><span class="line">            &#125;</span><br><span class="line">            k=next_[k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void getPath()//输出各个边</span><br><span class="line">&#123;</span><br><span class="line">    for(int i = n; i &gt; 1; i--)//n 个节点，所以有 n-1 条边。</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; i &lt;&lt;&quot; &quot; &lt;&lt; pre[i] &lt;&lt; &quot; &quot;&lt;&lt; endl;// i 是节点编号，pre[i] 是 i 节点的前驱节点。他们构成一条边。</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;//输入节点数和边数</span><br><span class="line">    //开始读入边</span><br><span class="line">    for(int i=1;i&lt;=m;i++)</span><br><span class="line">        cin&gt;&gt;u[i]&gt;&gt;v[i]&gt;&gt;w[i];</span><br><span class="line">    //这里是无向图，所以反向存储一次</span><br><span class="line">    for(int i=m+1;i&lt;=2*m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        u[i]=v[i-m];</span><br><span class="line">        v[i]=u[i-m];</span><br><span class="line">        w[i]=w[i-m];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //开始使用邻接表存储边</span><br><span class="line">    for(int i=1;i&lt;=n;i++)first[i]=-1;</span><br><span class="line">    for(int i=1;i&lt;=2*m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        next_[i]=first[u[i]];</span><br><span class="line">        first[u[i]]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    int res=prim();//求最下生成树</span><br><span class="line">    if(res!=-1)</span><br><span class="line">   &#123;</span><br><span class="line">        cout&lt;&lt;res&lt;&lt;endl;//输出花费</span><br><span class="line">        getPath();//输出路径</span><br><span class="line">   &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
 
+const int N = 510;
+int u[2*N],v[2*N],w[2*N];//因为是无向图，所以要比2*m的最大值大1,但我这里的N开的比原来的大10（假设规定500）所以无所谓了
+int first[N],next_[2*N];
+int dis[N];//存储各个节点到生成树的距离
+int st[N];//节点是否被加入到生成树中
+int pre[N];//节点的前去节点,方便输出路径
+int h[N];//堆
+int pos[N];//各节点于堆中位值
+int n, m;//n 个节点，m 条边
+int size_h;//堆的大小
+
+void swap(int x,int y)
+&#123;
+    int t;
+    t=h[x];
+    h[x]=h[y];
+    h[y]=t;
+    //同步更新pos
+    t=pos[h[x]];
+    pos[h[x]]=pos[h[y]];
+    pos[h[y]]=t;
+&#125;
+
+void siftdown(int i)//传入一个需要向下调整的节点编号，这里传入1，即从堆的顶点开始向下调整
+&#123;
+    int t,flag=0;//flag用来标记是否需要继续向下调整
+    //当i结点有子结点（至少有左子结点）并且需要继续调整的时候，循环就执行
+    while(i*2&lt;=size_h&amp;&amp;flag==0)
+    &#123;
+        //首先判断它跟左子结点的关系，并用t记录较小结点的编号
+        if(dis[h[i]]&gt;dis[h[i*2]])t=i*2;
+        else t=i;
+        //如果它有右子结点，再对右子结点进行讨论
+        if(i*2+1&lt;=size_h)
+        &#123;
+            //如果右子结点的值更小，更新较小的节点编号
+            if(dis[h[t]]&gt;dis[h[i*2+1]])t=i*2+1;
+        &#125;
+        //如果发现最小的节点编号不是自己，说明子结点中有比父结点更小的
+        if(t!=i)
+        &#123;
+            swap(t,i);//交换他们的结点值，并不是原来的swap函数，需要自己写
+            i=t;//更新i为刚才与它交换的子结点的编号，便于接下来继续向下调整
+        &#125;
+        else
+            flag=1;//说明不需要再向下进行调整了
+
+    &#125;
+&#125;
+void siftup(int i)
+&#123;
+    int flag=0;//用来标记是否需要继续向上调整
+    if(i==1)return ;//如果是堆顶，就返回，不再需要调整了
+    //不在堆顶，并且当前结点i的值比父结点小的时候就继续向上调整
+    while(i!=1&amp;&amp;flag==0)
+    &#123;
+        //判断是否比父结点的小
+        if(dis[h[i]]&lt;dis[h[i/2]])
+            swap(i,i/2);//交换他们的结点值，并不是原来的swap函数，需要自己写
+        else flag=1;//表示已经不需要继续调整了，当前结点的值比父结点的值要大
+        i/=2;//更新编号i为其父结点的编号，从而便于下一次继续向上调整
+    &#125;
+&#125;
+
+int pop()
+&#123;
+    int t;
+    t=h[1];//用一个临时变量记录堆顶点的值
+
+    pos[t]=0;//这句不要也无所谓
+
+    h[1]=h[size_h];//将堆的最后一个点赋值到堆顶
+    pos[h[1]]=1;
+    size_h--;//堆的元素减少1
+    siftdown(1);//向下调整
+    return t;
+&#125;
+int prim()
+&#123;
+    memset(dis,0x3f, sizeof(dis));//初始化距离数组为一个很大的数（10亿左右）
+    int res= 0;
+    dis[1] = 0;//从 1 号节点开始生成
+
+    //初始化堆
+    size_h=n;
+    for(int i=1;i&lt;=size_h;i++)
+    &#123;
+        h[i]=i;
+        pos[i]=i;
+    &#125;
+    for(int i=size_h/2;i&gt;=1;i--)
+        siftdown(i);
+
+    for(int i = 0; i &lt; n; i++)//每次循环选出一个点加入到生成树，因为之前1已经进入树中，所以减少1的循环
+    &#123;
+        int j=pop();
+        if(dis[j]&gt;=0x3f)
+        &#123;
+            cout&lt;&lt;&quot;impossible&quot;&lt;&lt;endl;
+            return -1;
+        &#125;
+        st[j]=1;
+        res+=dis[j];
+        //扫描当前顶点j所有的边，再以j为中间结点，进行更新
+        int k=first[j];
+        while(k!=-1)
+        &#123;
+            if(st[v[k]]==0&amp;&amp;dis[v[k]]&gt;w[k])
+            &#123;
+                dis[v[k]]=w[k];//更新距离
+                siftup(pos[v[k]]);//对该点在堆中向上调整
+                //pos[v[k]]存储顶点v[k]在堆中的位置
+                pre[v[k]]=u[k];
+            &#125;
+            k=next_[k];
+        &#125;
+    &#125;
+    return res;
+&#125;
+
+void getPath()//输出各个边
+&#123;
+    for(int i = n; i &gt; 1; i--)//n 个节点，所以有 n-1 条边。
+
+    &#123;
+        cout &lt;&lt; i &lt;&lt;&quot; &quot; &lt;&lt; pre[i] &lt;&lt; &quot; &quot;&lt;&lt; endl;// i 是节点编号，pre[i] 是 i 节点的前驱节点。他们构成一条边。
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin &gt;&gt; n &gt;&gt; m;//输入节点数和边数
+    //开始读入边
+    for(int i=1;i&lt;=m;i++)
+        cin&gt;&gt;u[i]&gt;&gt;v[i]&gt;&gt;w[i];
+    //这里是无向图，所以反向存储一次
+    for(int i=m+1;i&lt;=2*m;i++)
+    &#123;
+        u[i]=v[i-m];
+        v[i]=u[i-m];
+        w[i]=w[i-m];
+    &#125;
+
+    //开始使用邻接表存储边
+    for(int i=1;i&lt;=n;i++)first[i]=-1;
+    for(int i=1;i&lt;=2*m;i++)
+    &#123;
+        next_[i]=first[u[i]];
+        first[u[i]]=i;
+    &#125;
+    int res=prim();//求最下生成树
+    if(res!=-1)
+   &#123;
+        cout&lt;&lt;res&lt;&lt;endl;//输出花费
+        getPath();//输出路径
+   &#125;
+    return 0;
+&#125;
+</code></pre>
 <p>好折磨啊！！！</p>
 
                 

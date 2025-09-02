@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -598,14 +599,60 @@
 <p><strong>对于挪后操作：</strong></p>
 <p><strong>将head向后移动一位的同时，将该数字赋值给tail下标表示的数组位置，然后tail向后移动一位。</strong></p>
 <p><strong>生成代码如下：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">int array[500];//存储数字串的数组,因为因为涉及转移的操作，所以数组开的大一些</span><br><span class="line">int head,tail;//记录队首以及队尾后一位的下标</span><br><span class="line"></span><br><span class="line">void deletenum()//删除操作</span><br><span class="line">&#123;</span><br><span class="line">    //打印队首并将队首出队</span><br><span class="line">    cout&lt;&lt;array[head]&lt;&lt;&#x27; &#x27;;</span><br><span class="line">    head++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void reversenum()//转移操作</span><br><span class="line">&#123;</span><br><span class="line">    //先将队首的数添加到队尾</span><br><span class="line">    array[tail]=array[head];</span><br><span class="line">    tail++;</span><br><span class="line">    //再将队首出队表示转移</span><br><span class="line">    head++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    //初始化数组</span><br><span class="line">    for(int i=1;i&lt;=49;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        array[i]=i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //初始化队列</span><br><span class="line">    head=1;</span><br><span class="line">    tail=49;</span><br><span class="line"></span><br><span class="line">    //当队列不为空的时候结束循环</span><br><span class="line">    while(head&lt;tail)</span><br><span class="line">    &#123;</span><br><span class="line">        deletenum();</span><br><span class="line">        reversenum();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
 
+using namespace std;
+int array[500];//存储数字串的数组,因为因为涉及转移的操作，所以数组开的大一些
+int head,tail;//记录队首以及队尾后一位的下标
+
+void deletenum()//删除操作
+&#123;
+    //打印队首并将队首出队
+    cout&lt;&lt;array[head]&lt;&lt;&#39; &#39;;
+    head++;
+&#125;
+
+void reversenum()//转移操作
+&#123;
+    //先将队首的数添加到队尾
+    array[tail]=array[head];
+    tail++;
+    //再将队首出队表示转移
+    head++;
+&#125;
+
+int main()
+&#123;
+    //初始化数组
+    for(int i=1;i&lt;=49;i++)
+    &#123;
+        array[i]=i;
+    &#125;
+
+    //初始化队列
+    head=1;
+    tail=49;
+
+    //当队列不为空的时候结束循环
+    while(head&lt;tail)
+    &#123;
+        deletenum();
+        reversenum();
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>总结：</strong></p>
 <p>队列是一种特殊的线性结构，只允许在队列的首部进行删除操作，这被称为“出队”，只允许在队列的尾部进行插入操作，这被称为“入队”。当队列中没有元素时(head==tail)，称为空队列。</p>
 <p><strong>2.队列的其他表示：</strong></p>
 <p><strong>结构体：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct queue</span><br><span class="line">&#123;</span><br><span class="line">    int data[100];//队列的主题，用来存储内容</span><br><span class="line">    int head;//队首</span><br><span class="line">    int tail;//队尾</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<pre><code>struct queue
+&#123;
+    int data[100];//队列的主题，用来存储内容
+    int head;//队首
+    int tail;//队尾
+&#125;;
+</code></pre>
 <p><strong>STl库：</strong></p>
 <p>queue容器，进阶的还有deque容器</p>
 

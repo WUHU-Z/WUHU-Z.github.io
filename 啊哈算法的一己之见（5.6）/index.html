@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -598,8 +599,54 @@
 <p>增广路的本质：一条路径的起点和终点都是未配对的点。</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/IMG_20210824_200005_edit_38915157787290(1).jpg"></p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int e[101][101],match[101],book[101];</span><br><span class="line">int n,m;</span><br><span class="line"></span><br><span class="line">int dfs(int u)</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(book[i]==0&amp;&amp;e[u][i]==1)</span><br><span class="line">        &#123;</span><br><span class="line">            book[i]=1;//标记点i已访问过</span><br><span class="line">            //如果点i未被配对或者找到了新的配对</span><br><span class="line">            if(match[i]==0||dfs(match[i]))</span><br><span class="line">            &#123;</span><br><span class="line">                //更新配对关系</span><br><span class="line">                match[i]=u;</span><br><span class="line">                match[u]=i;</span><br><span class="line">                return 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,j,x,y,sum;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;//输入节点数和边数</span><br><span class="line">    for(i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        e[x][y]=1;</span><br><span class="line">        e[y][x]=1;</span><br><span class="line">    &#125;</span><br><span class="line">    for(i=1;i&lt;=n;i++)match[i]=0;</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(j=1;j&lt;=n;j++)book[j]=0;//清空上次搜索时的标记</span><br><span class="line">        if(dfs(i))sum++;//寻找增广路，如果找到，那么配对数+1</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int e[101][101],match[101],book[101];
+int n,m;
 
+int dfs(int u)
+&#123;
+    int i;
+    for(i=1;i&lt;=n;i++)
+    &#123;
+        if(book[i]==0&amp;&amp;e[u][i]==1)
+        &#123;
+            book[i]=1;//标记点i已访问过
+            //如果点i未被配对或者找到了新的配对
+            if(match[i]==0||dfs(match[i]))
+            &#123;
+                //更新配对关系
+                match[i]=u;
+                match[u]=i;
+                return 1;
+            &#125;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+
+int main()
+&#123;
+    int i,j,x,y,sum;
+    cin &gt;&gt; n &gt;&gt; m;//输入节点数和边数
+    for(i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;x&gt;&gt;y;
+        e[x][y]=1;
+        e[y][x]=1;
+    &#125;
+    for(i=1;i&lt;=n;i++)match[i]=0;
+    for(i=1;i&lt;=n;i++)
+    &#123;
+        for(j=1;j&lt;=n;j++)book[j]=0;//清空上次搜索时的标记
+        if(dfs(i))sum++;//寻找增广路，如果找到，那么配对数+1
+    &#125;
+    cout&lt;&lt;sum&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p>时间复杂度：MN</p>
 <p><strong>拓展：</strong></p>
 <p>判断图是否为二分图：将一个顶点着色然后将其相邻的点涂成其他颜色，两种颜色递推，如果可以将所有的点都着色且相邻点着色不同，那么该图就是二分图</p>

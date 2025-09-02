@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -595,23 +596,342 @@
 <p>1.朴素迪杰斯特拉算法</p>
 <p>2.堆优化的杰斯塔拉算法</p>
 <p>3.spfa算法</p>
-<h2 id="代码（spfa）："><a href="#代码（spfa）：" class="headerlink" title="代码（spfa）："></a><strong>代码（spfa）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=2510,M=6200*2+10;//N表示城镇数，M表示路径数</span><br><span class="line">int n,m,S,T;</span><br><span class="line">int h[N],e[M],w[M],ne[N],idx=0;</span><br><span class="line">int dist[N];//距离</span><br><span class="line">int q[N];//循环队列</span><br><span class="line">bool st[N];//判重数组</span><br><span class="line"></span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void spfa()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[S]=0;//初始化起点距离</span><br><span class="line">    int hh=0,tt=1;//初始化循环队列队头队尾</span><br><span class="line">    q[0]=S,st[S]=true;//入队并标记该点已经走过</span><br><span class="line">    while(hh!=tt)</span><br><span class="line">    &#123;</span><br><span class="line">        int t = q[hh++];</span><br><span class="line">        if(hh==N)hh=0;</span><br><span class="line">        st[t]=false;</span><br><span class="line">        for(int i=h[t];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j]&gt;dist[t]+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=dist[t]+w[i];</span><br><span class="line">                if(!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q[tt++]=j;</span><br><span class="line">                    if(tt==N)tt=0;</span><br><span class="line">                    st[j]=true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;S&gt;&gt;T;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    for(int i=0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,c;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">        add(a,b,c);//因为路径是双向的</span><br><span class="line">        add(b,a,c);</span><br><span class="line">    &#125;</span><br><span class="line">    spfa();</span><br><span class="line">    cout&lt;&lt;dist[T]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码（spfa）："><a href="#代码（spfa）：" class="headerlink" title="代码（spfa）："></a><strong>代码（spfa）：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int N=2510,M=6200*2+10;//N表示城镇数，M表示路径数
+int n,m,S,T;
+int h[N],e[M],w[M],ne[N],idx=0;
+int dist[N];//距离
+int q[N];//循环队列
+bool st[N];//判重数组
 
-<h2 id="代码（朴素DIjkstra）："><a href="#代码（朴素DIjkstra）：" class="headerlink" title="代码（朴素DIjkstra）："></a><strong>代码（朴素DIjkstra）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#define INF 9999999</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=2510;//N表示城镇数</span><br><span class="line">int e[N][N];</span><br><span class="line">int dist[N];</span><br><span class="line">int book[N];</span><br><span class="line">int n,m,t1,t2,t3,S,T;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;S&gt;&gt;T;</span><br><span class="line"></span><br><span class="line">    //初始化图</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    for(int j=1;j&lt;=n;j++)</span><br><span class="line">        if(i==j)e[i][j]=0;</span><br><span class="line">        else e[i][j]=INF;</span><br><span class="line"></span><br><span class="line">    //读入边</span><br><span class="line">    for(int i=0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;</span><br><span class="line">        e[t1][t2]=t3;</span><br><span class="line">        e[t2][t1]=t3;</span><br><span class="line">    &#125;</span><br><span class="line">    //初始化dis数组</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">        dist[i]=e[S][i];</span><br><span class="line">    //book数组初始化</span><br><span class="line">    memset(book,0,sizeof book);</span><br><span class="line">    book[S]=1;</span><br><span class="line">    for(int i=1;i&lt;=n-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        //找到离更新点最近的顶点，默认初始的更新点为1</span><br><span class="line">        int res=INF;</span><br><span class="line">        int u;</span><br><span class="line">        for(int j=1;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(book[j]!=1&amp;&amp;dist[j]&lt;res)</span><br><span class="line">            &#123;</span><br><span class="line">                res=dist[j];</span><br><span class="line">                u=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //表示新的更新点已经找出</span><br><span class="line">        book[u]=1;</span><br><span class="line"></span><br><span class="line">        //以新的更新点为基准开始更新</span><br><span class="line">        for(int v=1;v&lt;=n;v++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(e[u][v]&lt;INF)</span><br><span class="line">            &#123;</span><br><span class="line">                if(dist[v]&gt;dist[u]+e[u][v])</span><br><span class="line">                    dist[v]=dist[u]+e[u][v];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;dist[T]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+void add(int a,int b,int c)
+&#123;
+    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;
+&#125;
 
-<h2 id="代码（堆优化Dijkstra）："><a href="#代码（堆优化Dijkstra）：" class="headerlink" title="代码（堆优化Dijkstra）："></a><strong>代码（堆优化Dijkstra）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">这个堆优化其实很容易理解，将枚举最小值改为从堆中取出最小值，改变dis时入堆即可</span><br><span class="line"></span><br><span class="line">用单调队列维护时必须有两个值：点的编号和当前的距离</span><br><span class="line"></span><br><span class="line">以距离为标准从小到大排序， 每次去除最小的</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=3e3,M=2e4;</span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">int h[N],w[M],e[M],ne[M],idx;//设立邻接表</span><br><span class="line">bool book[N];</span><br><span class="line">priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;</span><br><span class="line"></span><br><span class="line">void add(int a,int b,int c)//加边</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,ne[idx]=h[a],w[idx]=c,h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int dijkstra(int st,int ed)</span><br><span class="line">&#123;</span><br><span class="line">    int dist[M];//初始化距离数组</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[st]=0;</span><br><span class="line">    book[st]=true;//标记该点走过</span><br><span class="line">    heap.push(&#123;0,st&#125;);</span><br><span class="line">    while(heap.size())</span><br><span class="line">    &#123;</span><br><span class="line">        auto t=heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        book[t.second]=false;</span><br><span class="line">        for(int i=h[t.second];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j]&gt;t.first+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=t.first+w[i];</span><br><span class="line">                heap.push(&#123;dist[j],j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dist[ed];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m,st,ed;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;st&gt;&gt;ed;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    for(int i=0;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,w;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b&gt;&gt;w;</span><br><span class="line">        add(a,b,w);</span><br><span class="line">        add(b,a,w);</span><br><span class="line">    &#125;</span><br><span class="line">    int t=dijkstra(st,ed);</span><br><span class="line">    cout&lt;&lt;t&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+void spfa()
+&#123;
+    memset(dist,0x3f,sizeof dist);
+    dist[S]=0;//初始化起点距离
+    int hh=0,tt=1;//初始化循环队列队头队尾
+    q[0]=S,st[S]=true;//入队并标记该点已经走过
+    while(hh!=tt)
+    &#123;
+        int t = q[hh++];
+        if(hh==N)hh=0;
+        st[t]=false;
+        for(int i=h[t];~i;i=ne[i])
+        &#123;
+            int j=e[i];
+            if(dist[j]&gt;dist[t]+w[i])
+            &#123;
+                dist[j]=dist[t]+w[i];
+                if(!st[j])
+                &#123;
+                    q[tt++]=j;
+                    if(tt==N)tt=0;
+                    st[j]=true;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
 
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;S&gt;&gt;T;
+    memset(h,-1,sizeof h);
+    for(int i=0;i&lt;m;i++)
+    &#123;
+        int a,b,c;
+        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
+        add(a,b,c);//因为路径是双向的
+        add(b,a,c);
+    &#125;
+    spfa();
+    cout&lt;&lt;dist[T]&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
+<h2 id="代码（朴素DIjkstra）："><a href="#代码（朴素DIjkstra）：" class="headerlink" title="代码（朴素DIjkstra）："></a><strong>代码（朴素DIjkstra）：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#define INF 9999999
+using namespace std;
+const int N=2510;//N表示城镇数
+int e[N][N];
+int dist[N];
+int book[N];
+int n,m,t1,t2,t3,S,T;
+int main()
+&#123;
+
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;S&gt;&gt;T;
+
+    //初始化图
+    for(int i=1;i&lt;=n;i++)
+    for(int j=1;j&lt;=n;j++)
+        if(i==j)e[i][j]=0;
+        else e[i][j]=INF;
+
+    //读入边
+    for(int i=0;i&lt;m;i++)
+    &#123;
+        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;
+        e[t1][t2]=t3;
+        e[t2][t1]=t3;
+    &#125;
+    //初始化dis数组
+    for(int i=1;i&lt;=n;i++)
+        dist[i]=e[S][i];
+    //book数组初始化
+    memset(book,0,sizeof book);
+    book[S]=1;
+    for(int i=1;i&lt;=n-1;i++)
+    &#123;
+        //找到离更新点最近的顶点，默认初始的更新点为1
+        int res=INF;
+        int u;
+        for(int j=1;j&lt;=n;j++)
+        &#123;
+            if(book[j]!=1&amp;&amp;dist[j]&lt;res)
+            &#123;
+                res=dist[j];
+                u=j;
+            &#125;
+        &#125;
+        //表示新的更新点已经找出
+        book[u]=1;
+
+        //以新的更新点为基准开始更新
+        for(int v=1;v&lt;=n;v++)
+        &#123;
+            if(e[u][v]&lt;INF)
+            &#123;
+                if(dist[v]&gt;dist[u]+e[u][v])
+                    dist[v]=dist[u]+e[u][v];
+            &#125;
+        &#125;
+    &#125;
+    cout&lt;&lt;dist[T]&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
+<h2 id="代码（堆优化Dijkstra）："><a href="#代码（堆优化Dijkstra）：" class="headerlink" title="代码（堆优化Dijkstra）："></a><strong>代码（堆优化Dijkstra）：</strong></h2><pre><code>/*
+这个堆优化其实很容易理解，将枚举最小值改为从堆中取出最小值，改变dis时入堆即可
+
+用单调队列维护时必须有两个值：点的编号和当前的距离
+
+以距离为标准从小到大排序， 每次去除最小的
+*/
+
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int N=3e3,M=2e4;
+typedef pair&lt;int,int&gt; PII;
+int h[N],w[M],e[M],ne[M],idx;//设立邻接表
+bool book[N];
+priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;
+
+void add(int a,int b,int c)//加边
+&#123;
+    e[idx]=b,ne[idx]=h[a],w[idx]=c,h[a]=idx++;
+&#125;
+
+int dijkstra(int st,int ed)
+&#123;
+    int dist[M];//初始化距离数组
+    memset(dist,0x3f,sizeof dist);
+    dist[st]=0;
+    book[st]=true;//标记该点走过
+    heap.push(&#123;0,st&#125;);
+    while(heap.size())
+    &#123;
+        auto t=heap.top();
+        heap.pop();
+        book[t.second]=false;
+        for(int i=h[t.second];~i;i=ne[i])
+        &#123;
+            int j=e[i];
+            if(dist[j]&gt;t.first+w[i])
+            &#123;
+                dist[j]=t.first+w[i];
+                heap.push(&#123;dist[j],j&#125;);
+            &#125;
+        &#125;
+    &#125;
+    return dist[ed];
+&#125;
+
+int main()
+&#123;
+    int n,m,st,ed;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;st&gt;&gt;ed;
+    memset(h,-1,sizeof h);
+    for(int i=0;i&lt;m;i++)
+    &#123;
+        int a,b,w;
+        cin&gt;&gt;a&gt;&gt;b&gt;&gt;w;
+        add(a,b,w);
+        add(b,a,w);
+    &#125;
+    int t=dijkstra(st,ed);
+    cout&lt;&lt;t&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <h1 id="2-Acwing-1128-信使"><a href="#2-Acwing-1128-信使" class="headerlink" title="2.Acwing 1128.信使"></a>2.Acwing 1128.信使</h1><h2 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/D95D50A9B66C4712947D5D3CFB60815C.jpg"></p>
 <h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>单源最短路模板，找最大值即可</p>
-<h2 id="代码（spfa）：-1"><a href="#代码（spfa）：-1" class="headerlink" title="代码（spfa）："></a><strong>代码（spfa）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">#define INF 9999999</span><br><span class="line">const int N=110;</span><br><span class="line">const int M=210*2;</span><br><span class="line">int n,m,t1,t2,t3;</span><br><span class="line">int h[N],w[M],e[M],ne[M],idx;</span><br><span class="line">int dist[N];</span><br><span class="line">bool st[N];</span><br><span class="line">int q[N];</span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void spfa()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[1]=0;</span><br><span class="line">    int hh=0,tt=1;</span><br><span class="line">    q[0]=1,st[1]=true;;</span><br><span class="line">    while(hh!=tt)</span><br><span class="line">    &#123;</span><br><span class="line">        int t=q[hh++];</span><br><span class="line">        if(hh==N)hh=0;</span><br><span class="line">        st[t]=false;</span><br><span class="line">        for(int i=h[t];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j]&gt;dist[t]+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=dist[t]+w[i];</span><br><span class="line">                if(!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q[tt++]=j;</span><br><span class="line">                    if(tt==N)tt=0;</span><br><span class="line">                    st[j]=true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    for(int i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;</span><br><span class="line">        add(t1,t2,t3);</span><br><span class="line">        add(t2,t1,t3);</span><br><span class="line">    &#125;</span><br><span class="line">    spfa();</span><br><span class="line">    int maxn=-INF;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        maxn=max(maxn,dist[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    if(maxn!=0x3f3f3f3f)cout&lt;&lt;maxn&lt;&lt;endl;</span><br><span class="line">    else cout&lt;&lt;-1&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码（spfa）：-1"><a href="#代码（spfa）：-1" class="headerlink" title="代码（spfa）："></a><strong>代码（spfa）：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
 
+#define INF 9999999
+const int N=110;
+const int M=210*2;
+int n,m,t1,t2,t3;
+int h[N],w[M],e[M],ne[M],idx;
+int dist[N];
+bool st[N];
+int q[N];
+void add(int a,int b,int c)
+&#123;
+    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;
+&#125;
+
+void spfa()
+&#123;
+    memset(dist,0x3f,sizeof dist);
+    dist[1]=0;
+    int hh=0,tt=1;
+    q[0]=1,st[1]=true;;
+    while(hh!=tt)
+    &#123;
+        int t=q[hh++];
+        if(hh==N)hh=0;
+        st[t]=false;
+        for(int i=h[t];~i;i=ne[i])
+        &#123;
+            int j=e[i];
+            if(dist[j]&gt;dist[t]+w[i])
+            &#123;
+                dist[j]=dist[t]+w[i];
+                if(!st[j])
+                &#123;
+                    q[tt++]=j;
+                    if(tt==N)tt=0;
+                    st[j]=true;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    memset(h,-1,sizeof h);
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;
+        add(t1,t2,t3);
+        add(t2,t1,t3);
+    &#125;
+    spfa();
+    int maxn=-INF;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        maxn=max(maxn,dist[i]);
+    &#125;
+    if(maxn!=0x3f3f3f3f)cout&lt;&lt;maxn&lt;&lt;endl;
+    else cout&lt;&lt;-1&lt;&lt;endl;
+&#125;
+</code></pre>
 <p>注意M要开二倍的，我真是吐了</p>
 <h1 id="3-Acwing1127-香甜的黄油（多源汇最短路问题）"><a href="#3-Acwing1127-香甜的黄油（多源汇最短路问题）" class="headerlink" title="3.Acwing1127.香甜的黄油（多源汇最短路问题）"></a><strong>3.Acwing1127.香甜的黄油（多源汇最短路问题）</strong></h1><h2 id="题目：-2"><a href="#题目：-2" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/A882F5D96D554AF6BE4D435B094668A5.jpg"></p>
 <h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p>因为使用Floyd算法会超时，所以放弃</p>
 <p>对每一个点使用堆优化Dijkstra，然后dist相加比较找到最小点。</p>
 <p>spfa会被卡空间…</p>
-<h2 id="代码（spfa死了，我选择堆优化）："><a href="#代码（spfa死了，我选择堆优化）：" class="headerlink" title="代码（spfa死了，我选择堆优化）："></a><strong>代码（spfa死了，我选择堆优化）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">const int N=510;</span><br><span class="line">const int P=810;</span><br><span class="line">const int C=1450*2;</span><br><span class="line">int n,p,c,t1,t2,t3;</span><br><span class="line">int z[N];</span><br><span class="line">int h[P],e[C],ne[C],w[C],idx;</span><br><span class="line">priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;</span><br><span class="line">int dist[P];</span><br><span class="line">bool book[P];</span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int dijkstra(int start)</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    memset(book,0,sizeof book);</span><br><span class="line">    dist[start]=0;</span><br><span class="line">    heap.push(&#123;0,start&#125;);</span><br><span class="line">    while(heap.size())</span><br><span class="line">    &#123;</span><br><span class="line">        auto ovo=heap.top();</span><br><span class="line">        heap.pop();</span><br><span class="line">        if(book[ovo.second])continue;</span><br><span class="line">        book[ovo.second]=1;</span><br><span class="line">        for(int i=h[ovo.second];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j]&gt;ovo.first+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=ovo.first+w[i];</span><br><span class="line">                heap.push(&#123;dist[j],j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int res=0;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int j=z[i];</span><br><span class="line">        if(dist[j]==INF)return INF;</span><br><span class="line">        else res+=dist[j];</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;p&gt;&gt;c;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)cin&gt;&gt;z[i];</span><br><span class="line">    for(int i=1;i&lt;=c;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;</span><br><span class="line">        add(t1,t2,t3);</span><br><span class="line">        add(t2,t1,t3);</span><br><span class="line">    &#125;</span><br><span class="line">    int minn=INF;</span><br><span class="line">    for(int i=1;i&lt;=p;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int res=dijkstra(i);</span><br><span class="line">        minn=min(res,minn);</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;minn&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="代码（spfa死了，我选择堆优化）："><a href="#代码（spfa死了，我选择堆优化）：" class="headerlink" title="代码（spfa死了，我选择堆优化）："></a><strong>代码（spfa死了，我选择堆优化）：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#define INF 0x3f3f3f3f
 
+using namespace std;
+typedef pair&lt;int,int&gt; PII;
+const int N=510;
+const int P=810;
+const int C=1450*2;
+int n,p,c,t1,t2,t3;
+int z[N];
+int h[P],e[C],ne[C],w[C],idx;
+priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;
+int dist[P];
+bool book[P];
+void add(int a,int b,int c)
+&#123;
+    e[idx]=b,w[idx]=c,ne[idx]=h[a],h[a]=idx++;
+&#125;
+
+int dijkstra(int start)
+&#123;
+    memset(dist,0x3f,sizeof dist);
+    memset(book,0,sizeof book);
+    dist[start]=0;
+    heap.push(&#123;0,start&#125;);
+    while(heap.size())
+    &#123;
+        auto ovo=heap.top();
+        heap.pop();
+        if(book[ovo.second])continue;
+        book[ovo.second]=1;
+        for(int i=h[ovo.second];~i;i=ne[i])
+        &#123;
+            int j=e[i];
+            if(dist[j]&gt;ovo.first+w[i])
+            &#123;
+                dist[j]=ovo.first+w[i];
+                heap.push(&#123;dist[j],j&#125;);
+            &#125;
+        &#125;
+    &#125;
+    int res=0;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        int j=z[i];
+        if(dist[j]==INF)return INF;
+        else res+=dist[j];
+    &#125;
+    return res;
+&#125;
+
+int main()
+&#123;
+    memset(h,-1,sizeof h);
+    cin&gt;&gt;n&gt;&gt;p&gt;&gt;c;
+    for(int i=1;i&lt;=n;i++)cin&gt;&gt;z[i];
+    for(int i=1;i&lt;=c;i++)
+    &#123;
+        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;
+        add(t1,t2,t3);
+        add(t2,t1,t3);
+    &#125;
+    int minn=INF;
+    for(int i=1;i&lt;=p;i++)
+    &#123;
+        int res=dijkstra(i);
+        minn=min(res,minn);
+    &#125;
+    cout&lt;&lt;minn&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <h1 id="4-Acwing1126最小花费"><a href="#4-Acwing1126最小花费" class="headerlink" title="4.Acwing1126最小花费"></a><strong>4.Acwing1126最小花费</strong></h1><h2 id="题目：-3"><a href="#题目：-3" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/DBDDAFFDD2064549B9F498250DCFB470.jpg"></p>
 <h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/462193D346004EB6B7AB38BDE94DBDD9.jpg"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/46BC94BFA20F4542A117ADE5ACB26750.jpg"></p>
@@ -636,15 +956,132 @@
 <li>0-1：dijkstra</li>
 <li>&gt;0:spfa</li>
 </ol>
-<h2 id="代码（spfa）：-2"><a href="#代码（spfa）：-2" class="headerlink" title="代码（spfa）："></a><strong>代码（spfa）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=2010;</span><br><span class="line">const int M=2e5+5;</span><br><span class="line">int n,m,S,T;</span><br><span class="line">double dist[N];</span><br><span class="line">bool st[N];</span><br><span class="line">int e[M],ne[M],h[N],idx;</span><br><span class="line">double w[M];</span><br><span class="line">int q[N];</span><br><span class="line">void add(int a,int b,int c)</span><br><span class="line">&#123;</span><br><span class="line">    e[idx]=b,ne[idx]=h[a],w[idx]=(100.0-c)/100,h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void spfa()</span><br><span class="line">&#123;</span><br><span class="line">    dist[S]=1;</span><br><span class="line">    st[S]=1;</span><br><span class="line">    q[0]=S;</span><br><span class="line">    int hh=0,tt=1;</span><br><span class="line">    while(hh!=tt)</span><br><span class="line">    &#123;</span><br><span class="line">        int z=q[hh++];</span><br><span class="line">        if(hh==N)hh=0;</span><br><span class="line">        st[z]=0;</span><br><span class="line">        for(int i=h[z];~i;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            int j=e[i];</span><br><span class="line">            if(dist[j]&lt;dist[z]*w[i])</span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                dist[j]=dist[z]*w[i];</span><br><span class="line">                if(!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q[tt++]=j;</span><br><span class="line">                    if(tt==N)tt=0;</span><br><span class="line">                    st[j]=1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">    memset(h,-1,sizeof h);</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        int a,b,c;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        add(a,b,c);</span><br><span class="line">        add(b,a,c);</span><br><span class="line">    &#125;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;S,&amp;T);</span><br><span class="line">    spfa();</span><br><span class="line">    printf(&quot;%.8lf\n&quot;,100/dist[T]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码（spfa）：-2"><a href="#代码（spfa）：-2" class="headerlink" title="代码（spfa）："></a><strong>代码（spfa）：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+const int N=2010;
+const int M=2e5+5;
+int n,m,S,T;
+double dist[N];
+bool st[N];
+int e[M],ne[M],h[N],idx;
+double w[M];
+int q[N];
+void add(int a,int b,int c)
+&#123;
+    e[idx]=b,ne[idx]=h[a],w[idx]=(100.0-c)/100,h[a]=idx++;
+&#125;
 
+void spfa()
+&#123;
+    dist[S]=1;
+    st[S]=1;
+    q[0]=S;
+    int hh=0,tt=1;
+    while(hh!=tt)
+    &#123;
+        int z=q[hh++];
+        if(hh==N)hh=0;
+        st[z]=0;
+        for(int i=h[z];~i;i=ne[i])
+        &#123;
+            int j=e[i];
+            if(dist[j]&lt;dist[z]*w[i])
+            &#123;
+
+                dist[j]=dist[z]*w[i];
+                if(!st[j])
+                &#123;
+                    q[tt++]=j;
+                    if(tt==N)tt=0;
+                    st[j]=1;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    memset(h,-1,sizeof h);
+    while(m--)
+    &#123;
+        int a,b,c;
+        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);
+        add(a,b,c);
+        add(b,a,c);
+    &#125;
+    scanf(&quot;%d%d&quot;,&amp;S,&amp;T);
+    spfa();
+    printf(&quot;%.8lf\n&quot;,100/dist[T]);
+    return 0;
+&#125;
+</code></pre>
 <h1 id="5-Acwing920最优乘车"><a href="#5-Acwing920最优乘车" class="headerlink" title="5.Acwing920最优乘车"></a><strong>5.Acwing920最优乘车</strong></h1><h2 id="题目：-4"><a href="#题目：-4" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/56E885A057AB428988FA7E813805912E.jpg"></p>
 <h2 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p><strong>可以将题目看做是乘车的最少次数-1</strong></p>
 <p>将每一个站牌看做一个点，对于每一条公交路线，将线上每一个点，与它能到的点连接上一条权重为1的边，表示从该点到那个点只需乘车一次即可</p>
 <p>然后单源最短路（没想到我居然要用BFS）即可，需要特判1=N</p>
 <h3 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a><strong>注意：</strong></h3><p>因为没有说明每一条线路要经过多少站，所以这里需要使用sstream来读入相关信息</p>
-<h2 id="代码（很像spfa的bfs）："><a href="#代码（很像spfa的bfs）：" class="headerlink" title="代码（很像spfa的bfs）："></a><strong>代码（很像spfa的bfs）：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;sstream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">const int N=510;</span><br><span class="line">int m,n;</span><br><span class="line">bool g[N][N];</span><br><span class="line">int dist[N];</span><br><span class="line">int stop[N];</span><br><span class="line">int q[N];</span><br><span class="line">bool st[N];//可以没有</span><br><span class="line"></span><br><span class="line">void bfs()</span><br><span class="line">&#123;</span><br><span class="line">    int hh=0,tt=1;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    q[0]=1;</span><br><span class="line">    dist[1]=0;</span><br><span class="line">    st[1]=1;</span><br><span class="line">    while(hh&lt;=tt)</span><br><span class="line">    &#123;</span><br><span class="line">        int t=q[hh++];</span><br><span class="line">        st[t]=0;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">            if(g[t][i]&amp;&amp;dist[i]&gt;dist[t]+1)</span><br><span class="line">        &#123;</span><br><span class="line">            dist[i]=dist[t]+1;</span><br><span class="line">            if(!st[i])</span><br><span class="line">            &#123;</span><br><span class="line">                q[++tt]=i;</span><br><span class="line">                st[i]=1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">    string line;</span><br><span class="line">    getline(cin,line);</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        getline(cin,line);</span><br><span class="line">        stringstream ssin(line);</span><br><span class="line">        int cnt=0,p;</span><br><span class="line">        while(ssin&gt;&gt;p)stop[cnt++]=p;</span><br><span class="line">        for(int i=0;i&lt;cnt;i++)</span><br><span class="line">            for(int j=i+1;j&lt;cnt;j++)</span><br><span class="line">            g[stop[i]][stop[j]]=true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bfs();</span><br><span class="line">    if(dist[n]==0x3f3f3f3f)cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;</span><br><span class="line">    else cout&lt;&lt;max(dist[n]-1,0)&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码（很像spfa的bfs）："><a href="#代码（很像spfa的bfs）：" class="headerlink" title="代码（很像spfa的bfs）："></a><strong>代码（很像spfa的bfs）：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;sstream&gt;
 
+using namespace std;
+const int N=510;
+int m,n;
+bool g[N][N];
+int dist[N];
+int stop[N];
+int q[N];
+bool st[N];//可以没有
+
+void bfs()
+&#123;
+    int hh=0,tt=1;
+    memset(dist,0x3f,sizeof dist);
+    q[0]=1;
+    dist[1]=0;
+    st[1]=1;
+    while(hh&lt;=tt)
+    &#123;
+        int t=q[hh++];
+        st[t]=0;
+        for(int i=1;i&lt;=n;i++)
+            if(g[t][i]&amp;&amp;dist[i]&gt;dist[t]+1)
+        &#123;
+            dist[i]=dist[t]+1;
+            if(!st[i])
+            &#123;
+                q[++tt]=i;
+                st[i]=1;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin&gt;&gt;m&gt;&gt;n;
+    string line;
+    getline(cin,line);
+    while(m--)
+    &#123;
+        getline(cin,line);
+        stringstream ssin(line);
+        int cnt=0,p;
+        while(ssin&gt;&gt;p)stop[cnt++]=p;
+        for(int i=0;i&lt;cnt;i++)
+            for(int j=i+1;j&lt;cnt;j++)
+            g[stop[i]][stop[j]]=true;
+    &#125;
+
+    bfs();
+    if(dist[n]==0x3f3f3f3f)cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+    else cout&lt;&lt;max(dist[n]-1,0)&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <h1 id="6-Acwing903-昂贵的聘礼"><a href="#6-Acwing903-昂贵的聘礼" class="headerlink" title="6.Acwing903.昂贵的聘礼"></a><strong>6.Acwing903.昂贵的聘礼</strong></h1><h2 id="题目：-5"><a href="#题目：-5" class="headerlink" title="题目："></a><strong>题目：</strong></h2><p>年轻的探险家来到了一个印第安部落里。</p>
 <p>在那里他和酋长的女儿相爱了，于是便向酋长去求亲。</p>
 <p>酋长要他用 10000 个金币作为聘礼才答应把女儿嫁给他。</p>
@@ -670,8 +1107,67 @@
 <p>接下来 X 行每行包括两个整数 T 和 V，分别表示替代品的编号和”优惠价格”。</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/74EE6A16BBE34DA19604A0930F8FD68F.jpg"></p>
 <h2 id="思路：-5"><a href="#思路：-5" class="headerlink" title="思路："></a><strong>思路：</strong></h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/190525B0FE2C43CEA6003D5306340019.jpg"></p>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a><strong>代码：</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">const int N=110;</span><br><span class="line">const int INF=0x3f3f3f3f;</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int d[N][N],level[N];</span><br><span class="line">int dist[N];</span><br><span class="line">bool st[N];</span><br><span class="line"></span><br><span class="line">inline int dijkstra(int down,int up)//在对应区间中，从花费最小的开始枚举</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    memset(st,0,sizeof st);</span><br><span class="line">    dist[0]=0;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)//因为最后一个花费一定是酋长女儿的10000，所以不用更新n+1</span><br><span class="line">    &#123;</span><br><span class="line">        int t= -1;</span><br><span class="line">        for(int j=0;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">                if(!st[j]&amp;&amp;(t==-1||dist[t]&gt;dist[j]))</span><br><span class="line">                t=j;</span><br><span class="line">        &#125;</span><br><span class="line">        st[t]=true;</span><br><span class="line">        for(int j=1;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(level[j]&gt;=down&amp;&amp;level[j]&lt;=up)//只有该点于等级范围内时才开始更新</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]=min(dist[j],dist[t]+d[t][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dist[1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;m&gt;&gt;n;</span><br><span class="line">    memset(d,0x3f,sizeof d);</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int price,cnt;</span><br><span class="line">        cin&gt;&gt;d[0][i]&gt;&gt;level[i]&gt;&gt;cnt;</span><br><span class="line">        while(cnt--)</span><br><span class="line">        &#123;</span><br><span class="line">            int id,cost;</span><br><span class="line">            cin&gt;&gt;id&gt;&gt;cost;</span><br><span class="line">            d[id][i]=cost;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int res=INF;</span><br><span class="line">    for(int i=level[1]-m;i&lt;=level[1];i++)//枚举所有可行区间的最小值</span><br><span class="line">    &#123;</span><br><span class="line">        res=min(res,dijkstra(i,i+m));</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a><strong>代码：</strong></h2><pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
 
+using namespace std;
+const int N=110;
+const int INF=0x3f3f3f3f;
+
+int n,m;
+int d[N][N],level[N];
+int dist[N];
+bool st[N];
+
+inline int dijkstra(int down,int up)//在对应区间中，从花费最小的开始枚举
+&#123;
+    memset(dist,0x3f,sizeof dist);
+    memset(st,0,sizeof st);
+    dist[0]=0;
+    for(int i=1;i&lt;=n;i++)//因为最后一个花费一定是酋长女儿的10000，所以不用更新n+1
+    &#123;
+        int t= -1;
+        for(int j=0;j&lt;=n;j++)
+        &#123;
+                if(!st[j]&amp;&amp;(t==-1||dist[t]&gt;dist[j]))
+                t=j;
+        &#125;
+        st[t]=true;
+        for(int j=1;j&lt;=n;j++)
+        &#123;
+            if(level[j]&gt;=down&amp;&amp;level[j]&lt;=up)//只有该点于等级范围内时才开始更新
+            &#123;
+                dist[j]=min(dist[j],dist[t]+d[t][j]);
+            &#125;
+        &#125;
+    &#125;
+    return dist[1];
+&#125;
+
+int main()
+&#123;
+    cin&gt;&gt;m&gt;&gt;n;
+    memset(d,0x3f,sizeof d);
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        int price,cnt;
+        cin&gt;&gt;d[0][i]&gt;&gt;level[i]&gt;&gt;cnt;
+        while(cnt--)
+        &#123;
+            int id,cost;
+            cin&gt;&gt;id&gt;&gt;cost;
+            d[id][i]=cost;
+        &#125;
+    &#125;
+    int res=INF;
+    for(int i=level[1]-m;i&lt;=level[1];i++)//枚举所有可行区间的最小值
+    &#123;
+        res=min(res,dijkstra(i,i+m));
+    &#125;
+    cout&lt;&lt;res&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p><del>我草，定义了一个局部变量，一个重名全局变量，然后害我debug一个小时，我草啊</del></p>
 
                 

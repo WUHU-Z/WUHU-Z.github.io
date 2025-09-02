@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -595,14 +596,73 @@
 <p>注意这里是单向公路，不过图的存储照旧</p>
 <p>使用全局变量res更新每次找到的路径的最小值，此外用book数组存储哪些城市已经走过，防止出现死循环</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 9999999</span><br><span class="line">int res=INF,book[101],n,e[101][101];</span><br><span class="line"></span><br><span class="line">//cur是当前所在城市编号，dis是当前已经走过的路程</span><br><span class="line">void dfs(int cur,int dis)</span><br><span class="line">&#123;</span><br><span class="line">    int j;</span><br><span class="line">    //如果当前走过的路程已经大于之前找到的最短路，则没有必要往下尝试了，立即返回</span><br><span class="line">    if(dis&gt;res)return ;</span><br><span class="line">    if(cur==n)//判断是否到达了n城市</span><br><span class="line">    &#123;</span><br><span class="line">        if(dis&lt;res)res=dis;//更新最小值</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    for(j=1;j&lt;=n;j++)//从1号城市到n号城市依次尝试</span><br><span class="line">    &#123;</span><br><span class="line">        //判断当前城市cur到城市j是否有路,并判断城市j是否在已经走过的路程中</span><br><span class="line">        if(e[cur][j]!=INF&amp;&amp;book[j]==0)</span><br><span class="line">        &#123;</span><br><span class="line">            book[j]=1;//标记城市j已经在路径中</span><br><span class="line">            dfs(j,dis+e[cur][j]);//从城市J再出发,继续寻找目标城市</span><br><span class="line">            book[j]=0;//之前一步探索完毕之后，取消对城市j的标记</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,j,m,a,b,c;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    //初始化图</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">    for(j=1;j&lt;=n;j++)</span><br><span class="line">        if(i==j)e[i][j]=0;</span><br><span class="line">        else e[i][j]=INF;</span><br><span class="line">    //读入边</span><br><span class="line">    for(i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">        e[a][b]=c;//有向图（单向图）</span><br><span class="line">    &#125;</span><br><span class="line">    //从1号城市出发</span><br><span class="line">    book[1]=1;//标记1号城市已经在路径中</span><br><span class="line">    dfs(1,0);//1表示当前城市所在编号，0表示目前已经走过的路程</span><br><span class="line">    cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define INF 9999999
+int res=INF,book[101],n,e[101][101];
 
+//cur是当前所在城市编号，dis是当前已经走过的路程
+void dfs(int cur,int dis)
+&#123;
+    int j;
+    //如果当前走过的路程已经大于之前找到的最短路，则没有必要往下尝试了，立即返回
+    if(dis&gt;res)return ;
+    if(cur==n)//判断是否到达了n城市
+    &#123;
+        if(dis&lt;res)res=dis;//更新最小值
+        return ;
+    &#125;
+    for(j=1;j&lt;=n;j++)//从1号城市到n号城市依次尝试
+    &#123;
+        //判断当前城市cur到城市j是否有路,并判断城市j是否在已经走过的路程中
+        if(e[cur][j]!=INF&amp;&amp;book[j]==0)
+        &#123;
+            book[j]=1;//标记城市j已经在路径中
+            dfs(j,dis+e[cur][j]);//从城市J再出发,继续寻找目标城市
+            book[j]=0;//之前一步探索完毕之后，取消对城市j的标记
+        &#125;
+    &#125;
+    return ;
+&#125;
+
+int main()
+&#123;
+    int i,j,m,a,b,c;
+    cin&gt;&gt;n&gt;&gt;m;
+    //初始化图
+    for(i=1;i&lt;=n;i++)
+    for(j=1;j&lt;=n;j++)
+        if(i==j)e[i][j]=0;
+        else e[i][j]=INF;
+    //读入边
+    for(i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
+        e[a][b]=c;//有向图（单向图）
+    &#125;
+    //从1号城市出发
+    book[1]=1;//标记1号城市已经在路径中
+    dfs(1,0);//1表示当前城市所在编号，0表示目前已经走过的路程
+    cout&lt;&lt;res&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p>Inpuit</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">5 8</span><br><span class="line">1 2 2</span><br><span class="line">1 5 10</span><br><span class="line">2 3 3</span><br><span class="line">2 5 7</span><br><span class="line">3 1 4</span><br><span class="line">3 4 4</span><br><span class="line">4 5 5</span><br><span class="line">5 3 3</span><br></pre></td></tr></table></figure>
-
+<pre><code>5 8
+1 2 2
+1 5 10
+2 3 3
+2 5 7
+3 1 4
+3 4 4
+4 5 5
+5 3 3
+</code></pre>
 <p>Output</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9</span><br></pre></td></tr></table></figure>
-
+<pre><code>9
+</code></pre>
 
                 
             </div>

@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -648,8 +649,21 @@
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/3999429338EE4D2E87DD5480B7BDE022.jpg"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/34F5B99CF6EE4D36AF355922B0F1915C.jpg"></p>
 <h2 id="矩阵计算在代码中的使用"><a href="#矩阵计算在代码中的使用" class="headerlink" title="矩阵计算在代码中的使用"></a>矩阵计算在代码中的使用</h2><p><strong>1.矩阵乘法</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Matrix Mul(Matrix a,Matrix b)//矩阵乘法</span><br><span class="line">&#123;</span><br><span class="line">    Matrix temp;</span><br><span class="line">    for(int i=0;i&lt;n;i++)</span><br><span class="line">        for(int j=0;j&lt;n;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp.arr[i][j]=0;</span><br><span class="line">        for(int k=0;k&lt;n;k++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp.arr[i][j]=(temp.arr[i][j]+a.arr[i][k]*b.arr[k][j]%mod)%mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>Matrix Mul(Matrix a,Matrix b)//矩阵乘法
+&#123;
+    Matrix temp;
+    for(int i=0;i&lt;n;i++)
+        for(int j=0;j&lt;n;j++)
+    &#123;
+        temp.arr[i][j]=0;
+        for(int k=0;k&lt;n;k++)
+        &#123;
+            temp.arr[i][j]=(temp.arr[i][j]+a.arr[i][k]*b.arr[k][j]%mod)%mod;
+        &#125;
+    &#125;
+    return temp;
+&#125;
+</code></pre>
 <p><strong>递归矩阵</strong></p>
 <p>基于矩阵乘法的特性，将需要递归的部分看做是一个矩阵（一般为单行矩阵），然后构造出他们的递归矩阵来，使得每一个矩阵中的元素通过矩阵间的相乘得到下一个部分元素，最后得到所求值的过程</p>
 <p><strong>这类题目一般的难点就是：①改进递归方程</strong></p>
@@ -667,24 +681,132 @@
 <p>Output</p>
 <p>共T行,每行一个正整数表示所求的答案</p>
 <p>Sample Input</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">3</span><br><span class="line">6</span><br><span class="line">9</span><br><span class="line">12</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
-
+<pre><code>5
+3
+6
+9
+12
+15
+</code></pre>
 <p>Sample Output</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">31</span><br><span class="line">700</span><br><span class="line">7486</span><br><span class="line">64651</span><br><span class="line">527023</span><br></pre></td></tr></table></figure>
-
+<pre><code>31
+700
+7486
+64651
+527023
+</code></pre>
 <p><strong>思路：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/89ab283d2527621bbc54b4e463914536.jpg"></p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define mod 123456789</span><br><span class="line">#define maxn 6</span><br><span class="line">typedef long long ll;</span><br><span class="line">struct mat&#123;</span><br><span class="line">	ll a[maxn][maxn];</span><br><span class="line">	mat operator*(const mat b)&#123;//运算符重载</span><br><span class="line">		mat res;</span><br><span class="line">		memset(res.a,0,sizeof(res.a));</span><br><span class="line">		for(int i=0;i&lt;maxn;++i)</span><br><span class="line">			for(int j=0;j&lt;maxn;++j)</span><br><span class="line">				for(int k=0;k&lt;maxn;++k)</span><br><span class="line">					res.a[i][j]=(res.a[i][j]+a[i][k]*b.a[k][j]%mod)%mod;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">ll mat_pow(ll n)&#123;</span><br><span class="line">	if(n&lt;3)return n;</span><br><span class="line">	else n-=2;</span><br><span class="line">	mat c=&#123;//构建递推矩阵</span><br><span class="line">		1,2,1,3,3,1,</span><br><span class="line">		1,0,0,0,0,0,</span><br><span class="line">		0,0,1,3,3,1,</span><br><span class="line">		0,0,0,1,2,1,</span><br><span class="line">		0,0,0,0,1,1,</span><br><span class="line">		0,0,0,0,0,1</span><br><span class="line">	&#125;,res=&#123;//构建单位矩阵</span><br><span class="line">		1,0,0,0,0,0,</span><br><span class="line">		0,1,0,0,0,0,</span><br><span class="line">		0,0,1,0,0,0,</span><br><span class="line">		0,0,0,1,0,0,</span><br><span class="line">		0,0,0,0,1,0,</span><br><span class="line">		0,0,0,0,0,1</span><br><span class="line">	&#125;;</span><br><span class="line">	while(n)&#123;</span><br><span class="line">		if(n&amp;1)res=res*c;</span><br><span class="line">		c=c*c;</span><br><span class="line">		n&gt;&gt;=1;</span><br><span class="line">	&#125;</span><br><span class="line">	res=res*mat&#123;</span><br><span class="line">		2,0,0,0,0,0,</span><br><span class="line">		1,0,0,0,0,0,</span><br><span class="line">		8,0,0,0,0,0,</span><br><span class="line">		4,0,0,0,0,0,</span><br><span class="line">		2,0,0,0,0,0,</span><br><span class="line">		1,0,0,0,0,0</span><br><span class="line">	&#125;;</span><br><span class="line">	return res.a[0][0]%mod;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    	ll t,n;	scanf(&quot;%lld&quot;,&amp;t);</span><br><span class="line">    	while(t--)scanf(&quot;%lld&quot;,&amp;n),printf(&quot;%lld\n&quot;,mat_pow(n));</span><br><span class="line">    	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>#include&lt;bits/stdc++.h&gt;
+#define mod 123456789
+#define maxn 6
+typedef long long ll;
+struct mat&#123;
+    ll a[maxn][maxn];
+    mat operator*(const mat b)&#123;//运算符重载
+        mat res;
+        memset(res.a,0,sizeof(res.a));
+        for(int i=0;i&lt;maxn;++i)
+            for(int j=0;j&lt;maxn;++j)
+                for(int k=0;k&lt;maxn;++k)
+                    res.a[i][j]=(res.a[i][j]+a[i][k]*b.a[k][j]%mod)%mod;
+        return res;
+    &#125;
+&#125;;
+ll mat_pow(ll n)&#123;
+    if(n&lt;3)return n;
+    else n-=2;
+    mat c=&#123;//构建递推矩阵
+        1,2,1,3,3,1,
+        1,0,0,0,0,0,
+        0,0,1,3,3,1,
+        0,0,0,1,2,1,
+        0,0,0,0,1,1,
+        0,0,0,0,0,1
+    &#125;,res=&#123;//构建单位矩阵
+        1,0,0,0,0,0,
+        0,1,0,0,0,0,
+        0,0,1,0,0,0,
+        0,0,0,1,0,0,
+        0,0,0,0,1,0,
+        0,0,0,0,0,1
+    &#125;;
+    while(n)&#123;
+        if(n&amp;1)res=res*c;
+        c=c*c;
+        n&gt;&gt;=1;
+    &#125;
+    res=res*mat&#123;
+        2,0,0,0,0,0,
+        1,0,0,0,0,0,
+        8,0,0,0,0,0,
+        4,0,0,0,0,0,
+        2,0,0,0,0,0,
+        1,0,0,0,0,0
+    &#125;;
+    return res.a[0][0]%mod;
+&#125;
+int main()&#123;
+        ll t,n;    scanf(&quot;%lld&quot;,&amp;t);
+        while(t--)scanf(&quot;%lld&quot;,&amp;n),printf(&quot;%lld\n&quot;,mat_pow(n));
+        return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路：</strong></p>
 <p>找到规律后硬做即可</p>
 <h2 id="hdu5974"><a href="#hdu5974" class="headerlink" title="hdu5974"></a>hdu5974</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/A69E51F0D5204330AE51D93351456CCC.jpg"></p>
 <p><strong>思路：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/80f974a234f41f04ccd4745d87f8c6dd.png"><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">long long gcd(long long  a,long long  b)</span><br><span class="line">&#123;</span><br><span class="line">     return b?gcd(b,a%b):a;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"> </span><br><span class="line">    long long x,y,a,b;</span><br><span class="line">    while(scanf(&quot;%lld%lld&quot;,&amp;a,&amp;b)!=-1)</span><br><span class="line">    &#123;</span><br><span class="line">        long long  gcdab=gcd(a,b);</span><br><span class="line">        long long bb=b*gcdab;</span><br><span class="line">        long long derta=a*a-4*bb;</span><br><span class="line">        long long ansx=0,ansy=0,f=0;</span><br><span class="line">       double aa=sqrt(derta);</span><br><span class="line">       long long aaa=(long long)aa;</span><br><span class="line">       if(aaa*aaa==derta)</span><br><span class="line">        &#123;</span><br><span class="line">            x=(a+aaa)/2;</span><br><span class="line">            y=bb/x;</span><br><span class="line">            if(x+y==a)</span><br><span class="line">            &#123;</span><br><span class="line">                ansx=x,ansy=y,f=1;</span><br><span class="line">            &#125;</span><br><span class="line">            x=(a-aaa)/2;</span><br><span class="line">            y=bb/x;</span><br><span class="line">            if(x+y==a)</span><br><span class="line">            &#123;</span><br><span class="line">                ansx=x,ansy=y,f=1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">        if(f==0)</span><br><span class="line">            printf(&quot;No Solution\n&quot;);</span><br><span class="line">        else</span><br><span class="line">            printf(&quot;%lld %lld\n&quot;,ansx,ansy);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>#include &lt;iostream&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+using namespace std;
+long long gcd(long long  a,long long  b)
+&#123;
+     return b?gcd(b,a%b):a;
+&#125;
+ 
+ 
+int main()
+&#123;
+ 
+    long long x,y,a,b;
+    while(scanf(&quot;%lld%lld&quot;,&amp;a,&amp;b)!=-1)
+    &#123;
+        long long  gcdab=gcd(a,b);
+        long long bb=b*gcdab;
+        long long derta=a*a-4*bb;
+        long long ansx=0,ansy=0,f=0;
+       double aa=sqrt(derta);
+       long long aaa=(long long)aa;
+       if(aaa*aaa==derta)
+        &#123;
+            x=(a+aaa)/2;
+            y=bb/x;
+            if(x+y==a)
+            &#123;
+                ansx=x,ansy=y,f=1;
+            &#125;
+            x=(a-aaa)/2;
+            y=bb/x;
+            if(x+y==a)
+            &#123;
+                ansx=x,ansy=y,f=1;
+            &#125;
+        &#125;
+ 
+ 
+        if(f==0)
+            printf(&quot;No Solution\n&quot;);
+        else
+            printf(&quot;%lld %lld\n&quot;,ansx,ansy);
+ 
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路</strong></p>
 <p>利用数论解方程即可</p>
 <h2 id="hdu2604"><a href="#hdu2604" class="headerlink" title="hdu2604"></a>hdu2604</h2><p><strong>题目</strong></p>
@@ -692,8 +814,73 @@
 <p><strong>思路：</strong></p>
 <p>感觉是利用了递推的思想，需要找出不同长度的队列之间的递推关系，最后得到公式**f(n)=f(n-1)+f(n-3)+f(n-4)**，然后使用矩阵快速幂</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,mod;</span><br><span class="line">int a[6] = &#123;1,2,4,6,9,15&#125;;//提前列出前6种结果</span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int map[4][4];</span><br><span class="line">&#125;unit,s;</span><br><span class="line">void initial()//初始化</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    memset(s.map,0,sizeof(node));</span><br><span class="line">    for(i = 1; i &lt; 4; i ++)</span><br><span class="line">    s.map[i][i-1] = 1;</span><br><span class="line">    s.map[0][0] = s.map[0][2] = s.map[0][3] = 1;//初始化递推矩阵</span><br><span class="line"></span><br><span class="line">    memset(unit.map,0,sizeof(node));</span><br><span class="line">    for(i = 0; i &lt; 4; i ++)//单位矩阵</span><br><span class="line">    unit.map[i][i] = 1;</span><br><span class="line">&#125;</span><br><span class="line">node Mul(node a,node b)//矩阵乘法</span><br><span class="line">&#123;</span><br><span class="line">    node c;</span><br><span class="line">    int i,j,k;</span><br><span class="line">    for(i = 0; i &lt; 4; i ++)</span><br><span class="line">    for(j = 0; j &lt; 4; j ++)</span><br><span class="line">    &#123;</span><br><span class="line">        c.map[i][j] = 0;</span><br><span class="line">        for(k = 0; k &lt; 4; k ++)</span><br><span class="line">        c.map[i][j] += (a.map[i][k]*b.map[k][j])%mod;</span><br><span class="line">        c.map[i][j] %= mod;</span><br><span class="line">    &#125;</span><br><span class="line">    return c;</span><br><span class="line">&#125;</span><br><span class="line">void Matrix()</span><br><span class="line">&#123;</span><br><span class="line">    while(n)//快速幂</span><br><span class="line">    &#123;</span><br><span class="line">        if(n&amp;1) unit = Mul(unit,s);</span><br><span class="line">        n &gt;&gt;= 1;</span><br><span class="line">        s = Mul(s,s);</span><br><span class="line">    &#125;</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for(int i = 0; i &lt; 4; i ++)</span><br><span class="line">    ans += (unit.map[0][i]*a[5-i])%mod;//跟据矩阵乘法的原理得出递推结论</span><br><span class="line">    printf(&quot;%d\n&quot;,ans%mod);</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;mod))</span><br><span class="line">    &#123;</span><br><span class="line">        if(n &lt;= 5)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%d\n&quot;,a[n]%mod);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        n -= 5;</span><br><span class="line">        initial();</span><br><span class="line">        Matrix();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+int n,mod;
+int a[6] = &#123;1,2,4,6,9,15&#125;;//提前列出前6种结果
+struct node
+&#123;
+    int map[4][4];
+&#125;unit,s;
+void initial()//初始化
+&#123;
+    int i;
+    memset(s.map,0,sizeof(node));
+    for(i = 1; i &lt; 4; i ++)
+    s.map[i][i-1] = 1;
+    s.map[0][0] = s.map[0][2] = s.map[0][3] = 1;//初始化递推矩阵
 
+    memset(unit.map,0,sizeof(node));
+    for(i = 0; i &lt; 4; i ++)//单位矩阵
+    unit.map[i][i] = 1;
+&#125;
+node Mul(node a,node b)//矩阵乘法
+&#123;
+    node c;
+    int i,j,k;
+    for(i = 0; i &lt; 4; i ++)
+    for(j = 0; j &lt; 4; j ++)
+    &#123;
+        c.map[i][j] = 0;
+        for(k = 0; k &lt; 4; k ++)
+        c.map[i][j] += (a.map[i][k]*b.map[k][j])%mod;
+        c.map[i][j] %= mod;
+    &#125;
+    return c;
+&#125;
+void Matrix()
+&#123;
+    while(n)//快速幂
+    &#123;
+        if(n&amp;1) unit = Mul(unit,s);
+        n &gt;&gt;= 1;
+        s = Mul(s,s);
+    &#125;
+    int ans = 0;
+    for(int i = 0; i &lt; 4; i ++)
+    ans += (unit.map[0][i]*a[5-i])%mod;//跟据矩阵乘法的原理得出递推结论
+    printf(&quot;%d\n&quot;,ans%mod);
+&#125;
+int main()
+&#123;
+    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;mod))
+    &#123;
+        if(n &lt;= 5)
+        &#123;
+            printf(&quot;%d\n&quot;,a[n]%mod);
+            continue;
+        &#125;
+        n -= 5;
+        initial();
+        Matrix();
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p>代码理解：找到对应的递推公式以及递推矩阵即可</p>
 <h2 id="hdu2793"><a href="#hdu2793" class="headerlink" title="hdu2793"></a>hdu2793</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/3020DA8D69A740699FE09292F223AADB.jpg"></p>
@@ -701,8 +888,67 @@
 <p>因为要求区间和，所以可以利用前缀和的思想，相减得到最后值</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/98448D4F7B3D42CEACFD605BDA4534A1.jpg"></p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define LL long long</span><br><span class="line">#define MXM 4</span><br><span class="line">#define mod(x) ((x)%1000000007)</span><br><span class="line">int L, M;</span><br><span class="line">int A[MXM][MXM]=&#123;&#123;1,1,1,1&#125;,&#123;0,1,1,1&#125;,&#123;0,1,0,0&#125;,&#123;0,0,1,0&#125;&#125;;//构建递推矩阵</span><br><span class="line"></span><br><span class="line">struct mat&#123; </span><br><span class="line">    LL d[MXM][MXM];</span><br><span class="line">    mat operator*(const mat x)&#123;//结构体中对*号的重载</span><br><span class="line">        mat ret;</span><br><span class="line">        LL tmp;</span><br><span class="line">        for(int i = 0; i &lt; MXM; i++)&#123;</span><br><span class="line">            for(int j = 0; j &lt; MXM; j++)&#123;</span><br><span class="line">                tmp = 0;</span><br><span class="line">                for(int k = 0; k &lt; MXM; k++)&#123;</span><br><span class="line">                    tmp = mod(tmp + d[i][k]* x.d[k][j]);</span><br><span class="line">                &#125;</span><br><span class="line">                ret.d[i][j] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">void init_unit()&#123;//这是结构体中对于单位矩阵的赋值函数</span><br><span class="line">        for(int i = 0; i &lt; MXM; i++)</span><br><span class="line">            for(int j = 0; j &lt; MXM; j++) d[i][j] = i == j ? 1 : 0;</span><br><span class="line">    &#125;</span><br><span class="line">    void init()&#123;//结构体中对递归矩阵的赋值函数</span><br><span class="line">        for(int i = 0; i &lt; MXM; i++)</span><br><span class="line">            for(int j = 0; j &lt; MXM; j++) d[i][j] = A[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;ma;</span><br><span class="line">mat matrixPow(mat base, int pow)&#123;</span><br><span class="line">    mat res;</span><br><span class="line">    res.init_unit();//初始化单位矩阵</span><br><span class="line">    while(pow)&#123;//快速幂</span><br><span class="line">        if(pow &amp; 1) res = res * base;</span><br><span class="line">        base = base * base;</span><br><span class="line">        pow &gt;&gt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int sum(int x)&#123;</span><br><span class="line">    if(x &lt; 0) return 0;</span><br><span class="line">    else if(x == 0) return 1;</span><br><span class="line">    else if(x == 1) return 2;</span><br><span class="line">    else if(x == 2) return 3;</span><br><span class="line">    ma.init();//初始化对应的递归矩阵</span><br><span class="line">    ma = matrixPow(ma, x-2);</span><br><span class="line">    return mod(3*ma.d[0][0]+ma.d[0][1]+ma.d[0][2]+ma.d[0][3]);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int a, b;</span><br><span class="line">    while(scanf(&quot;%d%d&quot;, &amp;a, &amp;b) == 2)&#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, mod(sum(b)-sum(a-1)+1000000007));//为了防止出现负数，所以需要+mod</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+#define LL long long
+#define MXM 4
+#define mod(x) ((x)%1000000007)
+int L, M;
+int A[MXM][MXM]=&#123;&#123;1,1,1,1&#125;,&#123;0,1,1,1&#125;,&#123;0,1,0,0&#125;,&#123;0,0,1,0&#125;&#125;;//构建递推矩阵
 
+struct mat&#123; 
+    LL d[MXM][MXM];
+    mat operator*(const mat x)&#123;//结构体中对*号的重载
+        mat ret;
+        LL tmp;
+        for(int i = 0; i &lt; MXM; i++)&#123;
+            for(int j = 0; j &lt; MXM; j++)&#123;
+                tmp = 0;
+                for(int k = 0; k &lt; MXM; k++)&#123;
+                    tmp = mod(tmp + d[i][k]* x.d[k][j]);
+                &#125;
+                ret.d[i][j] = tmp;
+            &#125;
+        &#125;
+        return ret;
+    &#125;
+    
+void init_unit()&#123;//这是结构体中对于单位矩阵的赋值函数
+        for(int i = 0; i &lt; MXM; i++)
+            for(int j = 0; j &lt; MXM; j++) d[i][j] = i == j ? 1 : 0;
+    &#125;
+    void init()&#123;//结构体中对递归矩阵的赋值函数
+        for(int i = 0; i &lt; MXM; i++)
+            for(int j = 0; j &lt; MXM; j++) d[i][j] = A[i][j];
+    &#125;
+&#125;ma;
+mat matrixPow(mat base, int pow)&#123;
+    mat res;
+    res.init_unit();//初始化单位矩阵
+    while(pow)&#123;//快速幂
+        if(pow &amp; 1) res = res * base;
+        base = base * base;
+        pow &gt;&gt;= 1;
+    &#125;
+    return res;
+&#125;
+int sum(int x)&#123;
+    if(x &lt; 0) return 0;
+    else if(x == 0) return 1;
+    else if(x == 1) return 2;
+    else if(x == 2) return 3;
+    ma.init();//初始化对应的递归矩阵
+    ma = matrixPow(ma, x-2);
+    return mod(3*ma.d[0][0]+ma.d[0][1]+ma.d[0][2]+ma.d[0][3]);
+&#125;
+int main()&#123;
+    int a, b;
+    while(scanf(&quot;%d%d&quot;, &amp;a, &amp;b) == 2)&#123;
+        printf(&quot;%d\n&quot;, mod(sum(b)-sum(a-1)+1000000007));//为了防止出现负数，所以需要+mod
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p>代码理解：找出对应的递推矩阵即可</p>
 <h2 id="hdu3306"><a href="#hdu3306" class="headerlink" title="hdu3306"></a>hdu3306</h2><p><strong>题目</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/768FEEDDEC9E4F81910FE1A67710B524.jpg"></p>
@@ -716,8 +962,71 @@
 <p><img src="https://gitee.com/Vagray/wuhu-z/raw/34b4d764d407f17281df3eafce22e67db5ee0438/325141809673.png"></p>
 <p>所以矩阵A即为所求</p>
 <p><strong>代码</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N=3e5+10;</span><br><span class="line">const int maxn=10;</span><br><span class="line">const ll Mod = 10007;</span><br><span class="line">ll tmp[maxn][maxn];</span><br><span class="line">ll a[maxn][maxn];//存放加速幂计算.矩阵</span><br><span class="line">ll res[maxn][maxn];//存放n次方的矩阵</span><br><span class="line"></span><br><span class="line">void multi(ll a[][maxn],ll b[][maxn],int n)</span><br><span class="line">&#123;</span><br><span class="line">    int i,j,k;</span><br><span class="line">    memset(tmp,0,sizeof tmp);</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        for(j=1;j&lt;=n;j++)</span><br><span class="line">            for(k=1;k&lt;=n;k++)</span><br><span class="line">            &#123;</span><br><span class="line">                tmp[i][j]+=a[i][k]*b[k][j];</span><br><span class="line">                tmp[i][j]%=Mod;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        for(j=1;j&lt;=n;j++)</span><br><span class="line">           a[i][j]=tmp[i][j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void Pow(ll a[][maxn],ll m,ll n)//n是矩阵的大小</span><br><span class="line">&#123;</span><br><span class="line">    for(int i=1;i&lt;maxn;i++)</span><br><span class="line">        for(int j=1;j&lt;maxn;j++)</span><br><span class="line">        res[i][j]=(i==j);</span><br><span class="line">    while(m)</span><br><span class="line">    &#123;</span><br><span class="line">        if(m&amp;1)multi(res,a,n);</span><br><span class="line">        multi(a,a,n);</span><br><span class="line">        m&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ll n,x,y;</span><br><span class="line">    while((scanf(&quot;%d%d%d&quot;,&amp;n,&amp;x,&amp;y)!=EOF))</span><br><span class="line">    &#123;</span><br><span class="line">        x%=Mod;</span><br><span class="line">        y%=Mod;</span><br><span class="line">        a[1][1]=1;a[1][2]=x*x;a[1][3]=y*y;a[1][4]=2*x*y;</span><br><span class="line">        a[2][1]=0;a[2][2]=x*x;a[2][3]=y*y;a[2][4]=2*x*y;</span><br><span class="line">        a[3][1]=0;a[3][2]=1  ;a[3][3]=0  ;a[3][4]=0    ;</span><br><span class="line">        a[4][1]=0;a[4][2]=x  ;a[4][3]=0  ;a[4][4]=y    ;</span><br><span class="line">        Pow(a,n-1,4);</span><br><span class="line">        ll ans=0;</span><br><span class="line">        ans=(ans+2*res[1][1])%Mod;</span><br><span class="line">        ans=(ans+res[1][2])%Mod;</span><br><span class="line">        ans=(ans+res[1][3])%Mod;</span><br><span class="line">        ans=(ans+res[1][4])%Mod;</span><br><span class="line">        cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#define ll long long
+using namespace std;
 
+const int N=3e5+10;
+const int maxn=10;
+const ll Mod = 10007;
+ll tmp[maxn][maxn];
+ll a[maxn][maxn];//存放加速幂计算.矩阵
+ll res[maxn][maxn];//存放n次方的矩阵
+
+void multi(ll a[][maxn],ll b[][maxn],int n)
+&#123;
+    int i,j,k;
+    memset(tmp,0,sizeof tmp);
+    for(i=1;i&lt;=n;i++)
+        for(j=1;j&lt;=n;j++)
+            for(k=1;k&lt;=n;k++)
+            &#123;
+                tmp[i][j]+=a[i][k]*b[k][j];
+                tmp[i][j]%=Mod;
+            &#125;
+
+    for(i=1;i&lt;=n;i++)
+        for(j=1;j&lt;=n;j++)
+           a[i][j]=tmp[i][j];
+&#125;
+
+
+void Pow(ll a[][maxn],ll m,ll n)//n是矩阵的大小
+&#123;
+    for(int i=1;i&lt;maxn;i++)
+        for(int j=1;j&lt;maxn;j++)
+        res[i][j]=(i==j);
+    while(m)
+    &#123;
+        if(m&amp;1)multi(res,a,n);
+        multi(a,a,n);
+        m&gt;&gt;=1;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    ll n,x,y;
+    while((scanf(&quot;%d%d%d&quot;,&amp;n,&amp;x,&amp;y)!=EOF))
+    &#123;
+        x%=Mod;
+        y%=Mod;
+        a[1][1]=1;a[1][2]=x*x;a[1][3]=y*y;a[1][4]=2*x*y;
+        a[2][1]=0;a[2][2]=x*x;a[2][3]=y*y;a[2][4]=2*x*y;
+        a[3][1]=0;a[3][2]=1  ;a[3][3]=0  ;a[3][4]=0    ;
+        a[4][1]=0;a[4][2]=x  ;a[4][3]=0  ;a[4][4]=y    ;
+        Pow(a,n-1,4);
+        ll ans=0;
+        ans=(ans+2*res[1][1])%Mod;
+        ans=(ans+res[1][2])%Mod;
+        ans=(ans+res[1][3])%Mod;
+        ans=(ans+res[1][4])%Mod;
+        cout&lt;&lt;ans&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码理解：</strong></p>
 <p>与之前的题目类似，通过矩阵算法+快速幂计算</p>
 <h2 id="hdu-1575"><a href="#hdu-1575" class="headerlink" title="hdu 1575"></a>hdu 1575</h2><p><strong>题目：</strong></p>
@@ -725,8 +1034,72 @@
 <p><strong>思路：</strong></p>
 <p>起初是打算先将所有的项相加然后再快速幂，读完题目后发现需要先对矩阵使用快速幂，再进行求和，所以使用快速幂+矩阵乘法运算即可。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int mod = 9973;//取模值</span><br><span class="line">int n;</span><br><span class="line">struct Matrix</span><br><span class="line">&#123;</span><br><span class="line">    int arr[20][20];</span><br><span class="line">&#125;init,tmp;//定义矩阵结构体</span><br><span class="line"></span><br><span class="line">Matrix Mul(Matrix a,Matrix b)//矩阵乘法</span><br><span class="line">&#123;</span><br><span class="line">    Matrix temp;</span><br><span class="line">    for(int i=0;i&lt;n;i++)</span><br><span class="line">        for(int j=0;j&lt;n;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp.arr[i][j]=0;</span><br><span class="line">        for(int k=0;k&lt;n;k++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp.arr[i][j]=(temp.arr[i][j]+a.arr[i][k]*b.arr[k][j]%mod)%mod;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Matrix Pow(Matrix ans,Matrix a,int x)//矩阵的快速幂</span><br><span class="line">&#123;</span><br><span class="line">    while(x)//快速幂模板</span><br><span class="line">    &#123;</span><br><span class="line">        if(x&amp;1)ans=Mul(ans,a);</span><br><span class="line">        x&gt;&gt;=1;</span><br><span class="line">        a=Mul(a,a);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        int k;</span><br><span class="line">        cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">        for(int i=0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=0;j&lt;n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                cin&gt;&gt;init.arr[i][j];</span><br><span class="line">                tmp.arr[i][j]=init.arr[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Matrix ans = Pow(init,tmp,k-1);//因为我们一开始将单元矩阵赋初值，所以</span><br><span class="line">        //相当于少乘一次方</span><br><span class="line">        int res=0;</span><br><span class="line">        for(int i=0;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            res=(res+ans.arr[i][i])%mod;//将得出的矩阵求它的迹</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
 
+using namespace std;
+
+const int mod = 9973;//取模值
+int n;
+struct Matrix
+&#123;
+    int arr[20][20];
+&#125;init,tmp;//定义矩阵结构体
+
+Matrix Mul(Matrix a,Matrix b)//矩阵乘法
+&#123;
+    Matrix temp;
+    for(int i=0;i&lt;n;i++)
+        for(int j=0;j&lt;n;j++)
+    &#123;
+        temp.arr[i][j]=0;
+        for(int k=0;k&lt;n;k++)
+        &#123;
+            temp.arr[i][j]=(temp.arr[i][j]+a.arr[i][k]*b.arr[k][j]%mod)%mod;
+        &#125;
+    &#125;
+    return temp;
+&#125;
+
+Matrix Pow(Matrix ans,Matrix a,int x)//矩阵的快速幂
+&#123;
+    while(x)//快速幂模板
+    &#123;
+        if(x&amp;1)ans=Mul(ans,a);
+        x&gt;&gt;=1;
+        a=Mul(a,a);
+    &#125;
+    return ans;
+&#125;
+
+
+int main()
+&#123;
+    int t;
+    cin&gt;&gt;t;
+    while(t--)
+    &#123;
+        int k;
+        cin&gt;&gt;n&gt;&gt;k;
+        for(int i=0;i&lt;n;i++)
+        &#123;
+            for(int j=0;j&lt;n;j++)
+            &#123;
+                cin&gt;&gt;init.arr[i][j];
+                tmp.arr[i][j]=init.arr[i][j];
+            &#125;
+        &#125;
+        Matrix ans = Pow(init,tmp,k-1);//因为我们一开始将单元矩阵赋初值，所以
+        //相当于少乘一次方
+        int res=0;
+        for(int i=0;i&lt;n;i++)
+        &#123;
+            res=(res+ans.arr[i][i])%mod;//将得出的矩阵求它的迹
+        &#125;
+        cout&lt;&lt;res&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码分析：</strong></p>
 <p>模板题，适合练手！</p>
 

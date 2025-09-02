@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -623,16 +624,67 @@
 <p>下面还有更厉害的，我们一起来分析具体的代码。</p>
 <p><strong>求next数组的代码</strong></p>
 <p><strong>下面我们一起来欣赏计算机如何求得next数组的</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">typedef struct</span><br><span class="line">&#123;	</span><br><span class="line">	char data[MaxSize];</span><br><span class="line">	int length;			//串长</span><br><span class="line">&#125; SqString;</span><br><span class="line">//SqString 是串的数据结构</span><br><span class="line">//typedef重命名结构体变量，可以用SqString t定义一个结构体。</span><br><span class="line">void GetNext(SqString t,int next[])		//由模式串t求出next值</span><br><span class="line">&#123;</span><br><span class="line">	int j,k;</span><br><span class="line">	j=0;k=-1;</span><br><span class="line">	next[0]=-1;//第一个字符前无字符串，给值-1</span><br><span class="line">	while (j&lt;t.length-1) </span><br><span class="line">	//因为next数组中j最大为t.length-1,而每一步next数组赋值都是在j++之后</span><br><span class="line">	//所以最后一次经过while循环时j为t.length-2</span><br><span class="line">	&#123;	</span><br><span class="line">		if (k==-1 || t.data[j]==t.data[k]) 	//k为-1或比较的字符相等时</span><br><span class="line">		&#123;	</span><br><span class="line">			j++;k++;</span><br><span class="line">			next[j]=k;</span><br><span class="line">			//对应字符匹配情况下，s与t指向同步后移</span><br><span class="line">			//通过字符串&quot;aaaaab&quot;求next数组过程想一下这一步的意义</span><br><span class="line">			//printf(&quot;(1) j=%d,k=%d,next[%d]=%d\n&quot;,j,k,j,k);</span><br><span class="line">       	&#125;</span><br><span class="line">       	else</span><br><span class="line">		&#123;</span><br><span class="line">			k=next[k];</span><br><span class="line">			**//我们现在知道next[k]的值代表的是下标为k的字符前面的字符串最长相等前后缀的长度</span><br><span class="line">			//也表示该处字符不匹配时应该回溯到的字符的下标</span><br><span class="line">			//这个值给k后又进行while循环判断，此时t.data[k]即指最长相等前缀后一个字符**</span><br><span class="line">			//为什么要回退此处进行比较，我们往下接着看。其实原理和上面介绍的KMP原理差不多</span><br><span class="line">			//printf(&quot;(2) k=%d\n&quot;,k);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>typedef struct
+&#123;    
+    char data[MaxSize];
+    int length;            //串长
+&#125; SqString;
+//SqString 是串的数据结构
+//typedef重命名结构体变量，可以用SqString t定义一个结构体。
+void GetNext(SqString t,int next[])        //由模式串t求出next值
+&#123;
+    int j,k;
+    j=0;k=-1;
+    next[0]=-1;//第一个字符前无字符串，给值-1
+    while (j&lt;t.length-1) 
+    //因为next数组中j最大为t.length-1,而每一步next数组赋值都是在j++之后
+    //所以最后一次经过while循环时j为t.length-2
+    &#123;    
+        if (k==-1 || t.data[j]==t.data[k])     //k为-1或比较的字符相等时
+        &#123;    
+            j++;k++;
+            next[j]=k;
+            //对应字符匹配情况下，s与t指向同步后移
+            //通过字符串&quot;aaaaab&quot;求next数组过程想一下这一步的意义
+            //printf(&quot;(1) j=%d,k=%d,next[%d]=%d\n&quot;,j,k,j,k);
+           &#125;
+           else
+        &#123;
+            k=next[k];
+            **//我们现在知道next[k]的值代表的是下标为k的字符前面的字符串最长相等前后缀的长度
+            //也表示该处字符不匹配时应该回溯到的字符的下标
+            //这个值给k后又进行while循环判断，此时t.data[k]即指最长相等前缀后一个字符**
+            //为什么要回退此处进行比较，我们往下接着看。其实原理和上面介绍的KMP原理差不多
+            //printf(&quot;(2) k=%d\n&quot;,k);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
 <p><strong>解释next数组构造过程中的回溯问题</strong></p>
 <p>大家来看下面的图：</p>
 <p>下面的长条代表子串，红色部分代表当前匹配上的最长相等前后缀，蓝                                                                   色部分代表t.data[j]<strong>。</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/sgdrs.png"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/tjft.png"></p>
 <p><strong>KMP算法代码解释</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int KMPIndex(SqString s,SqString t)  //KMP算法</span><br><span class="line">&#123;</span><br><span class="line">    //s代表大串，t代表小串</span><br><span class="line">	int next[MaxSize],i=0,j=0;</span><br><span class="line">	GetNext(t,next);</span><br><span class="line">	while (i&lt;s.length &amp;&amp; j&lt;t.length) </span><br><span class="line">	&#123;</span><br><span class="line">		if (j==-1 || s.data[i]==t.data[j]) </span><br><span class="line">		&#123;</span><br><span class="line">			i++;j++;  			//i,j各增1</span><br><span class="line">		&#125;</span><br><span class="line">		else j=next[j]; 		//i不变,j后退，现在知道为什么这样让子串回退了吧</span><br><span class="line">    &#125;</span><br><span class="line">    if (j&gt;=t.length)</span><br><span class="line">		return(i-t.length);  	//返回匹配模式串的首字符下标</span><br><span class="line">    else  </span><br><span class="line">		return(-1);        		//返回不匹配标志</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>int KMPIndex(SqString s,SqString t)  //KMP算法
+&#123;
+    //s代表大串，t代表小串
+    int next[MaxSize],i=0,j=0;
+    GetNext(t,next);
+    while (i&lt;s.length &amp;&amp; j&lt;t.length) 
+    &#123;
+        if (j==-1 || s.data[i]==t.data[j]) 
+        &#123;
+            i++;j++;              //i,j各增1
+        &#125;
+        else j=next[j];         //i不变,j后退，现在知道为什么这样让子串回退了吧
+    &#125;
+    if (j&gt;=t.length)
+        return(i-t.length);      //返回匹配模式串的首字符下标
+    else  
+        return(-1);                //返回不匹配标志
+&#125;
+</code></pre>
 <p><strong>KMP算法的改进</strong></p>
 <p><strong>为什么KMP算法这么强大了还需要改进呢？</strong></p>
 <p>大家来看一个例子:</p>
@@ -642,32 +694,232 @@
 <p><strong>我们知道没有必要再将‘b’与‘a’比对了，</strong>因为回溯后的字符和原字符是相同的，原字符不匹配，回溯后的字符自然不可能匹配。但是KMP算法中依然会将‘b’与回溯到的‘a’进行比对。这就是我们可以改进的地方了。我们改进后的next数组命名为：nextval数组。KMP算法的改进可以简述为： <strong>如果a位字符与它next值指向的b位字符相等，则该a位的nextval就指向b位的nextval值，如果不等，则该a位的nextval值就是它自己a位的next值。</strong> 这应该是最浅显的解释了。如字符串”ababaaab”的next数组以及nextval数组分别为：</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/dyjftgj.jpg"></p>
 <p>我们来分析下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">void GetNextval(SqString t,int nextval[])  </span><br><span class="line">//由模式串t求出nextval值</span><br><span class="line">&#123;</span><br><span class="line">	int j=0,k=-1;</span><br><span class="line">	nextval[0]=-1;</span><br><span class="line">   	while (j&lt;t.length-1) </span><br><span class="line">	&#123;</span><br><span class="line">       	if (k==-1 || t.data[j]==t.data[k]) </span><br><span class="line">		&#123;	</span><br><span class="line">			j++;k++;</span><br><span class="line">			if (t.data[j]!=t.data[k]) </span><br><span class="line">//这里的t.data[k]是t.data[j]处字符不匹配而会回溯到的字符</span><br><span class="line">//为什么？因为没有这处if判断的话，此处代码是next[j]=k;</span><br><span class="line">//next[j]不就是t.data[j]不匹配时应该回溯到的字符位置嘛</span><br><span class="line">				nextval[j]=k;</span><br><span class="line">           	else  </span><br><span class="line">				nextval[j]=nextval[k];</span><br><span class="line">//这一个代码含义是不是呼之欲出了？</span><br><span class="line">//此时nextval[j]的值就是就是t.data[j]不匹配时应该回溯到的字符的nextval值</span><br><span class="line">//用较为粗鄙语言表诉：即字符不匹配时回溯两层后对应的字符下标</span><br><span class="line">       	&#125;</span><br><span class="line">       	else  k=nextval[k];    	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>void GetNextval(SqString t,int nextval[])  
+//由模式串t求出nextval值
+&#123;
+    int j=0,k=-1;
+    nextval[0]=-1;
+       while (j&lt;t.length-1) 
+    &#123;
+           if (k==-1 || t.data[j]==t.data[k]) 
+        &#123;    
+            j++;k++;
+            if (t.data[j]!=t.data[k]) 
+//这里的t.data[k]是t.data[j]处字符不匹配而会回溯到的字符
+//为什么？因为没有这处if判断的话，此处代码是next[j]=k;
+//next[j]不就是t.data[j]不匹配时应该回溯到的字符位置嘛
+                nextval[j]=k;
+               else  
+                nextval[j]=nextval[k];
+//这一个代码含义是不是呼之欲出了？
+//此时nextval[j]的值就是就是t.data[j]不匹配时应该回溯到的字符的nextval值
+//用较为粗鄙语言表诉：即字符不匹配时回溯两层后对应的字符下标
+           &#125;
+           else  k=nextval[k];        
+    &#125;
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int KMPIndex1(SqString s,SqString t)    </span><br><span class="line">//修正的KMP算法</span><br><span class="line">//只是next换成了nextval</span><br><span class="line">&#123;</span><br><span class="line">	int nextval[MaxSize],i=0,j=0;</span><br><span class="line">	GetNextval(t,nextval);</span><br><span class="line">	while (i&lt;s.length &amp;&amp; j&lt;t.length) </span><br><span class="line">	&#123;</span><br><span class="line">		if (j==-1 || s.data[i]==t.data[j]) </span><br><span class="line">		&#123;	</span><br><span class="line">			i++;j++;	</span><br><span class="line">		&#125;</span><br><span class="line">		else j=nextval[j];</span><br><span class="line">	&#125;</span><br><span class="line">	if (j&gt;=t.length)  </span><br><span class="line">		return(i-t.length);</span><br><span class="line">	else</span><br><span class="line">		return(-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+&#125;
+</code></pre>
+<pre><code>int KMPIndex1(SqString s,SqString t)    
+//修正的KMP算法
+//只是next换成了nextval
+&#123;
+    int nextval[MaxSize],i=0,j=0;
+    GetNextval(t,nextval);
+    while (i&lt;s.length &amp;&amp; j&lt;t.length) 
+    &#123;
+        if (j==-1 || s.data[i]==t.data[j]) 
+        &#123;    
+            i++;j++;    
+        &#125;
+        else j=nextval[j];
+    &#125;
+    if (j&gt;=t.length)  
+        return(i-t.length);
+    else
+        return(-1);
+&#125;
+</code></pre>
 <h2 id="hdu1358"><a href="#hdu1358" class="headerlink" title="hdu1358"></a>hdu1358</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/343BF22D4E914D43921794DC00BAE14C.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>题目是找出所有能形成大于一次的循环前缀子串，并包含该字符串本身</p>
 <p>然后类似poj 2406的求法</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">char c[1000001];</span><br><span class="line">int next[1000001];	// 注意数组大小哈~。~</span><br><span class="line">int len;</span><br><span class="line"> </span><br><span class="line">// 求next数组</span><br><span class="line">void Get_next()</span><br><span class="line">&#123;</span><br><span class="line">    int i,j;</span><br><span class="line">	next[0]=-1;</span><br><span class="line">	i=0;</span><br><span class="line">	j=-1;</span><br><span class="line">	while(i&lt;len)</span><br><span class="line">	&#123;</span><br><span class="line">	    if(j==-1 || c[i]==c[j])</span><br><span class="line">	    &#123;</span><br><span class="line">	       next[++i]=++j;</span><br><span class="line">	    &#125;</span><br><span class="line">	    else    j=next[j];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void show(void)</span><br><span class="line">&#123;</span><br><span class="line">    int i,n;</span><br><span class="line">	// 如果c[i-1]的话要跳过的，详情可以看我下面链接</span><br><span class="line">    for(i=2;c[i-1];++i)</span><br><span class="line">    &#123;</span><br><span class="line">        n=i-next[i];</span><br><span class="line">        if(i%n==0 &amp;&amp; i/n&gt;1)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%d %d\n&quot;,i,i/n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int num=1;</span><br><span class="line">    while(scanf(&quot;%d&quot;,&amp;len)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        if(len==0)    break;</span><br><span class="line">	    memset(next,0,sizeof(next));</span><br><span class="line">	    scanf(&quot;%s&quot;,c);</span><br><span class="line"> </span><br><span class="line">        Get_next();</span><br><span class="line"> </span><br><span class="line">        printf(&quot;Test case #%d\n&quot;,num++);</span><br><span class="line">        show();</span><br><span class="line">		// 注意格式啊！这个换行又坑了我一次WA</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+using namespace std;
+char c[1000001];
+int next[1000001];    // 注意数组大小哈~。~
+int len;
+ 
+// 求next数组
+void Get_next()
+&#123;
+    int i,j;
+    next[0]=-1;
+    i=0;
+    j=-1;
+    while(i&lt;len)
+    &#123;
+        if(j==-1 || c[i]==c[j])
+        &#123;
+           next[++i]=++j;
+        &#125;
+        else    j=next[j];
+    &#125;
+&#125;
+ 
+void show(void)
+&#123;
+    int i,n;
+    // 如果c[i-1]的话要跳过的，详情可以看我下面链接
+    for(i=2;c[i-1];++i)
+    &#123;
+        n=i-next[i];
+        if(i%n==0 &amp;&amp; i/n&gt;1)
+        &#123;
+            printf(&quot;%d %d\n&quot;,i,i/n);
+        &#125;
+    &#125;
+    return;
+&#125;
+ 
+int main()
+&#123;
+    int num=1;
+    while(scanf(&quot;%d&quot;,&amp;len)!=EOF)
+    &#123;
+        if(len==0)    break;
+        memset(next,0,sizeof(next));
+        scanf(&quot;%s&quot;,c);
+ 
+        Get_next();
+ 
+        printf(&quot;Test case #%d\n&quot;,num++);
+        show();
+        // 注意格式啊！这个换行又坑了我一次WA
+        printf(&quot;\n&quot;);
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <h2 id="hdu-1711"><a href="#hdu-1711" class="headerlink" title="hdu 1711"></a>hdu 1711</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/ABD88AC51BE44FDF8B7390847B6DA658.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>kmp模板题</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#define N 1000005</span><br><span class="line">int s[N];</span><br><span class="line">int p[N];</span><br><span class="line">int next[N];</span><br><span class="line">int m,n;</span><br><span class="line">void getnext()&#123;</span><br><span class="line">    int j=0,k=-1;</span><br><span class="line">    next[0]=-1;</span><br><span class="line">    while(j&lt;m)&#123;</span><br><span class="line">        if(k==-1||p[j]==p[k])&#123;</span><br><span class="line">            j++;</span><br><span class="line">            k++;</span><br><span class="line">            next[j]=k;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            k=next[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int kmp()&#123;</span><br><span class="line">    int i=0,j=0;</span><br><span class="line">    getnext();</span><br><span class="line">    while(i&lt;n)&#123;</span><br><span class="line">        if(j==-1||s[i]==p[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            j=next[j];</span><br><span class="line">        if(j==m)</span><br><span class="line">            return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int t;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">        for(int i=0;i&lt;n;i++)</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;s[i]);</span><br><span class="line">        for(int i=0;i&lt;m;i++)</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;p[i]);</span><br><span class="line">        if(kmp()==-1)</span><br><span class="line">            printf(&quot;-1\n&quot;);</span><br><span class="line">        else</span><br><span class="line">            printf(&quot;%d\n&quot;,kmp()-m+1);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#define N 1000005
+int s[N];
+int p[N];
+int next[N];
+int m,n;
+void getnext()&#123;
+    int j=0,k=-1;
+    next[0]=-1;
+    while(j&lt;m)&#123;
+        if(k==-1||p[j]==p[k])&#123;
+            j++;
+            k++;
+            next[j]=k;
+        &#125;
+        else
+            k=next[k];
+    &#125;
+&#125;
+int kmp()&#123;
+    int i=0,j=0;
+    getnext();
+    while(i&lt;n)&#123;
+        if(j==-1||s[i]==p[j])&#123;
+            i++;
+            j++;
+        &#125;
+        else
+            j=next[j];
+        if(j==m)
+            return i;
+    &#125;
+    return -1;
+&#125;
+int main()&#123;
+    int t;
+    scanf(&quot;%d&quot;,&amp;t);
+    while(t--)&#123;
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+        for(int i=0;i&lt;n;i++)
+            scanf(&quot;%d&quot;,&amp;s[i]);
+        for(int i=0;i&lt;m;i++)
+            scanf(&quot;%d&quot;,&amp;p[i]);
+        if(kmp()==-1)
+            printf(&quot;-1\n&quot;);
+        else
+            printf(&quot;%d\n&quot;,kmp()-m+1);
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <h2 id="hdu-2087"><a href="#hdu-2087" class="headerlink" title="hdu 2087"></a>hdu 2087</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/169E059DBA324D7D9A97F7365DE4641A.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>简单的kmp应用，右手就行</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">string a;</span><br><span class="line">string b;</span><br><span class="line">int Next[1005];</span><br><span class="line">int lena,lenb;</span><br><span class="line">void getNext()</span><br><span class="line">&#123;</span><br><span class="line">    int i=0,j=-1;</span><br><span class="line">    Next[0]=-1;</span><br><span class="line">    while(i&lt;lenb-1)</span><br><span class="line">    &#123;</span><br><span class="line">        if(j==-1||b[i]==b[j])</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">            Next[i]=j;</span><br><span class="line">        &#125;</span><br><span class="line">        else j=Next[j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(1)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;a;</span><br><span class="line">        if(a[0]==&#x27;#&#x27;)break;</span><br><span class="line">        cin&gt;&gt;b;</span><br><span class="line">        lena=a.size();</span><br><span class="line">        lenb=b.size();</span><br><span class="line">        getNext();</span><br><span class="line">        int i=0,j=0,sum=0;</span><br><span class="line">        while(i&lt;=lena)</span><br><span class="line">        &#123;</span><br><span class="line">            if(j==lenb)</span><br><span class="line">            &#123;</span><br><span class="line">                sum++;</span><br><span class="line">                j=0;</span><br><span class="line">            &#125;</span><br><span class="line">            if(j==-1||a[i]==b[j])</span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            else j=Next[j];</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;       </span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+string a;
+string b;
+int Next[1005];
+int lena,lenb;
+void getNext()
+&#123;
+    int i=0,j=-1;
+    Next[0]=-1;
+    while(i&lt;lenb-1)
+    &#123;
+        if(j==-1||b[i]==b[j])
+        &#123;
+            i++;
+            j++;
+            Next[i]=j;
+        &#125;
+        else j=Next[j];
+    &#125;
+&#125;
 
+int main()
+&#123;
+    while(1)
+    &#123;
+        cin&gt;&gt;a;
+        if(a[0]==&#39;#&#39;)break;
+        cin&gt;&gt;b;
+        lena=a.size();
+        lenb=b.size();
+        getNext();
+        int i=0,j=0,sum=0;
+        while(i&lt;=lena)
+        &#123;
+            if(j==lenb)
+            &#123;
+                sum++;
+                j=0;
+            &#125;
+            if(j==-1||a[i]==b[j])
+            &#123;
+                i++;
+                j++;
+            &#125;
+            else j=Next[j];
+        &#125;
+        cout&lt;&lt;sum&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;       
+</code></pre>
 <h2 id="poj-2406"><a href="#poj-2406" class="headerlink" title="poj 2406"></a>poj 2406</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/C5D84F4051854B908B956F984705FA0C.jpg"></p>
 <p><strong>思路：</strong></p>
@@ -677,15 +929,83 @@
 <p>  ①如果n是(n−p[n])的倍数，我们可以把字符串分为若干段长(n−p[n])的字符串。首先我们把每段记为A、B、C、D(假设只有四段)，所以D段表示的是字符串S[p[n]，n]这一段，而由P数组的定义我们可知p[n]表示的n的最长公共前后缀，即S[1…p[n]]前缀和S[p[n]…n]后缀相同，所以我们有ABC=BCD(表示字符串依次连接)，由于它们完全相等，所以A=B，B=C，C=D，所以可知A就是循环节，而很容易由反证法知道不存在更短的循环节，否则和p数组定义不符。其数目即为答案。</p>
 <p>  ②我们需要解决为什么不整除时就最小循环节就是它本身。我们运用反证法，假设存在最小循环节长len(len！=n)，那么S[1，len]=S[n−len，n]，那么len=n−p[n]，而由假设知，n不被n−p[n]整除，但又由循环节定义知n被len整除，因此矛盾。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXN=1e6+10;</span><br><span class="line">int pre[MAXN];</span><br><span class="line">char s[MAXN];</span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">    while(~scanf(&quot; %s&quot;,s+1))</span><br><span class="line">    &#123;</span><br><span class="line">        int n=strlen(s+1);</span><br><span class="line">        if(s[1]==&#x27;.&#x27;)break ;</span><br><span class="line">        int j=0;pre[1]=0;</span><br><span class="line">        for(int i=1;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            while(j&gt;0&amp;&amp;s[i+1]!=s[j+1])j=pre[j];</span><br><span class="line">            if(s[i+1]==s[j+1])j++;</span><br><span class="line">            pre[i+1]=j;</span><br><span class="line">        &#125;</span><br><span class="line">        if(n%(n-pre[n])==0)printf(&quot;%d\n&quot;,n/(n-pre[n]));</span><br><span class="line">        else printf(&quot;1\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>include &lt;bits/stdc++.h&gt;
+using namespace std;
+const int MAXN=1e6+10;
+int pre[MAXN];
+char s[MAXN];
+int main() 
+&#123;
+    while(~scanf(&quot; %s&quot;,s+1))
+    &#123;
+        int n=strlen(s+1);
+        if(s[1]==&#39;.&#39;)break ;
+        int j=0;pre[1]=0;
+        for(int i=1;i&lt;n;i++)
+        &#123;
+            while(j&gt;0&amp;&amp;s[i+1]!=s[j+1])j=pre[j];
+            if(s[i+1]==s[j+1])j++;
+            pre[i+1]=j;
+        &#125;
+        if(n%(n-pre[n])==0)printf(&quot;%d\n&quot;,n/(n-pre[n]));
+        else printf(&quot;1\n&quot;);
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <h2 id="hdu3336"><a href="#hdu3336" class="headerlink" title="hdu3336"></a>hdu3336</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/4E91006A60774DE99F6A6EEAC28BD9A9.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>考了kmp算法中next数组的创建思路，合理遍历了整个字符串，注意的是：本来next[length]是不会被使用到的（因为那个位置压根就没有字符，会被直接存在子串与模板串相同），但是由于本题需要考虑后缀子串与前缀字串可能存在的相等情况，所以需要遍历到next[length]</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int mod = 10007;</span><br><span class="line">string s;</span><br><span class="line">int Next[200001];</span><br><span class="line">int len;</span><br><span class="line">void getNext()</span><br><span class="line">&#123;</span><br><span class="line">    Next[0]=-1;</span><br><span class="line">    int i=0,j=-1;</span><br><span class="line">    while(i&lt;len)</span><br><span class="line">    &#123;</span><br><span class="line">        if(j==-1||s[i]==s[j])</span><br><span class="line">        &#123;</span><br><span class="line">            ++i;</span><br><span class="line">            ++j;</span><br><span class="line">            Next[i]=j;</span><br><span class="line">        &#125;</span><br><span class="line">        else j=Next[j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        scanf(&quot;%d&quot;,&amp;len);</span><br><span class="line">        cin&gt;&gt;s;</span><br><span class="line">        getNext();</span><br><span class="line">        int sum=0;</span><br><span class="line">        for(int i=1;i&lt;=len;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int j=i;</span><br><span class="line">            while(j&gt;0)</span><br><span class="line">            &#123;</span><br><span class="line">                sum=(sum+1)%mod;</span><br><span class="line">                j=Next[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int mod = 10007;
+string s;
+int Next[200001];
+int len;
+void getNext()
+&#123;
+    Next[0]=-1;
+    int i=0,j=-1;
+    while(i&lt;len)
+    &#123;
+        if(j==-1||s[i]==s[j])
+        &#123;
+            ++i;
+            ++j;
+            Next[i]=j;
+        &#125;
+        else j=Next[j];
+    &#125;
+&#125;
+int main()
+&#123;
+    int t;
+    scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    &#123;
 
+        scanf(&quot;%d&quot;,&amp;len);
+        cin&gt;&gt;s;
+        getNext();
+        int sum=0;
+        for(int i=1;i&lt;=len;i++)
+        &#123;
+            int j=i;
+            while(j&gt;0)
+            &#123;
+                sum=(sum+1)%mod;
+                j=Next[j];
+            &#125;
+        &#125;
+        cout&lt;&lt;sum&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>

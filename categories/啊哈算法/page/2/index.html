@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -425,7 +426,7 @@
         <div class="brand">
             <div class="title center-align">
                 
-                Rainbow 0v0
+                Zhao&#39;s blog
                 
             </div>
 
@@ -490,10 +491,19 @@
                 </a>
                 
                 
+                <a href="/categories/%E5%BC%80%E5%8F%91/" title="开发: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">开发
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/%E8%AE%AD%E7%BB%83/" title="训练: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">训练
+                            style="background-color: #E8F8F5;">训练
                         <span class="tag-length">6</span>
                     </span>
                 </a>
@@ -502,7 +512,7 @@
                 <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" title="算法学习: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">算法学习
+                            style="background-color: #FEF9E7;">算法学习
                         <span class="tag-length">4</span>
                     </span>
                 </a>
@@ -740,7 +750,8 @@ low[v]&gt;=num[u]表示v点不可能不经过父结点u而回到祖先的，所�
 思路：
 注意这里是无向图，要求转机此数少，所以所有存在边的长度都为1,从1扩展到5即可。
 代码：
-123456789101112131415161718192021222324252627282
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
                             
                         </div>
                         <div class="publish-info">
@@ -792,7 +803,7 @@ low[v]&gt;=num[u]表示v点不可能不经过父结点u而回到祖先的，所�
 注意这里是单向公路，不过图的存储照旧
 使用全局变量res更新每次找到的路径的最小值，此外用book数组存储哪些城市已经走过，防止出现死循环
 代码：
-123456789101112131
+#include&lt;iostre
                             
                         </div>
                         <div class="publish-info">
@@ -898,7 +909,8 @@ low[v]&gt;=num[u]表示v点不可能不经过父结点u而回到祖先的，所�
 思路：
 dfs，依次枚举每一种摆放方式，根据直管弯管设立不同判定方式（要注意进水口）
 代码：
-123456789101112131415161718192021222
+#include&lt;iostream&gt;
+#include&lt
                             
                         </div>
                         <div class="publish-info">
@@ -949,7 +961,9 @@ dfs，依次枚举每一种摆放方式，根据直管弯管设立不同判定�
 思路：
 bfs
 代码：
-123456789101112131415161718192021222324252627282930313233343
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt
                             
                         </div>
                         <div class="publish-info">
@@ -1000,7 +1014,7 @@ bfs
 思路：
 因为之前的解法中有可能得出小人无法走到的点，所以用bfs或dfs统计出小人能走过的点，然后在这些可以到达的点上来分别统计可以消灭的敌人数
 代码:
-123456789101112131415
+#include&lt;iostream&
                             
                         </div>
                         <div class="publish-info">
@@ -1052,7 +1066,9 @@ bfs
 题目：
 之前的走迷宫
 代码：
-123456789101112131415161718192021222324252627282930
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#i
                             
                         </div>
                         <div class="publish-info">
@@ -1104,7 +1120,8 @@ bfs
 思路：
 搜！注意判断该点是否已经走过
 代码：
-1234567891011121314151617181920
+#include&lt;iostream&gt;
+#inclu
                             
                         </div>
                         <div class="publish-info">

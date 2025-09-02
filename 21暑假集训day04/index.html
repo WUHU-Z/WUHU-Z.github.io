@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -622,8 +623,59 @@
 <p>这样母函数就把这类组合问题从nn级别转化成了n3级别。这便是母函数的奇妙与威力。</p>
 <p>知道了母函数的原理，用程序来实现也就不是什么困难的事了，其实就是做多项式乘法的程序</p>
 <p>用c++实现算出无限砝码情况下的某种重量的方案数。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;    </span><br><span class="line">using namespace std;    </span><br><span class="line">// Author: WUHU-Z    </span><br><span class="line">//     </span><br><span class="line">const int max = 1000;     </span><br><span class="line">// sup是保存多项式的数组，sup[n]中的值代表xn的系数  </span><br><span class="line">// temp是临时多项式，保存相乘的临时中间情况    </span><br><span class="line">int sup[max], temp[max];     </span><br><span class="line">/* </span><br><span class="line">程序始终只计算两个多项式之间的乘积，多个多项式的情况 </span><br><span class="line">先计算前两个的乘积，将结果作为第一个多项式，再与第三个相乘 </span><br><span class="line">依次类推，sup始终存放当前运算后的结果然后作为被乘多项式， </span><br><span class="line">*/    </span><br><span class="line">int main()    </span><br><span class="line">&#123;     </span><br><span class="line">    int target;   //  目标重量， 比如上面的例子里就是10，要&lt;max的值  </span><br><span class="line">    int i, j, k;    </span><br><span class="line">     </span><br><span class="line">    while(cin &gt;&gt; target)    </span><br><span class="line">    &#123;    </span><br><span class="line">        for(i=0; i&lt;=target; ++i)       </span><br><span class="line">        &#123;    </span><br><span class="line">            sup[i] = 1;     </span><br><span class="line">//初始化第一个多项式，也就是用1g砝码的多项式,  </span><br><span class="line">//注意如果题目没给1g的砝码那么就不能++i，而要加上砝码的质量  </span><br><span class="line">            temp[i] = 0;    </span><br><span class="line">//将临时区清空，无论第一个多项式质量是几都要全部置零  </span><br><span class="line">        &#125;    </span><br><span class="line">        for(i=2; i&lt;=target; ++i)     </span><br><span class="line">// 生成后续的第i个多项式，此题中是2g，i从2开始。  </span><br><span class="line">//如果砝码的值不是规律增长，i可能需要取决于输入  </span><br><span class="line">        &#123;    </span><br><span class="line">     </span><br><span class="line">            for(j=0; j&lt;=target; ++j)     </span><br><span class="line">// 遍历当前结果多项式的每一项（当前结果的第j项）与第i个多项式相乘，  </span><br><span class="line">                for(k=0; k+j&lt;=target; k+=i)   </span><br><span class="line">// 遍历第i个多项式的每一项，此处构造用小砝码组成大砝码的多项式  </span><br><span class="line">                &#123;    </span><br><span class="line">                    temp[j+k] += sup[j];    </span><br><span class="line">//幂运算，注意理解  </span><br><span class="line">                &#125;    </span><br><span class="line">            for(j=0; j&lt;=target; ++j)      </span><br><span class="line">// 将临时的结果覆盖当前结果，同时把临时结果置零，为下次做准备  </span><br><span class="line">            &#123;    </span><br><span class="line">                sup[j] = temp[j];    </span><br><span class="line">                temp[j] = 0;    </span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;    </span><br><span class="line">        cout &lt;&lt; sup[target] &lt;&lt; endl;  //输出结果  </span><br><span class="line">    &#125;    </span><br><span class="line">    return 0;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>#include &lt;iostream&gt;    
+using namespace std;    
+// Author: WUHU-Z    
+//     
+const int max = 1000;     
+// sup是保存多项式的数组，sup[n]中的值代表xn的系数  
+// temp是临时多项式，保存相乘的临时中间情况    
+int sup[max], temp[max];     
+/* 
+程序始终只计算两个多项式之间的乘积，多个多项式的情况 
+先计算前两个的乘积，将结果作为第一个多项式，再与第三个相乘 
+依次类推，sup始终存放当前运算后的结果然后作为被乘多项式， 
+*/    
+int main()    
+&#123;     
+    int target;   //  目标重量， 比如上面的例子里就是10，要&lt;max的值  
+    int i, j, k;    
+     
+    while(cin &gt;&gt; target)    
+    &#123;    
+        for(i=0; i&lt;=target; ++i)       
+        &#123;    
+            sup[i] = 1;     
+//初始化第一个多项式，也就是用1g砝码的多项式,  
+//注意如果题目没给1g的砝码那么就不能++i，而要加上砝码的质量  
+            temp[i] = 0;    
+//将临时区清空，无论第一个多项式质量是几都要全部置零  
+        &#125;    
+        for(i=2; i&lt;=target; ++i)     
+// 生成后续的第i个多项式，此题中是2g，i从2开始。  
+//如果砝码的值不是规律增长，i可能需要取决于输入  
+        &#123;    
+     
+            for(j=0; j&lt;=target; ++j)     
+// 遍历当前结果多项式的每一项（当前结果的第j项）与第i个多项式相乘，  
+                for(k=0; k+j&lt;=target; k+=i)   
+// 遍历第i个多项式的每一项，此处构造用小砝码组成大砝码的多项式  
+                &#123;    
+                    temp[j+k] += sup[j];    
+//幂运算，注意理解  
+                &#125;    
+            for(j=0; j&lt;=target; ++j)      
+// 将临时的结果覆盖当前结果，同时把临时结果置零，为下次做准备  
+            &#123;    
+                sup[j] = temp[j];    
+                temp[j] = 0;    
+            &#125;    
+        &#125;    
+        cout &lt;&lt; sup[target] &lt;&lt; endl;  //输出结果  
+    &#125;    
+    return 0;    
+&#125;
+</code></pre>
 <h2 id="指数母函数"><a href="#指数母函数" class="headerlink" title="指数母函数"></a>指数母函数</h2><p><strong>指数函数母函数：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/713165044874.png"></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/33997D2BA364407DADC602D5A71FD454.jpg"></p>
@@ -635,8 +687,70 @@
 <p><strong>思路：</strong></p>
 <p>将天平的左边看做是+号，右边看作为-号，那么将所有被使用的砝码加上求绝对值的值，即为能测出来的值。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int c1[10010];//是保存多项式的数组，sup[n]中的值代表xn的系数</span><br><span class="line">int c2[10010];//是临时多项式，保存相乘的临时中间情况 </span><br><span class="line">int Num[110];//记录每一位个砝码</span><br><span class="line">int Ans[10010];//记录不能被表示出的数组</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int N;</span><br><span class="line">    while(cin &gt;&gt; N)</span><br><span class="line">    &#123;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for(int i = 0; i &lt; N; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; Num[i];</span><br><span class="line">            sum += Num[i];</span><br><span class="line">        &#125;</span><br><span class="line">        memset(c1,0,sizeof(c1));</span><br><span class="line">        memset(c2,0,sizeof(c2));</span><br><span class="line">        for(int i = 0; i &lt;= Num[0]; i += Num[0])//对两种情况设1</span><br><span class="line">            c1[i] = 1;</span><br><span class="line">        for(int i = 1; i &lt; N; ++i)  //i代表第i个表达式</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j = 0; j &lt;= sum; ++j)   //j表示每个表达式的第i项</span><br><span class="line">            &#123;</span><br><span class="line">                for(int k = 0; k+j &lt;= sum &amp;&amp; k &lt;= Num[i]; k += Num[i])//k有+和-两种情况 </span><br><span class="line">                &#123;    //k代表每个表达式第i项的指数</span><br><span class="line">                    if(k &gt;= j)</span><br><span class="line">                        c2[k-j] += c1[j];</span><br><span class="line">                    else</span><br><span class="line">                        c2[j-k] += c1[j];</span><br><span class="line">                    c2[j+k] += c1[j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for(int j = 0; j &lt;= sum; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                c1[j] = c2[j];</span><br><span class="line">                c2[j] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int s = 0;</span><br><span class="line">        for(int i = 0; i &lt;= sum; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            if(c1[i] == 0)</span><br><span class="line">            &#123;</span><br><span class="line">                Ans[s++] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">        for(int i = 0; i &lt; s; ++i)</span><br><span class="line">            if(i != s-1)</span><br><span class="line">                cout &lt;&lt; Ans[i] &lt;&lt; &#x27; &#x27;;</span><br><span class="line">            else</span><br><span class="line">                cout &lt;&lt; Ans[i] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+using namespace std;
+ 
+int c1[10010];//是保存多项式的数组，sup[n]中的值代表xn的系数
+int c2[10010];//是临时多项式，保存相乘的临时中间情况 
+int Num[110];//记录每一位个砝码
+int Ans[10010];//记录不能被表示出的数组
+ 
+int main()
+&#123;
+    int N;
+    while(cin &gt;&gt; N)
+    &#123;
+        int sum = 0;
+        for(int i = 0; i &lt; N; ++i)
+        &#123;
+            cin &gt;&gt; Num[i];
+            sum += Num[i];
+        &#125;
+        memset(c1,0,sizeof(c1));
+        memset(c2,0,sizeof(c2));
+        for(int i = 0; i &lt;= Num[0]; i += Num[0])//对两种情况设1
+            c1[i] = 1;
+        for(int i = 1; i &lt; N; ++i)  //i代表第i个表达式
+        &#123;
+            for(int j = 0; j &lt;= sum; ++j)   //j表示每个表达式的第i项
+            &#123;
+                for(int k = 0; k+j &lt;= sum &amp;&amp; k &lt;= Num[i]; k += Num[i])//k有+和-两种情况 
+                &#123;    //k代表每个表达式第i项的指数
+                    if(k &gt;= j)
+                        c2[k-j] += c1[j];
+                    else
+                        c2[j-k] += c1[j];
+                    c2[j+k] += c1[j];
+                &#125;
+            &#125;
+            for(int j = 0; j &lt;= sum; ++j)
+            &#123;
+                c1[j] = c2[j];
+                c2[j] = 0;
+            &#125;
+        &#125;
+        int s = 0;
+        for(int i = 0; i &lt;= sum; ++i)
+        &#123;
+            if(c1[i] == 0)
+            &#123;
+                Ans[s++] = i;
+            &#125;
+        &#125;
+        cout &lt;&lt; s &lt;&lt; endl;
+        for(int i = 0; i &lt; s; ++i)
+            if(i != s-1)
+                cout &lt;&lt; Ans[i] &lt;&lt; &#39; &#39;;
+            else
+                cout &lt;&lt; Ans[i] &lt;&lt; endl;
+    &#125;
+ 
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路：</strong></p>
 <p>通过母函数，得出答案</p>
 <h2 id="hdu1085"><a href="#hdu1085" class="headerlink" title="hdu1085"></a>hdu1085</h2><p><strong>题目：</strong></p>
@@ -644,8 +758,54 @@
 <p><strong>思路：</strong></p>
 <p>母函数模板</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=8e3+5;</span><br><span class="line">struct node&#123;</span><br><span class="line">	int val,cnt;</span><br><span class="line">&#125;num[3];</span><br><span class="line">int c1[maxn],c2[maxn];</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	num[0].val=1,num[1].val=2,num[2].val=5;</span><br><span class="line">	while(~scanf(&quot;%d%d%d&quot;,&amp;num[0].cnt,&amp;num[1].cnt,&amp;num[2].cnt))</span><br><span class="line">	&#123;</span><br><span class="line">		if(num[0].cnt==0 &amp;&amp; num[1].cnt==0 &amp;&amp; num[2].cnt==0)break;</span><br><span class="line"></span><br><span class="line">		int mav=num[0].cnt*num[0].val+num[1].cnt*num[1].val+num[2].cnt*num[2].val;</span><br><span class="line">		memset(c1,0,sizeof(c1));</span><br><span class="line">		memset(c2,0,sizeof(c2));</span><br><span class="line">		for(int i=0; i&lt;=num[0].cnt; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			c1[i]=1;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i=1; i&lt;3; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			for(int j=0; j&lt;=mav; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				for(int k=0; k+j&lt;=mav &amp;&amp; k&lt;=num[i].cnt*num[i].val; k+=num[i].val)</span><br><span class="line">				&#123;</span><br><span class="line">					c2[j+k]+=c1[j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			for(int j=0; j&lt;=mav; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				c1[j]=c2[j];</span><br><span class="line">				c2[j]=0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int i;</span><br><span class="line">		for(i=1; i&lt;=mav; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(!c1[i])break;</span><br><span class="line">		&#125;</span><br><span class="line">		cout&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
+const int maxn=8e3+5;
+struct node&#123;
+    int val,cnt;
+&#125;num[3];
+int c1[maxn],c2[maxn];
 
+int main()
+&#123;
+    num[0].val=1,num[1].val=2,num[2].val=5;
+    while(~scanf(&quot;%d%d%d&quot;,&amp;num[0].cnt,&amp;num[1].cnt,&amp;num[2].cnt))
+    &#123;
+        if(num[0].cnt==0 &amp;&amp; num[1].cnt==0 &amp;&amp; num[2].cnt==0)break;
+
+        int mav=num[0].cnt*num[0].val+num[1].cnt*num[1].val+num[2].cnt*num[2].val;
+        memset(c1,0,sizeof(c1));
+        memset(c2,0,sizeof(c2));
+        for(int i=0; i&lt;=num[0].cnt; i++)
+        &#123;
+            c1[i]=1;
+        &#125;
+        for(int i=1; i&lt;3; i++)
+        &#123;
+            for(int j=0; j&lt;=mav; j++)
+            &#123;
+                for(int k=0; k+j&lt;=mav &amp;&amp; k&lt;=num[i].cnt*num[i].val; k+=num[i].val)
+                &#123;
+                    c2[j+k]+=c1[j];
+                &#125;
+            &#125;
+            for(int j=0; j&lt;=mav; j++)
+            &#123;
+                c1[j]=c2[j];
+                c2[j]=0;
+            &#125;
+        &#125;
+        int i;
+        for(i=1; i&lt;=mav; i++)
+        &#123;
+            if(!c1[i])break;
+        &#125;
+        cout&lt;&lt;i&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路：</strong></p>
 <p>按照模板做即可</p>
 <h2 id="hdu1171"><a href="#hdu1171" class="headerlink" title="hdu1171"></a>hdu1171</h2><p><strong>题目：</strong></p>
@@ -653,8 +813,48 @@
 <p><strong>思路：</strong></p>
 <p>逆天的母函数，怎么看都是背包；变量sum求出所有物品的总价值，题目即为求解在sum/2的范围内我能凑出的最大价值，母函数筛选一下方案数，则在sum/2以下最大的数即为答案的一个。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int c1[250000],c2[250000],v[1005],m[1005];//与1709类似的数组声明</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    while(cin&gt;&gt;n,n&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        int sum=0;</span><br><span class="line">        memset(c1,0,sizeof(c1));</span><br><span class="line">        memset(c2,0,sizeof(c2));</span><br><span class="line">        memset(v,0,sizeof(v));</span><br><span class="line">        memset(m,0,sizeof(m));</span><br><span class="line"></span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin&gt;&gt;v[i]&gt;&gt;m[i];</span><br><span class="line">            sum+=v[i]*m[i];</span><br><span class="line">        &#125;</span><br><span class="line">        c1[0]=1;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)//有N组商品</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=0;j&lt;=sum;j++)//前多项式</span><br><span class="line">                for(int k=0;k&lt;=v[i]*m[i] &amp;&amp; k+j&lt;=sum;k+=v[i])//后多项式</span><br><span class="line">                    c2[k+j]+=c1[j];</span><br><span class="line">            memcpy(c1,c2,sizeof(c2));</span><br><span class="line">            memset(c2,0,sizeof(c2));</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=sum/2;i&gt;=0;i--)</span><br><span class="line">            if(c1[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cout&lt;&lt;max(i,sum-i)&lt;&lt;&quot; &quot;&lt;&lt;min(i,sum-i)&lt;&lt;endl;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
 
+using namespace std;
+
+int c1[250000],c2[250000],v[1005],m[1005];//与1709类似的数组声明
+int main()
+&#123;
+    int n;
+    while(cin&gt;&gt;n,n&gt;0)
+    &#123;
+        int sum=0;
+        memset(c1,0,sizeof(c1));
+        memset(c2,0,sizeof(c2));
+        memset(v,0,sizeof(v));
+        memset(m,0,sizeof(m));
+
+        for(int i=1;i&lt;=n;i++)
+        &#123;
+            cin&gt;&gt;v[i]&gt;&gt;m[i];
+            sum+=v[i]*m[i];
+        &#125;
+        c1[0]=1;
+        for(int i=1;i&lt;=n;i++)//有N组商品
+        &#123;
+            for(int j=0;j&lt;=sum;j++)//前多项式
+                for(int k=0;k&lt;=v[i]*m[i] &amp;&amp; k+j&lt;=sum;k+=v[i])//后多项式
+                    c2[k+j]+=c1[j];
+            memcpy(c1,c2,sizeof(c2));
+            memset(c2,0,sizeof(c2));
+        &#125;
+        for(int i=sum/2;i&gt;=0;i--)
+            if(c1[i])
+            &#123;
+                cout&lt;&lt;max(i,sum-i)&lt;&lt;&quot; &quot;&lt;&lt;min(i,sum-i)&lt;&lt;endl;
+                break;
+            &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路：</strong></p>
 <p>背包似乎好想一些</p>
 <h2 id="hdu1398"><a href="#hdu1398" class="headerlink" title="hdu1398"></a>hdu1398</h2><p><strong>题目：</strong></p>
@@ -662,8 +862,28 @@
 <p><strong>思路：</strong></p>
 <p>母函数即可</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int MAXN=310;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int N,a[MAXN],b[MAXN];</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;N),N)&#123;</span><br><span class="line">        for(int i=0;i&lt;=N;i++)</span><br><span class="line">            a[i]=1,b[i]=0;</span><br><span class="line">        for(int i=2;i&lt;=17;i++)&#123;//最大硬币值是289</span><br><span class="line">            for(int j=0;j&lt;=N;j++)</span><br><span class="line">            for(int k=0;k+j&lt;=N;k+=i*i)</span><br><span class="line">                b[j+k]+=a[j];</span><br><span class="line">            for(int j=0;j&lt;=N;j++)</span><br><span class="line">                a[j]=b[j],b[j]=0;</span><br><span class="line">        &#125;</span><br><span class="line">            cout&lt;&lt;a[N]&lt;&lt;endl;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
 
+using namespace std;
+
+const int MAXN=310;
+int main()&#123;
+    int N,a[MAXN],b[MAXN];
+    while(~scanf(&quot;%d&quot;,&amp;N),N)&#123;
+        for(int i=0;i&lt;=N;i++)
+            a[i]=1,b[i]=0;
+        for(int i=2;i&lt;=17;i++)&#123;//最大硬币值是289
+            for(int j=0;j&lt;=N;j++)
+            for(int k=0;k+j&lt;=N;k+=i*i)
+                b[j+k]+=a[j];
+            for(int j=0;j&lt;=N;j++)
+                a[j]=b[j],b[j]=0;
+        &#125;
+            cout&lt;&lt;a[N]&lt;&lt;endl;;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路：</strong></p>
 <p>母函数模板</p>
 

@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -629,8 +630,25 @@
 <p>　整理一下思绪，现在已经明白了数组如何存在线段树，结点间的关系，以及使用递归的方式建立线段树，那么具体如何建立线段树，我们来看代码，代码中不清楚的地方都有详细的注释说明。</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const int maxn = 100005;</span><br><span class="line">int a[maxn],t[maxn&lt;&lt;2];        //a为原来区间，t为线段树</span><br><span class="line"></span><br><span class="line">void Pushup(int k)&#123;        //更新函数，这里是实现最大值 ，同理可以变成，最小值，区间和等</span><br><span class="line">    t[k] = max(t[k&lt;&lt;1],t[k&lt;&lt;1|1]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//递归方式建树 build(1,1,n);</span><br><span class="line">void build(int k,int l,int r)&#123;    //k为当前需要建立的结点，l为当前需要建立区间的左端点，r则为右端点</span><br><span class="line">    if(l == r)    //左端点等于右端点，即为叶子节点，直接赋值即可</span><br><span class="line">        t[k] = a[l];</span><br><span class="line">    else&#123;</span><br><span class="line">        int m = l + ((r-l)&gt;&gt;1);    //m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]</span><br><span class="line">        build(k&lt;&lt;1,l,m);    //递归构造左儿子结点</span><br><span class="line">        build(k&lt;&lt;1|1,m+1,r);    //递归构造右儿子结点</span><br><span class="line">        Pushup(k);    //更新父节点</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">const int maxn = 100005;
+int a[maxn],t[maxn<<2];        //a为原来区间，t为线段树
 
+void Pushup(int k)&#123;        //更新函数，这里是实现最大值 ，同理可以变成，最小值，区间和等
+    t[k] = max(t[k<<1],t[k<<1|1]);
+&#125;
+
+//递归方式建树 build(1,1,n);
+void build(int k,int l,int r)&#123;    //k为当前需要建立的结点，l为当前需要建立区间的左端点，r则为右端点
+    if(l == r)    //左端点等于右端点，即为叶子节点，直接赋值即可
+        t[k] = a[l];
+    else&#123;
+        int m = l + ((r-l)>>1);    //m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
+        build(k<<1,l,m);    //递归构造左儿子结点
+        build(k<<1|1,m+1,r);    //递归构造右儿子结点
+        Pushup(k);    //更新父节点
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre><code> 现在再来看代码，是不是觉得清晰很多了，使用递归的方法建立线段树，确实清晰易懂，各位看到这里也请自己试着实现一下递归建树，若是哪里有卡点再来看一下代码找到哪里出了问题。那线段树有没有非递归的方式建树呢，答案是有，但是非递归的建树方式会使得线段树的查询等操作和递归建树方式完全不一样，由简至难，后面我们再说非递归方式的实现。
 </code></pre>
 <p>　　到现在你应该可以建立一颗线段树了，而且知道每个结点存储的区间和值，如果上述操作还不能实现或是有哪里想不明白，建议再翻回去看一看所讲的内容。不要急于看完，理解才更重要。</p>
@@ -640,26 +658,92 @@
 <p>　　如何实现点更新，我们先不急看代码，还是对于上面那个线段树，假使我把a[3]+7，则更新后的线段树应该变成</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/23-550264929.png"></p>
 <p>　　更新了a[3]后，则每个包含此值的结点都需要更新，那么有多少个结点需要更新呢？根据二叉树的性质，不难发现是log(k)个结点，这也正是为什么每次更新的时间复杂度为O(logN)，那应该如何实现呢，我们发现，无论你更新哪个叶子节点，最终都是会到根结点的，而把这个往上推的过程逆过来就是从根结点开始，找到左子树还是右子树包含需要更新的叶子节点，往下更新即可，所以我们还是可以使用递归的方法实现线段树的点更新</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//递归方式更新 updata(p,v,1,n,1);</span><br><span class="line">void updata(int p,int v,int l,int r,int k)&#123;    //p为下标，v为要加上的值，l，r为结点区间，k为结点下标</span><br><span class="line">    if(l == r)    //左端点等于右端点，即为叶子结点，直接加上v即可</span><br><span class="line">        a[k] += v,t[k] += v;    //原数组和线段树数组都得到更新</span><br><span class="line">    else&#123;</span><br><span class="line">        int m = l + ((r-l)&gt;&gt;1);    //m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]</span><br><span class="line">        if(p &lt;= m)    //如果需要更新的结点在左子树区间</span><br><span class="line">            updata(p,v,l,m,k&lt;&lt;1);</span><br><span class="line">        else    //如果需要更新的结点在右子树区间</span><br><span class="line">            updata(p,v,m+1,r,k&lt;&lt;1|1);</span><br><span class="line">        Pushup(k);    //更新父节点的值</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-c++"><code class="language-c++">//递归方式更新 updata(p,v,1,n,1);
+void updata(int p,int v,int l,int r,int k)&#123;    //p为下标，v为要加上的值，l，r为结点区间，k为结点下标
+    if(l == r)    //左端点等于右端点，即为叶子结点，直接加上v即可
+        a[k] += v,t[k] += v;    //原数组和线段树数组都得到更新
+    else&#123;
+        int m = l + ((r-l)>>1);    //m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
+        if(p <= m)    //如果需要更新的结点在左子树区间
+            updata(p,v,l,m,k<<1);
+        else    //如果需要更新的结点在右子树区间
+            updata(p,v,m+1,r,k<<1|1);
+        Pushup(k);    //更新父节点的值
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>　　看完代码是不是很清晰，这里也建议自己再次手动实现一遍理解递归的思路。</p>
 <p>　　<strong>2.区间查询</strong></p>
 <p>　　说完了单点更新肯定就要来说区间查询了，我们知道线段树的每个结点存储的都是一段区间的信息 ，如果我们刚好要查询这个区间，那么则直接返回这个结点的信息即可，比如对于上面线段树，如果我直接查询[1,6]这个区间的最值，那么直接返回根节点信息返回13即可，但是一般我们不会凑巧刚好查询那些区间，比如现在我要查询[2,5]区间的最值，这时候该怎么办呢，我们来看看哪些区间是[2,5]的真子集，</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/8-1647694310.png"></p>
 <p>　　一共有5个区间，而且我们可以发现[4,5]这个区间已经包含了两个子树的信息，所以我们需要查询的区间只有三个，分别是[2,2],[3,3],[4,5]，到这里你能通过更新的思路想出来查询的思路吗? 我们还是从根节点开始往下递归，如果当前结点是要查询的区间的真子集，则返回这个结点的信息且不需要再往下递归了，这样从根节点往下递归，时间复杂度也是O(logN)。那么代码则为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//递归方式区间查询 query(L,R,1,n,1);</span><br><span class="line">int query(int L,int R,int l,int r,int k)&#123;    //[L,R]即为要查询的区间，l，r为结点区间，k为结点下标</span><br><span class="line">    if(L &lt;= l &amp;&amp; r &lt;= R)    //如果当前结点的区间真包含于要查询的区间内，则返回结点信息且不需要往下递归</span><br><span class="line">        return t[k];</span><br><span class="line">    else&#123;</span><br><span class="line">        int res = -INF;    //返回值变量，根据具体线段树查询的什么而自定义</span><br><span class="line">        int mid = l + ((r-l)&gt;&gt;1);    //m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]</span><br><span class="line">        if(L &lt;= m)    //如果左子树和需要查询的区间交集非空</span><br><span class="line">            res = max(res, query(L,R,l,m,k&lt;&lt;1));</span><br><span class="line">        if(R &gt; m)    //如果右子树和需要查询的区间交集非空，注意这里不是else if，因为查询区间可能同时和左右区间都有交集</span><br><span class="line">            res = max(res, query(L,R,m+1,r,k&lt;&lt;1|1));</span><br><span class="line"></span><br><span class="line">        return res;    //返回当前结点得到的信息</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">//递归方式区间查询 query(L,R,1,n,1);
+int query(int L,int R,int l,int r,int k)&#123;    //[L,R]即为要查询的区间，l，r为结点区间，k为结点下标
+    if(L <= l && r <= R)    //如果当前结点的区间真包含于要查询的区间内，则返回结点信息且不需要往下递归
+        return t[k];
+    else&#123;
+        int res = -INF;    //返回值变量，根据具体线段树查询的什么而自定义
+        int mid = l + ((r-l)>>1);    //m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
+        if(L <= m)    //如果左子树和需要查询的区间交集非空
+            res = max(res, query(L,R,l,m,k<<1));
+        if(R > m)    //如果右子树和需要查询的区间交集非空，注意这里不是else if，因为查询区间可能同时和左右区间都有交集
+            res = max(res, query(L,R,m+1,r,k<<1|1));
 
+        return res;    //返回当前结点得到的信息
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>　　如果你能理解建树和更新的过程，那么这里的区间查询也不会太难理解。还是建议再次手动实现。</p>
 <p>　　<strong>3.区间更新</strong></p>
 <p>　　树状数组中的区间更新我们用了差分的思想，而线段树的区间更新相对于树状数组就稍微复杂一点，这里我们引进了一个新东西，Lazy_tag，字面意思就是懒惰标记的意思，实际上它的功能也就是偷懒= =，因为对于一个区间[L,R]来说，我们可能每次都更新区间中的没个值，那样的话更新的复杂度将会是O(NlogN)，这太高了，所以引进了Lazy_tag，这个标记一般用于处理线段树的区间更新。</p>
 <p>　　线段树在进行区间更新的时候，为了提高更新的效率，所以每次更新只更新到更新区间完全覆盖线段树结点区间为止，这样就会导致被更新结点的子孙结点的区间得不到需要更新的信息，所以在被更新结点上打上一个标记，称为lazy-tag，等到下次访问这个结点的子结点时再将这个标记传递给子结点，所以也可以叫延迟标记。</p>
 <p>　　也就是说递归更新的过程，更新到结点区间为需要更新的区间的真子集不再往下更新，下次若是遇到需要用这下面的结点的信息，再去更新这些结点，所以这样的话使得区间更新的操作和区间查询类似，复杂度为O(logN)。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">void Pushdown(int k)&#123;    //更新子树的lazy值，这里是RMQ的函数，要实现区间和等则需要修改函数内容</span><br><span class="line">    if(lazy[k])&#123;    //如果有lazy标记</span><br><span class="line">        lazy[k&lt;&lt;1] += lazy[k];    //更新左子树的lazy值</span><br><span class="line">        lazy[k&lt;&lt;1|1] += lazy[k];    //更新右子树的lazy值</span><br><span class="line">        t[k&lt;&lt;1] += lazy[k];        //左子树的最值加上lazy值</span><br><span class="line">        t[k&lt;&lt;1|1] += lazy[k];    //右子树的最值加上lazy值</span><br><span class="line">        lazy[k] = 0;    //lazy值归0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//递归更新区间 updata(L,R,v,1,n,1);</span><br><span class="line">void updata(int L,int R,int v,int l,int r,int k)&#123;    //[L,R]即为要更新的区间，l，r为结点区间，k为结点下标</span><br><span class="line">    if(L &lt;= l &amp;&amp; r &lt;= R)&#123;    //如果当前结点的区间真包含于要更新的区间内</span><br><span class="line">        lazy[k] += v;    //懒惰标记</span><br><span class="line">        t[k] += v;    //最大值加上v之后，此区间的最大值也肯定是加v</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        Pushdown(k);    //重难点，查询lazy标记，更新子树</span><br><span class="line">        int m = l + ((r-l)&gt;&gt;1);</span><br><span class="line">        if(L &lt;= m)    //如果左子树和需要更新的区间交集非空</span><br><span class="line">            update(L,R,v,l,m,k&lt;&lt;1);</span><br><span class="line">        if(m &lt; R)    //如果右子树和需要更新的区间交集非空</span><br><span class="line">            update(L,R,v,m+1,r,k&lt;&lt;1|1);</span><br><span class="line">        Pushup(k);    //更新父节点</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">void Pushdown(int k)&#123;    //更新子树的lazy值，这里是RMQ的函数，要实现区间和等则需要修改函数内容
+    if(lazy[k])&#123;    //如果有lazy标记
+        lazy[k<<1] += lazy[k];    //更新左子树的lazy值
+        lazy[k<<1|1] += lazy[k];    //更新右子树的lazy值
+        t[k<<1] += lazy[k];        //左子树的最值加上lazy值
+        t[k<<1|1] += lazy[k];    //右子树的最值加上lazy值
+        lazy[k] = 0;    //lazy值归0
+    &#125;
+&#125;
 
+//递归更新区间 updata(L,R,v,1,n,1);
+void updata(int L,int R,int v,int l,int r,int k)&#123;    //[L,R]即为要更新的区间，l，r为结点区间，k为结点下标
+    if(L <= l && r <= R)&#123;    //如果当前结点的区间真包含于要更新的区间内
+        lazy[k] += v;    //懒惰标记
+        t[k] += v;    //最大值加上v之后，此区间的最大值也肯定是加v
+    &#125;
+    else&#123;
+        Pushdown(k);    //重难点，查询lazy标记，更新子树
+        int m = l + ((r-l)>>1);
+        if(L <= m)    //如果左子树和需要更新的区间交集非空
+            update(L,R,v,l,m,k<<1);
+        if(m < R)    //如果右子树和需要更新的区间交集非空
+            update(L,R,v,m+1,r,k<<1|1);
+        Pushup(k);    //更新父节点
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>　　注意看Pushdown这个函数，也就是当需要查询某个结点的子树时，需要用到这个函数，函数功能就是更新子树的lazy值，可以理解为平时先把事情放着，等到哪天要检查的时候，就临时再去做，而且做也不是一次性做完，检查哪一部分它就只做这一部分。是不是感受到了什么是Lazy_tag，实至名归= =。</p>
 <p>　　值得注意的是，使用了Lazy_tag后，我们再进行区间查询也需要改变。区间查询的代码则变为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//递归方式区间查询 query(L,R,1,n,1);</span><br><span class="line">int query(int L,int R,int l,int r,int k)&#123;    //[L,R]即为要查询的区间，l，r为结点区间，k为结点下标</span><br><span class="line">    if(L &lt;= l &amp;&amp; r &lt;= R)    //如果当前结点的区间真包含于要查询的区间内，则返回结点信息且不需要往下递归</span><br><span class="line">        return t[k];</span><br><span class="line">    else&#123;</span><br><span class="line">        Pushdown(k);    /**每次都需要更新子树的Lazy标记*/</span><br><span class="line">        int res = -INF;    //返回值变量，根据具体线段树查询的什么而自定义</span><br><span class="line">        int mid = l + ((r-l)&gt;&gt;1);    //m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]</span><br><span class="line">        if(L &lt;= m)    //如果左子树和需要查询的区间交集非空</span><br><span class="line">            res = max(res, query(L,R,l,m,k&lt;&lt;1));</span><br><span class="line">        if(R &gt; m)    //如果右子树和需要查询的区间交集非空，注意这里不是else if，因为查询区间可能同时和左右区间都有交集</span><br><span class="line">            res = max(res, query(L,R,m+1,r,k&lt;&lt;1|1));</span><br><span class="line"></span><br><span class="line">        return res;    //返回当前结点得到的信息</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">//递归方式区间查询 query(L,R,1,n,1);
+int query(int L,int R,int l,int r,int k)&#123;    //[L,R]即为要查询的区间，l，r为结点区间，k为结点下标
+    if(L <= l && r <= R)    //如果当前结点的区间真包含于要查询的区间内，则返回结点信息且不需要往下递归
+        return t[k];
+    else&#123;
+        Pushdown(k);    /**每次都需要更新子树的Lazy标记*/
+        int res = -INF;    //返回值变量，根据具体线段树查询的什么而自定义
+        int mid = l + ((r-l)>>1);    //m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
+        if(L <= m)    //如果左子树和需要查询的区间交集非空
+            res = max(res, query(L,R,l,m,k<<1));
+        if(R > m)    //如果右子树和需要查询的区间交集非空，注意这里不是else if，因为查询区间可能同时和左右区间都有交集
+            res = max(res, query(L,R,m+1,r,k<<1|1));
 
+        return res;    //返回当前结点得到的信息
+    &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>　　其实变动也不大，就是多了一个临时更新子树的值的过程。</p>
 <p><strong>四、线段树的其他操作</strong></p>
 <p>　　如果你明白了上述线段树处理区间最值的所有操作，那么转变成求最小值以及区间和问题应该也能很快解决，请手动再实现一下查询区间最小值的线段树和查询区间和的线段树。</p>
@@ -746,8 +830,80 @@
 <p><strong>思路：</strong></p>
 <p>标准线段树模板，分开一步步作答即可</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int M=200005;</span><br><span class="line">int a[M],t[M*4];</span><br><span class="line"></span><br><span class="line">void pushup(int k)//更新函数，这里是实现最大值</span><br><span class="line">&#123;</span><br><span class="line">    t[k]=max(t[k&lt;&lt;1],t[k&lt;&lt;1|1]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void build(int k,int l,int r)//k为当前需要建立的节点，l为当前所需要建立区间的左端点，r为当前所需要建立区间的右端点</span><br><span class="line">&#123;</span><br><span class="line">    if(l==r)t[k]=a[l];</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        int m=(l+r)&gt;&gt;1;//区大区间的中间点</span><br><span class="line">        build(k&lt;&lt;1,l,m);</span><br><span class="line">        build(k&lt;&lt;1|1,m+1,r);</span><br><span class="line">        pushup(k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void update(int p,int v,int l,int r,int k)</span><br><span class="line">&#123;</span><br><span class="line">    if(l==r)t[k]=v;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        int m=(l+r)&gt;&gt;1;</span><br><span class="line">        if(p&lt;=m)update(p,v,l,m,k&lt;&lt;1);</span><br><span class="line">        else update(p,v,m+1,r,k&lt;&lt;1|1);</span><br><span class="line">        pushup(k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int query(int L,int R,int l,int r,int k)</span><br><span class="line">&#123;</span><br><span class="line">    if(L&lt;=l&amp;&amp;r&lt;=R)return t[k];</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        int res=-0x3f3f3f;</span><br><span class="line">        int mid=(l+r)&gt;&gt;1;</span><br><span class="line">        if(L&lt;=mid)res=max(res,query(L,R,l,mid,k&lt;&lt;1));</span><br><span class="line">        if(R&gt;mid)res=max(res,query(L,R,mid+1,r,k&lt;&lt;1|1));</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int m,n;</span><br><span class="line"></span><br><span class="line">    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">     scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">    build(1,1,n);</span><br><span class="line">    while(m--)</span><br><span class="line">    &#123;</span><br><span class="line">        char a;</span><br><span class="line">        int b,c;</span><br><span class="line">        scanf(&quot; %c%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        if(a==&#x27;Q&#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">            int ans=query(b,c,1,n,1);</span><br><span class="line">            cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            update(b,c,1,n,1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c++"><code class="language-c++">#include<iostream>
+using namespace std;
+const int M=200005;
+int a[M],t[M*4];
 
+void pushup(int k)//更新函数，这里是实现最大值
+&#123;
+    t[k]=max(t[k<<1],t[k<<1|1]);
+&#125;
+
+void build(int k,int l,int r)//k为当前需要建立的节点，l为当前所需要建立区间的左端点，r为当前所需要建立区间的右端点
+&#123;
+    if(l==r)t[k]=a[l];
+    else
+    &#123;
+        int m=(l+r)>>1;//区大区间的中间点
+        build(k<<1,l,m);
+        build(k<<1|1,m+1,r);
+        pushup(k);
+    &#125;
+&#125;
+
+void update(int p,int v,int l,int r,int k)
+&#123;
+    if(l==r)t[k]=v;
+    else
+    &#123;
+        int m=(l+r)>>1;
+        if(p<=m)update(p,v,l,m,k<<1);
+        else update(p,v,m+1,r,k<<1|1);
+        pushup(k);
+    &#125;
+&#125;
+
+int query(int L,int R,int l,int r,int k)
+&#123;
+    if(L<=l&&r<=R)return t[k];
+    else
+    &#123;
+        int res=-0x3f3f3f;
+        int mid=(l+r)>>1;
+        if(L<=mid)res=max(res,query(L,R,l,mid,k<<1));
+        if(R>mid)res=max(res,query(L,R,mid+1,r,k<<1|1));
+        return res;
+    &#125;
+&#125;
+int main()
+&#123;
+    int m,n;
+
+    while(scanf("%d%d",&n,&m)!=EOF)
+    &#123;
+    for(int i=1;i<=n;i++)
+     scanf("%d",&a[i]);
+    build(1,1,n);
+    while(m--)
+    &#123;
+        char a;
+        int b,c;
+        scanf(" %c%d%d",&a,&b,&c);
+        if(a=='Q')
+        &#123;
+            int ans=query(b,c,1,n,1);
+            cout<<ans<<endl;
+        &#125;
+        else
+        &#123;
+            update(b,c,1,n,1);
+        &#125;
+    &#125;
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>题解：</strong></p>
 <p>通过每一步的功能实现，一步步满足题目要求，最后要注意多个传入数据</p>
 <h2 id="hdu3308"><a href="#hdu3308" class="headerlink" title="hdu3308"></a>hdu3308</h2></li>
@@ -757,8 +913,108 @@
 <p><strong>思路：</strong></p>
 <p>类似于1754，连续子序列需要判断连续减和连续增</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define lson k&lt;&lt;1,l,m</span><br><span class="line">#define rson k&lt;&lt;1|1,m+1,r</span><br><span class="line">const int maxn = 1e5+5;</span><br><span class="line">struct tree&#123;</span><br><span class="line">	int ls;		//左端点为起点的最大连续 </span><br><span class="line">	int rs;		//右端点为终点的最大连续 </span><br><span class="line">	int ms;		//区间最大连续 </span><br><span class="line">&#125;s[maxn&lt;&lt;2];</span><br><span class="line">int a[maxn]; </span><br><span class="line">inline void push_up(int k,int l,int r)</span><br><span class="line">&#123;</span><br><span class="line">	int m = (l + r) &gt;&gt; 1;</span><br><span class="line">	s[k].ls = s[k&lt;&lt;1].ls;</span><br><span class="line">	s[k].rs = s[k&lt;&lt;1|1].rs;</span><br><span class="line">	s[k].ms = max(s[k&lt;&lt;1].ms,s[k&lt;&lt;1|1].ms);	</span><br><span class="line">	if(a[m] &lt; a[m+1])&#123;</span><br><span class="line">		if(s[k&lt;&lt;1].ms == m-l+1)&#123;			//左孩子区间满 </span><br><span class="line">			s[k].ls += s[k&lt;&lt;1|1].ls;</span><br><span class="line">		&#125;</span><br><span class="line">		if(s[k&lt;&lt;1|1].ms == r-m)&#123;			//右孩子区间满 </span><br><span class="line">			s[k].rs += s[k&lt;&lt;1].rs;</span><br><span class="line">		&#125;</span><br><span class="line">		s[k].ms = max(s[k].ms,s[k&lt;&lt;1].rs + s[k&lt;&lt;1|1].ls);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">inline void build(int k,int l,int r)</span><br><span class="line">&#123;</span><br><span class="line">	if(l == r)&#123;</span><br><span class="line">		s[k].ls = s[k].ms = s[k].rs = 1;</span><br><span class="line">		return ;</span><br><span class="line">	&#125;</span><br><span class="line">	int m = (l + r) &gt;&gt; 1;</span><br><span class="line">	build(k&lt;&lt;1,l,m);</span><br><span class="line">	build(k&lt;&lt;1|1,m+1,r);</span><br><span class="line">	push_up(k,l,r);</span><br><span class="line">&#125;</span><br><span class="line">inline void update(int k,int l,int r,int ql,int ans)</span><br><span class="line">&#123;</span><br><span class="line">	if(l == r)&#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	int m = (l + r) &gt;&gt; 1;</span><br><span class="line">	if(ql &lt;= m)&#123;</span><br><span class="line">		update(lson,ql,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		update(rson,ql,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	push_up(k,l,r);</span><br><span class="line">&#125;</span><br><span class="line">int query(int k,int l,int r,int ql,int qr)</span><br><span class="line">&#123;</span><br><span class="line">	if(qr &lt; l || r &lt; ql)&#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	if(ql &lt;= l &amp;&amp; r &lt;= qr)&#123;</span><br><span class="line">		return s[k].ms;</span><br><span class="line">	&#125;</span><br><span class="line">	int m = (l + r) &gt;&gt; 1;</span><br><span class="line">	int s1 = query(lson,ql,qr);			//左孩子最长 </span><br><span class="line">	int s2 = query(rson,ql,qr);			//右孩子最长 </span><br><span class="line">	int ans = max(s1,s2);</span><br><span class="line">	if(a[m] &lt; a[m+1])&#123;</span><br><span class="line">		//由于左孩子的连续区间可能超过ql,所以只能在左孩子的右连续 和 区间长度中取一个最小值</span><br><span class="line">		//右孩子同上。 </span><br><span class="line">		ans = max(ans,min(s[k&lt;&lt;1].rs,m-ql+1) + min(s[k&lt;&lt;1|1].ls,qr-m));</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int zz;</span><br><span class="line">    cin&gt;&gt;zz;</span><br><span class="line">	while(zz--)&#123;</span><br><span class="line">             int m,n;</span><br><span class="line">		scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">		for(int i = 1;i &lt;= n;i++)&#123;</span><br><span class="line">			scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		build(1,1,n);</span><br><span class="line">		while(m--)&#123;</span><br><span class="line">			char op[5];</span><br><span class="line">			int x,y;</span><br><span class="line">			scanf(&quot;%s%d%d&quot;,op,&amp;x,&amp;y);</span><br><span class="line">			if(op[0] == &#x27;U&#x27;)&#123;</span><br><span class="line">				a[x+1] = y;</span><br><span class="line">				update(1,1,n,x+1,y);</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				int ans = query(1,1,n,x+1,y+1);</span><br><span class="line">				printf(&quot;%d\n&quot;,ans);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre class="line-numbers language-c++"><code class="language-c++">#include <iostream>
+#include <cstring>
+#include <cstdio>
+#include <algorithm>
+using namespace std;
+#define lson k<<1,l,m
+#define rson k<<1|1,m+1,r
+const int maxn = 1e5+5;
+struct tree&#123;
+    int ls;        //左端点为起点的最大连续 
+    int rs;        //右端点为终点的最大连续 
+    int ms;        //区间最大连续 
+&#125;s[maxn<<2];
+int a[maxn]; 
+inline void push_up(int k,int l,int r)
+&#123;
+    int m = (l + r) >> 1;
+    s[k].ls = s[k<<1].ls;
+    s[k].rs = s[k<<1|1].rs;
+    s[k].ms = max(s[k<<1].ms,s[k<<1|1].ms);    
+    if(a[m] < a[m+1])&#123;
+        if(s[k<<1].ms == m-l+1)&#123;            //左孩子区间满 
+            s[k].ls += s[k<<1|1].ls;
+        &#125;
+        if(s[k<<1|1].ms == r-m)&#123;            //右孩子区间满 
+            s[k].rs += s[k<<1].rs;
+        &#125;
+        s[k].ms = max(s[k].ms,s[k<<1].rs + s[k<<1|1].ls);
+    &#125;
+&#125;
+inline void build(int k,int l,int r)
+&#123;
+    if(l == r)&#123;
+        s[k].ls = s[k].ms = s[k].rs = 1;
+        return ;
+    &#125;
+    int m = (l + r) >> 1;
+    build(k<<1,l,m);
+    build(k<<1|1,m+1,r);
+    push_up(k,l,r);
+&#125;
+inline void update(int k,int l,int r,int ql,int ans)
+&#123;
+    if(l == r)&#123;
+        return;
+    &#125;
+    int m = (l + r) >> 1;
+    if(ql <= m)&#123;
+        update(lson,ql,ans);
+    &#125;
+    else&#123;
+        update(rson,ql,ans);
+    &#125;
+    push_up(k,l,r);
+&#125;
+int query(int k,int l,int r,int ql,int qr)
+&#123;
+    if(qr < l || r < ql)&#123;
+        return 0;
+    &#125;
+    if(ql <= l && r <= qr)&#123;
+        return s[k].ms;
+    &#125;
+    int m = (l + r) >> 1;
+    int s1 = query(lson,ql,qr);            //左孩子最长 
+    int s2 = query(rson,ql,qr);            //右孩子最长 
+    int ans = max(s1,s2);
+    if(a[m] < a[m+1])&#123;
+        //由于左孩子的连续区间可能超过ql,所以只能在左孩子的右连续 和 区间长度中取一个最小值
+        //右孩子同上。 
+        ans = max(ans,min(s[k<<1].rs,m-ql+1) + min(s[k<<1|1].ls,qr-m));
+    &#125;
+    return ans;
+&#125;
+int main()
+&#123;
+    int zz;
+    cin>>zz;
+    while(zz--)&#123;
+             int m,n;
+        scanf("%d%d",&n,&m);
+        for(int i = 1;i <= n;i++)&#123;
+            scanf("%d",&a[i]);
+        &#125;
+        build(1,1,n);
+        while(m--)&#123;
+            char op[5];
+            int x,y;
+            scanf("%s%d%d",op,&x,&y);
+            if(op[0] == 'U')&#123;
+                a[x+1] = y;
+                update(1,1,n,x+1,y);
+            &#125;
+            else&#123;
+                int ans = query(1,1,n,x+1,y+1);
+                printf("%d\n",ans);
+            &#125;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>题解：</strong></p>
 <p>注意左右子树与节点的关系即可，利用线段树的特性，对源代码进行改动</p>
 

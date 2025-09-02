@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -597,8 +598,50 @@
 <p><strong>思路：</strong></p>
 <p>搜索每一种纸箱的每一种情况。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[10],book[10],n;//因为全局变量没有赋值前默认为0，所以book数组无需全部再次赋值为0</span><br><span class="line">int flag;</span><br><span class="line"></span><br><span class="line">void dfs(int step)//step表示现在判断第几个纸箱</span><br><span class="line">&#123;</span><br><span class="line">    int i;</span><br><span class="line">    if(step==n+1)//表示前N个纸箱中已经放好了扑克牌</span><br><span class="line">    &#123;</span><br><span class="line">        flag++;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //此时判断第step个纸箱中该放哪个牌</span><br><span class="line">    //遍历一一尝试</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        //判断卡片i是否还没安置</span><br><span class="line">        if(book[i]==0)</span><br><span class="line">        &#123;</span><br><span class="line">            //开始尝试使用卡片i</span><br><span class="line">            a[step]=i;//将卡片i放入第step个纸箱中</span><br><span class="line">            book[i]=1;//将book[i]设置为1表示该卡片已经被使用过</span><br><span class="line"></span><br><span class="line">            //第step个盒子已经放好扑克牌，接下来需要走到下一个盒子面前</span><br><span class="line">            dfs(step+1);//这里通过递归实现</span><br><span class="line">            book[i]=0;//回溯，将刚刚尝试的卡片收回</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    dfs(1);//首先判断第一个纸箱</span><br><span class="line">    cout&lt;&lt;flag&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int a[10],book[10],n;//因为全局变量没有赋值前默认为0，所以book数组无需全部再次赋值为0
+int flag;
 
+void dfs(int step)//step表示现在判断第几个纸箱
+&#123;
+    int i;
+    if(step==n+1)//表示前N个纸箱中已经放好了扑克牌
+    &#123;
+        flag++;
+        return;
+    &#125;
+
+    //此时判断第step个纸箱中该放哪个牌
+    //遍历一一尝试
+    for(i=1;i&lt;=n;i++)
+    &#123;
+        //判断卡片i是否还没安置
+        if(book[i]==0)
+        &#123;
+            //开始尝试使用卡片i
+            a[step]=i;//将卡片i放入第step个纸箱中
+            book[i]=1;//将book[i]设置为1表示该卡片已经被使用过
+
+            //第step个盒子已经放好扑克牌，接下来需要走到下一个盒子面前
+            dfs(step+1);//这里通过递归实现
+            book[i]=0;//回溯，将刚刚尝试的卡片收回
+        &#125;
+    &#125;
+    return;
+&#125;
+
+
+int main()
+&#123;
+    cin&gt;&gt;n;
+    dfs(1);//首先判断第一个纸箱
+    cout&lt;&lt;flag&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>题目2：</strong></p>
 <p>xxx+xxx=xxx，在1~9中选择填空使等式成立</p>
 <p>由于思路一样，所以不详细解释</p>

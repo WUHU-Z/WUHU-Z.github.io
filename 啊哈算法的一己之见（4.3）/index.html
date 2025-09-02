@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -595,8 +596,85 @@
 <p><strong>题目：</strong></p>
 <p>之前的走迷宫</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int x;//横坐标</span><br><span class="line">    int y;//纵坐标</span><br><span class="line">    int s;//步数</span><br><span class="line">    int f;//在队列中的编号，因为本题不要求输出路径，所以不需要f</span><br><span class="line">&#125;que[2501];//因为地图的大小不超过50*50，所以扩展的队列不会超过1500个</span><br><span class="line">int head,tail;</span><br><span class="line">int a[51][51];//用来存储地图</span><br><span class="line">int book[51][51];</span><br><span class="line">int next1[4][2]=&#123;0,1,1,0,0,-1,-1,0&#125;;//定义方位</span><br><span class="line">int n,m,startx,starty,p,q,tx,ty,flag;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">        for(int j=1;j&lt;=m;j++)</span><br><span class="line">        cin&gt;&gt;a[i][j];</span><br><span class="line">    cin&gt;&gt;startx&gt;&gt;starty&gt;&gt;p&gt;&gt;q;</span><br><span class="line"></span><br><span class="line">    //队列初始化</span><br><span class="line">    head=1;tail=1;</span><br><span class="line"></span><br><span class="line">    //往队列插入迷宫入口坐标</span><br><span class="line">    que[tail].x=startx;</span><br><span class="line">    que[tail].y=starty;</span><br><span class="line">    que[tail].f=0;</span><br><span class="line">    que[tail].s=0;</span><br><span class="line">    tail++;</span><br><span class="line">    book[startx][starty]=1;</span><br><span class="line"></span><br><span class="line">    flag=0;//用来标记是否达到目标点</span><br><span class="line"></span><br><span class="line">    //当队列不为空时结束循环</span><br><span class="line">    while(head&lt;tail)</span><br><span class="line">    &#123;</span><br><span class="line">        //枚举4个方向</span><br><span class="line">        for(int k=0;k&lt;=3;k++)</span><br><span class="line">        &#123;</span><br><span class="line">            //计算下一个点的坐标</span><br><span class="line">            tx=que[head].x+next1[k][0];</span><br><span class="line">            ty=que[head].y+next1[k][1];</span><br><span class="line">            //判断是否越界</span><br><span class="line">            if(tx&lt;1||tx&gt;n||ty&lt;1||ty&gt;m)continue;</span><br><span class="line">            //判断是否是障碍物或者已经走过</span><br><span class="line">            if(a[tx][ty]==0&amp;&amp;book[tx][ty]==0)</span><br><span class="line">            &#123;</span><br><span class="line">                //把这个点标记为已经走过</span><br><span class="line">                //注意宽搜中每个点只能入队一次，所以不同于dfs，不需要回溯</span><br><span class="line">                book[tx][ty]=1;</span><br><span class="line">                //插入新的点到队列中</span><br><span class="line">                que[tail].x=tx;</span><br><span class="line">                que[tail].y=ty;</span><br><span class="line">                que[tail].f=head;//因为这个点是从head扩展出来的，所以其父亲为head，因为本题不需要求路径，所以本句可以省略</span><br><span class="line">                que[tail].s=que[head].s+1;//步数就是父亲的步数再+1</span><br><span class="line">                tail++;</span><br><span class="line">            &#125;</span><br><span class="line">            //如果到目标点了，停止扩展，任务结束，退出循环</span><br><span class="line">            if(tx==p&amp;&amp;ty==q)</span><br><span class="line">            &#123;</span><br><span class="line">                flag=1;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(flag==1)break;</span><br><span class="line">        head++;//注意当一个点扩展结束后，head才能对后面的点再进行扩展</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //打印队列中末尾最后一个点的步数</span><br><span class="line">    //注意tail是指向队列队尾的下一个位置，所以这里需要-1</span><br><span class="line">    cout&lt;&lt;que[tail-1].s&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
 
+struct node
+&#123;
+    int x;//横坐标
+    int y;//纵坐标
+    int s;//步数
+    int f;//在队列中的编号，因为本题不要求输出路径，所以不需要f
+&#125;que[2501];//因为地图的大小不超过50*50，所以扩展的队列不会超过1500个
+int head,tail;
+int a[51][51];//用来存储地图
+int book[51][51];
+int next1[4][2]=&#123;0,1,1,0,0,-1,-1,0&#125;;//定义方位
+int n,m,startx,starty,p,q,tx,ty,flag;
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=n;i++)
+        for(int j=1;j&lt;=m;j++)
+        cin&gt;&gt;a[i][j];
+    cin&gt;&gt;startx&gt;&gt;starty&gt;&gt;p&gt;&gt;q;
+
+    //队列初始化
+    head=1;tail=1;
+
+    //往队列插入迷宫入口坐标
+    que[tail].x=startx;
+    que[tail].y=starty;
+    que[tail].f=0;
+    que[tail].s=0;
+    tail++;
+    book[startx][starty]=1;
+
+    flag=0;//用来标记是否达到目标点
+
+    //当队列不为空时结束循环
+    while(head&lt;tail)
+    &#123;
+        //枚举4个方向
+        for(int k=0;k&lt;=3;k++)
+        &#123;
+            //计算下一个点的坐标
+            tx=que[head].x+next1[k][0];
+            ty=que[head].y+next1[k][1];
+            //判断是否越界
+            if(tx&lt;1||tx&gt;n||ty&lt;1||ty&gt;m)continue;
+            //判断是否是障碍物或者已经走过
+            if(a[tx][ty]==0&amp;&amp;book[tx][ty]==0)
+            &#123;
+                //把这个点标记为已经走过
+                //注意宽搜中每个点只能入队一次，所以不同于dfs，不需要回溯
+                book[tx][ty]=1;
+                //插入新的点到队列中
+                que[tail].x=tx;
+                que[tail].y=ty;
+                que[tail].f=head;//因为这个点是从head扩展出来的，所以其父亲为head，因为本题不需要求路径，所以本句可以省略
+                que[tail].s=que[head].s+1;//步数就是父亲的步数再+1
+                tail++;
+            &#125;
+            //如果到目标点了，停止扩展，任务结束，退出循环
+            if(tx==p&amp;&amp;ty==q)
+            &#123;
+                flag=1;
+                break;
+            &#125;
+        &#125;
+        if(flag==1)break;
+        head++;//注意当一个点扩展结束后，head才能对后面的点再进行扩展
+    &#125;
+
+    //打印队列中末尾最后一个点的步数
+    //注意tail是指向队列队尾的下一个位置，所以这里需要-1
+    cout&lt;&lt;que[tail-1].s&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>

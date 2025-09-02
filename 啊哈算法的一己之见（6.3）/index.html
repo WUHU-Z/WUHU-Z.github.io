@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -597,8 +598,56 @@
 <li>对于负权回路的检测，也使用从终点倒退的方式进行比较</li>
 </ol>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define INF 9999999</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int dis[10],bak[10],i,k,n,m,u[10],v[10],w[10],check,flag;</span><br><span class="line">    //n表示顶点数,m表示边数</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    //读入边</span><br><span class="line">    for(i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;u[i]&gt;&gt;v[i]&gt;&gt;w[i];</span><br><span class="line">    &#125;</span><br><span class="line">    //初始化dis数组，这里是1号顶点到其余各点的初始路程</span><br><span class="line">    for(i=1;i&lt;=n;i++)dis[i]=INF;</span><br><span class="line">    dis[1]=0;</span><br><span class="line">    //核心语句</span><br><span class="line">    for(k=1;k&lt;=n-1;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        //将dis备份入bak数组中</span><br><span class="line">        for(i=1;i&lt;=n;i++)bak[i]=dis[i];</span><br><span class="line">        //进行一轮更新</span><br><span class="line">        for(i=1;i&lt;=m;i++)</span><br><span class="line">            if(dis[v[i]]&gt;dis[u[i]]+w[i])</span><br><span class="line">            dis[v[i]]=dis[u[i]]+w[i];</span><br><span class="line">        //更新完毕后检测dis数组是否有更新</span><br><span class="line">        check=0;</span><br><span class="line">        for(i=1;i&lt;=n;i++)</span><br><span class="line">        if(bak[i]!=dis[i])&#123;check=1;break;&#125;</span><br><span class="line"></span><br><span class="line">        //如果dis数组没有更新，提前退出循环结束算法</span><br><span class="line">        if(check==0)break;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    //检测负权回路</span><br><span class="line">    flag=0;</span><br><span class="line">    for(i=1;i&lt;=m;i++)</span><br><span class="line">        if(dis[v[i]]&gt;dis[u[i]]+w[i])flag=1;</span><br><span class="line">    if(flag==1)cout&lt;&lt;&quot;此图含有负权回路&quot;&lt;&lt;endl;</span><br><span class="line">    else</span><br><span class="line">    //输出最终结果</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">        cout&lt;&lt;dis[i]&lt;&lt;&#x27; &#x27;;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+#define INF 9999999
 
+int main()
+&#123;
+    int dis[10],bak[10],i,k,n,m,u[10],v[10],w[10],check,flag;
+    //n表示顶点数,m表示边数
+    cin&gt;&gt;n&gt;&gt;m;
+    //读入边
+    for(i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;u[i]&gt;&gt;v[i]&gt;&gt;w[i];
+    &#125;
+    //初始化dis数组，这里是1号顶点到其余各点的初始路程
+    for(i=1;i&lt;=n;i++)dis[i]=INF;
+    dis[1]=0;
+    //核心语句
+    for(k=1;k&lt;=n-1;k++)
+    &#123;
+        //将dis备份入bak数组中
+        for(i=1;i&lt;=n;i++)bak[i]=dis[i];
+        //进行一轮更新
+        for(i=1;i&lt;=m;i++)
+            if(dis[v[i]]&gt;dis[u[i]]+w[i])
+            dis[v[i]]=dis[u[i]]+w[i];
+        //更新完毕后检测dis数组是否有更新
+        check=0;
+        for(i=1;i&lt;=n;i++)
+        if(bak[i]!=dis[i])&#123;check=1;break;&#125;
+
+        //如果dis数组没有更新，提前退出循环结束算法
+        if(check==0)break;
+
+    &#125;
+    //检测负权回路
+    flag=0;
+    for(i=1;i&lt;=m;i++)
+        if(dis[v[i]]&gt;dis[u[i]]+w[i])flag=1;
+    if(flag==1)cout&lt;&lt;&quot;此图含有负权回路&quot;&lt;&lt;endl;
+    else
+    //输出最终结果
+    for(i=1;i&lt;=n;i++)
+        cout&lt;&lt;dis[i]&lt;&lt;&#39; &#39;;
+
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>

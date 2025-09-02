@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -596,22 +597,66 @@
 <p><strong>思路：</strong></p>
 <ol>
 <li><p>首先读取字符串，找到字符串长度。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char a[101];//创建记录输入的字符串  </span><br><span class="line">gets(a);//读入一行字符串 </span><br><span class="line">int len = strlen(a);//求字符串的长度</span><br></pre></td></tr></table></figure>
-
+<pre><code>char a[101];//创建记录输入的字符串  
+gets(a);//读入一行字符串 
+int len = strlen(a);//求字符串的长度
+</code></pre>
 <p>2.因为一个字符串是回文的话，那么它一定是中间对称的，我们需要求中点mid</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int mid = len/2-1;//求字符串的中点</span><br></pre></td></tr></table></figure>
-
+<pre><code>int mid = len/2-1;//求字符串的中点
+</code></pre>
 <p>​      3.将mid前的字符全都入栈</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for(int i=0;i&lt;=mid;i++)b[++top]=a[i];</span><br></pre></td></tr></table></figure>
-
+<pre><code>for(int i=0;i&lt;=mid;i++)b[++top]=a[i];
+</code></pre>
 <p>​     4.然后将栈中字符出栈，看看能否与mid后的字符一一匹配，能匹配则为回文，反之则不是</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//搜索匹配</span><br><span class="line">    for(int i=next;i&lt;=len-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(a[i]!=b[top])break;</span><br><span class="line">        top--;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(top==0)cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;</span><br><span class="line">    else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<pre><code>//搜索匹配
+    for(int i=next;i&lt;=len-1;i++)
+    &#123;
+        if(a[i]!=b[top])break;
+        top--;
+    &#125;
 
+    if(top==0)cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+    else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+</code></pre>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    char a[101];//创建记录输入的字符串</span><br><span class="line">    char b[101];//创建对应的栈</span><br><span class="line"></span><br><span class="line">    gets(a);//读入一行字符串</span><br><span class="line"></span><br><span class="line">    int len = strlen(a);//求字符串的长度</span><br><span class="line">    cout&lt;&lt;&quot;len: &quot;&lt;&lt;len&lt;&lt;endl;</span><br><span class="line">    int top=0;//栈的初始化</span><br><span class="line">    int mid = len/2-1;//求字符串的中点</span><br><span class="line">    for(int i=0;i&lt;=mid;i++)b[++top]=a[i];</span><br><span class="line"></span><br><span class="line">    int next;</span><br><span class="line">    //判断字符串的长度是奇数还是偶数，并找出需要进行字符匹配的起始下标</span><br><span class="line">    if(len%2==0)next=mid+1;</span><br><span class="line">    else next= mid+2;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //搜索匹配</span><br><span class="line">    for(int i=next;i&lt;=len-1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(a[i]!=b[top])break;</span><br><span class="line">        top--;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(top==0)cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;</span><br><span class="line">    else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+using namespace std;
 
+int main()
+&#123;
+    char a[101];//创建记录输入的字符串
+    char b[101];//创建对应的栈
+
+    gets(a);//读入一行字符串
+
+    int len = strlen(a);//求字符串的长度
+    cout&lt;&lt;&quot;len: &quot;&lt;&lt;len&lt;&lt;endl;
+    int top=0;//栈的初始化
+    int mid = len/2-1;//求字符串的中点
+    for(int i=0;i&lt;=mid;i++)b[++top]=a[i];
+
+    int next;
+    //判断字符串的长度是奇数还是偶数，并找出需要进行字符匹配的起始下标
+    if(len%2==0)next=mid+1;
+    else next= mid+2;
+
+
+    //搜索匹配
+    for(int i=next;i&lt;=len-1;i++)
+    &#123;
+        if(a[i]!=b[top])break;
+        top--;
+    &#125;
+
+    if(top==0)cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;
+    else cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;
+
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>

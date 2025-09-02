@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -603,14 +604,75 @@
 <p><strong>所以关键就是</strong>：如何判断顶点v在不经过顶点u的情况下能否还能回到之前访问过的任意一个点–对v再进行深度优先遍历，但此次遍历时不允许经过顶点u看看能否找到除u外之前已经访问到的点。如果不能则证明u是割点。</p>
 <p>对于某个顶点u，如果存在至少一个顶点v(顶点u的子结点)，使得low[v]&gt;=num[u],即不能回到祖先，那么u为割点。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,m,e[9][9],root;</span><br><span class="line">int num[9],low[9],flag[9],index;//index用来进行时间戳的递增</span><br><span class="line"></span><br><span class="line">void dfs(int cur,int father)//需要传入两个参数，当前顶点点编号和父顶点编号</span><br><span class="line">&#123;</span><br><span class="line">    int child=0,i,j;//child用来记录在生成树中当前顶点cur的儿子个数</span><br><span class="line">    index++;//时间戳+1</span><br><span class="line">    num[cur]=index;//当前顶点cur的时间戳</span><br><span class="line">    low[cur]=index;//当前顶点cur能够访问到最早顶点的时间戳,刚开始当然是自己的了</span><br><span class="line">    for(i=1;i&lt;=n;i++)//枚举与当前顶点cur有边相连的顶点i</span><br><span class="line">    &#123;</span><br><span class="line">        if(e[cur][i]==1)</span><br><span class="line">        &#123;</span><br><span class="line">            if(num[i]==0)//如果i的时间戳不为0,表示i顶点还没有被访问过</span><br><span class="line">            &#123;</span><br><span class="line">                child++;</span><br><span class="line">                dfs(i,cur);//继续向下深度优先遍历</span><br><span class="line">                //更新当前顶点cur是否能访问到最早顶点的时间戳</span><br><span class="line">                low[cur]=min(low[cur],low[i]);</span><br><span class="line">                //如果当前顶点不是根节点，并满足low[i]&gt;=num[cur],则当前顶点为割点</span><br><span class="line">                if(cur!=root&amp;&amp;low[i]&gt;=num[cur])flag[cur]=1;</span><br><span class="line">                //如果当前顶点是根节点，在生成树中根节点必须有两个儿子，那么这个根节点才是割点</span><br><span class="line">                if(cur==root&amp;&amp;child==2)flag[cur]=1;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(i!=father)//否则如果顶点i曾经被访问过，并且这个顶点不是当前顶点cur的父亲，则需要更新当前节点cur能访问到最早顶点的时间戳</span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                low[cur]=min(low[cur],num[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int i,j,x,y;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;//输入节点数和边数</span><br><span class="line">    memset(e,0,sizeof e);</span><br><span class="line">    for(i=1;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        e[x][y]=1;</span><br><span class="line">        e[y][x]=1;</span><br><span class="line">    &#125;</span><br><span class="line">    root=1;</span><br><span class="line">    dfs(1,root);//从1号顶点开始进行深度优先遍历</span><br><span class="line">    for(i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(flag[i]==1)cout&lt;&lt;i&lt;&lt;&quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int n,m,e[9][9],root;
+int num[9],low[9],flag[9],index;//index用来进行时间戳的递增
 
+void dfs(int cur,int father)//需要传入两个参数，当前顶点点编号和父顶点编号
+&#123;
+    int child=0,i,j;//child用来记录在生成树中当前顶点cur的儿子个数
+    index++;//时间戳+1
+    num[cur]=index;//当前顶点cur的时间戳
+    low[cur]=index;//当前顶点cur能够访问到最早顶点的时间戳,刚开始当然是自己的了
+    for(i=1;i&lt;=n;i++)//枚举与当前顶点cur有边相连的顶点i
+    &#123;
+        if(e[cur][i]==1)
+        &#123;
+            if(num[i]==0)//如果i的时间戳不为0,表示i顶点还没有被访问过
+            &#123;
+                child++;
+                dfs(i,cur);//继续向下深度优先遍历
+                //更新当前顶点cur是否能访问到最早顶点的时间戳
+                low[cur]=min(low[cur],low[i]);
+                //如果当前顶点不是根节点，并满足low[i]&gt;=num[cur],则当前顶点为割点
+                if(cur!=root&amp;&amp;low[i]&gt;=num[cur])flag[cur]=1;
+                //如果当前顶点是根节点，在生成树中根节点必须有两个儿子，那么这个根节点才是割点
+                if(cur==root&amp;&amp;child==2)flag[cur]=1;
+            &#125;
+            else if(i!=father)//否则如果顶点i曾经被访问过，并且这个顶点不是当前顶点cur的父亲，则需要更新当前节点cur能访问到最早顶点的时间戳
+            &#123;
+
+                low[cur]=min(low[cur],num[i]);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+int main()
+&#123;
+    int i,j,x,y;
+    cin &gt;&gt; n &gt;&gt; m;//输入节点数和边数
+    memset(e,0,sizeof e);
+    for(i=1;i&lt;=m;i++)
+    &#123;
+        cin&gt;&gt;x&gt;&gt;y;
+        e[x][y]=1;
+        e[y][x]=1;
+    &#125;
+    root=1;
+    dfs(1,root);//从1号顶点开始进行深度优先遍历
+    for(i=1;i&lt;=n;i++)
+    &#123;
+        if(flag[i]==1)cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p>Input</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">6 7</span><br><span class="line">1 4</span><br><span class="line">1 3</span><br><span class="line">4 2</span><br><span class="line">3 2</span><br><span class="line">2 5</span><br><span class="line">2 6</span><br><span class="line">5 6</span><br></pre></td></tr></table></figure>
-
+<pre><code>6 7
+1 4
+1 3
+4 2
+3 2
+2 5
+2 6
+5 6
+</code></pre>
 <p>Output</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
-
+<pre><code>2
+</code></pre>
 
                 
             </div>

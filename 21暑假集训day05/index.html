@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -594,8 +595,73 @@
 <p><strong>思路：</strong></p>
 <p>利用前缀和的思想，相减求得区间的值；但是这样还是多算了一部分，因为1–l-1之间的数和l–r之间的数也可以构成数对，所以必须把这部分减去。怎么减去呢，这里才是关键。首先，对于一次查询，把l和r分开来操作。我们可以枚举i，i从1到n，当枚举到i的时候，i之前的所有的数的倍数更新了，也就是说i之前的数对l–r之间的数已经形成，并且此时对l–r之间影响只有1–l-1之间的数，如果，我们把这部分数对减去的话，那么之前说的关键问题就解决了。减去之后就可以更新第i个数的倍数了，然后当i是查询的右端点的时候，这时候普就可以直接查询右端点，然后查询左端点然后做差累加上去，就可以得到最终的答案了。统计和更新直接用树状数组来维护就可以了。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=2e5+10;</span><br><span class="line">int n,m;</span><br><span class="line">int a[N],//存储每位的数值</span><br><span class="line">ct[N];</span><br><span class="line">int pos[N],//每个数值对应位数</span><br><span class="line">l[N],//按先后存储所有的左区间</span><br><span class="line">r[N],//按先后存储所有的右区间</span><br><span class="line">ans[N];//记录结果</span><br><span class="line">vector&lt;int&gt;ll[N],rr[N];//依次记录所有的左右区间值对应的轮次</span><br><span class="line">void init()&#123;</span><br><span class="line">   memset(a,0,sizeof(a));</span><br><span class="line">   memset(ct,0,sizeof(ct));</span><br><span class="line">   memset(pos,0,sizeof(pos));</span><br><span class="line">&#125;</span><br><span class="line">int lowbit(int x)&#123;//计算2^k</span><br><span class="line">  return x&amp;(-x);</span><br><span class="line">&#125;</span><br><span class="line">void add(int x)&#123;//更新所有与x有关的</span><br><span class="line">  while(x&lt;=n)&#123;</span><br><span class="line">    ct[x]++;</span><br><span class="line">    x+=lowbit(x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">int getsum(int x)&#123;//求1~x之间的和</span><br><span class="line">    int ans=0;</span><br><span class="line">    while(x&gt;0)&#123;</span><br><span class="line">        ans+=ct[x];</span><br><span class="line">        x-=lowbit(x);</span><br><span class="line">    &#125;</span><br><span class="line">   return ans;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">   while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123;</span><br><span class="line">      init();//初始化</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">       scanf(&quot;%d&quot;,&amp;a[i]);</span><br><span class="line">       pos[a[i]]=i;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1;i&lt;=m;i++)&#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;,&amp;l[i],&amp;r[i]);</span><br><span class="line">        ll[l[i]].push_back(i);</span><br><span class="line">        rr[r[i]].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;//遍历所有数字</span><br><span class="line">    for(int j=0;j&lt;ll[i].size();j++)&#123;//变量减去l--r之间影响只有1--l-1之间的数</span><br><span class="line">        ans[ll[i][j]]-=getsum(r[ll[i][j]])-getsum(i-1);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int j=1;j*a[i]&lt;=n;j++)&#123;</span><br><span class="line">        add(pos[j*a[i]]);//更新该区间的倍数</span><br><span class="line">    &#125;</span><br><span class="line">     for(int j=0;j&lt;rr[i].size();j++)&#123;//得出结论</span><br><span class="line">        ans[rr[i][j]]+=getsum(i)-getsum(l[rr[i][j]]-1);</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   for(int i=1;i&lt;=m;i++)&#123;</span><br><span class="line">    printf(&quot;%d\n&quot;,ans[i]);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+#include&lt;vector&gt;
+using namespace std;
+const int N=2e5+10;
+int n,m;
+int a[N],//存储每位的数值
+ct[N];
+int pos[N],//每个数值对应位数
+l[N],//按先后存储所有的左区间
+r[N],//按先后存储所有的右区间
+ans[N];//记录结果
+vector&lt;int&gt;ll[N],rr[N];//依次记录所有的左右区间值对应的轮次
+void init()&#123;
+   memset(a,0,sizeof(a));
+   memset(ct,0,sizeof(ct));
+   memset(pos,0,sizeof(pos));
+&#125;
+int lowbit(int x)&#123;//计算2^k
+  return x&amp;(-x);
+&#125;
+void add(int x)&#123;//更新所有与x有关的
+  while(x&lt;=n)&#123;
+    ct[x]++;
+    x+=lowbit(x);
+  &#125;
+&#125;
+int getsum(int x)&#123;//求1~x之间的和
+    int ans=0;
+    while(x&gt;0)&#123;
+        ans+=ct[x];
+        x-=lowbit(x);
+    &#125;
+   return ans;
+&#125;
+int main()&#123;
+   while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123;
+      init();//初始化
+    for(int i=1;i&lt;=n;i++)&#123;
+       scanf(&quot;%d&quot;,&amp;a[i]);
+       pos[a[i]]=i;
+    &#125;
+    for(int i=1;i&lt;=m;i++)&#123;
+        scanf(&quot;%d%d&quot;,&amp;l[i],&amp;r[i]);
+        ll[l[i]].push_back(i);
+        rr[r[i]].push_back(i);
+    &#125;
+    for(int i=1;i&lt;=n;i++)&#123;//遍历所有数字
+    for(int j=0;j&lt;ll[i].size();j++)&#123;//变量减去l--r之间影响只有1--l-1之间的数
+        ans[ll[i][j]]-=getsum(r[ll[i][j]])-getsum(i-1);
+    &#125;
+    for(int j=1;j*a[i]&lt;=n;j++)&#123;
+        add(pos[j*a[i]]);//更新该区间的倍数
+    &#125;
+     for(int j=0;j&lt;rr[i].size();j++)&#123;//得出结论
+        ans[rr[i][j]]+=getsum(i)-getsum(l[rr[i][j]]-1);
+     &#125;
+    &#125;
+   for(int i=1;i&lt;=m;i++)&#123;
+    printf(&quot;%d\n&quot;,ans[i]);
+   &#125;
+ &#125;
+ return 0;
+&#125;
+</code></pre>
 <h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/11F7F6EEF81E4D0F8A7B1DC2245034D9.jpg"></p>
 <p>题目大意：</p>
@@ -604,15 +670,189 @@
 <p>a[l] &amp; a[l+1] &amp; a[l+2] … &amp; a[r] = q，这是每个限制的基本形式，由“&amp;”我们可以得知，如若q中的某一个bit是1的话，则要求a[l]~a[r]中的那个bit位都为1。这个条件看似是限制，现在通过转化，似乎可以成为我们的已知条件，即每一个a[i]中的必须要为1的bit。</p>
 <p>通过上述可知，我们得到每个a[i]的基本值，然后每一个限制是一个区间，很容易就想到了线段树，对每一条限制进行查询，看是否冲突，如若冲突则为”NO“，如若不冲突，则就按照a[i]的必须值来输出即可。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#define L long long</span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int l , r ;</span><br><span class="line">    int z ;</span><br><span class="line">&#125;tr[100000&lt;&lt;2];</span><br><span class="line">int mark[100000&lt;&lt;2] ;</span><br><span class="line">int n , m ;</span><br><span class="line">node in[100500] ;</span><br><span class="line"> int maxx ;</span><br><span class="line"></span><br><span class="line">void crea(int ro ,int l ,int r ) &#123;//递归方式建树</span><br><span class="line">    tr[ro].l = l ;</span><br><span class="line">    tr[ro].r = r ;</span><br><span class="line">    tr[ro].z = 0 ;</span><br><span class="line">    if(l == r)return ;</span><br><span class="line">    int mid = (l + r) / 2 ;</span><br><span class="line">    crea(ro*2 , l , mid ) ;</span><br><span class="line">    crea(ro*2+1, mid + 1 , r) ;</span><br><span class="line">&#125;</span><br><span class="line">void pushdown(int ro) &#123;</span><br><span class="line">    if(mark[ro] == 0) &#123;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    if(tr[ro].l == tr[ro].r)return ;</span><br><span class="line">    mark[ro*2] |= mark[ro] ;//更新左右子树</span><br><span class="line">    mark[ro*2+1] |= mark[ro] ;</span><br><span class="line">    tr[ro*2].z |= mark[ro] ;</span><br><span class="line">    tr[ro*2+1].z |= mark[ro] ;</span><br><span class="line">    mark[ro] = 0 ;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int query(int ro ,int l ,int r )&#123;</span><br><span class="line">    pushdown(ro) ;</span><br><span class="line">    if(l &lt;= tr[ro].l &amp;&amp; r &gt;= tr[ro].r) &#123;</span><br><span class="line">        return tr[ro].z ;</span><br><span class="line">    &#125;</span><br><span class="line">    int mid = (tr[ro].l + tr[ro].r) / 2 ;</span><br><span class="line">    if(r &lt;= mid) &#123;</span><br><span class="line">        return query(ro*2 , l , r ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(l &gt;= mid + 1 ) &#123;</span><br><span class="line">        return query(ro*2+1 , l , r ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        return query(ro*2 , l , r ) &amp; query(ro*2+1 , l , r ) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void upda(int ro ,int l ,int r ,int z) &#123;//从顶部开始，找到影响区间并对其值更新</span><br><span class="line">    pushdown(ro) ;</span><br><span class="line">    if(l &lt;= tr[ro].l &amp;&amp; r &gt;= tr[ro].r) &#123;</span><br><span class="line">        tr[ro].z |= z ;</span><br><span class="line">        mark[ro] = z ;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    if(tr[ro].l == tr[ro].r)return ;</span><br><span class="line">    int mid = (tr[ro].l + tr[ro].r) / 2 ;</span><br><span class="line">    if(r &lt;= mid)&#123;</span><br><span class="line">        upda(ro*2 , l , r , z) ;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(l &gt;= mid + 1) &#123;</span><br><span class="line">        upda(ro*2+1 , l , r , z) ;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        upda(ro*2 , l , mid , z) ;</span><br><span class="line">        upda(ro*2+1 , mid + 1 , r , z) ;</span><br><span class="line">    &#125;</span><br><span class="line">    tr[ro].z = tr[ro*2].z &amp; tr[ro*2+1].z ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)&#123;</span><br><span class="line">        maxx = (1 &lt;&lt; 31)- 1 ;</span><br><span class="line">        memset(mark,0,sizeof(mark));</span><br><span class="line">        crea(1,1,n);//从1开始，以1~n为区间进行建树</span><br><span class="line">        for(int i = 1; i &lt;= m ; i ++ )&#123;</span><br><span class="line">            scanf(&quot;%d%d%d&quot; , &amp;in[i].l, &amp;in[i].r , &amp;in[i].z) ;</span><br><span class="line">            upda(1 , in[i].l , in[i].r , in[i].z) ;//记录并传入每个区间及对应值</span><br><span class="line">        &#125;</span><br><span class="line">        bool ok =true ;</span><br><span class="line">        for(int i = 1; i &lt;= m ; i ++ )&#123;</span><br><span class="line">            int z = query(1 , in[i].l , in[i].r ) ;//检查新建立的线段树区间中的值，是否与每一个规定值相同</span><br><span class="line"></span><br><span class="line">            if(z != in[i].z) &#123;</span><br><span class="line">                ok =false ;</span><br><span class="line">                break ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(ok) &#123;</span><br><span class="line">            printf(&quot;YES\n&quot;) ;</span><br><span class="line">            for(int i = 1; i &lt;= n ; i ++ )&#123;//如果有，则输出一个符合要求的数组</span><br><span class="line">                printf(&quot;%d&quot;,query(1,i,i)) ;</span><br><span class="line">                if(i == n)printf(&quot;\n&quot;);</span><br><span class="line">                else printf(&quot; &quot;) ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            printf(&quot;NO\n&quot;) ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#define L long long
+using namespace std;
+struct node&#123;
+    int l , r ;
+    int z ;
+&#125;tr[100000&lt;&lt;2];
+int mark[100000&lt;&lt;2] ;
+int n , m ;
+node in[100500] ;
+ int maxx ;
 
+void crea(int ro ,int l ,int r ) &#123;//递归方式建树
+    tr[ro].l = l ;
+    tr[ro].r = r ;
+    tr[ro].z = 0 ;
+    if(l == r)return ;
+    int mid = (l + r) / 2 ;
+    crea(ro*2 , l , mid ) ;
+    crea(ro*2+1, mid + 1 , r) ;
+&#125;
+void pushdown(int ro) &#123;
+    if(mark[ro] == 0) &#123;
+        return ;
+    &#125;
+    if(tr[ro].l == tr[ro].r)return ;
+    mark[ro*2] |= mark[ro] ;//更新左右子树
+    mark[ro*2+1] |= mark[ro] ;
+    tr[ro*2].z |= mark[ro] ;
+    tr[ro*2+1].z |= mark[ro] ;
+    mark[ro] = 0 ;
+    return ;
+&#125;
+
+int query(int ro ,int l ,int r )&#123;
+    pushdown(ro) ;
+    if(l &lt;= tr[ro].l &amp;&amp; r &gt;= tr[ro].r) &#123;
+        return tr[ro].z ;
+    &#125;
+    int mid = (tr[ro].l + tr[ro].r) / 2 ;
+    if(r &lt;= mid) &#123;
+        return query(ro*2 , l , r ) ;
+    &#125;
+    else if(l &gt;= mid + 1 ) &#123;
+        return query(ro*2+1 , l , r ) ;
+    &#125;
+    else &#123;
+        return query(ro*2 , l , r ) &amp; query(ro*2+1 , l , r ) ;
+    &#125;
+&#125;
+
+void upda(int ro ,int l ,int r ,int z) &#123;//从顶部开始，找到影响区间并对其值更新
+    pushdown(ro) ;
+    if(l &lt;= tr[ro].l &amp;&amp; r &gt;= tr[ro].r) &#123;
+        tr[ro].z |= z ;
+        mark[ro] = z ;
+        return ;
+    &#125;
+    if(tr[ro].l == tr[ro].r)return ;
+    int mid = (tr[ro].l + tr[ro].r) / 2 ;
+    if(r &lt;= mid)&#123;
+        upda(ro*2 , l , r , z) ;
+    &#125;
+    else if(l &gt;= mid + 1) &#123;
+        upda(ro*2+1 , l , r , z) ;
+    &#125;
+    else &#123;
+        upda(ro*2 , l , mid , z) ;
+        upda(ro*2+1 , mid + 1 , r , z) ;
+    &#125;
+    tr[ro].z = tr[ro*2].z &amp; tr[ro*2+1].z ;
+&#125;
+
+int main()&#123;
+    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)&#123;
+        maxx = (1 &lt;&lt; 31)- 1 ;
+        memset(mark,0,sizeof(mark));
+        crea(1,1,n);//从1开始，以1~n为区间进行建树
+        for(int i = 1; i &lt;= m ; i ++ )&#123;
+            scanf(&quot;%d%d%d&quot; , &amp;in[i].l, &amp;in[i].r , &amp;in[i].z) ;
+            upda(1 , in[i].l , in[i].r , in[i].z) ;//记录并传入每个区间及对应值
+        &#125;
+        bool ok =true ;
+        for(int i = 1; i &lt;= m ; i ++ )&#123;
+            int z = query(1 , in[i].l , in[i].r ) ;//检查新建立的线段树区间中的值，是否与每一个规定值相同
+
+            if(z != in[i].z) &#123;
+                ok =false ;
+                break ;
+            &#125;
+        &#125;
+        if(ok) &#123;
+            printf(&quot;YES\n&quot;) ;
+            for(int i = 1; i &lt;= n ; i ++ )&#123;//如果有，则输出一个符合要求的数组
+                printf(&quot;%d&quot;,query(1,i,i)) ;
+                if(i == n)printf(&quot;\n&quot;);
+                else printf(&quot; &quot;) ;
+            &#125;
+        &#125;
+        else &#123;
+            printf(&quot;NO\n&quot;) ;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
 <h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/45B8506A3BF14CF8901CA53CFC891D26.jpg"></p>
 <p><strong>思路：</strong></p>
 <p> t 的范围较大，不适宜直接dp。对于每一节，在DP时只需要对本节自己之前以及上一节所有的数字比较（每个循环节至少会增加一个数字）。若T小于100，那么在T个循环内必然会出现结果，直接DP即可。在T较大时，只有在每个循环节增加数字大于1时才会出现选择的情况。在T等于100时必然会成为稳定状态，之后为将数字最大化，把循环中出现次数最多的数字插入在剩余的循环节内。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">const int M = 1e2+5;</span><br><span class="line">const int INF=0x3f3f3f;</span><br><span class="line">int m,n;</span><br><span class="line">int a[M];</span><br><span class="line">int mat[M][M];</span><br><span class="line">int res[M][M];</span><br><span class="line">int mid[M][M];</span><br><span class="line"></span><br><span class="line">void wuhu(int b)</span><br><span class="line">&#123;</span><br><span class="line">    memset(res,0,sizeof res);</span><br><span class="line">    while(b)</span><br><span class="line">    &#123;</span><br><span class="line">        if(b%2)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int i=1;i&lt;=n;i++)</span><br><span class="line">                for(int j=1;j&lt;=n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                mid[i][j]=-INF;</span><br><span class="line">                for(int k=1;k&lt;=n;k++)</span><br><span class="line">                    mid[i][j]=max(mid[i][j],res[i][k]+mat[k][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            memcpy(res,mid,sizeof mid);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">            for(int j=1;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            mid[i][j]=-INF;</span><br><span class="line">            for(int k=1;k&lt;=n;k++)</span><br><span class="line">                mid[i][j]=max(mid[i][j],mat[i][k]+mat[k][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        memcpy(mat,mid,sizeof mid);</span><br><span class="line">        b/=2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i];</span><br><span class="line">    memset(mat,0,sizeof(mat));</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(a[i]&lt;=a[j])</span><br><span class="line">            &#123;</span><br><span class="line">                mat[i][j]=1;</span><br><span class="line">                for(int k=1;k&lt;j;k++)</span><br><span class="line">                    if(a[k]&lt;=a[j])mat[i][j]=max(mat[i][j],mat[i][k]+1);</span><br><span class="line">            &#125;</span><br><span class="line">            else mat[i][j]=-INF;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    wuhu(m);</span><br><span class="line">    int ans=0;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j=1;j&lt;=n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            ans = max(ans , res[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
 
+using namespace std;
+const int M = 1e2+5;
+const int INF=0x3f3f3f;
+int m,n;
+int a[M];
+int mat[M][M];
+int res[M][M];
+int mid[M][M];
+
+void wuhu(int b)
+&#123;
+    memset(res,0,sizeof res);
+    while(b)
+    &#123;
+        if(b%2)
+        &#123;
+            for(int i=1;i&lt;=n;i++)
+                for(int j=1;j&lt;=n;j++)
+            &#123;
+                mid[i][j]=-INF;
+                for(int k=1;k&lt;=n;k++)
+                    mid[i][j]=max(mid[i][j],res[i][k]+mat[k][j]);
+            &#125;
+            memcpy(res,mid,sizeof mid);
+        &#125;
+        for(int i=1;i&lt;=n;i++)
+            for(int j=1;j&lt;=n;j++)
+        &#123;
+            mid[i][j]=-INF;
+            for(int k=1;k&lt;=n;k++)
+                mid[i][j]=max(mid[i][j],mat[i][k]+mat[k][j]);
+        &#125;
+        memcpy(mat,mid,sizeof mid);
+        b/=2;
+    &#125;
+&#125;
+
+int main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
+    memset(mat,0,sizeof(mat));
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        for(int j=1;j&lt;=n;j++)
+        &#123;
+            if(a[i]&lt;=a[j])
+            &#123;
+                mat[i][j]=1;
+                for(int k=1;k&lt;j;k++)
+                    if(a[k]&lt;=a[j])mat[i][j]=max(mat[i][j],mat[i][k]+1);
+            &#125;
+            else mat[i][j]=-INF;
+        &#125;
+    &#125;
+    wuhu(m);
+    int ans=0;
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        for(int j=1;j&lt;=n;j++)
+        &#123;
+            ans = max(ans , res[i][j]);
+        &#125;
+    &#125;
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路：</strong></p>
 <p>dp+矩阵快速幂=我是大废物</p>
 <h2 id="D"><a href="#D" class="headerlink" title="D"></a>D</h2><p><strong>题目：</strong></p>
@@ -620,8 +860,54 @@
 <p><strong>思路：</strong></p>
 <p>讲向下的和向上的三角形看作为2种不同的属性，然后找出递归的规律，再找出对应的矩形递推公式即可。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const long long mod = 1000000007;</span><br><span class="line"></span><br><span class="line">long long m;</span><br><span class="line">long long a[3][3];</span><br><span class="line">long long ans[3][3];</span><br><span class="line">void mul(long long a[3][3], long long b[3][3]) &#123;</span><br><span class="line">    long long res[3][3];</span><br><span class="line">    memset(res, 0, sizeof(res));</span><br><span class="line">    for (int i = 1; i &lt;= 2; ++i) &#123;</span><br><span class="line">        for (int j = 1; j &lt;= 2; ++j) &#123;</span><br><span class="line">            for (int k = 1; k &lt;= 2; ++k) &#123;</span><br><span class="line">                res[i][j] = (res[i][j] + a[i][k] * b[k][j]) % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1; i &lt;= 2; i++)</span><br><span class="line">            for(int j = 1; j &lt;= 2; j++) a[i][j] = res[i][j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void wuhu(long long a[3][3], long long p,long long ans[3][3]) &#123;</span><br><span class="line">    long long res[3][3];</span><br><span class="line">    memset(res, 0, sizeof(res));</span><br><span class="line">    res[1][1] = 1;</span><br><span class="line">    while (p) &#123;</span><br><span class="line">        if (p &amp; 1) &#123;</span><br><span class="line">            mul(res, a);</span><br><span class="line">        &#125;</span><br><span class="line">        mul(a, a);</span><br><span class="line">        p &gt;&gt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">     for(int i = 1; i &lt;= 2; i++)</span><br><span class="line">            for(int j = 1; j &lt;= 2; j++) ans[i][j] = res[i][j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    cin&gt;&gt;m;</span><br><span class="line">    a[1][1] = a[2][2] = 3;</span><br><span class="line">    a[1][2] = a[2][1] = 1;</span><br><span class="line">    wuhu(a, m,ans);</span><br><span class="line">    cout&lt;&lt;ans[1][1]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
 
+const long long mod = 1000000007;
+
+long long m;
+long long a[3][3];
+long long ans[3][3];
+void mul(long long a[3][3], long long b[3][3]) &#123;
+    long long res[3][3];
+    memset(res, 0, sizeof(res));
+    for (int i = 1; i &lt;= 2; ++i) &#123;
+        for (int j = 1; j &lt;= 2; ++j) &#123;
+            for (int k = 1; k &lt;= 2; ++k) &#123;
+                res[i][j] = (res[i][j] + a[i][k] * b[k][j]) % mod;
+            &#125;
+        &#125;
+    &#125;
+    for(int i = 1; i &lt;= 2; i++)
+            for(int j = 1; j &lt;= 2; j++) a[i][j] = res[i][j];
+&#125;
+
+void wuhu(long long a[3][3], long long p,long long ans[3][3]) &#123;
+    long long res[3][3];
+    memset(res, 0, sizeof(res));
+    res[1][1] = 1;
+    while (p) &#123;
+        if (p &amp; 1) &#123;
+            mul(res, a);
+        &#125;
+        mul(a, a);
+        p &gt;&gt;= 1;
+    &#125;
+     for(int i = 1; i &lt;= 2; i++)
+            for(int j = 1; j &lt;= 2; j++) ans[i][j] = res[i][j];
+&#125;
+
+int main() &#123;
+    cin&gt;&gt;m;
+    a[1][1] = a[2][2] = 3;
+    a[1][2] = a[2][1] = 1;
+    wuhu(a, m,ans);
+    cout&lt;&lt;ans[1][1]&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路</strong></p>
 <p>还是注意范围吧</p>
 <h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p><strong>题目：</strong></p>
@@ -629,8 +915,31 @@
 <p><strong>思路：</strong></p>
 <p>有手就行的：解公式，找规律</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int mod =1e9+7;</span><br><span class="line"></span><br><span class="line">int f[7];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int x,y;</span><br><span class="line">    cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">    f[1]=x;</span><br><span class="line">    f[2]=y;</span><br><span class="line">    f[3]=y-x;</span><br><span class="line">    f[4]=-x;</span><br><span class="line">    f[5]=-y;</span><br><span class="line">    f[6]=x-y;</span><br><span class="line">    f[0]=f[6];</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    cout&lt;&lt;((f[n%6]%mod)+mod)%mod&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include &lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
 
+const int mod =1e9+7;
+
+int f[7];
+int main()
+&#123;
+    int x,y;
+    cin&gt;&gt;x&gt;&gt;y;
+    f[1]=x;
+    f[2]=y;
+    f[3]=y-x;
+    f[4]=-x;
+    f[5]=-y;
+    f[6]=x-y;
+    f[0]=f[6];
+    int n;
+    cin&gt;&gt;n;
+    cout&lt;&lt;((f[n%6]%mod)+mod)%mod&lt;&lt;endl;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路：</strong></p>
 <p>注意mod对负数的取模</p>
 <h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><p><strong>题目：</strong></p>
@@ -639,8 +948,39 @@
 <p>比较长对长宽对宽好，还是长对宽宽对长好即可。</p>
 <p>如果长等于长，即有c = a，d = a<em>d/c;所以电影面积与屏幕面积的比就是c</em>d/(a<em>b)，代入得a</em>d/(b<em>c)。同理，如果是的宽相等d = b;c = c</em>b/d;最后得到c<em>b/(a</em>d)。</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">int GCD(int n,int m)</span><br><span class="line">&#123;</span><br><span class="line">    int r;</span><br><span class="line">    while(m)</span><br><span class="line">    &#123;</span><br><span class="line">        r = n%m;</span><br><span class="line">        n = m;</span><br><span class="line">        m = r;</span><br><span class="line">    &#125;</span><br><span class="line">    return n;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a,b,c,d,t,p,q,k;</span><br><span class="line">    while(~scanf(&quot;%d%d%d%d&quot;,&amp;a,&amp;b,&amp;c,&amp;d))</span><br><span class="line">    &#123;</span><br><span class="line">        p = a*d;</span><br><span class="line">        q = b*c;</span><br><span class="line">        if(p&gt;q)</span><br><span class="line">            swap(p,q);</span><br><span class="line">        k = GCD(q,p);</span><br><span class="line">        p = p/k;</span><br><span class="line">        q = q/k;</span><br><span class="line">        printf(&quot;%d/%d\n&quot;,q-p,q);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+ 
+int GCD(int n,int m)
+&#123;
+    int r;
+    while(m)
+    &#123;
+        r = n%m;
+        n = m;
+        m = r;
+    &#125;
+    return n;
+&#125;
+ 
+int main()
+&#123;
+    int a,b,c,d,t,p,q,k;
+    while(~scanf(&quot;%d%d%d%d&quot;,&amp;a,&amp;b,&amp;c,&amp;d))
+    &#123;
+        p = a*d;
+        q = b*c;
+        if(p&gt;q)
+            swap(p,q);
+        k = GCD(q,p);
+        p = p/k;
+        q = q/k;
+        printf(&quot;%d/%d\n&quot;,q-p,q);
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <p><strong>代码思路：</strong></p>
 <p>感觉需要草稿纸列点东西了</p>
 <h2 id="G"><a href="#G" class="headerlink" title="G"></a>G</h2><p><strong>题目：</strong></p>
@@ -649,8 +989,68 @@
 <p>下面的隔板法是一种容斥原理的表示：</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/51CCD093C92948DFBF7B66463D7A1995.jpg"></p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long LL;</span><br><span class="line">const int MOD=1e9+7;</span><br><span class="line">LL N,S;</span><br><span class="line">LL inpt[30];</span><br><span class="line"></span><br><span class="line">LL Pow(LL x, LL n, LL p)//x为底，n为n次方</span><br><span class="line">&#123;</span><br><span class="line">    LL res=1;</span><br><span class="line">    while(n)//快速幂</span><br><span class="line">    &#123;</span><br><span class="line">        if(n&amp;1) res=x*res%p;</span><br><span class="line">        x=x*x%p;</span><br><span class="line">        n&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LL Lucas(LL n, LL k, LL p)//组合数模板,这里n为总集合，k为子集和，p为取模</span><br><span class="line">&#123;</span><br><span class="line">    if(k&gt;n-k) k=n-k;//使计算简便</span><br><span class="line">    LL res=1;</span><br><span class="line">    while(n&amp;&amp;k)</span><br><span class="line">    &#123;</span><br><span class="line">        LL n0=n%p, k0=k%p;</span><br><span class="line">        LL a=1,b=1;</span><br><span class="line">        for(LL i=n0; i&gt;n0-k0; i--) a=a*i%p;</span><br><span class="line">        for(LL i=1; i&lt;=k0; i++) b=b*i%p;</span><br><span class="line">        res = res*a*Pow(b, p-2, p)%p;</span><br><span class="line">        n/=p; k/=p;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%lld%lld&quot;, &amp;N, &amp;S);</span><br><span class="line">    for(int i=0; i&lt;N; i++) scanf(&quot;%lld&quot;, &amp;inpt[i]);</span><br><span class="line">    LL ans=0;</span><br><span class="line">    for(int m=0; m&lt;1&lt;&lt;N; m++)//遍历所有可能的情况</span><br><span class="line">    &#123;</span><br><span class="line">        LL cef=1, tp=S;</span><br><span class="line">        for(int i=0; i&lt;N; i++)//遍历所有盒子</span><br><span class="line">        &#123;</span><br><span class="line">            if(m&amp;(1&lt;&lt;i))//如果该盒子被选上</span><br><span class="line">            &#123;</span><br><span class="line">                tp-=inpt[i]+1;//指数相减</span><br><span class="line">                cef*=-1;//乘一个负数所以变一次号</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(tp&lt;0) continue;//如果指数不够，则方法舍去；因为不能取负数枝花</span><br><span class="line">        cef = cef*Lucas(N+tp-1, N-1, MOD)%MOD;//这里cef的作用从原来的正负变为记录该情况下的方案数</span><br><span class="line">        ans = (ans+cef)%MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; (ans+MOD)%MOD &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
 
+using namespace std;
+typedef long long LL;
+const int MOD=1e9+7;
+LL N,S;
+LL inpt[30];
+
+LL Pow(LL x, LL n, LL p)//x为底，n为n次方
+&#123;
+    LL res=1;
+    while(n)//快速幂
+    &#123;
+        if(n&amp;1) res=x*res%p;
+        x=x*x%p;
+        n&gt;&gt;=1;
+    &#125;
+    return res;
+&#125;
+
+LL Lucas(LL n, LL k, LL p)//组合数模板,这里n为总集合，k为子集和，p为取模
+&#123;
+    if(k&gt;n-k) k=n-k;//使计算简便
+    LL res=1;
+    while(n&amp;&amp;k)
+    &#123;
+        LL n0=n%p, k0=k%p;
+        LL a=1,b=1;
+        for(LL i=n0; i&gt;n0-k0; i--) a=a*i%p;
+        for(LL i=1; i&lt;=k0; i++) b=b*i%p;
+        res = res*a*Pow(b, p-2, p)%p;
+        n/=p; k/=p;
+    &#125;
+    return res;
+&#125;
+
+int main()
+&#123;
+    scanf(&quot;%lld%lld&quot;, &amp;N, &amp;S);
+    for(int i=0; i&lt;N; i++) scanf(&quot;%lld&quot;, &amp;inpt[i]);
+    LL ans=0;
+    for(int m=0; m&lt;1&lt;&lt;N; m++)//遍历所有可能的情况
+    &#123;
+        LL cef=1, tp=S;
+        for(int i=0; i&lt;N; i++)//遍历所有盒子
+        &#123;
+            if(m&amp;(1&lt;&lt;i))//如果该盒子被选上
+            &#123;
+                tp-=inpt[i]+1;//指数相减
+                cef*=-1;//乘一个负数所以变一次号
+            &#125;
+        &#125;
+        if(tp&lt;0) continue;//如果指数不够，则方法舍去；因为不能取负数枝花
+        cef = cef*Lucas(N+tp-1, N-1, MOD)%MOD;//这里cef的作用从原来的正负变为记录该情况下的方案数
+        ans = (ans+cef)%MOD;
+    &#125;
+    cout &lt;&lt; (ans+MOD)%MOD &lt;&lt; &#39;\n&#39;;
+    return 0;
+&#125;
+</code></pre>
 <p>i am fw</p>
 <h2 id="H"><a href="#H" class="headerlink" title="H"></a>H</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/0B02DC7BC23340A392B758B9F60A29F6.jpg"></p>
@@ -660,8 +1060,83 @@
 <p><strong>思路：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/80D8B32374B04CDE924627E21DC0C306.jpg"></p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">#define lowbit(x) ( x&amp;(-x) )</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int maxN = 100005;</span><br><span class="line">const int re_fu[26] = &#123; 1, 0, 4, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0 &#125;;     //fu[]-&#x27;A&#x27;，在其中代表Z（对应符号所在的数位）</span><br><span class="line">char s[maxN], ques[15];</span><br><span class="line">int N, Q, flag, l, r, len;</span><br><span class="line">int C[11][11][5][maxN];</span><br><span class="line">void update(int x, int y, int z, int pos, int val)  //x为数长、y为我们将其放在第几个、z是对应的数位置，pos是我们存入的位子，val是放一个（或者删除一个）</span><br><span class="line">&#123;</span><br><span class="line">    while(pos&lt;maxN)</span><br><span class="line">    &#123;</span><br><span class="line">        C[x][y][z][pos] += val;</span><br><span class="line">        pos += lowbit(pos);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int query(int x, int y, int z, int pos)     //x为将其视为第几个，y是查询数的长度，z是待查询的数，pos是对应前缀</span><br><span class="line">&#123;</span><br><span class="line">    int res=0;</span><br><span class="line">    while(pos)</span><br><span class="line">    &#123;</span><br><span class="line">        res += C[x][y][z][pos];</span><br><span class="line">        pos -= lowbit(pos);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(scanf(&quot;%s&quot;, s+1)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        memset(C, 0, sizeof(C));</span><br><span class="line">        N = (int)strlen(s+1);</span><br><span class="line">        for(int i=1; i&lt;=N; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=1; j&lt;=10; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                update(i%j, j, re_fu[s[i]-&#x27;A&#x27;], i, 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;Q);</span><br><span class="line">        while(Q--)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;flag);</span><br><span class="line">            if(flag == 1)</span><br><span class="line">            &#123;</span><br><span class="line">                scanf(&quot;%d&quot;, &amp;l);</span><br><span class="line">                scanf(&quot;%s&quot;, ques);</span><br><span class="line">                for(int i=1; i&lt;=10; i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    update(l%i, i, re_fu[s[l]-&#x27;A&#x27;], l, -1);</span><br><span class="line">                    update(l%i, i, re_fu[ques[0]-&#x27;A&#x27;], l, 1);</span><br><span class="line">                &#125;</span><br><span class="line">                s[l] = ques[0];</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                int ans = 0;</span><br><span class="line">                scanf(&quot;%d%d&quot;, &amp;l, &amp;r);</span><br><span class="line">                scanf(&quot;%s&quot;, ques);</span><br><span class="line">                len = (int)strlen(ques);</span><br><span class="line">                for(int i=0; i&lt;len; i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    ans += query((l+i)%len, len, re_fu[ques[i]-&#x27;A&#x27;], r) - query( (l+i)%len, len, re_fu[ques[i]-&#x27;A&#x27;], l-1);</span><br><span class="line">                &#125;</span><br><span class="line">                printf(&quot;%d\n&quot;, ans);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
 
+#define lowbit(x) ( x&amp;(-x) )
+
+using namespace std;
+typedef long long ll;
+const int maxN = 100005;
+const int re_fu[26] = &#123; 1, 0, 4, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0 &#125;;     //fu[]-&#39;A&#39;，在其中代表Z（对应符号所在的数位）
+char s[maxN], ques[15];
+int N, Q, flag, l, r, len;
+int C[11][11][5][maxN];
+void update(int x, int y, int z, int pos, int val)  //x为数长、y为我们将其放在第几个、z是对应的数位置，pos是我们存入的位子，val是放一个（或者删除一个）
+&#123;
+    while(pos&lt;maxN)
+    &#123;
+        C[x][y][z][pos] += val;
+        pos += lowbit(pos);
+    &#125;
+&#125;
+int query(int x, int y, int z, int pos)     //x为将其视为第几个，y是查询数的长度，z是待查询的数，pos是对应前缀
+&#123;
+    int res=0;
+    while(pos)
+    &#123;
+        res += C[x][y][z][pos];
+        pos -= lowbit(pos);
+    &#125;
+    return res;
+&#125;
+int main()
+&#123;
+    while(scanf(&quot;%s&quot;, s+1)!=EOF)
+    &#123;
+        memset(C, 0, sizeof(C));
+        N = (int)strlen(s+1);
+        for(int i=1; i&lt;=N; i++)
+        &#123;
+            for(int j=1; j&lt;=10; j++)
+            &#123;
+                update(i%j, j, re_fu[s[i]-&#39;A&#39;], i, 1);
+            &#125;
+        &#125;
+        scanf(&quot;%d&quot;, &amp;Q);
+        while(Q--)
+        &#123;
+            scanf(&quot;%d&quot;, &amp;flag);
+            if(flag == 1)
+            &#123;
+                scanf(&quot;%d&quot;, &amp;l);
+                scanf(&quot;%s&quot;, ques);
+                for(int i=1; i&lt;=10; i++)
+                &#123;
+                    update(l%i, i, re_fu[s[l]-&#39;A&#39;], l, -1);
+                    update(l%i, i, re_fu[ques[0]-&#39;A&#39;], l, 1);
+                &#125;
+                s[l] = ques[0];
+            &#125;
+            else
+            &#123;
+                int ans = 0;
+                scanf(&quot;%d%d&quot;, &amp;l, &amp;r);
+                scanf(&quot;%s&quot;, ques);
+                len = (int)strlen(ques);
+                for(int i=0; i&lt;len; i++)
+                &#123;
+                    ans += query((l+i)%len, len, re_fu[ques[i]-&#39;A&#39;], r) - query( (l+i)%len, len, re_fu[ques[i]-&#39;A&#39;], l-1);
+                &#125;
+                printf(&quot;%d\n&quot;, ans);
+            &#125;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>

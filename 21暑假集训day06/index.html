@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
   <style>
     body{
        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
@@ -141,17 +142,17 @@
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Medias</span>
+      <span>Others</span>
       <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/musics">
+        <a href="/chat">
           
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>Musics</span>
+          <span>Chat</span>
         </a>
       </li>
       
@@ -295,18 +296,18 @@
 			
 				<i class="fa-fw fas fa-list"></i>
 			
-			Medias
+			Others
 			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
             <ul  style="background:  ;" >
               
                 <li>
 
-                  <a href="/musics " style="margin-left:75px">
+                  <a href="/chat " style="margin-left:75px">
 				  
-				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
 			      
-		          <span>Musics</span>
+		          <span>Chat</span>
                   </a>
                 </li>
               
@@ -604,15 +605,200 @@
 <p>比如左儿子区间是1<del>3 右儿子区间是4</del>5，最后一个人要去3号 倒数第二个人也要去3号，那么最后一个人站稳了3号，左儿子剩余位置为2，</p>
 <p>倒数第二个人应当去4号位置，也就是右儿子的第一个位置。3-2 = 1，右边第一个位置</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">struct mnode</span><br><span class="line">&#123;</span><br><span class="line">    int l,r,sum,val;//左右区间，空位置数，数值</span><br><span class="line">&#125;tree[200010*4];</span><br><span class="line"> </span><br><span class="line">void buildtree(int node,int b,int e)</span><br><span class="line">&#123;</span><br><span class="line">    tree[node].l = b;</span><br><span class="line">    tree[node].r = e;</span><br><span class="line">    tree[node].val = 0;</span><br><span class="line">    tree[node].sum = e-b+1;</span><br><span class="line"> </span><br><span class="line">    if(b==e) return ;</span><br><span class="line"> </span><br><span class="line">    int mid = (b+e)/2;</span><br><span class="line">    if(b&lt;=mid) buildtree(node*2,b,mid);</span><br><span class="line">    if(e&gt;mid) buildtree(node*2+1,mid+1,e);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void update(int node,int pos,int data)</span><br><span class="line">&#123;</span><br><span class="line">    if(tree[node].l==tree[node].r)</span><br><span class="line">    &#123;</span><br><span class="line">        tree[node].val = data;</span><br><span class="line">        tree[node].sum--;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if(pos&lt;=tree[node*2].sum) update(node*2,pos,data);</span><br><span class="line">    else update(node*2+1,pos-tree[node*2].sum,data);</span><br><span class="line">    tree[node].sum = tree[node*2].sum+tree[node*2+1].sum;</span><br><span class="line">&#125;</span><br><span class="line">int ans[200010];</span><br><span class="line">int num=0;</span><br><span class="line">void myprint(int node)</span><br><span class="line">&#123;</span><br><span class="line">    if(tree[node].l==tree[node].r)</span><br><span class="line">    &#123;</span><br><span class="line">        ans[num++] = tree[node].val;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    myprint(node*2);</span><br><span class="line">    myprint(node*2+1);</span><br><span class="line">&#125;</span><br><span class="line">int  main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    int p[200010];</span><br><span class="line">    int v[200010];</span><br><span class="line">    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        num=0;</span><br><span class="line">        buildtree(1,1,n);</span><br><span class="line">        for(int i=0;i&lt;n;++i)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d%d&quot;,&amp;p[i],&amp;v[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = n-1;i&gt;=0;--i)</span><br><span class="line">        &#123;</span><br><span class="line">            update(1,p[i]+1,v[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        myprint(1);</span><br><span class="line"> </span><br><span class="line">        for(int i=0;i&lt;n-1;++i)</span><br><span class="line">            printf(&quot;%d &quot;,ans[i]);</span><br><span class="line">        printf(&quot;%d\n&quot;,ans[n-1]);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+ 
+using namespace std;
+ 
+ 
+struct mnode
+&#123;
+    int l,r,sum,val;//左右区间，空位置数，数值
+&#125;tree[200010*4];
+ 
+void buildtree(int node,int b,int e)
+&#123;
+    tree[node].l = b;
+    tree[node].r = e;
+    tree[node].val = 0;
+    tree[node].sum = e-b+1;
+ 
+    if(b==e) return ;
+ 
+    int mid = (b+e)/2;
+    if(b&lt;=mid) buildtree(node*2,b,mid);
+    if(e&gt;mid) buildtree(node*2+1,mid+1,e);
+&#125;
+ 
+void update(int node,int pos,int data)
+&#123;
+    if(tree[node].l==tree[node].r)
+    &#123;
+        tree[node].val = data;
+        tree[node].sum--;
+        return;
+    &#125;
+    if(pos&lt;=tree[node*2].sum) update(node*2,pos,data);
+    else update(node*2+1,pos-tree[node*2].sum,data);
+    tree[node].sum = tree[node*2].sum+tree[node*2+1].sum;
+&#125;
+int ans[200010];
+int num=0;
+void myprint(int node)
+&#123;
+    if(tree[node].l==tree[node].r)
+    &#123;
+        ans[num++] = tree[node].val;
+        return ;
+    &#125;
+    myprint(node*2);
+    myprint(node*2+1);
+&#125;
+int  main()
+&#123;
+    int n;
+    int p[200010];
+    int v[200010];
+    while(scanf(&quot;%d&quot;,&amp;n)!=EOF)
+    &#123;
+        num=0;
+        buildtree(1,1,n);
+        for(int i=0;i&lt;n;++i)
+        &#123;
+            scanf(&quot;%d%d&quot;,&amp;p[i],&amp;v[i]);
+        &#125;
+        for(int i = n-1;i&gt;=0;--i)
+        &#123;
+            update(1,p[i]+1,v[i]);
+        &#125;
+        myprint(1);
+ 
+        for(int i=0;i&lt;n-1;++i)
+            printf(&quot;%d &quot;,ans[i]);
+        printf(&quot;%d\n&quot;,ans[n-1]);
+    &#125;
+ 
+    return 0;
+&#125;
+</code></pre>
 <h2 id="F-Count-Color"><a href="#F-Count-Color" class="headerlink" title="F-Count Color"></a>F-Count Color</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/EC1D7F978D794C589F3B0374AC7855FD.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>线段树的染色问题</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int l,r;</span><br><span class="line">    int num;</span><br><span class="line">&#125; s[400010];</span><br><span class="line"> </span><br><span class="line">int vis[35];</span><br><span class="line"> </span><br><span class="line">void InitTree(int l,int r,int k)//建树</span><br><span class="line">&#123;</span><br><span class="line">    s[k].l=l;</span><br><span class="line">    s[k].r=r;</span><br><span class="line">    s[k].num=1;</span><br><span class="line">    int mid=(l+r)/2;</span><br><span class="line">    if (l==r)</span><br><span class="line">        return ;</span><br><span class="line">    InitTree(l,mid,2*k);</span><br><span class="line">    InitTree(mid+1,r,2*k+1);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void UpdataTree(int l,int r,int c,int k)</span><br><span class="line">&#123;</span><br><span class="line">    if(s[k].l==l&amp;&amp;s[k].r==r)</span><br><span class="line">    &#123;</span><br><span class="line">        s[k].num=c;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if (s[k].num==c)</span><br><span class="line">        return;</span><br><span class="line">    if (s[k].num!=-1)//如果所查询的区间不是多种颜色</span><br><span class="line">    &#123;</span><br><span class="line">        s[2*k].num=s[k].num;//更新区间的颜色</span><br><span class="line">        s[2*k+1].num=s[k].num;</span><br><span class="line">        s[k].num=-1;//-1表示该区间有多种颜色</span><br><span class="line">    &#125;</span><br><span class="line">    int mid=(s[k].l+s[k].r)/2;</span><br><span class="line">    if (l&gt;mid)</span><br><span class="line">        UpdataTree(l,r,c,2*k+1);</span><br><span class="line">    else if (r&lt;=mid)</span><br><span class="line">        UpdataTree(l,r,c,2*k);</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        UpdataTree(l,mid,c,2*k);</span><br><span class="line">        UpdataTree(mid+1,r,c,2*k+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void SearchTree(int l,int r,int k)</span><br><span class="line">&#123;</span><br><span class="line">    if (s[k].num!=-1)</span><br><span class="line">    &#123;</span><br><span class="line">        vis[s[k].num]=1;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    int mid=(s[k].l+s[k].r)/2;</span><br><span class="line">    if (r&lt;=mid)</span><br><span class="line">        SearchTree(l,r,2*k);</span><br><span class="line">    else if (l&gt;mid)</span><br><span class="line">        SearchTree(l,r,2*k+1);</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        SearchTree(l,mid,2*k);</span><br><span class="line">        SearchTree(mid+1,r,2*k+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int l,t,o,ans;</span><br><span class="line">    while (~scanf(&quot;%d%d%d&quot;,&amp;l,&amp;t,&amp;o))</span><br><span class="line">    &#123;</span><br><span class="line">        InitTree(1,l,1);//开始建树</span><br><span class="line">        while (o--)</span><br><span class="line">        &#123;</span><br><span class="line">            char ch;</span><br><span class="line">            int a,b,c;</span><br><span class="line">            getchar();</span><br><span class="line">            scanf(&quot;%c&quot;,&amp;ch);</span><br><span class="line">            if (ch==&#x27;C&#x27;)</span><br><span class="line">            &#123;</span><br><span class="line">                scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">                if (a&gt;b)//防止区间相反</span><br><span class="line">                    swap(a,b);</span><br><span class="line">                UpdataTree(a,b,c,1);//从1开始查找更新a~b之内的颜色</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line"> </span><br><span class="line">                scanf(&quot;%d%d&quot;,&amp;a,&amp;b);</span><br><span class="line">                if (a&gt;b)//防止区间相反</span><br><span class="line">                    swap(a,b);</span><br><span class="line">                memset(vis,0,sizeof(vis));</span><br><span class="line">                SearchTree(a,b,1);</span><br><span class="line">                ans=0;</span><br><span class="line">                for (int i=1; i&lt;=t; i++)</span><br><span class="line">                    if (vis[i]==1)//遍历记录颜色的数量</span><br><span class="line">                        ans++;</span><br><span class="line">                printf (&quot;%d\n&quot;,ans);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;cmath&gt;
+#include &lt;queue&gt;
+ 
+using namespace std;
+ 
+struct node
+&#123;
+    int l,r;
+    int num;
+&#125; s[400010];
+ 
+int vis[35];
+ 
+void InitTree(int l,int r,int k)//建树
+&#123;
+    s[k].l=l;
+    s[k].r=r;
+    s[k].num=1;
+    int mid=(l+r)/2;
+    if (l==r)
+        return ;
+    InitTree(l,mid,2*k);
+    InitTree(mid+1,r,2*k+1);
+&#125;
+ 
+void UpdataTree(int l,int r,int c,int k)
+&#123;
+    if(s[k].l==l&amp;&amp;s[k].r==r)
+    &#123;
+        s[k].num=c;
+        return;
+    &#125;
+    if (s[k].num==c)
+        return;
+    if (s[k].num!=-1)//如果所查询的区间不是多种颜色
+    &#123;
+        s[2*k].num=s[k].num;//更新区间的颜色
+        s[2*k+1].num=s[k].num;
+        s[k].num=-1;//-1表示该区间有多种颜色
+    &#125;
+    int mid=(s[k].l+s[k].r)/2;
+    if (l&gt;mid)
+        UpdataTree(l,r,c,2*k+1);
+    else if (r&lt;=mid)
+        UpdataTree(l,r,c,2*k);
+    else
+    &#123;
+        UpdataTree(l,mid,c,2*k);
+        UpdataTree(mid+1,r,c,2*k+1);
+    &#125;
+&#125;
+ 
+void SearchTree(int l,int r,int k)
+&#123;
+    if (s[k].num!=-1)
+    &#123;
+        vis[s[k].num]=1;
+        return;
+    &#125;
+    int mid=(s[k].l+s[k].r)/2;
+    if (r&lt;=mid)
+        SearchTree(l,r,2*k);
+    else if (l&gt;mid)
+        SearchTree(l,r,2*k+1);
+    else
+    &#123;
+        SearchTree(l,mid,2*k);
+        SearchTree(mid+1,r,2*k+1);
+    &#125;
+&#125;
+ 
+int main()
+&#123;
+    int l,t,o,ans;
+    while (~scanf(&quot;%d%d%d&quot;,&amp;l,&amp;t,&amp;o))
+    &#123;
+        InitTree(1,l,1);//开始建树
+        while (o--)
+        &#123;
+            char ch;
+            int a,b,c;
+            getchar();
+            scanf(&quot;%c&quot;,&amp;ch);
+            if (ch==&#39;C&#39;)
+            &#123;
+                scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);
+                if (a&gt;b)//防止区间相反
+                    swap(a,b);
+                UpdataTree(a,b,c,1);//从1开始查找更新a~b之内的颜色
+            &#125;
+            else
+            &#123;
+ 
+                scanf(&quot;%d%d&quot;,&amp;a,&amp;b);
+                if (a&gt;b)//防止区间相反
+                    swap(a,b);
+                memset(vis,0,sizeof(vis));
+                SearchTree(a,b,1);
+                ans=0;
+                for (int i=1; i&lt;=t; i++)
+                    if (vis[i]==1)//遍历记录颜色的数量
+                        ans++;
+                printf (&quot;%d\n&quot;,ans);
+            &#125;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 <h2 id="G-Blocks"><a href="#G-Blocks" class="headerlink" title="G-Blocks"></a>G-Blocks</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/B213E32A22704B27A9602724DF9884A4.jpg"></p>
 <p><strong>思路：</strong></p>
@@ -623,22 +809,180 @@
 <p>​      <strong>b(n)=a(n-1)*2+b(n-1)*2+c(n-1)*2</strong>;//上一种a情况下分别添加红色绿色两个颜色后的方案数+上一种b情况下分别添加蓝色黄色两个颜色后的方案数+上一种c情况下分别添加红色绿色两个颜色后使其中一个变为偶数的方案数</p>
 <p>​      <strong>c(n)=b(n-1)+c(n-1)*2;</strong>//上一种b情况下将红绿中为奇数的补为偶数的方案数+上一种c情况下分别添加蓝色黄色两个颜色后的方案数</p>
 <p>​     所以矩阵构造为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1   b1   c1                     2    2   0</span><br><span class="line"></span><br><span class="line">0     0     0          *      (  1    2   1    )^(n-1)</span><br><span class="line"></span><br><span class="line">0     0     0                    0    2   2</span><br></pre></td></tr></table></figure>
+<pre><code>  a1   b1   c1                     2    2   0
 
+  0     0     0          *      (  1    2   1    )^(n-1)
+
+  0     0     0                    0    2   2
+</code></pre>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int f[4][4];</span><br><span class="line">&#125;;</span><br><span class="line">node first,ret,a,b;</span><br><span class="line">int MOD=10007;</span><br><span class="line">node mul(node A,node B)</span><br><span class="line">&#123;</span><br><span class="line">    node C;</span><br><span class="line">    int i,j,k;</span><br><span class="line">    for(i=1;i&lt;=3;i++)</span><br><span class="line">       for(j=1;j&lt;=3;j++)</span><br><span class="line">       &#123;</span><br><span class="line">           C.f[i][j]=0;</span><br><span class="line">           for(k=1;k&lt;=3;k++)</span><br><span class="line">              C.f[i][j]=(C.f[i][j]+A.f[i][k]*B.f[k][j])%MOD;</span><br><span class="line">       &#125;</span><br><span class="line">    return C;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int T,t,n,i,j,k,p;</span><br><span class="line">    cin&gt;&gt;T;</span><br><span class="line">    a.f[1][1]=2;a.f[1][2]=2;a.f[1][3]=0;</span><br><span class="line">    b.f[1][1]=2;b.f[1][2]=2;b.f[1][3]=0;</span><br><span class="line">    b.f[2][1]=1;b.f[2][2]=2;b.f[2][3]=1;</span><br><span class="line">    b.f[3][1]=0;b.f[3][2]=2;b.f[3][3]=2;</span><br><span class="line">    for(t=1;t&lt;=T;t++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        if(n==1)</span><br><span class="line">          cout&lt;&lt;2&lt;&lt;endl;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            p=n-2;</span><br><span class="line">            ret=b;first=b;</span><br><span class="line">            while(p)</span><br><span class="line">            &#123;</span><br><span class="line">                </span><br><span class="line">                if(p&amp;1)</span><br><span class="line">                  ret=mul(ret,first);</span><br><span class="line">                first=mul(first,first);</span><br><span class="line">                p/=2;</span><br><span class="line">            &#125;</span><br><span class="line">            ret=mul(a,ret);</span><br><span class="line">            cout&lt;&lt;ret.f[1][1]&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;iostream&gt;
 
+using namespace std;
+struct node
+&#123;
+    int f[4][4];
+&#125;;
+node first,ret,a,b;
+int MOD=10007;
+node mul(node A,node B)
+&#123;
+    node C;
+    int i,j,k;
+    for(i=1;i&lt;=3;i++)
+       for(j=1;j&lt;=3;j++)
+       &#123;
+           C.f[i][j]=0;
+           for(k=1;k&lt;=3;k++)
+              C.f[i][j]=(C.f[i][j]+A.f[i][k]*B.f[k][j])%MOD;
+       &#125;
+    return C;
+&#125;
+int main()
+&#123;
+    int T,t,n,i,j,k,p;
+    cin&gt;&gt;T;
+    a.f[1][1]=2;a.f[1][2]=2;a.f[1][3]=0;
+    b.f[1][1]=2;b.f[1][2]=2;b.f[1][3]=0;
+    b.f[2][1]=1;b.f[2][2]=2;b.f[2][3]=1;
+    b.f[3][1]=0;b.f[3][2]=2;b.f[3][3]=2;
+    for(t=1;t&lt;=T;t++)
+    &#123;
+        cin&gt;&gt;n;
+        if(n==1)
+          cout&lt;&lt;2&lt;&lt;endl;
+        else
+        &#123;
+            p=n-2;
+            ret=b;first=b;
+            while(p)
+            &#123;
+                
+                if(p&amp;1)
+                  ret=mul(ret,first);
+                first=mul(first,first);
+                p/=2;
+            &#125;
+            ret=mul(a,ret);
+            cout&lt;&lt;ret.f[1][1]&lt;&lt;endl;
+        &#125;
+    &#125;
+ 
+&#125;
+</code></pre>
 <p>java代码：</p>
 <p>注意java代码提交时要去掉中文注释，听说如果超时，还要改进Scanner….</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">class A</span><br><span class="line">&#123;</span><br><span class="line">    public int[][]a=new int[4][4];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    static int MOD = 10007;</span><br><span class="line">    public static A mul(A a, A b)</span><br><span class="line">    &#123;</span><br><span class="line">        A x = new A();</span><br><span class="line">        for(int i=1;i&lt;=3;i++)</span><br><span class="line">            for(int j=1;j&lt;=3;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                x.a[i][j]=0;</span><br><span class="line">                for(int k=1;k&lt;=3;k++)</span><br><span class="line">                    x.a[i][j]=(x.a[i][j]+a.a[i][k]*b.a[k][j])%MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line">    public  static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc = new Scanner(System.in);</span><br><span class="line">        int t = sc.nextInt();</span><br><span class="line">        A f = new A();</span><br><span class="line">        A g = new A();</span><br><span class="line">        f.a[1][1]=2;f.a[1][2]=2;//对于第一个格子，a有2种，b有两种，c没有;</span><br><span class="line">        g.a[1][1]=2;g.a[1][2]=2;//设置转移矩阵</span><br><span class="line">        g.a[2][1]=1;g.a[2][2]=2;g.a[2][3]=1;</span><br><span class="line">        g.a[3][2]=2;g.a[3][3]=2;</span><br><span class="line">        for(;t&gt;0;t--) &#123;</span><br><span class="line">            int m = sc.nextInt();</span><br><span class="line">            if (m == 1) System.out.println(2);</span><br><span class="line">            else &#123;</span><br><span class="line">                A g1 = g;</span><br><span class="line">                A g2 = g;</span><br><span class="line">                m -= 2;</span><br><span class="line">                while(m&gt;0)</span><br><span class="line">                &#123;</span><br><span class="line">                    if((m&amp;1)==1)</span><br><span class="line">                    &#123;</span><br><span class="line">                        g1 = mul(g1, g2);</span><br><span class="line">                    &#125;</span><br><span class="line">                    g2 = mul(g2,g2);</span><br><span class="line">                    m=m&gt;&gt;1;</span><br><span class="line">                &#125;</span><br><span class="line">                g1=mul(f,g1);</span><br><span class="line">                System.out.println((g1.a[1][1]%MOD+MOD)%MOD);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sc.close();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>import java.util.Scanner;
 
+class A
+&#123;
+    public int[][]a=new int[4][4];
+&#125;
+
+
+
+public class Main &#123;
+    static int MOD = 10007;
+    public static A mul(A a, A b)
+    &#123;
+        A x = new A();
+        for(int i=1;i&lt;=3;i++)
+            for(int j=1;j&lt;=3;j++)
+            &#123;
+                x.a[i][j]=0;
+                for(int k=1;k&lt;=3;k++)
+                    x.a[i][j]=(x.a[i][j]+a.a[i][k]*b.a[k][j])%MOD;
+            &#125;
+        return x;
+    &#125;
+    public  static void main(String[] args) &#123;
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        A f = new A();
+        A g = new A();
+        f.a[1][1]=2;f.a[1][2]=2;//对于第一个格子，a有2种，b有两种，c没有;
+        g.a[1][1]=2;g.a[1][2]=2;//设置转移矩阵
+        g.a[2][1]=1;g.a[2][2]=2;g.a[2][3]=1;
+        g.a[3][2]=2;g.a[3][3]=2;
+        for(;t&gt;0;t--) &#123;
+            int m = sc.nextInt();
+            if (m == 1) System.out.println(2);
+            else &#123;
+                A g1 = g;
+                A g2 = g;
+                m -= 2;
+                while(m&gt;0)
+                &#123;
+                    if((m&amp;1)==1)
+                    &#123;
+                        g1 = mul(g1, g2);
+                    &#125;
+                    g2 = mul(g2,g2);
+                    m=m&gt;&gt;1;
+                &#125;
+                g1=mul(f,g1);
+                System.out.println((g1.a[1][1]%MOD+MOD)%MOD);
+            &#125;
+        &#125;
+        sc.close();
+
+    &#125;
+&#125;
+</code></pre>
 <h2 id="H-Fibonacci"><a href="#H-Fibonacci" class="headerlink" title="H-Fibonacci"></a>H-Fibonacci</h2><p><strong>题目：</strong></p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/94332C207C304983AB382B0BF3ECCA90.jpg"></p>
 <p><strong>思路：</strong></p>
 <p>矩阵快速幂的基础题</p>
 <p><strong>代码：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">struct mat&#123;int a[2][2];&#125;;</span><br><span class="line">const int mod = 10000;</span><br><span class="line">mat mul(mat a,mat b)&#123;//矩阵乘法</span><br><span class="line">    mat temp;</span><br><span class="line">    for (int i = 0;i &lt; 2; ++i) for (int j = 0;j &lt; 2; ++j) temp.a[i][j] = 0;</span><br><span class="line">    for (int i = 0;i &lt; 2; ++i)&#123;</span><br><span class="line">        for (int j = 0;j &lt; 2; ++j)&#123;</span><br><span class="line">            for (int k = 0;k &lt; 2; ++k)&#123;</span><br><span class="line">                temp.a[i][j] += a.a[i][k]*b.a[k][j];</span><br><span class="line">                temp.a[i][j] %= mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return temp;</span><br><span class="line">&#125;</span><br><span class="line">mat q_mod(mat a,int b)&#123;</span><br><span class="line">    mat tmp;</span><br><span class="line">    tmp.a[0][0]=tmp.a[1][1] = 1;</span><br><span class="line">    tmp.a[0][1]=tmp.a[1][0] = 0;//构建单位矩阵</span><br><span class="line">    while (b)&#123;//还就那个快速幂</span><br><span class="line">        if (b&amp;1) tmp = mul(tmp,a);</span><br><span class="line">        a = mul(a,a);</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">    return tmp;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    while (cin&gt;&gt;n&amp;&amp;n!=-1)&#123;</span><br><span class="line">        if (n==0) &#123;</span><br><span class="line">            cout&lt;&lt;0&lt;&lt;endl;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        mat st;</span><br><span class="line">        st.a[0][0] = st.a[0][1] = st.a[1][0] = 1; st.a[1][1] = 0;</span><br><span class="line">        mat ans = q_mod(st,n);</span><br><span class="line">        cout&lt;&lt;ans.a[0][1]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
 
+using namespace std;
+
+int n;
+struct mat&#123;int a[2][2];&#125;;
+const int mod = 10000;
+mat mul(mat a,mat b)&#123;//矩阵乘法
+    mat temp;
+    for (int i = 0;i &lt; 2; ++i) for (int j = 0;j &lt; 2; ++j) temp.a[i][j] = 0;
+    for (int i = 0;i &lt; 2; ++i)&#123;
+        for (int j = 0;j &lt; 2; ++j)&#123;
+            for (int k = 0;k &lt; 2; ++k)&#123;
+                temp.a[i][j] += a.a[i][k]*b.a[k][j];
+                temp.a[i][j] %= mod;
+            &#125;
+        &#125;
+    &#125;
+    return temp;
+&#125;
+mat q_mod(mat a,int b)&#123;
+    mat tmp;
+    tmp.a[0][0]=tmp.a[1][1] = 1;
+    tmp.a[0][1]=tmp.a[1][0] = 0;//构建单位矩阵
+    while (b)&#123;//还就那个快速幂
+        if (b&amp;1) tmp = mul(tmp,a);
+        a = mul(a,a);
+        b&gt;&gt;=1;
+    &#125;
+    return tmp;
+&#125;
+int main()&#123;
+    while (cin&gt;&gt;n&amp;&amp;n!=-1)&#123;
+        if (n==0) &#123;
+            cout&lt;&lt;0&lt;&lt;endl;
+            continue;
+        &#125;
+        mat st;
+        st.a[0][0] = st.a[0][1] = st.a[1][0] = 1; st.a[1][1] = 0;
+        mat ans = q_mod(st,n);
+        cout&lt;&lt;ans.a[0][1]&lt;&lt;endl;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
 
                 
             </div>
