@@ -604,14 +604,14 @@
 <p>调用openai的依赖，实际上是qwen的</p>
 <h3 id="2-设置模型和api-key"><a href="#2-设置模型和api-key" class="headerlink" title="2.设置模型和api-key"></a>2.设置模型和api-key</h3><pre class="line-numbers language-java"><code class="language-java">    openai<span class="token operator">:</span>
       base<span class="token operator">-</span>url<span class="token operator">:</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>dashscope<span class="token punctuation">.</span>aliyuncs<span class="token punctuation">.</span>com<span class="token operator">/</span>compatible<span class="token operator">-</span>mode
-      api<span class="token operator">-</span>key<span class="token operator">:</span> $<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>ALY<span class="token operator">-</span>KEY<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+      api<span class="token operator">-</span>key<span class="token operator">:</span> $<span class="token punctuation">{</span>ALY<span class="token operator">-</span>KEY<span class="token punctuation">}</span>
       chat<span class="token operator">:</span>
         options<span class="token operator">:</span>
           model<span class="token operator">:</span> qwen<span class="token operator">-</span>max<span class="token operator">-</span>latest
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其中由于上传代码等考量，将api-key隐藏到环境变量中</p>
 <h3 id="3-设置代码的Configuration"><a href="#3-设置代码的Configuration" class="headerlink" title="3.设置代码的Configuration"></a>3.设置代码的Configuration</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
-    <span class="token keyword">public</span> ChatClient <span class="token function">gamechatClient</span><span class="token punctuation">(</span>OpenAiChatModel model<span class="token punctuation">,</span> ChatMemory chatMemory<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> ChatClient <span class="token function">gamechatClient</span><span class="token punctuation">(</span>OpenAiChatModel model<span class="token punctuation">,</span> ChatMemory chatMemory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> ChatClient
                 <span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">defaultSystem</span><span class="token punctuation">(</span>Systemconstants<span class="token punctuation">.</span>GAME_SYSTEM_PROMPT<span class="token punctuation">)</span>
@@ -620,17 +620,17 @@
                         MessageChatMemoryAdvisor<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>chatMemory<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
                 <span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后创建controller来管理前端的交互</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@RequiredArgsConstructor</span>
 <span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/ai"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">gamecontoller</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">gamecontoller</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">final</span> ChatClient gamechatClient<span class="token punctuation">;</span>
 
     <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/game"</span><span class="token punctuation">,</span>produces <span class="token operator">=</span> <span class="token string">"text/html;charset=utf-8"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> Flux<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token function">chat</span><span class="token punctuation">(</span>String prompt<span class="token punctuation">,</span> String chatId<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> Flux<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token function">chat</span><span class="token punctuation">(</span>String prompt<span class="token punctuation">,</span> String chatId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
         <span class="token comment" spellcheck="true">// 调用 API 生成回答</span>
         <span class="token keyword">return</span> gamechatClient<span class="token punctuation">.</span><span class="token function">prompt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -638,8 +638,8 @@
                 <span class="token punctuation">.</span><span class="token function">advisors</span><span class="token punctuation">(</span>advisorSpec <span class="token operator">-</span><span class="token operator">></span> advisorSpec<span class="token punctuation">.</span><span class="token function">param</span><span class="token punctuation">(</span>ChatMemory<span class="token punctuation">.</span>CONVERSATION_ID<span class="token punctuation">,</span>chatId<span class="token punctuation">)</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">content</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>最重要的是我们的代派prompt(太长了，放个截图吧)</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20250902170006629.png"></p>

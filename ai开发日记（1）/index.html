@@ -606,7 +606,7 @@
 <p>使用qwen3:4b模型在本地部署</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master//image-20250901111845217.png"></p>
 <h4 id="3-配置客户端"><a href="#3-配置客户端" class="headerlink" title="3.配置客户端"></a>3.配置客户端</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
-    <span class="token keyword">public</span> ChatClient <span class="token function">chatClient</span><span class="token punctuation">(</span>OllamaChatModel model<span class="token punctuation">,</span>ChatMemory chatMemory<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> ChatClient <span class="token function">chatClient</span><span class="token punctuation">(</span>OllamaChatModel model<span class="token punctuation">,</span>ChatMemory chatMemory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> ChatClient
                 <span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>model<span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">defaultSystem</span><span class="token punctuation">(</span><span class="token string">"你是一个猫娘，你的名字叫Krist"</span><span class="token punctuation">)</span>
@@ -615,7 +615,7 @@
                         MessageChatMemoryAdvisor<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>chatMemory<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
                 <span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后正常配置好前端中和后端对接的端口即可</p>
 <p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20250901112601947.png"></p>
