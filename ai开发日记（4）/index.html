@@ -683,10 +683,10 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>但是由于redis还需要下载，所以选择本地创建一个简单的向量数据库</p>
 <h2 id="3-PDF处理"><a href="#3-PDF处理" class="headerlink" title="3.PDF处理"></a>3.PDF处理</h2><p>引入依赖：</p>
-<pre class="line-numbers language-xm"><code class="language-xm"><dependency>
-    <groupId>org.springframework.ai</groupId>
-    <artifactId>spring-ai-pdf-document-reader</artifactId>
-</dependency>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.ai<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-ai-pdf-document-reader<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后注入Bean，此为本地向量数据库</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
