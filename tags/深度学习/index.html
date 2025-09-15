@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="归档: 2021/9, 隐迹札记">
+    <meta name="keywords" content="标签: 深度学习, 隐迹札记">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>归档: 2021/9 | 隐迹札记</title>
+    <title>标签: 深度学习 | 隐迹札记</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -462,356 +462,122 @@
 <main class="content">
 
     
-    <div class="container archive-calendar">
+
+<div id="tags" class="container chip-container">
     <div class="card">
-        <div id="post-calendar" class="card-content"></div>
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
+            </div>
+            <div class="tag-chips">
+                
+                
+                <a href="/tags/%E7%AE%97%E6%B3%95/" title="算法: 47">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="算法" style="background-color: #F9EBEA;">算法
+                        <span class="tag-length">47</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/ai%E5%BC%80%E5%8F%91/" title="ai开发: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="ai开发" style="background-color: #F5EEF8;">ai开发
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%8A%BD%E8%B1%A1/" title="抽象: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="抽象" style="background-color: #D5F5E3;">抽象
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" title="深度学习: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="深度学习" style="background-color: #E8F8F5;">深度学习
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98-%E5%9B%BE%E8%AE%BA/" title="算法提高--图论: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="算法提高--图论" style="background-color: #FEF9E7;">算法提高--图论
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E7%AE%97%E6%B3%95-%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/" title="算法--经典题目: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="算法--经典题目" style="background-color: #F8F9F9;">算法--经典题目
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E6%AF%94%E8%B5%9B/" title="比赛: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="比赛" style="background-color: #82E0AA;">比赛
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+            </div>
+        </div>
     </div>
 </div>
 
-<script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
-<script type="text/javascript">
-    let myChart = echarts.init(document.getElementById('post-calendar'));
-
     
 
-    let option = {
-        title: {
-            top: 0,
-            text: '文章日历',
-            left: 'center',
-            textStyle: {
-                color: '#3C4858'
-            }
-        },
-        tooltip: {
-            padding: 10,
-            backgroundColor: '#555',
-            borderColor: '#777',
-            borderWidth: 1,
-            formatter: function (obj) {
-                var value = obj.value;
-                return '<div style="font-size: 14px;">' + value[0] + '：' + value[1] + '</div>';
-            }
-        },
-        visualMap: {
-            show: true,
-            showLabel: true,
-            categories: [0, 1, 2, 3, 4],
-            calculable: true,
-            inRange: {
-                symbol: 'rect',
-                color: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
-            },
-            itemWidth: 12,
-            itemHeight: 12,
-            orient: 'horizontal',
-            left: 'center',
-            bottom: 0
-        },
-        calendar: [{
-            left: 'center',
-            range: ["2024-09-15", "2025-09-15"],
-            cellSize: [13, 13],
-            splitLine: {
-                show: false
-            },
-            itemStyle: {
-                color: '#196127',
-                borderColor: '#fff',
-                borderWidth: 2
-            },
-            yearLabel: {
-                show: false
-            },
-            monthLabel: {
-                nameMap: 'cn',
-                fontSize: 11
-            },
-            dayLabel: {
-                formatter: '{start}  1st',
-                nameMap: 'cn',
-                fontSize: 11
-            }
-        }],
-        series: [{
-            type: 'heatmap',
-            coordinateSystem: 'calendar',
-            calendarIndex: 0,
-            data: [["2024-09-15", 0], ["2024-09-16", 0], ["2024-09-17", 0], ["2024-09-18", 0], ["2024-09-19", 0], ["2024-09-20", 0], ["2024-09-21", 0], ["2024-09-22", 0], ["2024-09-23", 0], ["2024-09-24", 0], ["2024-09-25", 0], ["2024-09-26", 0], ["2024-09-27", 0], ["2024-09-28", 0], ["2024-09-29", 0], ["2024-09-30", 0], ["2024-10-01", 0], ["2024-10-02", 0], ["2024-10-03", 0], ["2024-10-04", 0], ["2024-10-05", 0], ["2024-10-06", 0], ["2024-10-07", 0], ["2024-10-08", 0], ["2024-10-09", 0], ["2024-10-10", 0], ["2024-10-11", 0], ["2024-10-12", 0], ["2024-10-13", 0], ["2024-10-14", 0], ["2024-10-15", 0], ["2024-10-16", 0], ["2024-10-17", 0], ["2024-10-18", 0], ["2024-10-19", 0], ["2024-10-20", 0], ["2024-10-21", 0], ["2024-10-22", 0], ["2024-10-23", 0], ["2024-10-24", 0], ["2024-10-25", 0], ["2024-10-26", 0], ["2024-10-27", 0], ["2024-10-28", 0], ["2024-10-29", 0], ["2024-10-30", 0], ["2024-10-31", 0], ["2024-11-01", 0], ["2024-11-02", 0], ["2024-11-03", 0], ["2024-11-04", 0], ["2024-11-05", 0], ["2024-11-06", 0], ["2024-11-07", 0], ["2024-11-08", 0], ["2024-11-09", 0], ["2024-11-10", 0], ["2024-11-11", 0], ["2024-11-12", 0], ["2024-11-13", 0], ["2024-11-14", 0], ["2024-11-15", 0], ["2024-11-16", 0], ["2024-11-17", 0], ["2024-11-18", 0], ["2024-11-19", 0], ["2024-11-20", 0], ["2024-11-21", 0], ["2024-11-22", 0], ["2024-11-23", 0], ["2024-11-24", 0], ["2024-11-25", 0], ["2024-11-26", 0], ["2024-11-27", 0], ["2024-11-28", 0], ["2024-11-29", 0], ["2024-11-30", 0], ["2024-12-01", 0], ["2024-12-02", 0], ["2024-12-03", 0], ["2024-12-04", 0], ["2024-12-05", 0], ["2024-12-06", 0], ["2024-12-07", 0], ["2024-12-08", 0], ["2024-12-09", 0], ["2024-12-10", 0], ["2024-12-11", 0], ["2024-12-12", 0], ["2024-12-13", 0], ["2024-12-14", 0], ["2024-12-15", 0], ["2024-12-16", 0], ["2024-12-17", 0], ["2024-12-18", 0], ["2024-12-19", 0], ["2024-12-20", 0], ["2024-12-21", 0], ["2024-12-22", 0], ["2024-12-23", 0], ["2024-12-24", 0], ["2024-12-25", 0], ["2024-12-26", 0], ["2024-12-27", 0], ["2024-12-28", 0], ["2024-12-29", 0], ["2024-12-30", 0], ["2024-12-31", 0], ["2025-01-01", 0], ["2025-01-02", 0], ["2025-01-03", 0], ["2025-01-04", 0], ["2025-01-05", 0], ["2025-01-06", 0], ["2025-01-07", 0], ["2025-01-08", 0], ["2025-01-09", 0], ["2025-01-10", 0], ["2025-01-11", 0], ["2025-01-12", 0], ["2025-01-13", 0], ["2025-01-14", 0], ["2025-01-15", 0], ["2025-01-16", 0], ["2025-01-17", 0], ["2025-01-18", 0], ["2025-01-19", 0], ["2025-01-20", 0], ["2025-01-21", 0], ["2025-01-22", 0], ["2025-01-23", 0], ["2025-01-24", 0], ["2025-01-25", 0], ["2025-01-26", 0], ["2025-01-27", 0], ["2025-01-28", 0], ["2025-01-29", 0], ["2025-01-30", 0], ["2025-01-31", 0], ["2025-02-01", 0], ["2025-02-02", 0], ["2025-02-03", 0], ["2025-02-04", 0], ["2025-02-05", 0], ["2025-02-06", 0], ["2025-02-07", 0], ["2025-02-08", 0], ["2025-02-09", 0], ["2025-02-10", 0], ["2025-02-11", 0], ["2025-02-12", 0], ["2025-02-13", 0], ["2025-02-14", 0], ["2025-02-15", 0], ["2025-02-16", 0], ["2025-02-17", 0], ["2025-02-18", 0], ["2025-02-19", 0], ["2025-02-20", 0], ["2025-02-21", 0], ["2025-02-22", 0], ["2025-02-23", 0], ["2025-02-24", 0], ["2025-02-25", 0], ["2025-02-26", 0], ["2025-02-27", 0], ["2025-02-28", 0], ["2025-03-01", 0], ["2025-03-02", 0], ["2025-03-03", 0], ["2025-03-04", 0], ["2025-03-05", 0], ["2025-03-06", 0], ["2025-03-07", 0], ["2025-03-08", 0], ["2025-03-09", 0], ["2025-03-10", 0], ["2025-03-11", 0], ["2025-03-12", 0], ["2025-03-13", 0], ["2025-03-14", 0], ["2025-03-15", 0], ["2025-03-16", 0], ["2025-03-17", 0], ["2025-03-18", 0], ["2025-03-19", 0], ["2025-03-20", 0], ["2025-03-21", 0], ["2025-03-22", 0], ["2025-03-23", 0], ["2025-03-24", 0], ["2025-03-25", 0], ["2025-03-26", 0], ["2025-03-27", 0], ["2025-03-28", 0], ["2025-03-29", 0], ["2025-03-30", 0], ["2025-03-31", 0], ["2025-04-01", 0], ["2025-04-02", 0], ["2025-04-03", 0], ["2025-04-04", 0], ["2025-04-05", 0], ["2025-04-06", 0], ["2025-04-07", 0], ["2025-04-08", 0], ["2025-04-09", 0], ["2025-04-10", 0], ["2025-04-11", 0], ["2025-04-12", 0], ["2025-04-13", 0], ["2025-04-14", 0], ["2025-04-15", 0], ["2025-04-16", 0], ["2025-04-17", 0], ["2025-04-18", 0], ["2025-04-19", 0], ["2025-04-20", 0], ["2025-04-21", 0], ["2025-04-22", 0], ["2025-04-23", 0], ["2025-04-24", 0], ["2025-04-25", 0], ["2025-04-26", 0], ["2025-04-27", 0], ["2025-04-28", 0], ["2025-04-29", 0], ["2025-04-30", 0], ["2025-05-01", 0], ["2025-05-02", 0], ["2025-05-03", 0], ["2025-05-04", 0], ["2025-05-05", 0], ["2025-05-06", 0], ["2025-05-07", 0], ["2025-05-08", 0], ["2025-05-09", 0], ["2025-05-10", 0], ["2025-05-11", 0], ["2025-05-12", 0], ["2025-05-13", 0], ["2025-05-14", 0], ["2025-05-15", 0], ["2025-05-16", 0], ["2025-05-17", 0], ["2025-05-18", 0], ["2025-05-19", 0], ["2025-05-20", 0], ["2025-05-21", 0], ["2025-05-22", 0], ["2025-05-23", 0], ["2025-05-24", 0], ["2025-05-25", 0], ["2025-05-26", 0], ["2025-05-27", 0], ["2025-05-28", 0], ["2025-05-29", 0], ["2025-05-30", 0], ["2025-05-31", 0], ["2025-06-01", 0], ["2025-06-02", 0], ["2025-06-03", 0], ["2025-06-04", 0], ["2025-06-05", 0], ["2025-06-06", 0], ["2025-06-07", 0], ["2025-06-08", 0], ["2025-06-09", 0], ["2025-06-10", 0], ["2025-06-11", 0], ["2025-06-12", 0], ["2025-06-13", 0], ["2025-06-14", 0], ["2025-06-15", 0], ["2025-06-16", 0], ["2025-06-17", 0], ["2025-06-18", 0], ["2025-06-19", 0], ["2025-06-20", 0], ["2025-06-21", 0], ["2025-06-22", 0], ["2025-06-23", 0], ["2025-06-24", 0], ["2025-06-25", 0], ["2025-06-26", 0], ["2025-06-27", 0], ["2025-06-28", 0], ["2025-06-29", 0], ["2025-06-30", 0], ["2025-07-01", 0], ["2025-07-02", 0], ["2025-07-03", 0], ["2025-07-04", 0], ["2025-07-05", 0], ["2025-07-06", 0], ["2025-07-07", 0], ["2025-07-08", 0], ["2025-07-09", 0], ["2025-07-10", 0], ["2025-07-11", 0], ["2025-07-12", 0], ["2025-07-13", 0], ["2025-07-14", 0], ["2025-07-15", 0], ["2025-07-16", 0], ["2025-07-17", 0], ["2025-07-18", 0], ["2025-07-19", 0], ["2025-07-20", 0], ["2025-07-21", 0], ["2025-07-22", 0], ["2025-07-23", 0], ["2025-07-24", 0], ["2025-07-25", 0], ["2025-07-26", 0], ["2025-07-27", 0], ["2025-07-28", 0], ["2025-07-29", 0], ["2025-07-30", 0], ["2025-07-31", 0], ["2025-08-01", 0], ["2025-08-02", 0], ["2025-08-03", 0], ["2025-08-04", 0], ["2025-08-05", 0], ["2025-08-06", 0], ["2025-08-07", 0], ["2025-08-08", 0], ["2025-08-09", 0], ["2025-08-10", 0], ["2025-08-11", 0], ["2025-08-12", 0], ["2025-08-13", 0], ["2025-08-14", 0], ["2025-08-15", 0], ["2025-08-16", 0], ["2025-08-17", 0], ["2025-08-18", 0], ["2025-08-19", 0], ["2025-08-20", 0], ["2025-08-21", 0], ["2025-08-22", 0], ["2025-08-23", 0], ["2025-08-24", 0], ["2025-08-25", 0], ["2025-08-26", 0], ["2025-08-27", 0], ["2025-08-28", 0], ["2025-08-29", 0], ["2025-08-30", 0], ["2025-08-31", 1], ["2025-09-01", 0], ["2025-09-02", 1], ["2025-09-03", 1], ["2025-09-04", 0], ["2025-09-05", 0], ["2025-09-06", 1], ["2025-09-07", 0], ["2025-09-08", 0], ["2025-09-09", 0], ["2025-09-10", 0], ["2025-09-11", 0], ["2025-09-12", 0], ["2025-09-13", 0], ["2025-09-14", 1], ["2025-09-15", 0]]
-        }]
-
-    };
-
-    myChart.setOption(option);
-</script>
-
-    
-
-    
-
-    <div id="cd-timeline" class="container">
-        
-        <div class="cd-timeline-block">
-
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
             
             
-            
-            <div class="cd-timeline-img year" data-aos="zoom-in-up">
-                <a href="/archives/2021">2021</a>
-            </div>
-            
-
-            
-            
-            
-            <div class="cd-timeline-img month" data-aos="zoom-in-up">
-                <a href="/archives/2021/09">09</a>
-            </div>
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>23</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9(3.1.2)/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/35.jpg" class="responsive-img" alt="算法提高知识点(3.1.2)">
-                                
-                                <span class="card-title">算法提高知识点(3.1.2)</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    3.1.2单源最短路的综合应用1.Acwing1135.新年好题目：
-思路：若先要考虑的就是走的顺序，总共120种方式，然后对每种方式上的每一个点进行单源最短路算法，由于时间复杂度过高，所以选择改变顺序。先对每个亲戚点进行单源最短路计算，然
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2021-09-23
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    算法学习
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
+            <div class="article tag-post col s12 m6 l4" data-tags="深度学习" data-aos="fade-up">
+                <div class="card">
+                    <a href="/%E5%85%B3%E4%BA%8Ept%E6%A8%A1%E5%9E%8B%E6%9D%83%E9%87%8D/">
+                        <div class="card-image tag-image">
                             
-                            <a href="/tags/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98-%E5%9B%BE%E8%AE%BA/"><span class="chip bg-color">算法提高--图论</span></a>
                             
+                            <img src="/medias/featureimages/43.jpg" class="responsive-img" alt="关于pt模型权重">
+                            
+                            <span class="card-title">关于pt模型权重</span>
                         </div>
-                        
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-09-06
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>23</span>
             </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E7%9F%A5%E8%AF%86%E7%82%B9(3.1.1)/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/42.jpg" class="responsive-img" alt="算法提高知识点(3.1.1)">
-                                
-                                <span class="card-title">算法提高知识点(3.1.1)</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    3.1.1单源最短路的建图方式主要是在问题中将单源最短路模型抽象出来
-1.Acwing 1129.热浪题目：
-思路：单源最短路模型：
-1.朴素迪杰斯特拉算法
-2.堆优化的杰斯塔拉算法
-3.spfa算法
-代码（spfa）：#include&l
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2021-09-23
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    算法学习
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98-%E5%9B%BE%E8%AE%BA/"><span class="chip bg-color">算法提高--图论</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
+            
         </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>15</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%886.6%EF%BC%89/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/48.jpg" class="responsive-img" alt="啊哈算法的一己之见（6.6）">
-                                
-                                <span class="card-title">啊哈算法的一己之见（6.6）</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    最短路径6.spfa算法（它死了）思路：
-我们用数组dis记录每个结点的最短路径估计值，用邻接表或邻接矩阵来存储图G。我们采取的方法是动态逼近法：设立一个先进先出的队列用来保存待优化的结点，优化时每次取出队首结点u，并且用u点当前的最短路径
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2021-09-15
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95/" class="post-category">
-                                    啊哈算法
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/%E7%AE%97%E6%B3%95/"><span class="chip bg-color">算法</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>11</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/%E8%8B%A6%E9%9A%BE%E4%B9%8B%E8%B7%AF01/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/31.jpg" class="responsive-img" alt="苦难之路01">
-                                
-                                <span class="card-title">苦难之路01</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    题目：
-
-思路：
-1.起初是想暴力解决，但是发现10^9的数据大小后认为一定会超时，再由于肉眼可见的大量重复计算导致向着递归与位运算方向思考，最后实在不会了
-Leetcode题解：
-可以将所有小于等于n的数字建立字典数存储起来，然后找到从跟
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2021-09-11
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                    
-                                    <a href="/categories/%E8%AE%AD%E7%BB%83/" class="post-category">
-                                    训练
-                                    </a>
-                                    
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/%E7%AE%97%E6%B3%95-%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE/"><span class="chip bg-color">算法--经典题目</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-    </div>
-
+    </article>
 </main>
 
 
