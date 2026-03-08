@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="大模型的探索之旅(2), 隐迹札记">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>大模型的探索之旅(2) | 隐迹札记</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+  <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+ 
+
+	<body>
+		<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">隐迹札记</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Others</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/chat">
+          
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Chat</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Movies</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Books</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Galleries</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">隐迹札记</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Others
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/chat " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Chat</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Movies</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Books</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Galleries</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+ 
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/34.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">大模型的探索之旅(2)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                <span class="chip bg-color">大模型</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                大模型
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-02-04
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-PEFT微调"><a href="#1-PEFT微调" class="headerlink" title="1.PEFT微调"></a>1.PEFT微调</h2><p>背景：全量微调代价太大（计算资源、时间），需要<strong>Parameter-Efficient Fine-Tuning</strong>（参数高效微调）</p>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260305105943900.png"></p>
+<h4 id="1-1-PEFT的几种方式："><a href="#1-1-PEFT的几种方式：" class="headerlink" title="1.1 PEFT的几种方式："></a>1.1 PEFT的几种方式：</h4><h5 id="1-Adapter"><a href="#1-Adapter" class="headerlink" title="1.Adapter"></a>1.Adapter</h5><p>原理:</p>
+<ul>
+<li>针对每个Transformer层,增加两个Adapter结构(分别是注意力层和前馈层之后,但在norm之前)。训练时,<br>固定原来预训练模型参数不变,<strong>只对新增的Adapter结构和Layer Norm 层进行微调</strong></li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>增加了模型层数,推理延迟</li>
+</ul>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260304094840927.png"></p>
+<h5 id="2-Prefix-tuning"><a href="#2-Prefix-tuning" class="headerlink" title="2.Prefix tuning"></a>2.Prefix tuning</h5><p>原理:</p>
+<ul>
+<li>在输入token之前构造一段virtual tokens作为Prefix,训练时只更新Prefix部分的参数,其他参数不变</li>
+<li>在每一层前端都加入virtual tokens</li>
+<li>为防止直接更新Prefix参数导致训练不稳定和性能下降,在Prefix层前面加了MLP结构,训练完成后,只保留<br>Prefix的参数</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>额外token占用,降低有效序列长度</li>
+</ul>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260304095212346.png"></p>
+<h5 id="3-Prompt-tuning"><a href="#3-Prompt-tuning" class="headerlink" title="3.Prompt tuning"></a>3.Prompt tuning</h5><p>原理:</p>
+<ul>
+<li>给每个任务定义各自Prompt,拼接到数据上作为输入。但只在输入层加入prompt tokens,且不加入MLP<br>(显示加入token)</li>
+</ul>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260304095957964.png"></p>
+<blockquote>
+<p>若模型微调，则需要33B的开销；若Prompt微调，只需要冻结模型，对Prompt参数进行微调</p>
+</blockquote>
+<h5 id="4-P-tuning-v1"><a href="#4-P-tuning-v1" class="headerlink" title="4.P-tuning v1"></a>4.P-tuning v1</h5><p>动机:</p>
+<ul>
+<li>prompt tuning中,prompt的构造方式对结果影响较大</li>
+</ul>
+<p>原理:</p>
+<ul>
+<li><p>将Prompt转换为可学习的Embedding层,并用MLP+LSTM的方式来对Prompt Embedding进行表征(只在<br>输入层)</p>
+</li>
+<li><p>与prefix tuning区别:只在输入层加,不一定在前面加,可在任意位置加</p>
+</li>
+<li><p>视为对prompt tuning的改进</p>
+</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>v1版本在小模型表现较差;NLU效果较好,序列标注效果较差</li>
+</ul>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/v2-e396ee35a78d990ce02e0b61fe3cc11c_r.jpg"></p>
+<h5 id="5-P-tuning-v2"><a href="#5-P-tuning-v2" class="headerlink" title="5.P-tuning v2"></a>5.P-tuning v2</h5><p>原理:</p>
+<ul>
+<li><p>每层都加</p>
+</li>
+<li><p>移除重参数化编码器</p>
+</li>
+<li><p>更多可学习参数</p>
+</li>
+<li><p>不同任务提示长度不同</p>
+</li>
+<li><p>引入多任务</p>
+</li>
+<li><p>视为对prefix tuning的改进</p>
+</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>微调后容易导致旧知识的遗忘</li>
+</ul>
+<h5 id="6-Lora"><a href="#6-Lora" class="headerlink" title="6.Lora"></a>6.Lora</h5><p><strong>原理:</strong></p>
+<ul>
+<li>通过低秩分解模拟参数的改变量,从而以极小的参数量来实现大模型的间接训练</li>
+<li>在原始的模型旁边增加一个通路,通过两个矩阵A,B相乘,先降维再升维,中间层维度为r,模拟本征秩</li>
+<li>将两部分参数相加</li>
+<li>其他:r一般取1、2、4、<strong>8</strong></li>
+</ul>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260304102941857.png"></p>
+<p><strong>r值调优策略</strong></p>
+<ul>
+<li>动态调整:初始r=32(高复杂度任务)→收敛后降至r=16（也可对模型中不同模块用不同r）</li>
+<li>效果:<ul>
+<li>高秩阶段:快速学习新语法</li>
+<li>低秩阶段:固化知识,减少过拟合</li>
+</ul>
+</li>
+</ul>
+<p><strong>关键经验</strong></p>
+<ul>
+<li>高秩(r≥32)适用场景:语法结构重构、跨模态对齐</li>
+<li>低秩(r≤8)适用场景:风格迁移、防过拟合</li>
+</ul>
+<p><strong>常见问题</strong></p>
+<ul>
+<li><p>为什么B初始化为零?→避免训练初期破坏预训练知识</p>
+</li>
+<li><p>r是否越大越好?→过高会导致过拟合</p>
+</li>
+<li><p>如何选择target_modules?→首选注意力矩阵(q_proj/v_proj),占效果增益80%</p>
+</li>
+</ul>
+<h5 id="7-Lora变种"><a href="#7-Lora变种" class="headerlink" title="7.Lora变种"></a>7.Lora变种</h5><p><strong>lora+</strong></p>
+<ul>
+<li>给A、B设置不同的学习率</li>
+</ul>
+<p><strong>lora-drop</strong></p>
+<ul>
+<li>Lora矩阵可添加到神经网络的任何一层。LoRA-drop可以选择哪些层由LoRA微调,哪些层不需要</li>
+</ul>
+<p><strong>adalora</strong></p>
+<ul>
+<li>LoRA-drop中各层的适配器要么被完全训练,要么完全不被训练。而AdaLoRA可以决定不同的适配器具有不<br>同的秩</li>
+</ul>
+<h4 id="1-2-框架"><a href="#1-2-框架" class="headerlink" title="1.2 框架"></a>1.2 框架</h4><ul>
+<li><p>LLama-Factory</p>
+</li>
+<li><p>SWIFT</p>
+</li>
+</ul>
+<h4 id="1-3-微调主要参数设置"><a href="#1-3-微调主要参数设置" class="headerlink" title="1.3 微调主要参数设置"></a>1.3 微调主要参数设置</h4><h5 id="1-学习率"><a href="#1-学习率" class="headerlink" title="1. 学习率"></a>1. 学习率</h5><p>一般模型越大、学习率越小（没有严格规定，实验导向）</p>
+<h5 id="2-Ir-scheduler-type"><a href="#2-Ir-scheduler-type" class="headerlink" title="2. Ir_scheduler-type"></a>2. Ir_scheduler-type</h5><ul>
+<li>常数学习率(constant):学习率在整个训练过程中保持不变。</li>
+<li>带预热的常数学习率(constant_with_warmup):在训练初期有一个预热阶段,学习率逐渐增加到初始学习<br>率,然后保持常数。</li>
+</ul>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260304104435104.png"></p>
+<ul>
+<li>线性衰减(linear):从初始学习率线性下降到0。下图是linear_schedule_with_warmup的示例。</li>
+</ul>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260304104542946.png"></p>
+<ul>
+<li>余弦退火(cosine):学习率按照余弦函数变化,在训练过程中逐步减小。下图是cosine schedule with warmup示例。</li>
+</ul>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260304104551564.png"></p>
+<ul>
+<li>余弦退火与重启(cosine_with_restarts):带重启的余弦退火调度器,在训练过程中周期性地重置学习率,然后<br>按余弦函数衰减,每隔一段时间重启余弦曲线。下图是cosine_with_hard_restarts_schedule_with_warmup的<br>示例。</li>
+</ul>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260304104816814.png"></p>
+<ul>
+<li>多项式衰减(polynomial):多项式衰减调度器,学习率按照多项式函数下降。</li>
+</ul>
+<h5 id="3-warmup-rate"><a href="#3-warmup-rate" class="headerlink" title="3. warmup_rate"></a>3. warmup_rate</h5><p>原理:</p>
+<ul>
+<li>由于模型的权重是随机初始化的,刚开始训练时若学习率较大,可能带来训练不稳定。</li>
+</ul>
+<p>选择Warmup预热学习率的方式,可以使得开始训练的几个epoch或者一些step内学习率较小</p>
+<h5 id="4-gradient-accumulation-steps"><a href="#4-gradient-accumulation-steps" class="headerlink" title="4. gradient_accumulation_steps"></a>4. gradient_accumulation_steps</h5><p>梯度累加:每次获取1个batch的数据,计算1次梯度,梯度不清空,累加到预设值之后,再更新网络参数,然后清空梯度,进行下一次循环。</p>
+<h5 id="5-sft数据"><a href="#5-sft数据" class="headerlink" title="5. sft数据"></a>5. sft数据</h5><p>META: (LIMA: Less Is More for Alignment)</p>
+<p><strong>质量&gt;&gt;数量</strong></p>
+<p>特点：</p>
+<ul>
+<li>多样性</li>
+<li>高质量</li>
+<li>一致性（a就是a,b就是b）</li>
+</ul>
+<p>若面临混合调节需求(需要在多种数据集tune,获取不同能力)</p>
+<ul>
+<li>跷跷板现象</li>
+<li>通用能力下降(灾难性遗忘)</li>
+</ul>
+<p>解决方法DMT(双阶段混合微调)</p>
+<ul>
+<li>第一阶段在特定任务数据集进行多任务训练(如代码、数学推理等)</li>
+<li>第二阶段使用混合数据进行SFT,包括通用数据和一定比例k的特定任务数据</li>
+</ul>
+<h4 id="1-4-全参数微调、Lora、QLora区别"><a href="#1-4-全参数微调、Lora、QLora区别" class="headerlink" title="1.4 全参数微调、Lora、QLora区别"></a>1.4 全参数微调、Lora、QLora区别</h4><ul>
+<li>全参数（显存充足的情况，对模型性能要求高）</li>
+<li>Lora(对低秩矩阵训练，适合资源有限的情况，可快速适配多任务)</li>
+<li>QLora(对Lora量化，适合超大规模模型或边缘设备部署)<ul>
+<li>比Lora训练慢，因为量化饭计算增加耗时</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">全参数微调</th>
+<th align="left">LoRA</th>
+<th align="left">QLoRA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>参数量</strong></td>
+<td align="left">全部参数更新 (100%)</td>
+<td align="left">仅低秩矩阵 (0.1% ~ 1%)</td>
+<td align="left">同 LoRA + 4bit 量化原模型</td>
+</tr>
+<tr>
+<td align="left"><strong>显存需求</strong></td>
+<td align="left">极高 (参数 × 4)</td>
+<td align="left">低 (仅加载原模型)</td>
+<td align="left">极低 (4bit 量化原模型)</td>
+</tr>
+<tr>
+<td align="left"><strong>训练速度</strong></td>
+<td align="left">慢</td>
+<td align="left">快</td>
+<td align="left">中 (量化反计算增加耗时)</td>
+</tr>
+<tr>
+<td align="left"><strong>灾难性遗忘</strong></td>
+<td align="left">高风险</td>
+<td align="left">低风险</td>
+<td align="left">低风险</td>
+</tr>
+<tr>
+<td align="left"><strong>适用模型规模</strong></td>
+<td align="left">中小规模 (≤ 10B 参数)</td>
+<td align="left">中大规模 (10B ~ 100B+ 参数)</td>
+<td align="left">超大规模 (≥ 100B 参数)</td>
+</tr>
+</tbody></table>
+<h2 id="2-位置编码"><a href="#2-位置编码" class="headerlink" title="2.位置编码"></a>2.位置编码</h2><p>背景：Transformer基于自注意力机制，无法直接理解元素顺序</p>
+<p>绝对位置和相对位置编码区别</p>
+<ul>
+<li><p>绝对:每个位置固定编码,<strong>只和位置k有关</strong>(正弦、训练式)</p>
+<ul>
+<li>缺点:变长序列或长距离依赖时,无法充分表达位置信息</li>
+</ul>
+</li>
+<li><p>相对:并不为每个位置分配唯一编码,而是<strong>关注序列中各元素之间的相对位置</strong>。计算序列中元素之间的距离,来表示它们之间的相对关系</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>绝对位置编码</th>
+<th>相对位置编码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>信息载体</td>
+<td>每个位置绑定固定向量（如 Sinusoidal 编码）</td>
+<td>关注位置间的相对距离（如 RoPE 旋转矩阵）</td>
+</tr>
+<tr>
+<td>外推能力</td>
+<td>依赖训练长度（如 512 词），超长序列时可能失效</td>
+<td>通过相对距离计算，支持更长序列（如 2048 词）</td>
+</tr>
+<tr>
+<td>计算复杂度</td>
+<td>低（仅需位置索引计算）</td>
+<td>高（需额外参数或矩阵运算）</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>短文本分类（如情感分析）</td>
+<td>长文本生成（如机器翻译、摘要）</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="发展阶段"><a href="#发展阶段" class="headerlink" title="发展阶段"></a>发展阶段</h3><h5 id="1-Sinusoidal编码（2017）"><a href="#1-Sinusoidal编码（2017）" class="headerlink" title="1.Sinusoidal编码（2017）"></a>1.Sinusoidal编码（2017）</h5><ul>
+<li>使用固定三角函数生成位置向量：</li>
+</ul>
+<p>$$<br>PE(pos, 2i) = sin(pos / 10000^{2i/d})<br>$$</p>
+<ul>
+<li>问题：<ul>
+<li>无外推能力</li>
+<li>训练长度外的位置<strong>信息失真</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="2-可学习位置嵌入（2018）"><a href="#2-可学习位置嵌入（2018）" class="headerlink" title="2. 可学习位置嵌入（2018）"></a>2. 可学习位置嵌入（2018）</h5><ul>
+<li><p>BERT / GPT 将<strong>位置索引</strong>映射为可训练向量。</p>
+</li>
+<li><p>问题：</p>
+<ul>
+<li>长度硬性受限（例如 BERT 的 512）</li>
+<li>无法处理长文本</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="3-相对位置编码（2020）"><a href="#3-相对位置编码（2020）" class="headerlink" title="3. 相对位置编码（2020）"></a>3. 相对位置编码（2020）</h5><ul>
+<li>T5 / DeBERTa 引入相对位置偏置：</li>
+</ul>
+<p>$$<br>A_{m,n} = Q_m K_n^T + b_{m-n}<br>$$</p>
+<ul>
+<li>改进：<ul>
+<li>关注<strong>相对距离</strong></li>
+<li>但偏置矩阵需要<strong>预设最大长度</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5 id="4-旋转位置编码-RoPE（2021）"><a href="#4-旋转位置编码-RoPE（2021）" class="headerlink" title="4. 旋转位置编码 RoPE（2021）"></a>4. 旋转位置编码 RoPE（2021）</h5><p><strong>核心创新</strong></p>
+<p>通过<strong>复数旋转</strong>将位置信息融入 query / key 向量：</p>
+<p>$$<br>\text{RoPE}(q_m, m) = q_m \cdot e^{im\theta}<br>$$</p>
+<p><strong>优势</strong></p>
+<ul>
+<li>相对位置信息<strong>内生于注意力计算</strong></li>
+<li>支持<strong>动态长度</strong></li>
+<li>计算高效（<strong>无额外参数</strong>），适合大模型部署</li>
+</ul>
+<h4 id="正弦编码有没有相对位置表征能力"><a href="#正弦编码有没有相对位置表征能力" class="headerlink" title="正弦编码有没有相对位置表征能力"></a>正弦编码有没有相对位置表征能力</h4><p>正弦位置编码具有一定表征能力，主要体现在以下三个方面：</p>
+<h5 id="1-线性变换能力"><a href="#1-线性变换能力" class="headerlink" title="(1) 线性变换能力"></a>(1) 线性变换能力</h5><p>对于固定距离 $k$，$PE(i+k)$ 可以表示成 $PE(i)$ 的线性函数。</p>
+<blockquote>
+<p>其中t表示当前token在整个序列中绝对索引的位置；i表示位置向量内部<strong>维度的索引</strong>，用于控制正余弦函数的频率</p>
+</blockquote>
+<p><strong>基本定义：</strong></p>
+<p>$$PE(t, 2i) = \sin(t \cdot w_{2i})$$</p>
+<p>$$PE(t, 2i + 1) = \cos(t \cdot w_{2i})$$</p>
+<p><strong>线性推导：</strong></p>
+<p>$$\begin{aligned} PE(t + k, 2i) &amp;= \sin(t \cdot w_{2i} + k \cdot w_{2i}) \ &amp;= \sin(t \cdot w_{2i})\cos(k \cdot w_{2i}) + \cos(t \cdot w_{2i})\sin(k \cdot w_{2i}) \ &amp;= PE(t, 2i)PE(k, 2i + 1) + PE(t, 2i + 1)PE(k, 2i) \ &amp;= PE(t, 2i)u + PE(t, 2i + 1)v \end{aligned}$$</p>
+<blockquote>
+<p>通过积化和差公式，能够表现相对位置信息</p>
+</blockquote>
+<h5 id="2-内积的相对位置相关性"><a href="#2-内积的相对位置相关性" class="headerlink" title="(2) 内积的相对位置相关性"></a>(2) 内积的相对位置相关性</h5><p>两个位置向量的内积只和相对位置 $k$ 有关，但有<strong>远程衰减</strong>（$k$ 越大，余弦函数值越小）。</p>
+<p><strong>内积计算公式：</strong></p>
+<p>$$\begin{aligned} PE(t) \cdot PE(t+k) &amp;= \sum_{i=0}^{d/2-1} PE(t, 2i)PE(t+k, 2i) + \sum_{i=0}^{d/2-1} PE(t, 2i+1)PE(t+k, 2i+1) \ &amp;= \sum_{i=0}^{d/2-1} \sin(t \cdot w_{2i})\sin[(t+k) \cdot w_{2i}] + \sum_{i=0}^{d/2-1} \cos(t \cdot w_{2i})\cos[(t+k) \cdot w_{2i}] \ &amp;= \sum_{i=0}^{d/2-1} \cos(k \cdot w_{2i}) \end{aligned}$$</p>
+<h5 id="3-经过-self-attention-计算后相关性降低"><a href="#3-经过-self-attention-计算后相关性降低" class="headerlink" title="(3) 经过 self-attention 计算后相关性降低"></a>(3) 经过 self-attention 计算后相关性降低</h5><p>在实际计算中，位置信息会与词嵌入（Embedding）混合，导致纯粹的相对位置相关性被稀释：</p>
+<p>$$A_{i,j}^{abs} = (W_q(E_{x_i} + U_i))^T(W_k(E_{x_j} + U_j))$$</p>
+<h4 id="什么是好的位置编码"><a href="#什么是好的位置编码" class="headerlink" title="什么是好的位置编码"></a>什么是好的位置编码</h4><ul>
+<li>每个位置编码唯一</li>
+<li>良好的外推性</li>
+<li>不同句子中,token相对位置相同时,相关性应一致</li>
+</ul>
+<blockquote>
+<p>RoPE（旋转位置编码）不同于原始trasformer直接相加(不作用于embeding输入层)，而是参与attention计算</p>
+<p><strong>具体操作流程:</strong> 对序列中的每个token,先计算其对应 query和 key 向量,后对每个 token位置计算对应的旋转位置编码,然后对每个 token的 query 和 key 向量的元素应用旋转变换。最后将旋转后的query和key向量相乘后就纳进了相对位置信息</p>
+</blockquote>
+<h2 id="3-大模型幻觉"><a href="#3-大模型幻觉" class="headerlink" title="3.大模型幻觉"></a>3.大模型幻觉</h2><p><strong>要结合项目案例</strong></p>
+<h5 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h5><p>**技术定义:**模型生成看似合理但不符合事实或逻辑的内容,常见于生成式任务（比如蛋白质序列看似合理，但结构不稳定）</p>
+<h5 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2.解决方案"></a>2.解决方案</h5><ul>
+<li>知识检索增强（提高数据质量）</li>
+<li>模型生成带约束（控制生成）</li>
+<li>后处理验证</li>
+</ul>
+<h2 id="4-Agent搭建"><a href="#4-Agent搭建" class="headerlink" title="4.Agent搭建"></a>4.Agent搭建</h2><p><strong>Q:Agent如何搭建,可以用哪些框架</strong></p>
+<pre class="line-numbers language-txt"><code class="language-txt">首先,拆解问题:“Agent如何搭建,可以用哪些框架?”这个问题分为两部分:搭建Agent的方法论和可用的框架。因此,回答需要涵盖这两个方面。
+
+在搭建Agent部分,应该包括核心要素,比如定义任务、选择模型、设计工作流、集成工具、处理数据等。同时,需要考虑实际开发中的挑战,比如稳定性、效率、可扩展性等。这部分需要结构化,分步骤说明,让面试官看到系统性的思考能力。
+
+在框架部分,需要列举当前流行的框架,如LangChain、Llamalndex、AutoGPT、Microsoft Guidance、Hugging Face Transformers Agents等,每个框架的特点、适用场景,以及可能的优缺点。同时,可以提到开源项目如BabyAGI、SuperAGI,展示对生态的了解。
+
+另外,面试官可能希望回答中有实际案例,比如电商客服Agent的例子,来说明如何应用这些框架和方法论。此外,加分项比如结合开发经验或对前沿技术的了解,能够提升回答的深度,但大家可能没有实际经验,所以可以建议如何在没有经验的情况下,通过项目练习或学习来弥补。
+
+需要确保回答逻辑清晰,层次分明,技术点准确,并且符合大模型应用开发工程师的岗位要求,即不仅懂理论,还要有工程化思维,能够实际搭建系统。同时,语言要简洁,适合面试场景,避免冗长但覆盖关键点。
+
+总结回答结构:定义Agent,核心要素分点说明,搭建步骤,可用框架分点介绍,案例,挑战与解决,加分项。这样既全面又有重点,能够展示系统性和实战能力。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260305093110586.png"></p>
+<h4 id="LangChain框架"><a href="#LangChain框架" class="headerlink" title="LangChain框架"></a>LangChain框架</h4><p><strong>定义：</strong>LangChain是一个开源的开发框架,旨仕帮助开发者快速构建基于大语言模型(LLM)的应用程序。已通过模块化设计简化了与大模型交互的复杂性,支持灵活集成外部工具和数据源,使开发者能够高效实现复杂的AI应用逻辑。</p>
+<h5 id="核心功能："><a href="#核心功能：" class="headerlink" title="核心功能："></a>核心功能：</h5><ol>
+<li><strong>模型集成(Models)</strong></li>
+</ol>
+<ul>
+<li>作用:统一接口对接多种大模型(如OpenAl GPT、Anthropic、Hugging Face等),避免厂商锁定。</li>
+<li>示例:通过 ChatOpenAI 或 ChatAnthropic 类快速切换不同模型,实现对话、文本生成等任务。</li>
+</ul>
+<ol start="2">
+<li><strong>模块化组件(Components)</strong></li>
+</ol>
+<ul>
+<li>提示模板(Prompts):标准化提示词管理,支持变量注入和动态生成(如Few-shot Learning)。</li>
+<li>文档加载器(Document Loaders):支持PDF、网页、数据库等数据源的加载与预处理。</li>
+<li>文本分割器(Text Splitters):将长文本切分以适应模型输入限制。</li>
+<li>向量存储(Vector Stores):集成FAISS、Chroma等工具,实现文本向量化与相似性检索。</li>
+</ul>
+<ol start="3">
+<li><strong>链式调用(Chains)</strong></li>
+</ol>
+<ul>
+<li>作用:将多个步骤组合成可复用的流程,处理复杂任务。</li>
+<li>典型链：RetrievalQA 链(检索+生成)、SequentialChain(顺序执行多个模型调用)。</li>
+<li>场景:构建问答系统时,先检索知识库,再生成回答。</li>
+</ul>
+<ol start="4">
+<li><strong>记忆机制(Memory)</strong></li>
+</ol>
+<ul>
+<li>作用:维护对话历史或上下文状态,支持多轮交互。</li>
+<li>实现方式:通过 ConversationBufferMemory 或 ConversationSummaryMemory 存储和管理历史消息。</li>
+</ul>
+<ol start="5">
+<li><strong>代理与工具(Agents&amp; Tools)</strong></li>
+</ol>
+<ul>
+<li>代理(Agents):让LLM动态选择调用工具,实现智能决策(如“使用搜索API查天气,再用计算器转换单位”)。</li>
+<li>工具(Tools):预置搜索引擎、Python REPL、API调用等工具,支持自定义扩展。</li>
+</ul>
+<ol start="6">
+<li><strong>数据增强(Retrieval-Augmented Generation,RAG)</strong></li>
+</ol>
+<ul>
+<li>作用:将外部数据(如文档、数据库)与LLM结合,提升生成内容的准确性和相关性。</li>
+<li>流程:加载数据→向量化→检索相关片段→注入提示词→生成最终回答。</li>
+</ul>
+<h5 id="核心优势："><a href="#核心优势：" class="headerlink" title="核心优势："></a>核心优势：</h5><ul>
+<li>模块化设计:按需组合组件,避免重复造轮子。</li>
+<li>灵活性:兼容多种模型、数据源和工具,适应不同业务需求。</li>
+<li>扩展性:支持自定义工具、链式流程和记忆逻辑。</li>
+<li>开发效率:抽象底层细节,让开发者聚焦业务逻辑。</li>
+</ul>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h5><p>“LangChain是一个用于构建大模型应用的开发框架,核心目标是降低开发复杂性。它提供了模块化组件,比如支持多种模型的统一接口、提示词管理、外部数据检索工具等。开发者可以通过链式调用组合多个步骤,比如先检索知识库再生成回答,或用代理让模型动态选择工具执行任务。此外,它的记忆机制能维护对话上下文,适合多轮交互场景。例如,用LangChain可以快速搭建一个基于公司内部文档的智能问答系统,结合RAG技术提升回答准确性。”</p>
+<h2 id="5-PPO与DPO"><a href="#5-PPO与DPO" class="headerlink" title="5.PPO与DPO"></a>5.PPO与DPO</h2><p><strong>核心差异：</strong>从优化目标、训练范式、数据依赖三个维度对比</p>
+<p><strong>技术类比：</strong>PPO像“教练+裁判”双人训练,DPO是“直接模仿学霸答题”</p>
+<p><strong>定义：</strong></p>
+<ul>
+<li>PPO(Proximal Policy Optimization)是一种强化学习算法,常用于训练策略模型,通过限制策略更新的幅度来确保稳定性。<ul>
+<li>**目标:**通过限制策略更新幅度(KL散度约束)最大化奖励期望</li>
+<li>**关键点:**需预训练奖励模型(Reward Model),通过策略-奖励交互迭代优化</li>
+</ul>
+</li>
+<li>DPO(Direct Preference Optimization)是另一种优化方法,可能更直接地利用人类偏好数据来调整模型,不需要显式的奖励模型。<ul>
+<li>**目标:**直接利用人类偏好数据,将策略对齐到偏好分布</li>
+<li>**关键点:**绕过显式奖励建模,直接通过偏好对(好答案vs坏答案)优化策略</li>
+</ul>
+</li>
+</ul>
+<h4 id="训练范式对比"><a href="#训练范式对比" class="headerlink" title="训练范式对比"></a>训练范式对比</h4><table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">PPO</th>
+<th align="left">DPO</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>数据需求</strong></td>
+<td align="left">需要大量无标注数据 + 奖励模型训练数据</td>
+<td align="left">仅需偏好对（&lt;好答案, 坏答案&gt;）</td>
+</tr>
+<tr>
+<td align="left"><strong>计算复杂度</strong></td>
+<td align="left">高（需多次策略-奖励模型交互）</td>
+<td align="left">低（单阶段端到端训练）</td>
+</tr>
+<tr>
+<td align="left"><strong>稳定性</strong></td>
+<td align="left">需谨慎调参（KL惩罚系数等）</td>
+<td align="left">更鲁棒（隐式约束策略偏离）</td>
+</tr>
+<tr>
+<td align="left"><strong>适用场景</strong></td>
+<td align="left">复杂奖励信号（如游戏AI）</td>
+<td align="left">明确偏好反馈（如对话质量排序）</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>DPO在小规模高质量偏好数据下表现更优,且成本降低</strong></li>
+<li><strong>PPO在需要细粒度奖励信号时(如区分满意度1-5分)仍有优势</strong></li>
+</ul>
+<p><strong>实战技巧:</strong></p>
+<ul>
+<li><p>DPO数据构造:通过对比学习采样(如同一问题不同回复的胜率排序)</p>
+</li>
+<li><p>PPO调参关键:KL散度系数(通常0.1-0.2)和奖励缩放系数</p>
+</li>
+</ul>
+<p><strong>趋势扩展:</strong></p>
+<ul>
+<li>混合训练:PPO+DPO分阶段训练(DPO初始化→PPO精细优化)</li>
+<li>泛化改进:DPO与RLAIF结合(用AI替代人类生成偏好对)</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Mr.Z</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://WUHU-Z.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(2)/">http://WUHU-Z.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(2)/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Mr.Z</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                    <span class="chip bg-color">大模型</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(3)/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/41.jpg" class="responsive-img" alt="大模型的探索之旅(3)">
+                        
+                        <span class="card-title">大模型的探索之旅(3)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-02-05
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(1)/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="大模型的探索之旅(1)">
+                        
+                        <span class="card-title">大模型的探索之旅(1)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+ <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="7747893098"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2026</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Mr.Z</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/WUHU-Z" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ddd@mail.nwpu.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2632851304" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2632851304" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+ <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+ <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+		<script src="/libs/materialize/materialize.min.js"></script>
+		<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+		<script src="/libs/aos/aos.js"></script>
+		<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+		<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+		<script src="/js/matery.js"></script>
+
+		<!-- Baidu Analytics -->
+ <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+ 
+		<script
+			src="/libs/others/clicklove.js"
+			async="async"
+		></script>
+		 
+		<script
+			async
+			src="/libs/others/busuanzi.pure.mini.js"
+		></script>
+		      
+		<script
+			type="text/javascript"
+			size="150"
+			alpha="0.6"
+			zIndex="-1"
+			src="/libs/background/ribbon.min.js"
+			async="async"
+		></script>
+		 
+		<script
+			type="text/javascript"
+			src="/libs/background/ribbon-dynamic.js"
+			async="async"
+		></script>
+		 
+		<script
+			src="/libs/instantpage/instantpage.js"
+			type="module"
+		></script>
+		
+		<!-- 雪花特效 -->
+		
+		<script type="text/javascript" src="/libs/others/snow.js"></script>
+		
+
+		<script type="text/javascript">
+			var OriginTitile = document.title,
+				st;
+			document.addEventListener("visibilitychange", function () {
+				document.hidden
+					? ((document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！"),
+					  clearTimeout(st))
+					: ((document.title = "φ(゜▽゜*)♪咦，又好了！"),
+					  (st = setTimeout(function () {
+							document.title = OriginTitile;
+					  }, 3e3)));
+			});
+		</script>
+		
+		<script
+			type="text/javascript"
+			src="/libs/others/sakura.js"
+		></script>
+		
+	<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
