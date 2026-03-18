@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="大模型的探索之旅(6), 隐迹札记">
+    <meta name="keywords" content="笔试合集(1), 隐迹札记">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>大模型的探索之旅(6) | 隐迹札记</title>
+    <title>笔试合集(1) | 隐迹札记</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -423,12 +423,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">大模型的探索之旅(6)</h1>
+                    <h1 class="description center-align post-title">笔试合集(1)</h1>
                 </div>
             </div>
         </div>
@@ -544,12 +544,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">深度学习</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
-                                <span class="chip bg-color">大模型</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
                     </div>
@@ -560,8 +556,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
-                                大模型
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -573,7 +569,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-02-08
+                    2026-03-15
                 </div>
                 
 
@@ -594,254 +590,255 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-梯度消失和爆炸"><a href="#1-梯度消失和爆炸" class="headerlink" title="1.梯度消失和爆炸"></a>1.梯度消失和爆炸</h2><p><strong>解决方案：</strong></p>
-<ul>
-<li>梯度消失<ul>
-<li>Pre-Layernorm</li>
-<li>残差连接</li>
-<li>使用更好的激活函数（ReLU等）</li>
-<li>LSTM/GRU等门控机制（针对RNN）</li>
-<li>更好的参数初始化</li>
-</ul>
-</li>
-<li>梯度爆炸<ul>
-<li>梯度裁剪</li>
-<li>正则化</li>
-<li>更好的参数初始化</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Xavier初始化使各层激活值方差一致(适用于CNN),Transformer推荐Kaiming初始化</p>
+                <blockquote>
+<p>失败总是贯穿人生始终…</p>
+<p><strong>失败不是结局，而是成长的入场券。</strong></p>
 </blockquote>
-<h2 id="2-AE-VAE-GAN"><a href="#2-AE-VAE-GAN" class="headerlink" title="2.AE,VAE,GAN"></a>2.AE,VAE,GAN</h2><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ul>
-<li><strong>自动编码器(AE):**AE是一种无监督学习模型,主要用于数据的降维和特征提取。它由编码器和解码器两部分组成。编码器将输入数据压缩成一个低维的表示,解码器再将这个低维表示还原成原始数据。</strong>AE的目标是最小化输入数据和输出数据之间的重构误差。**</li>
-<li><strong>变分自动编码器(VAE):**VAE是AE的一种扩展,它在编码器和解码器之间引入了概率分布。VAE不仅学习数据的表示,还学习数据的概率分布。编码器输出的是数据的均值和方差,解码器根据这些均值和方差生成新的数据。</strong>VAE的目标是最小化重构误差和KL散度(Kullback-Leibler divergence)。**</li>
-<li><strong>生成对抗网络(GAN):**GAN由生成器和判别器两部分组成。</strong>生成器的任务是生成尽可能逼真的数据,判别器的任务是区分生成的数据和真实的数据**。通过对抗训练,生成器不断改进生成的数据质量,直到判别器无法区分生成的数据和真实的数据。   </li>
-</ul>
-<h4 id="生成机制"><a href="#生成机制" class="headerlink" title="生成机制"></a>生成机制</h4><ul>
-<li><strong>AE的生成机制:</strong></li>
-</ul>
-<p>​        a. 输入数据通过编码器被压缩成一个低维的表示。<br>​        b. 解码器将这个低维表示还原成原始数据。<br>​        c. 通过最小化输入数据和输出数据之间的重构误差,AE学习到数据的有效表示。</p>
-<ul>
-<li><strong>VAE的生成机制:</strong></li>
-</ul>
-<p>​        a. 输入数据通过编码器被压缩成一个低维的表示,这个表示包括均值和方差。<br>​        b. 从均值和方差中采样得到一个潜在向量。<br>​        c. 解码器根据这个潜在向量生成新的数据。<br>​        d. 通过最小化重构误差和KL散度,VAE学习到数据的概率分布。</p>
-<ul>
-<li><strong>GAN的生成机制:</strong></li>
-</ul>
-<p>​        a.生成器生成假数据。<br>​        b.判别器判断生成的数据是真是假。<br>​        c.生成器和判别器通过对抗训练不断改进,直到生成器生成的数据无法被判别器区分。</p>
-<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><ul>
-<li><p>AE:</p>
-<ul>
-<li>优点：<ul>
-<li>简单易懂,易于实现。</li>
-<li>可以用于数据的降维和特征提取。</li>
-<li>生成的数据具有一定的重构质量。</li>
-</ul>
-</li>
-<li>缺点:<ul>
-<li>生成的数据质量不高,容易出现模糊和失真。</li>
-<li>缺乏生成新数据的能力。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>VAE：</p>
-<ul>
-<li>优点<ul>
-<li>生成的数据质量较高,具有一定的多样性。</li>
-<li>学习到数据的概率分布,可以进行采样生成新数据。</li>
-<li>具有一定的抗噪能力。</li>
-</ul>
-</li>
-<li>缺点:<ul>
-<li>训练过程较为复杂,需要调节超参数。</li>
-<li>生成的数据质量有时不如GAN。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>GAN:</p>
-<ul>
-<li>优点：<ul>
-<li>生成的数据质量高,逼真度高。</li>
-<li>生成的数据具有多样性,可以生成新的数据。</li>
-<li>生成器和判别器的对抗训练机制使得模型具有很强的生成能力。</li>
-</ul>
-</li>
-<li>缺点:<ul>
-<li>训练过程不稳定,容易出现模式崩溃。</li>
-<li>需要大量的计算资源和时间。</li>
-<li>生成的数据质量依赖于判别器的性能。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
-<li><p>AE的应用场景:</p>
-<ul>
-<li>数据降维和特征提取。</li>
-<li>图像去噪和修复。</li>
-<li>异常检测。</li>
-</ul>
-</li>
-<li><p>VAE的应用场景:</p>
-<ul>
-<li>图像生成和重建。</li>
-<li>数据生成和采样。</li>
-<li>异常检测和数据插补。</li>
-</ul>
-</li>
-<li><p>GAN的应用场景:</p>
-<ul>
-<li>图像生成和编辑。</li>
-<li>视频生成和编辑。</li>
-<li>数据增强和数据合成。</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-SFT-RLHF-DPO"><a href="#3-SFT-RLHF-DPO" class="headerlink" title="3.SFT,RLHF,DPO"></a>3.SFT,RLHF,DPO</h2><h4 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h4><ul>
-<li><p>SFT</p>
-<ul>
-<li>原理：在预训练模型上使用标注数据(输入-输出对)进行有监督训练</li>
-<li>优势:<ul>
-<li>训练稳定(简单梯度下降)</li>
-<li>数据利用率高(1万条数据即可见效)</li>
-</ul>
-</li>
-<li>劣势:<ul>
-<li>无法学习人类偏好(如拒绝有害回答)</li>
-<li>易出现“机械复制”问题(案例中直接拷贝文献导致错误用药建议)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>RLHF</p>
-<ul>
-<li>原理：使用SFT模型生成回答，通过人工标注偏好训练奖励模型</li>
-<li>优势：<ul>
-<li>对齐人类价值观</li>
-<li>支持复杂行为的学习</li>
-</ul>
-</li>
-<li>劣势<ul>
-<li>训练成本高</li>
-<li>流程复杂（RM训练不稳定，PPO需精细调参）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>DPO</p>
-<ul>
-<li>原理：用偏好数据直接优化策略,数学等效于RLHF但省去RM训练</li>
-<li>优势:<ul>
-<li>训练效率提升3倍(医疗案例仅需200组数据)</li>
-<li>避免PPO的不稳定性</li>
-</ul>
-</li>
-<li>劣势:<ul>
-<li>依赖高质量参考模型(需强SFT基础)</li>
-<li>多轮对话能力弱于RLHF</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-MOE混合专家模型"><a href="#4-MOE混合专家模型" class="headerlink" title="4.MOE混合专家模型"></a>4.MOE混合专家模型</h2><p><strong>原理</strong>：通过稀疏激活机制降低计算成本，核心是让每个输入仅激活少量专家（如Top-2），而非全量计算。</p>
-<blockquote>
-<p>P_activated = (k / N) * P_total ，其中：</p>
-<ul>
-<li>P_total = 模型总参数量  </li>
-<li>N = 专家总数  </li>
-<li>k = 激活专家数量  </li>
-</ul>
-</blockquote>
-<p><strong>计算量大约降低为：k / N</strong></p>
-<ul>
-<li><strong>稀疏激活：</strong>模型包含多个专家（子网络），通过门控网络（Gating Network）动态选择 Top-k 个专家参与计算。</li>
-<li><strong>负载均衡（专家并行、通信优化）：</strong>通过负载均衡损失函数(如Switch Transformer的辅助损失)避免专家闲置或过载,提升硬件利用率。</li>
-</ul>
-<h2 id="5-LLaMA的RMSNorm和SwiGLU激活函数"><a href="#5-LLaMA的RMSNorm和SwiGLU激活函数" class="headerlink" title="5.LLaMA的RMSNorm和SwiGLU激活函数"></a>5.LLaMA的RMSNorm和SwiGLU激活函数</h2><h4 id="技术对比"><a href="#技术对比" class="headerlink" title="技术对比"></a>技术对比</h4><table>
-<thead>
-<tr>
-<th>指标</th>
-<th>计算复杂度</th>
-<th>参数效率</th>
-<th>数值稳定性</th>
-<th>实际速度提升</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>RMSNorm</td>
-<td>O(n)</td>
-<td>无额外参数</td>
-<td>更优的梯度传播</td>
-<td>30%-50%</td>
-</tr>
-<tr>
-<td>LayerNorm</td>
-<td>O(n)</td>
-<td>无额外参数</td>
-<td>依赖均值方差计算</td>
-<td>基准</td>
-</tr>
-<tr>
-<td>SwiGLU</td>
-<td>O(n)</td>
-<td>参数量减少50%</td>
-<td>内置门控机制</td>
-<td>20%-30%</td>
-</tr>
-<tr>
-<td>ReLU/GLU</td>
-<td>O(n)</td>
-<td>参数量标准</td>
-<td>易出现梯度消失</td>
-<td>无显著提升</td>
-</tr>
-</tbody></table>
-<h4 id="RMSNorm-的技术革新"><a href="#RMSNorm-的技术革新" class="headerlink" title="RMSNorm 的技术革新"></a>RMSNorm 的技术革新</h4><h5 id="传统-LayerNorm-的局限性"><a href="#传统-LayerNorm-的局限性" class="headerlink" title="传统 LayerNorm 的局限性"></a>传统 LayerNorm 的局限性</h5><p>$$<br>LayerNorm(x)=\gamma \frac{x-\mu}{\sqrt{\sigma^2+\epsilon}}+\beta<br>$$</p>
-<p>其中：</p>
-<ul>
-<li>$\mu$ 表示均值</li>
-<li>$\sigma^2$ 表示方差</li>
-<li>$\gamma$ 为缩放参数</li>
-<li>$\beta$ 为偏置参数</li>
-<li>$epsilon$为数值稳定项</li>
-</ul>
-<p>存在的问题：</p>
-<ul>
-<li>需要计算均值 $\mu$ 和方差 $\sigma^2$，带来额外计算开销,在大模型训练中会增加一定的计算成本</li>
-<li>在长文本序列中可能出现内部协变量偏移（Internal Covariate Shift）</li>
-</ul>
-<h5 id="RMSNorm-的创新设计"><a href="#RMSNorm-的创新设计" class="headerlink" title="RMSNorm 的创新设计"></a>RMSNorm 的创新设计</h5><p>RMSNorm 的<strong>核心思想</strong>是：只使用均方根（Root Mean Square）进行归一化，而不计算均值。</p>
-<p>计算公式：<br>$$<br>RMSNorm(x)=\gamma \frac{x}{RMS(x)+\epsilon}<br>$$<br>参数说明：</p>
-<ul>
-<li>$\gamma$ 为可学习缩放参数</li>
-<li> $epsilon$为数值稳定项</li>
-<li>$n$ 为特征维度</li>
-</ul>
-<p><strong>优点：</strong></p>
-<ul>
-<li>仅计算均方根，减少计算量</li>
-<li>数值稳定性提升，通过指数移动平均保持动态分布</li>
-</ul>
-<h4 id="SwiGLU激活函数的突破"><a href="#SwiGLU激活函数的突破" class="headerlink" title="SwiGLU激活函数的突破"></a>SwiGLU激活函数的突破</h4><h5 id="基础GLU"><a href="#基础GLU" class="headerlink" title="基础GLU"></a>基础GLU</h5><p>基础公式：<br>$$<br>\text{GLU}(a,b)= a \otimes \sigma(b)<br>$$</p>
-<ul>
-<li><strong>参数效率问题</strong>：需要独立训练 $a$ 和 $b$ 的参数矩阵</li>
-</ul>
-<blockquote>
-<p>Sigmoid把输入映射到 <strong>0~1 之间</strong>。叉乘就是两个向量 <strong>同位置相乘</strong></p>
-</blockquote>
-<h5 id="SwiGLU的创新设计"><a href="#SwiGLU的创新设计" class="headerlink" title="SwiGLU的创新设计"></a>SwiGLU的创新设计</h5><p>数学形式：<br>$$<br>\text{SwiGLU}(x)=x \cdot \sigma(W_2 \cdot \delta(W_1 x))<br>$$</p>
-<ul>
-<li><p><strong>参数共享</strong>： 将输入维度压缩为原来的 1/2</p>
-</li>
-<li><p><strong>非线性增强</strong>：引入 SiLU 激活函数提升表达能力</p>
-</li>
-</ul>
+<h2 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h2><p>签到题，简单的排序</p>
+<p>但是由于忘记了结构体排序的方法，所以浪费了不少时间在调试上</p>
+<pre class="line-numbers language-c++"><code class="language-c++">bool cmp(node&a,node&b){
+    if(a.t!=b.t)return a.t<b.t;
+    return a.x<b.x;
+}
+
+sort(node_arr,node_arr+n,cmp);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><p>​        多多驾驶电动车从起点 0 出发，目的地距离为 L 公里。电动车满电时可行驶 C 公里，即电池容量为 C 公里续航。沿途有 n 个充电站，第 i 个充电站位于距离起点 dᵢ 公里处，充电价格为 pᵢ 每公里。 多多可以在任何充电站进行充电，充电量可以任意，但不能超过电池总容量。已知多多出发时电池处于满电状态。请你帮多多规划充电策略，求出到达目的地所需的最少充电费用。如果无论如何都无法到达目的地，请输出 -1。</p>
+<h5 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a><strong>输入描述</strong></h5><p>第一行包含三个整数 $L$, $C$, $n$，分别表示目的地距离、满电续航公里数、充电站的数量（约束：$1 \le L, C \le 10^9$, $1 \le n \le 5000$）；接下来 $n$ 行，每行包含两个整数 $d_i, p_i$，分别表示第 $i$ 个充电站距离起点的距离以及该站的充电单价（约束：$1 \le d_i &lt; d_{i+1} &lt; L$, $1 \le p_i \le 10^9$）。</p>
+<h5 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a><strong>输出描述</strong></h5><p>对于每组数据，输出一行，每行一个数，表示最多能使多少个能源站变为开启状态</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>输入：</p>
+<pre class="line-numbers language-c++"><code class="language-c++">20 10 3
+4 5
+9 2
+15 6
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出</p>
+<pre class="line-numbers language-c++"><code class="language-c++">24
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>完全脑残了，一直在想dfs，想着构造递归。</p>
+<p>发现了<strong>充电量任意</strong>这个关键条件，仍然在想dfs，想dp。</p>
+<p>完全没有考虑贪心，耻辱。</p>
+<pre class="line-numbers language-c++"><code class="language-c++">#include<bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+
+int main()
+{
+    ll n,l,c;
+    cin>>l>>c>>n;
+    vector<ll>a(n+2),b(n+2);
+    a[0]=b[0]=0;
+    for(int i=1;i<=n;i++)cin>>a[i]>>b[i];
+    a[n+1]=l;
+    b[n+1]=0;
+    ll s=c;
+    ll res=0;
+    for(int i=0;i<=n;i++){
+        if(a[i+1]-a[i]>c){
+            cout<<-1<<endl;
+            break;
+        }
+        int to = -1;
+        for(int j=i+1;j<=n+1&&a[j]-a[i]<=c;j++){
+            if(b[j]<b[i]){
+                to = j;
+                break;
+            }
+        }
+        ll need = c;
+        if(to!=-1)need = a[to]-a[i];
+        if(s<need){//绝妙的一步，一开始考虑贪心，就差在这里，没有深入思考
+            res+=(need-s)*b[i];
+            s= need;
+        }
+        s-=a[i+1]-a[i];
+    }
+    cout<<res<<endl;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h2><p>多多正在检查一段配送轨迹日志。日志长度为 n，从起点 (0,0) 出发，按顺序记录了每一步移动指令。日志是一个长度为 n 的字符串，只包含以下四种字符： U：向上移动一格； D：向下移动一格； L：向左移动一格； R：向右移动一格。 多多怀疑其中有一段连续日志被错误写入。现在他可以从原串中删除至多一段连续子串；删除后，剩余的前后两段会直接拼接，执行顺序保持不变。这里的 “至多一段” 包含两种边界情况： 可以一个字符都不删； 也可以删掉整个字符串，此时剩余轨迹为空，最终仍停在 (0,0)。 目标仓库坐标为 (x,y)。请你求出最短需要删除多长的连续子串，才能让拼接后的整段轨迹最终停在 (x,y)。 如果原始轨迹本来就停在 (x,y)，可以不删除任何字符，此时答案为 0。 如果不存在合法方案，输出 -1。</p>
+<h5 id="输入描述-1"><a href="#输入描述-1" class="headerlink" title="输入描述"></a>输入描述</h5><p>第一行输入一个整数 T，表示测试数据组数。接下来对每组数据： 第一行输入一个整数 n，表示日志长度； 第二行输入一个长度恰好为 n 的字符串 s； 第三行输入两个整数 x, y，表示目标仓库坐标。</p>
+<h5 id="输出描述-1"><a href="#输出描述-1" class="headerlink" title="输出描述"></a><strong>输出描述</strong></h5><p>对每组数据输出一个整数，表示最短删除长度。如果不存在合法方案，输出 -1。每组数据的答案各占一行。</p>
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><p>输入：</p>
+<pre class="line-numbers language-c++"><code class="language-c++">20 10 3
+4 5
+9 2
+15 6
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出</p>
+<pre class="line-numbers language-c++"><code class="language-c++">24
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>我在想什么，为什么非要执着于dfs，开局一看到状态转移，就想dfs了（绷），想着加个dfs后缀和剪枝应该没问题….最后写了快半个小时，只A了20%</p>
+<p>然后猛然发现这是一个后缀和题目，但我又只想了一层后缀和，只A了50%</p>
+<p>然后转战去继续想第二题，没有一鼓作气</p>
+<p>到后面想到要用map+vector了，被最后20%卡住了。手忙脚乱写二分的时候，交卷了。遗憾。</p>
+<pre class="line-numbers language-c++"><code class="language-c++">#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  int T;
+  cin >> T;
+
+ while(T--) {
+    int n;
+    string s;
+    long long x, y;
+    cin >> n >> s >> x >> y;
+
+    long long total_x = 0, total_y = 0;
+   for(char ch : s) {
+     if(ch =='U') total_y++;
+     else if(ch =='D') total_y--;
+     else if(ch =='L') total_x--;
+     else total_x++;
+    }
+
+    long long need_x = total_x - x;
+    long long need_y = total_y - y;
+
+   if(need_x == 0 && need_y == 0) {
+      cout << 0 <<'\n';
+     continue;
+    }
+
+    //经典状态转移压缩，可惜用的比较少，没想到...
+    long long base = 2LL * n + 3;
+    long long offset = n + 1;
+
+    long long state = offset * base + offset;
+    long long need = need_x * base + need_y;
+
+    unordered_map<long long, int> last;
+    last.reserve(n * 2 + 10);
+    last[state] = 0;
+
+    int ans = n + 1;
+
+   for(int i = 1; i <= n; i++) {
+      char ch = s[i - 1];
+     if(ch =='U') state += 1;
+     else if(ch =='D') state -= 1;
+     else if(ch =='L') state -= base;
+     else  state += base;
+
+      long long want = state - need;
+      auto it = last.find(want);
+     if(it != last.end()) ans = min(ans, i - it->second);
+      //动态更新记录..也没有想到...
+      last[state] = i;
+    }
+
+   if(ans == n + 1) cout << -1 <<'\n';
+   else cout << ans <<'\n';
+  }
+}
+
+int main() {
+  solve();
+  return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h2><p>多多最近在做一条服务链路的大促扩容预案。他拿到了未来 n 个时间点的负载预测。 第 i 个时间点： 业务需求为 ai 当前基础容量为 bi 多多最多可以申请 m 个 “临时扩容包”。每个扩容包都有相同的扩容量 x。 如果一个扩容包在第 i 个时间点启动，那么它会在从 i 开始的长度为 w 的时间区间（即时间点 i,i+1,…,i+w−1）上各额外提供 x 容量。 若区间超过第 n 个时间点，超出的部分无需考虑。 多个扩容包可以在同一时刻启动，它们的效果也可以叠加。 请你求出最小的非负整数 x，使得可以通过启动不超过 m 个扩容包的情况下，让所有时间点都满足：基础容量+所有生效中的扩容包容量≥业务需求 在得到最小可行的 x 之后，多多还想知道：在这个最小 x 下，最少需要启动多少个扩容包。如果无论怎样都无法满足全部时间点的业务需求，输出 -1。</p>
+<h5 id="输入描述-2"><a href="#输入描述-2" class="headerlink" title="输入描述"></a><strong>输入描述</strong></h5><p>第一行输入一个整数 T，表示测试数据组数。 接下来对每组数据： 第一行输入 3 个整数 n,m,w，分别表示时间点数量、最大扩容包数量、单个扩容包生效时长。 第二行输入 n 个整数 a1,a2,…,an，表示各时间点的业务需求。 第三行输入 n 个整数 b1,b2,…,bn，表示各时间点的基础容量。</p>
+<h5 id="输出描述-2"><a href="#输出描述-2" class="headerlink" title="输出描述"></a><strong>输出描述</strong></h5><p>对每组数据各输出一行： 若存在可行解，输出两个整数 x, c，分别表示最小可行的单包扩容量，以及在该扩容量下最少需要启动的扩容包数量。 若不存在可行解则输出 -1。</p>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h5><p>输入：</p>
+<pre class="line-numbers language-c++"><code class="language-c++">3
+1 1 1
+5
+2
+3 4 3
+13 13 13
+1 1 1
+5 1 4
+0 0 0 0 6
+0 0 0 0 0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出</p>
+<pre class="line-numbers language-c++"><code class="language-c++">3 1
+3 4
+6 1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><pre class="line-numbers language-c++"><code class="language-c++">第一层是最小的单包扩容量 cap； 第二层是在这个最小 cap 下，最少要启动多少个扩容包。 
+   这种“求最小可行值”的题很自然就想到 二分答案。
+    假设当前二分到某个扩容量 cap，我们要判断它能不能在不超过 m 个扩容包的前提下覆盖全部时刻。 
+    判定时从左到右贪心扫描。设当前这一时刻已经有一些之前启动、现在仍在生效的扩容包，总共提供了 active * cap 的额外容量。
+    如果这一时刻仍然不够，那就只能立刻在当前位置补新包，因为之后再开已经来不及影响当前时刻了。为了刚好满足当前点，就补最少个数的包。
+    这个贪心是最优的，因为每一步都只补“当前必须补的最少数量”。 为了高效维护哪些扩容包什么时候失效，可以用差分数组记录“某一时刻要减掉多少个正在生效的包”，这样一次判定就是 O(n)。
+    再结合二分答案，总复杂度就是 O(n log V)，其中 V 是答案范围。二分出最小可行 cap 后，再跑一次判定函数，就能顺便得到这个最小容量下对应的最少启动次数。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>hh…压根没时间看这一道题目..时间管理这一块儿还是要练…</p>
+<p>还有草稿纸，下次必须要用上！！</p>
+<pre class="line-numbers language-c++"><code class="language-c++">#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int n, w;
+        long long m;
+        cin >> n >> m >> w;
+
+        vector<long long> need(n), base(n);
+        for (int i = 0; i < n; i++) cin >> need[i];
+        for (int i = 0; i < n; i++) cin >> base[i];
+
+        long long upper = 0;
+        for (int i = 0; i < n; i++) {
+            upper = max(upper, need[i] - base[i]);
+        }
+
+        if (upper <= 0) {
+            cout << "0 0\n";
+            continue;
+        }
+        auto check = [&](long long cap) -> long long {
+            vector<long long> diff(n + 1, 0);
+            long long active = 0;
+            long long used = 0;
+            for (int i = 0; i < n; i++) {
+                active += diff[i];
+
+                long long lack = need[i] - base[i] - active * cap;
+                if (lack > 0) {
+                    long long add = (lack + cap - 1) / cap;
+                    used += add;
+                    if (used > m) return used;
+
+                    active += add;
+                    if (i + w < n) diff[i + w] -= add;
+                }
+            }
+            return used;
+        };
+        if (check(upper) > m) {
+            cout << -1 << '\n';
+            continue;
+        }
+        long long left = 1, right = upper;
+        while (left < right) {
+            long long mid = (left + right) >> 1;
+            if (check(mid) <= m) right = mid;
+            else left = mid + 1;
+        }
+        long long cnt = check(left);
+        cout << left << ' ' << cnt << '\n';
+    }
+}
+int main() {
+    solve();
+    return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -868,7 +865,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://WUHU-Z.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(6)/">http://WUHU-Z.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(6)/</a>
+                    <a href="http://WUHU-Z.github.io/%E7%AC%94%E8%AF%95%E5%90%88%E9%9B%86(1)/">http://WUHU-Z.github.io/%E7%AC%94%E8%AF%95%E5%90%88%E9%9B%86(1)/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -906,12 +903,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">深度学习</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
-                                    <span class="chip bg-color">大模型</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
                         </div>
@@ -955,17 +948,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/">
+                <a href="/%E7%AC%94%E8%AF%95%E5%90%88%E9%9B%86(1)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/56.jpg" class="responsive-img" alt="算法模板">
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="笔试合集(1)">
                         
-                        <span class="card-title">算法模板</span>
+                        <span class="card-title">笔试合集(1)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -975,9 +969,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -990,6 +984,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1008,13 +1003,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(5)/">
+                <a href="/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/55.jpg" class="responsive-img" alt="大模型的探索之旅(5)">
+                        <img src="/medias/featureimages/56.jpg" class="responsive-img" alt="算法模板">
                         
-                        <span class="card-title">大模型的探索之旅(5)</span>
+                        <span class="card-title">算法模板</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1025,14 +1020,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
-                                    大模型
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -1042,12 +1037,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
-                        <span class="chip bg-color">大模型</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
                 </div>

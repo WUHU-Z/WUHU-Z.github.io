@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="大模型的探索之旅(6), 隐迹札记">
+    <meta name="keywords" content="算法模板, 隐迹札记">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>大模型的探索之旅(6) | 隐迹札记</title>
+    <title>算法模板 | 隐迹札记</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -423,12 +423,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/56.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">大模型的探索之旅(6)</h1>
+                    <h1 class="description center-align post-title">算法模板</h1>
                 </div>
             </div>
         </div>
@@ -544,12 +544,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">深度学习</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
-                                <span class="chip bg-color">大模型</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
                     </div>
@@ -560,8 +556,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
-                                大模型
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -573,7 +569,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-02-08
+                    2026-03-01
                 </div>
                 
 
@@ -594,254 +590,252 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-梯度消失和爆炸"><a href="#1-梯度消失和爆炸" class="headerlink" title="1.梯度消失和爆炸"></a>1.梯度消失和爆炸</h2><p><strong>解决方案：</strong></p>
-<ul>
-<li>梯度消失<ul>
-<li>Pre-Layernorm</li>
-<li>残差连接</li>
-<li>使用更好的激活函数（ReLU等）</li>
-<li>LSTM/GRU等门控机制（针对RNN）</li>
-<li>更好的参数初始化</li>
-</ul>
-</li>
-<li>梯度爆炸<ul>
-<li>梯度裁剪</li>
-<li>正则化</li>
-<li>更好的参数初始化</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Xavier初始化使各层激活值方差一致(适用于CNN),Transformer推荐Kaiming初始化</p>
+                <blockquote>
+<p>近期准备笔试，重拾算法，遂准备此模板，供考前练手使用。</p>
 </blockquote>
-<h2 id="2-AE-VAE-GAN"><a href="#2-AE-VAE-GAN" class="headerlink" title="2.AE,VAE,GAN"></a>2.AE,VAE,GAN</h2><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ul>
-<li><strong>自动编码器(AE):**AE是一种无监督学习模型,主要用于数据的降维和特征提取。它由编码器和解码器两部分组成。编码器将输入数据压缩成一个低维的表示,解码器再将这个低维表示还原成原始数据。</strong>AE的目标是最小化输入数据和输出数据之间的重构误差。**</li>
-<li><strong>变分自动编码器(VAE):**VAE是AE的一种扩展,它在编码器和解码器之间引入了概率分布。VAE不仅学习数据的表示,还学习数据的概率分布。编码器输出的是数据的均值和方差,解码器根据这些均值和方差生成新的数据。</strong>VAE的目标是最小化重构误差和KL散度(Kullback-Leibler divergence)。**</li>
-<li><strong>生成对抗网络(GAN):**GAN由生成器和判别器两部分组成。</strong>生成器的任务是生成尽可能逼真的数据,判别器的任务是区分生成的数据和真实的数据**。通过对抗训练,生成器不断改进生成的数据质量,直到判别器无法区分生成的数据和真实的数据。   </li>
-</ul>
-<h4 id="生成机制"><a href="#生成机制" class="headerlink" title="生成机制"></a>生成机制</h4><ul>
-<li><strong>AE的生成机制:</strong></li>
-</ul>
-<p>​        a. 输入数据通过编码器被压缩成一个低维的表示。<br>​        b. 解码器将这个低维表示还原成原始数据。<br>​        c. 通过最小化输入数据和输出数据之间的重构误差,AE学习到数据的有效表示。</p>
-<ul>
-<li><strong>VAE的生成机制:</strong></li>
-</ul>
-<p>​        a. 输入数据通过编码器被压缩成一个低维的表示,这个表示包括均值和方差。<br>​        b. 从均值和方差中采样得到一个潜在向量。<br>​        c. 解码器根据这个潜在向量生成新的数据。<br>​        d. 通过最小化重构误差和KL散度,VAE学习到数据的概率分布。</p>
-<ul>
-<li><strong>GAN的生成机制:</strong></li>
-</ul>
-<p>​        a.生成器生成假数据。<br>​        b.判别器判断生成的数据是真是假。<br>​        c.生成器和判别器通过对抗训练不断改进,直到生成器生成的数据无法被判别器区分。</p>
-<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><ul>
-<li><p>AE:</p>
-<ul>
-<li>优点：<ul>
-<li>简单易懂,易于实现。</li>
-<li>可以用于数据的降维和特征提取。</li>
-<li>生成的数据具有一定的重构质量。</li>
-</ul>
-</li>
-<li>缺点:<ul>
-<li>生成的数据质量不高,容易出现模糊和失真。</li>
-<li>缺乏生成新数据的能力。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>VAE：</p>
-<ul>
-<li>优点<ul>
-<li>生成的数据质量较高,具有一定的多样性。</li>
-<li>学习到数据的概率分布,可以进行采样生成新数据。</li>
-<li>具有一定的抗噪能力。</li>
-</ul>
-</li>
-<li>缺点:<ul>
-<li>训练过程较为复杂,需要调节超参数。</li>
-<li>生成的数据质量有时不如GAN。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>GAN:</p>
-<ul>
-<li>优点：<ul>
-<li>生成的数据质量高,逼真度高。</li>
-<li>生成的数据具有多样性,可以生成新的数据。</li>
-<li>生成器和判别器的对抗训练机制使得模型具有很强的生成能力。</li>
-</ul>
-</li>
-<li>缺点:<ul>
-<li>训练过程不稳定,容易出现模式崩溃。</li>
-<li>需要大量的计算资源和时间。</li>
-<li>生成的数据质量依赖于判别器的性能。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
-<li><p>AE的应用场景:</p>
-<ul>
-<li>数据降维和特征提取。</li>
-<li>图像去噪和修复。</li>
-<li>异常检测。</li>
-</ul>
-</li>
-<li><p>VAE的应用场景:</p>
-<ul>
-<li>图像生成和重建。</li>
-<li>数据生成和采样。</li>
-<li>异常检测和数据插补。</li>
-</ul>
-</li>
-<li><p>GAN的应用场景:</p>
-<ul>
-<li>图像生成和编辑。</li>
-<li>视频生成和编辑。</li>
-<li>数据增强和数据合成。</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-SFT-RLHF-DPO"><a href="#3-SFT-RLHF-DPO" class="headerlink" title="3.SFT,RLHF,DPO"></a>3.SFT,RLHF,DPO</h2><h4 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h4><ul>
-<li><p>SFT</p>
-<ul>
-<li>原理：在预训练模型上使用标注数据(输入-输出对)进行有监督训练</li>
-<li>优势:<ul>
-<li>训练稳定(简单梯度下降)</li>
-<li>数据利用率高(1万条数据即可见效)</li>
-</ul>
-</li>
-<li>劣势:<ul>
-<li>无法学习人类偏好(如拒绝有害回答)</li>
-<li>易出现“机械复制”问题(案例中直接拷贝文献导致错误用药建议)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>RLHF</p>
-<ul>
-<li>原理：使用SFT模型生成回答，通过人工标注偏好训练奖励模型</li>
-<li>优势：<ul>
-<li>对齐人类价值观</li>
-<li>支持复杂行为的学习</li>
-</ul>
-</li>
-<li>劣势<ul>
-<li>训练成本高</li>
-<li>流程复杂（RM训练不稳定，PPO需精细调参）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>DPO</p>
-<ul>
-<li>原理：用偏好数据直接优化策略,数学等效于RLHF但省去RM训练</li>
-<li>优势:<ul>
-<li>训练效率提升3倍(医疗案例仅需200组数据)</li>
-<li>避免PPO的不稳定性</li>
-</ul>
-</li>
-<li>劣势:<ul>
-<li>依赖高质量参考模型(需强SFT基础)</li>
-<li>多轮对话能力弱于RLHF</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-MOE混合专家模型"><a href="#4-MOE混合专家模型" class="headerlink" title="4.MOE混合专家模型"></a>4.MOE混合专家模型</h2><p><strong>原理</strong>：通过稀疏激活机制降低计算成本，核心是让每个输入仅激活少量专家（如Top-2），而非全量计算。</p>
-<blockquote>
-<p>P_activated = (k / N) * P_total ，其中：</p>
-<ul>
-<li>P_total = 模型总参数量  </li>
-<li>N = 专家总数  </li>
-<li>k = 激活专家数量  </li>
-</ul>
-</blockquote>
-<p><strong>计算量大约降低为：k / N</strong></p>
-<ul>
-<li><strong>稀疏激活：</strong>模型包含多个专家（子网络），通过门控网络（Gating Network）动态选择 Top-k 个专家参与计算。</li>
-<li><strong>负载均衡（专家并行、通信优化）：</strong>通过负载均衡损失函数(如Switch Transformer的辅助损失)避免专家闲置或过载,提升硬件利用率。</li>
-</ul>
-<h2 id="5-LLaMA的RMSNorm和SwiGLU激活函数"><a href="#5-LLaMA的RMSNorm和SwiGLU激活函数" class="headerlink" title="5.LLaMA的RMSNorm和SwiGLU激活函数"></a>5.LLaMA的RMSNorm和SwiGLU激活函数</h2><h4 id="技术对比"><a href="#技术对比" class="headerlink" title="技术对比"></a>技术对比</h4><table>
-<thead>
-<tr>
-<th>指标</th>
-<th>计算复杂度</th>
-<th>参数效率</th>
-<th>数值稳定性</th>
-<th>实际速度提升</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>RMSNorm</td>
-<td>O(n)</td>
-<td>无额外参数</td>
-<td>更优的梯度传播</td>
-<td>30%-50%</td>
-</tr>
-<tr>
-<td>LayerNorm</td>
-<td>O(n)</td>
-<td>无额外参数</td>
-<td>依赖均值方差计算</td>
-<td>基准</td>
-</tr>
-<tr>
-<td>SwiGLU</td>
-<td>O(n)</td>
-<td>参数量减少50%</td>
-<td>内置门控机制</td>
-<td>20%-30%</td>
-</tr>
-<tr>
-<td>ReLU/GLU</td>
-<td>O(n)</td>
-<td>参数量标准</td>
-<td>易出现梯度消失</td>
-<td>无显著提升</td>
-</tr>
-</tbody></table>
-<h4 id="RMSNorm-的技术革新"><a href="#RMSNorm-的技术革新" class="headerlink" title="RMSNorm 的技术革新"></a>RMSNorm 的技术革新</h4><h5 id="传统-LayerNorm-的局限性"><a href="#传统-LayerNorm-的局限性" class="headerlink" title="传统 LayerNorm 的局限性"></a>传统 LayerNorm 的局限性</h5><p>$$<br>LayerNorm(x)=\gamma \frac{x-\mu}{\sqrt{\sigma^2+\epsilon}}+\beta<br>$$</p>
-<p>其中：</p>
-<ul>
-<li>$\mu$ 表示均值</li>
-<li>$\sigma^2$ 表示方差</li>
-<li>$\gamma$ 为缩放参数</li>
-<li>$\beta$ 为偏置参数</li>
-<li>$epsilon$为数值稳定项</li>
-</ul>
-<p>存在的问题：</p>
-<ul>
-<li>需要计算均值 $\mu$ 和方差 $\sigma^2$，带来额外计算开销,在大模型训练中会增加一定的计算成本</li>
-<li>在长文本序列中可能出现内部协变量偏移（Internal Covariate Shift）</li>
-</ul>
-<h5 id="RMSNorm-的创新设计"><a href="#RMSNorm-的创新设计" class="headerlink" title="RMSNorm 的创新设计"></a>RMSNorm 的创新设计</h5><p>RMSNorm 的<strong>核心思想</strong>是：只使用均方根（Root Mean Square）进行归一化，而不计算均值。</p>
-<p>计算公式：<br>$$<br>RMSNorm(x)=\gamma \frac{x}{RMS(x)+\epsilon}<br>$$<br>参数说明：</p>
-<ul>
-<li>$\gamma$ 为可学习缩放参数</li>
-<li> $epsilon$为数值稳定项</li>
-<li>$n$ 为特征维度</li>
-</ul>
-<p><strong>优点：</strong></p>
-<ul>
-<li>仅计算均方根，减少计算量</li>
-<li>数值稳定性提升，通过指数移动平均保持动态分布</li>
-</ul>
-<h4 id="SwiGLU激活函数的突破"><a href="#SwiGLU激活函数的突破" class="headerlink" title="SwiGLU激活函数的突破"></a>SwiGLU激活函数的突破</h4><h5 id="基础GLU"><a href="#基础GLU" class="headerlink" title="基础GLU"></a>基础GLU</h5><p>基础公式：<br>$$<br>\text{GLU}(a,b)= a \otimes \sigma(b)<br>$$</p>
-<ul>
-<li><strong>参数效率问题</strong>：需要独立训练 $a$ 和 $b$ 的参数矩阵</li>
-</ul>
-<blockquote>
-<p>Sigmoid把输入映射到 <strong>0~1 之间</strong>。叉乘就是两个向量 <strong>同位置相乘</strong></p>
-</blockquote>
-<h5 id="SwiGLU的创新设计"><a href="#SwiGLU的创新设计" class="headerlink" title="SwiGLU的创新设计"></a>SwiGLU的创新设计</h5><p>数学形式：<br>$$<br>\text{SwiGLU}(x)=x \cdot \sigma(W_2 \cdot \delta(W_1 x))<br>$$</p>
-<ul>
-<li><p><strong>参数共享</strong>： 将输入维度压缩为原来的 1/2</p>
-</li>
-<li><p><strong>非线性增强</strong>：引入 SiLU 激活函数提升表达能力</p>
-</li>
-</ul>
+<h2 id="1-二分查找"><a href="#1-二分查找" class="headerlink" title="1.二分查找"></a>1.二分查找</h2><pre class="line-numbers language-c++"><code class="language-c++">    //模板一
+while (l < r)
+    {
+        int mid = l + r >> 1;    //(l+r)/2
+        if (a[mid]>=target)  r = mid;    // check()判断mid是否满足性质
+        else l = mid + 1;
+    }//若是找不到，l为靠近所求值的右边的下标
+    
+    //模板二
+while (l < r)
+    {
+        int mid = l + r + 1 >> 1;    //(l+r+1)/2
+        if (a[mid]<=target)  l = mid;
+        else r = mid - 1;
+    }//若是找不到，r为靠近所求值的左边的下标
+
+//第一个模板是尽量往左找目标，第二个模板是尽量往右找目标。
+//只要是往左找答案，就用第一个模板，mid不用加一，r=mid，l减一；
+//只要是往右找答案，就用第二个模板，mid要加一，l=mid，r要减一；
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="2-并查集"><a href="#2-并查集" class="headerlink" title="2.并查集"></a>2.并查集</h2><p>合并</p>
+<pre class="line-numbers language-c++"><code class="language-c++">int pa = find(a);
+int pb = find(b);
+if(pa!=pb){
+    p[pa]=pb;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>查找</p>
+<pre class="line-numbers language-c++"><code class="language-c++">int find(int x,int *p[])
+{
+    if(x!=p[x]){
+        p[x]=find(p[x],p);
+        x=p[x]
+    }
+    return p[x];
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="3-快速幂"><a href="#3-快速幂" class="headerlink" title="3.快速幂"></a>3.快速幂</h2><pre class="line-numbers language-c++"><code class="language-c++">ll qmul(ll a,ll b,ll mod){
+    ll res=0;
+    while(b){
+        if(b&1)res=(res*a)%mod;
+        a=(a*a)%mod;
+        b>>=1;
+    }
+    return res;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="4-线性筛"><a href="#4-线性筛" class="headerlink" title="4.线性筛"></a>4.线性筛</h2><pre class="line-numbers language-c++"><code class="language-c++">int cnt=0;
+int res[M];
+int minp[N];
+
+void init()
+{
+    memset(minp,0,sizeof minp);
+    int cnt = 0;
+    for(int i=2;i<N;i++){
+        if(!minp[i])minp[i]=res[cnt++]=i;
+        for(int j=0;res[j]*i<N;j++){
+            minp[res[j]*i]=res[j];
+            if(i%res[j]==0)break;
+        }
+    }    
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="5-GCD"><a href="#5-GCD" class="headerlink" title="5.GCD"></a>5.GCD</h2><pre class="line-numbers language-c++"><code class="language-c++">int gcd(int a,int b){
+    while(b^=a^=b^=a%=b);
+    return a;
+}
+// 也可以用__gcd(a,b)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="6-LCM"><a href="#6-LCM" class="headerlink" title="6.LCM"></a>6.LCM</h2><pre class="line-numbers language-c++"><code class="language-c++">int lcm(int a,int b){
+    return a/gcd(a,b)*b;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="7-Dijiksra"><a href="#7-Dijiksra" class="headerlink" title="7.Dijiksra"></a>7.Dijiksra</h2><p>根据真题有所改动，然内涵不变，题目链接：<a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/4184071/">1126. 最小花费 - AcWing题库</a></p>
+<p><strong>记得memset数组h，dist，st</strong></p>
+<pre class="line-numbers language-c++"><code class="language-c++">#include<bits/stdc++.h>
+
+using namespace std;
+
+const int N = 5e5+5;
+
+#define PII pair<double,int>
+
+int n,m;
+int h[N],e[N],ne[N],w[N],idx;
+double dist[N];
+bool st[N];
+
+void add(int x,int y,int z){
+    e[++idx]=y;
+    ne[idx]=h[x];
+    w[idx]=z;
+    h[x]=idx;
+}
+
+void dijkstra(int start)
+{
+    fill(dist, dist + N, 1e18);
+    memset(st,0,sizeof st);
+    dist[start]=100;
+    priority_queue<PII,vector<PII>,greater<PII>>q;
+    q.push({100.0,start});
+    while(!q.empty())
+    {
+        auto [d,x]=q.top();
+        q.pop();
+        if(st[x]) continue;
+        st[x]=1;
+        for(int i=h[x];~i;i=ne[i])
+        {
+            int y=e[i];
+            if(d/(1-w[i]*0.01)<dist[y])
+            {
+                dist[y] = d/(1-w[i]*0.01);
+                q.push({dist[y],y});
+            }
+        }
+    }
+}
+
+int main()
+{
+    cin>>n>>m;
+    memset(h,-1,sizeof h);
+    for(int i=1;i<=m;i++){
+        int x,y,z;
+        cin>>x>>y>>z;
+        add(x,y,z);
+        add(y,x,z);
+    }
+    int a,b;
+    cin>>a>>b;
+    dijkstra(b);
+    printf("%.8lf",dist[a]);
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="8-线段树"><a href="#8-线段树" class="headerlink" title="8.线段树"></a>8.线段树</h2><p>容易对付<strong>区域修改问题</strong>，模版题目：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3372">P3372 【模板】线段树 1 - 洛谷</a></p>
+<pre class="line-numbers language-c++"><code class="language-c++">#include<iostream>
+
+using namespace std;
+
+const int N=1e5+5;
+
+#define ll long long
+
+struct node
+{
+    int l,r;
+    ll sum;
+    int addy;
+    int muly;
+}tr[N<<2];
+int n,m,mod;
+int a[N];
+
+void pushup(int u)
+{
+    tr[u].sum=(tr[u<<1].sum+tr[u<<1|1].sum)%mod;
+}
+
+void build(int u,int l,int r)
+{
+    tr[u]={l,r,0,0,1};
+    if(l==r)tr[u].sum=a[l];
+    else
+    {
+        int mid=l+r>>1;
+        build(u<<1,l,mid);
+        build(u<<1|1,mid+1,r);
+        pushup(u);
+    }
+}
+void change(node &t,int t1,int t2)
+{
+    t.sum=((ll)t.sum*t2+(ll)(t.r-t.l+1)*t1)%mod;
+    t.addy=((ll)t.addy*t2+t1)%mod;
+    t.muly=(ll)t.muly*t2%mod;
+}
+
+void pushdown(int u)
+{
+    change(tr[u<<1],tr[u].addy,tr[u].muly);
+    change(tr[u<<1|1],tr[u].addy,tr[u].muly);
+    tr[u].addy=0;
+    tr[u].muly=1;
+}
+
+void modify(int u,int l,int r,int t1,int t2)
+{
+    if(tr[u].l>=l&&tr[u].r<=r)
+    {
+        change(tr[u],t1,t2);
+    }
+    else
+    {
+        pushdown(u);
+        int mid=tr[u].l+tr[u].r>>1;
+        if(l<=mid)modify(u<<1,l,r,t1,t2);
+        if(r>mid)modify(u<<1|1,l,r,t1,t2);
+        pushup(u);
+    }
+}
+
+ll query(int u,int l,int r)
+{
+    if(tr[u].l>=l&&tr[u].r<=r)return tr[u].sum;
+    int mid=tr[u].l+tr[u].r>>1;
+    ll sum=0;
+    pushdown(u);
+    if(l<=mid)sum=query(u<<1,l,r);
+    if(r>mid)sum+=query(u<<1|1,l,r);
+    return sum%mod;
+}
+
+int main()
+{
+    cin>>n>>m>>mod;
+    for(int i=1;i<=n;i++)cin>>a[i];
+    build(1,1,n);
+    for(int i=1;i<=m;i++)
+    {
+        int op,l,r;
+        cin>>op>>l>>r;
+        if(op==1)
+        {
+            int k;
+            cin>>k;
+            modify(1,l,r,0,k);
+        }
+        else if(op==2)
+        {
+            int k;
+            cin>>k;
+            modify(1,l,r,k,1);
+        }
+        else
+        {
+            cout<<query(1,l,r)<<endl;
+        }
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -868,7 +862,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://WUHU-Z.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(6)/">http://WUHU-Z.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(6)/</a>
+                    <a href="http://WUHU-Z.github.io/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/">http://WUHU-Z.github.io/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -906,12 +900,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">深度学习</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
-                                    <span class="chip bg-color">大模型</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
                         </div>
@@ -959,13 +949,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/">
+                <a href="/%E7%AC%94%E8%AF%95%E5%90%88%E9%9B%86(1)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/56.jpg" class="responsive-img" alt="算法模板">
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="笔试合集(1)">
                         
-                        <span class="card-title">算法模板</span>
+                        <span class="card-title">笔试合集(1)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -976,7 +966,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-03-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-03-15
                         </span>
                         <span class="publish-author">
                             
@@ -1008,13 +998,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(5)/">
+                <a href="/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(6)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/55.jpg" class="responsive-img" alt="大模型的探索之旅(5)">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="大模型的探索之旅(6)">
                         
-                        <span class="card-title">大模型的探索之旅(5)</span>
+                        <span class="card-title">大模型的探索之旅(6)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1025,7 +1015,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-08
                             </span>
                         <span class="publish-author">
                             
