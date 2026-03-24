@@ -749,7 +749,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="4-MOE混合专家模型"><a href="#4-MOE混合专家模型" class="headerlink" title="4.MOE混合专家模型"></a>4.MOE混合专家模型</h2><p><strong>原理</strong>：通过稀疏激活机制降低计算成本，核心是让每个输入仅激活少量专家（如Top-2），而非全量计算。</p>
+<h2 id="4-MOE混合专家模型"><a href="#4-MOE混合专家模型" class="headerlink" title="4.MOE混合专家模型"></a>4.MOE混合专家模型</h2><p><strong>目的：</strong>在不显著增加每个输入token推理成本的情况下，大幅扩展模型的总参数量，以提升模型容量。</p>
+<p><strong>原理</strong>：通过稀疏激活机制降低计算成本，核心是让每个输入仅激活少量专家（如Top-2），而非全量计算。</p>
 <blockquote>
 <p>P_activated = (k / N) * P_total ，其中：</p>
 <ul>
@@ -842,6 +843,75 @@
 <li><p><strong>非线性增强</strong>：引入 SiLU 激活函数提升表达能力</p>
 </li>
 </ul>
+<h2 id="6-Zero-shot-one-shot-few-shot"><a href="#6-Zero-shot-one-shot-few-shot" class="headerlink" title="6.Zero-shot/one-shot/few-shot"></a>6.Zero-shot/one-shot/few-shot</h2><table>
+<thead>
+<tr>
+<th>学习方式</th>
+<th>是否提供示例</th>
+<th>示例数量</th>
+<th>核心机制</th>
+<th>优点</th>
+<th>缺点</th>
+<th>典型使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Zero-shot</td>
+<td>❌ 否</td>
+<td>0</td>
+<td>依赖模型预训练知识</td>
+<td>使用简单，无需准备数据</td>
+<td>准确率可能较低</td>
+<td>简单问答、通用任务</td>
+</tr>
+<tr>
+<td>One-shot</td>
+<td>✅ 是</td>
+<td>1</td>
+<td>单例模仿</td>
+<td>比 zero-shot 更稳定</td>
+<td>仍然不够稳</td>
+<td>简单分类、格式学习</td>
+</tr>
+<tr>
+<td>Few-shot</td>
+<td>✅ 是</td>
+<td>1~10（少量）</td>
+<td>模式学习/模仿</td>
+<td>显著提升效果，灵活性高</td>
+<td>需要设计示例，成本略高</td>
+<td>分类、抽取、生成等复杂任务</td>
+</tr>
+<tr>
+<td>Fine-tuning</td>
+<td>✅ 是</td>
+<td>大量数据</td>
+<td>模型参数训练</td>
+<td>效果最稳定、可控性强</td>
+<td>成本高，需要训练和数据</td>
+<td>工业级应用、专用模型</td>
+</tr>
+</tbody></table>
+<h2 id="7-混淆矩阵"><a href="#7-混淆矩阵" class="headerlink" title="7.混淆矩阵"></a>7.混淆矩阵</h2><p>模型“预测的结果” vs “真实答案”</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>预测为正类 (Positive)</th>
+<th>预测为负类 (Negative)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实际为正类</td>
+<td>TP（真正例）</td>
+<td>FN（假负例）</td>
+</tr>
+<tr>
+<td>实际为负类</td>
+<td>FP（假正例）</td>
+<td>TN（真负例）</td>
+</tr>
+</tbody></table>
 
                 
             </div>

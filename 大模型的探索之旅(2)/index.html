@@ -1049,6 +1049,17 @@
 <li>混合训练:PPO+DPO分阶段训练(DPO初始化→PPO精细优化)</li>
 <li>泛化改进:DPO与RLAIF结合(用AI替代人类生成偏好对)</li>
 </ul>
+<h2 id="6-GRPO"><a href="#6-GRPO" class="headerlink" title="6.GRPO"></a>6.GRPO</h2><p>GRPO由DeepSeek提出，是PPO的简化变体。传统PPO需要训练一个critic/value网络来估计基线(baseline)，这增加了训练复杂度和显存开销。</p>
+<p>GRPO对同一个prompt生成一组回答，用组内回答的相对奖励排序作为基线估计，省去了value网络。</p>
+<p><strong>RLHF训练流程中可能遇到的实际问题</strong></p>
+<ul>
+<li><p>奖励黑客指策略利用奖励模型漏洞获得高分但质量未真正提升。</p>
+</li>
+<li><p>模式坍塌指模型输出多样性下降，总是生成类似的回答。</p>
+</li>
+<li><p>KL惩罚系数过大限制模型学习、过小导致策略偏离过远，调优困难。</p>
+</li>
+</ul>
 
                 
             </div>

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="大模型的探索之旅(1), 隐迹札记">
+    <meta name="keywords" content="拼多多面试大全, 隐迹札记">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>大模型的探索之旅(1) | 隐迹札记</title>
+    <title>拼多多面试大全 | 隐迹札记</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -423,12 +423,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/58.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">大模型的探索之旅(1)</h1>
+                    <h1 class="description center-align post-title">拼多多面试大全</h1>
                 </div>
             </div>
         </div>
@@ -544,12 +544,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">深度学习</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
-                                <span class="chip bg-color">大模型</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
                             </a>
                         
                     </div>
@@ -560,8 +556,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
-                                大模型
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                面试
                             </a>
                         
                     </div>
@@ -573,7 +569,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-02-03
+                    2026-03-23
                 </div>
                 
 
@@ -594,330 +590,320 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-Transformer"><a href="#1-Transformer" class="headerlink" title="1.Transformer"></a>1.Transformer</h2><p>Transformer是现代大模型的基石架构,其核心设计颠覆了传统序列建模的范式。以下是我的理解:</p>
-<h4 id="诞生背景"><a href="#诞生背景" class="headerlink" title="诞生背景:"></a>诞生背景:</h4><p>传统循环神经网络(RNN/LSTM)存在两大局限:</p>
+                <h2 id="1-训练不稳定如何排查"><a href="#1-训练不稳定如何排查" class="headerlink" title="1.训练不稳定如何排查"></a>1.训练不稳定如何排查</h2><ul>
+<li><p><strong>loss上下乱跳</strong> → 学习率/数据问题</p>
 <ul>
-<li><p>串行计算:依赖时序递推,无法并行处理长序列,效率低下（状态更新依赖上一个状态）;</p>
-</li>
-<li><p>长距离依赖衰减:梯度随序列长度指数级消失,难以捕捉远距离语义关联。</p>
-</li>
+<li>学习率过大（波动大）/过小,收敛慢<ul>
+<li>warmup或者scheduler</li>
 </ul>
-<p>Transformer则通过自注意力机制(Self-Attention)和全并行架构彻底解决了这些问题,成为NLP、CV等领域的通用框架。</p>
-<p>然后就是介绍位置编码，encoder（MLP,自注意力），decoder（MLP,自注意力,交叉注意力），softmax（数值转化为百分比）</p>
-<h4 id="LSTM-amp-GRU与Transformer长距离依赖处理能力"><a href="#LSTM-amp-GRU与Transformer长距离依赖处理能力" class="headerlink" title="LSTM&amp;GRU与Transformer长距离依赖处理能力"></a>LSTM&amp;GRU与Transformer长距离依赖处理能力</h4><ol>
-<li><p>架构原理差异</p>
-<ul>
-<li><p>LSTM/GRU:依赖循环结构逐步传递信息,长距离依赖易受梯度消失/爆炸影响。</p>
 </li>
-<li><p>Transformer:通过自注意力机制直接计算任意位置关联,无路径衰减问题。</p>
+<li>有没有 <strong>异常值 / 极端值</strong>，label 对不对<ul>
+<li>通过数据标准化，数据清洗，数据增强，batch_size调整解决</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p>训练效率</p>
+<li><p><strong>梯度爆炸</strong> </p>
 <ul>
-<li>LSTM/GRU:序列计算无法并行,训练慢。</li>
-<li>Transformer:全局注意力并行计算,训练速度显著提升。</li>
+<li><p><strong>gradient clipping</strong></p>
+</li>
+<li><p>用更稳定的优化器（Adam &gt; SGD）</p>
+</li>
+<li><p>检查 loss 计算有没有 log(0) 这种作死操作</p>
+</li>
+<li><p>权重初始化过大</p>
+</li>
+<li><p>网络太深</p>
+</li>
+</ul>
+</li>
+<li><p><strong>梯度消失</strong></p>
+<ul>
+<li>激活函数（sigmod）导致梯度消失</li>
+<li>权重初始化过大</li>
+<li>网络太深</li>
+</ul>
+</li>
+<li><p><strong>训练能收敛但效果差</strong>（过拟合）</p>
+<ul>
+<li><p>dropout</p>
+</li>
+<li><p>权重衰减</p>
+</li>
+<li><p>正则化</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-Long-Context-常见思路有哪些？在业务里如何做”能看长文本但不太贵”的折中"><a href="#2-Long-Context-常见思路有哪些？在业务里如何做”能看长文本但不太贵”的折中" class="headerlink" title="2.Long Context 常见思路有哪些？在业务里如何做”能看长文本但不太贵”的折中?"></a>2.Long Context 常见思路有哪些？在业务里如何做”能看长文本但不太贵”的折中?</h2><h4 id="技术上"><a href="#技术上" class="headerlink" title="技术上"></a>技术上</h4><ul>
+<li><p>使用<strong>原生长长上下文模型</strong>去进行推理（通过改进位置编码和注意力，使模型能记住更远的信息）</p>
+</li>
+<li><p><strong>检索增强生成 (RAG, Retrieval-Augmented Generation)</strong></p>
+<ul>
+<li>将长文档切分为小块（Chunks），向量化存入数据库。用户提问时，只检索最相关的几个 Chunk 放入 Prompt。</li>
+</ul>
+</li>
+<li><p><strong>混合架构与优化技术 (Hybrid &amp; Optimization)</strong></p>
+<ul>
+<li>滑动窗口注意力</li>
+<li>KVcache压缩（对 KV Cache 进行低精度量化）</li>
+<li>层次化摘要：对文档局部进行摘要，再对摘要进行摘要，形成树状结构。推理时自顶向下展开相关分支</li>
+</ul>
+</li>
+</ul>
+<h4 id="业务上"><a href="#业务上" class="headerlink" title="业务上"></a>业务上</h4><ul>
+<li><p> <strong>动态路由：</strong>用一个极小的 Classifier 模型（或规则）判断用户意图，分发到不同管道。简单任务用小模型，复杂任务用long context模型</p>
+</li>
+<li><p>**RAG + 长窗口” 混合模式 (The Sweet Spot)**：先用RAG检索topK个chunks，把对应chunks的上下文传入</p>
+</li>
+<li><p> <strong>分层摘要与“地图 - 导航”机制</strong>：推理时传入全局摘要和局部关键原文</p>
+</li>
+</ul>
+<h2 id="3-电商领域预训练数据：低质过滤与去重会怎么做？用哪些简单指标快速判断数据质量？"><a href="#3-电商领域预训练数据：低质过滤与去重会怎么做？用哪些简单指标快速判断数据质量？" class="headerlink" title="3.电商领域预训练数据：低质过滤与去重会怎么做？用哪些简单指标快速判断数据质量？"></a>3.电商领域预训练数据：低质过滤与去重会怎么做？用哪些简单指标快速判断数据质量？</h2><h3 id="1-过滤"><a href="#1-过滤" class="headerlink" title="1.过滤"></a>1.过滤</h3><ul>
+<li>首先进行<strong>基础规则过滤</strong>，将长度过短，目标语言占比过低，含有特殊符号和乱码，敏感词和广告的数据进行过滤</li>
+<li><strong>启发式指标过滤</strong>，使用通用小语言模型（qwen、LLama），将<strong>困惑度 (Perplexity, PPL)</strong> 较小的文本筛去</li>
+<li><strong>模型判别过滤</strong>，训练二分类模型，过滤低质量或包含个人信息的数据</li>
+</ul>
+<h3 id="2-去重"><a href="#2-去重" class="headerlink" title="2.去重"></a>2.去重</h3><ul>
+<li>Hash去重，计算文档的hash值，通过hash算法进行去重</li>
+<li>embeding去重，通过向量模型将文本向量化，然后计算余弦相似度</li>
+<li><strong>基于 SPU 的去重（电商常用）</strong>数据源包含结构化元数据（商品 ID、品牌、型号），优先基于 <strong>SPU (Standard Product Unit)</strong> 进行聚合，对于同一 SPU 下的多条文本描述，保留<strong>信息熵最高</strong>（字数适中、形容词丰富、包含具体参数）的一条。</li>
+</ul>
+<h2 id="4-多模态模型的结构"><a href="#4-多模态模型的结构" class="headerlink" title="4.多模态模型的结构"></a>4.多模态模型的结构</h2><blockquote>
+<p>图像编码器 → 对齐/连接层 → LLM</p>
+</blockquote>
+<h4 id="4-1-图像编码器"><a href="#4-1-图像编码器" class="headerlink" title="4.1 图像编码器"></a>4.1 图像编码器</h4><p> 把图片变成 embedding</p>
+<blockquote>
+<p>CNN（老派但稳），ViT（主流），CLIP encoder（最常见）</p>
+</blockquote>
+<h4 id="4-2-连接层"><a href="#4-2-连接层" class="headerlink" title="4.2 连接层"></a>4.2 连接层</h4><ul>
+<li>线性投影/Adapter<ul>
+<li>表达能力有限</li>
+</ul>
+</li>
+<li>交叉注意力<ul>
+<li>显存消耗过大</li>
+</ul>
+</li>
+<li>Q-Former<ul>
+<li>通过可学习的query去提取图像信息</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-3-LLM"><a href="#4-3-LLM" class="headerlink" title="4.3 LLM"></a>4.3 LLM</h4><p>把“视觉+文本”统一成语言输出</p>
+<h3 id="常见坑"><a href="#常见坑" class="headerlink" title="常见坑"></a>常见坑</h3><p>1.模态对齐失败</p>
+<ul>
+<li>表现：输出和图像毫无关系<ul>
+<li>projector 太弱</li>
+<li>embedding 空间没对齐</li>
+<li>训练数据不够好</li>
+</ul>
+</li>
+</ul>
+<p>2.图像信息丢失</p>
+<ul>
+<li>表现：输出和图像毫无关系<ul>
+<li>token 太少</li>
+<li>pooling 太 aggressive</li>
+</ul>
+</li>
+</ul>
+<p>3.token 数量爆炸</p>
+<ul>
+<li>表现：显存爆炸（OOM）<ul>
+<li>图像patch太多</li>
+</ul>
+</li>
+</ul>
+<h3 id="如何检查图文一致性／不编造信息-？优先加哪些自动化检查？"><a href="#如何检查图文一致性／不编造信息-？优先加哪些自动化检查？" class="headerlink" title="如何检查图文一致性／不编造信息;？优先加哪些自动化检查？"></a>如何检查图文一致性／不编造信息;？优先加哪些自动化检查？</h3><ul>
+<li><p><strong>实体存在性验证</strong></p>
+<ul>
+<li>提取模型回答中的名词实体、属性、数值、空间坐标，通过轻量级监测模型在原图中搜索，进行置信度比对</li>
+</ul>
+</li>
+<li><h5 id="多模型投票"><a href="#多模型投票" class="headerlink" title="多模型投票"></a><strong>多模型投票</strong></h5><ul>
+<li>用两个不同架构的模型对同一张图生成描述，查看是否有冲突</li>
+</ul>
+</li>
+<li><p><strong>基于“不确定性”的自检</strong></p>
+<ul>
+<li>若关键名词logits过低，触发“拒绝回答”机制，或让模型重新审视图片</li>
+</ul>
+</li>
+<li><p><strong>思维链验证</strong></p>
+<ul>
+<li>强制模型在输出最终结论前，先输出“证据链”，若链出问题则不用看结果</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-SFT-数据如何更贴近业务：如何避免过度模板化？如何做基础的-train-test-去重来避免评测失真？"><a href="#5-SFT-数据如何更贴近业务：如何避免过度模板化？如何做基础的-train-test-去重来避免评测失真？" class="headerlink" title="5.SFT 数据如何更贴近业务：如何避免过度模板化？如何做基础的 train / test 去重来避免评测失真？"></a>5.SFT 数据如何更贴近业务：如何避免过度模板化？如何做基础的 train / test 去重来避免评测失真？</h2><p><strong>核心：</strong>打破数据的工业化痕迹<strong>，并建立</strong>严格的数据隔离墙。</p>
+<ol>
+<li>避免过度模版化<ul>
+<li>为不同任务赋予不同人设，让模型学会根据语境调整语气</li>
+<li>句式重组，利用大模型为每条核心业务数据至少生成 3-5 种不同的提问方式</li>
+<li>在构造数据时，随机移除显式的指令词，让模型学习从上下文推断意图（无需请总结…）</li>
+</ul>
+</li>
+<li>内容动态化（噪声注入）<ul>
+<li>引入拟声词或错别字，模拟真实场景</li>
+<li>多轮对话逻辑构建</li>
+<li>文本长度随机化</li>
+</ul>
+</li>
+<li>业务决策痕迹<ul>
+<li>直接从日志，用户反馈中提取训练数据</li>
+<li>保留用户的原始措辞（包括不规范的表达），只由人工或大模型修正“助手”的回答部分</li>
 </ul>
 </li>
 </ol>
-<blockquote>
-<p>LSTM&amp;GRU在资源受限场景仍有价值，但需限制输入长度</p>
+<h2 id="6-对齐（-RLHF-DPO-等）整体思路是什么：为什么需要偏好对／奖励信号？"><a href="#6-对齐（-RLHF-DPO-等）整体思路是什么：为什么需要偏好对／奖励信号？" class="headerlink" title="6.对齐（ RLHF / DPO 等）整体思路是什么：为什么需要偏好对／奖励信号？"></a>6.对齐（ RLHF / DPO 等）整体思路是什么：为什么需要偏好对／奖励信号？</h2><ul>
+<li><strong>预训练 (Pre-training)</strong> 让模型学会了“世界是怎么样的”（知识、语法、逻辑）。</li>
+<li><strong>SFT (监督微调)</strong> 让模型学会了“怎么回答问题”（遵循指令的格式）。</li>
+<li><strong>对齐 (RLHF/DPO)</strong> 让模型学会“怎么回答得<strong>更好</strong>“（更诚实、更安全、更符合人类偏好、更有用）。</li>
+</ul>
+<ol>
+<li>RLHF (Reinforcement Learning from Human Feedback)<ul>
+<li><strong>三步走</strong>：收集偏好数据 -&gt; 训练奖励模型 (Reward Model, RM) -&gt; 强化学习 (PPO) 优化策略。</li>
+<li><strong>特点</strong>：理论最完善，效果上限高，但工程极其复杂，训练不稳定，显存消耗巨大。</li>
+</ul>
+</li>
+<li>DPO (Direct Preference Optimization)<ul>
+<li><strong>一步走</strong>：数学推导证明，可以直接在偏好数据上优化策略模型，<strong>不需要显式训练奖励模型</strong>，也不需要复杂的 PPO 采样过程。</li>
+<li><strong>特点</strong>：稳定、高效、省显存，目前业界主流。</li>
+</ul>
+</li>
+<li><strong>其他变体</strong>：KTO (基于 Kahneman-Tversky 效用理论，只需单条数据的标签而非成对比较)、ORPO (在 SFT 阶段直接融入偏好优化) 等。</li>
+</ol>
+<h4 id="为什么需要“奖励信号”-Reward-Signal"><a href="#为什么需要“奖励信号”-Reward-Signal" class="headerlink" title="为什么需要“奖励信号” (Reward Signal)"></a><strong>为什么需要“奖励信号” (Reward Signal)</strong></h4><ul>
+<li><p><strong>突破 NLL 的局部最优</strong></p>
+<ul>
+<li>通过强化学习（或 DPO 的隐式梯度）反向传播，强行调整模型参数，使其向“高分区域”移动，哪怕这意味着要降低某些局部 token 的概率。</li>
+</ul>
+</li>
+<li><p><strong>处理“信用分配” (Credit Assignment) 问题</strong></p>
+<ul>
+<li>SFT 很难定位是哪几个 token 的问题（例如泄露了隐私，或者逻辑转折错误），它只能全盘否定或肯定参考文本。</li>
+<li><strong>奖励模型</strong>（尤其是经过训练的 RM）能够识别出导致低分的关键特征，并通过 RL 算法（如 PPO 的优势函数）告诉策略模型：“在这个状态下，采取这类动作会导致长期回报下降”，从而更精准地修正行为</li>
+</ul>
+</li>
+<li><p><strong>统一多维度的优化目标</strong></p>
+<ul>
+<li>人类偏好是多维度的：**有用性 (Helpfulness) + 诚实性 (Honesty) + 无害性 (Harmlessness)**。</li>
+<li>奖励信号可以将这三个维度加权融合成一个<strong>单一的标量值</strong>。模型只需要优化这一个值，就能自动在多个目标之间找到最佳平衡点（Pareto Optimal），而不需要人工设计复杂的规则权重。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-Prompt-／模板如何管理：如何版本化、如何回滚、如何避免一次改动导致整体波动？"><a href="#7-Prompt-／模板如何管理：如何版本化、如何回滚、如何避免一次改动导致整体波动？" class="headerlink" title="7. Prompt ／模板如何管理：如何版本化、如何回滚、如何避免一次改动导致整体波动？"></a>7. Prompt ／模板如何管理：如何版本化、如何回滚、如何避免一次改动导致整体波动？</h2><p><strong>核心原则</strong>：Prompt即代码</p>
+<p>不要将 Prompt 硬编码在 Python/Java 代码字符串中，也不要散落在 Excel 或 Wiki 里。</p>
+<ul>
+<li><strong>独立存储</strong>：将 Prompt 提取为独立的配置文件（JSON/YAML/Markdown）。</li>
+<li><strong>结构化元数据</strong>：每个 Prompt 必须包含版本号、作者、适用模型、创建时间、测试用例 ID 等元数据。</li>
+<li>**单一事实来源 (SSOT)**：线上运行的 Prompt 必须直接读取自版本控制系统，禁止人工在后台手动修改。</li>
+</ul>
+<p>回滚一般要做到两个层面：<strong>配置级回滚</strong>和<strong>流量级回滚</strong>。</p>
+<ul>
+<li>配置级回滚就是直接切回上一版模板；</li>
+<li>流量级回滚就是只回滚某个场景或某个实验桶，而不是全量切换。</li>
+</ul>
+<p>​        为了避免一次改动导致全局波动，通常会先小流量灰度，再看关键指标，比如回答正确率、拒答率、转人工率、异常率和 token 成本，没有问题再逐步扩大流量。</p>
+<h2 id="8-多语言场景怎么评估？如何做一套简单可执行的离线评测集？如何覆盖不同语言与类目"><a href="#8-多语言场景怎么评估？如何做一套简单可执行的离线评测集？如何覆盖不同语言与类目" class="headerlink" title="8.多语言场景怎么评估？如何做一套简单可执行的离线评测集？如何覆盖不同语言与类目"></a>8.多语言场景怎么评估？如何做一套简单可执行的离线评测集？如何覆盖不同语言与类目</h2><p>​        多语言评测不能只把中文题翻译一下就结束，必须覆盖不同语言真实表达习惯。做离线评测集时，先按语言拆，比如中文、英文、东南亚语种，再按业务类目拆，比如商品问答、规则说明、客服场景、售后场景、活动场景。每个语言和类目下都要覆盖高频问题、长尾问题、歧义问题、拒答问题和多轮问题。</p>
+<p>​        一套简单可执行的离线评测集可以先按“语言 × 类目 × 场景类型”做分层抽样，每一层挑一批真实 query，再标注标准答案或证据范围。评测时不只看答案文本是否完全一致，更看是否答对、是否引用了正确证据、是否遵守语言要求。多语言场景还要额外看语言漂移，比如用户用泰语提问，系统不要夹杂过多中文或英文。</p>
+<h2 id="9-A-B-实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？"><a href="#9-A-B-实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？" class="headerlink" title="9.A/B 实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？"></a>9.A/B 实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？</h2><p>​        A/B 实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？ A/B 实验首先要保证分桶稳定，不能用户今天在 A，明天在 B。<strong>一般按 user_id 或 device_id 做一致性哈希分桶</strong>，这样同一个用户在实验周期内始终落在同一个桶。<strong>周期上至少要覆盖业务波动的完整周期，比如工作日和周末</strong>，不然很容易被时段效应误导。     <strong>显著性通常看核心指标的样本量、均值差和置信区间，不能只看单日涨跌</strong>。</p>
+<h4 id="大促场景"><a href="#大促场景" class="headerlink" title="大促场景"></a>大促场景</h4><p>​        大促期间直接看整体指标（Aggregate Metrics）往往是失效的。因为大促会引入两个巨大的干扰变量：<strong>用户结构变化</strong>（大量羊毛党/低频用户涌入）和<strong>Query 分布漂移</strong>（咨询问题从“日常用法”突变为“发货/退款/优惠”）。</p>
+<p>​        大促期间的波动要单独分析，因为用户结构、问题分布、系统负载都会变，直接把大促期和普通期混着看很容易误判。更稳的做法是分层看：<strong>新老用户分层</strong>、<strong>活动与非活动分层</strong>、<strong>意图分层（将用户 Query 分为“售前咨询”、“售后维权”、“活动规则”）</strong></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="10-RAG-流程是什么"><a href="#10-RAG-流程是什么" class="headerlink" title="10.RAG 流程是什么"></a>10.RAG 流程是什么</h2><p>RAG 一般分离线和在线两部分。</p>
+<ul>
+<li>离线侧先把文档接入，做清洗、去重、切片、embedding，然后写入向量库或混合检索库。</li>
+<li>在线侧用户问题进来后，先做 query 改写或者纠错，再做检索召回，取回候选片段后做 rerank，最后把问题和证据一起送给大模型生成答案。</li>
+</ul>
+<p>如果是 Agent 场景，RAG 不是独立模块，而是和工具调用、记忆、状态管理一起协同的。比如用户问规则类问题就直接走检索，问实时数据就调工具，问混合问题就先查知识再结合工具结果生成答案。</p>
+<h2 id="11-多-Agent-协作机制怎么做"><a href="#11-多-Agent-协作机制怎么做" class="headerlink" title="11.多 Agent 协作机制怎么做"></a>11.多 Agent 协作机制怎么做</h2><p>​        多 Agent 协作一般不是让每个 Agent 随机聊天，而是做职责拆分。最常见的是一个 Planner 或 Router <strong>负责拆解任务</strong>，再交给不同的<strong>执行 Agent</strong>。比如<strong>检索 Agent 负责查知识</strong>库，<strong>Tool Agent 负责调业务接口</strong>，<strong>Summary Agent 负责总结结果</strong>，<strong>Judge Agent 负责判断结果是否可用</strong>。</p>
+<p>​        这样拆的好处是每个 Agent 的 prompt 更短，职责更清楚，工具也更少，稳定性比一个大一统 Agent 更高。最后由一个总控把各个 Agent 的输出汇总，生成最终回答。</p>
+<h2 id="12-记忆架构怎么做"><a href="#12-记忆架构怎么做" class="headerlink" title="12.记忆架构怎么做"></a>12.记忆架构怎么做</h2><p>​        记忆一般分短期记忆、长期记忆和工作记忆。</p>
+<ul>
+<li>短期记忆保存最近几轮对话，用来保证多轮连续性；</li>
+<li>长期记忆保存用户偏好、稳定事实、长期设定；</li>
+<li>工作记忆保存当前任务的中间结果、已调过的工具结果和待确认状态。</li>
+</ul>
+<p>​        实际系统里，不会把所有历史聊天原文一直带给模型，那样 token 会越来越大。通常做法是保留最近几轮原文，把更早的历史压缩成摘要，再根据当前 query 去召回相关长期记忆。这样既能保留上下文，又能控制成本。</p>
+<h2 id="13-RAG-效果怎么提升？如果出现幻觉怎么办？"><a href="#13-RAG-效果怎么提升？如果出现幻觉怎么办？" class="headerlink" title="13.RAG 效果怎么提升？如果出现幻觉怎么办？"></a>13.RAG 效果怎么提升？如果出现幻觉怎么办？</h2><p>RAG 的提升一般从四层做：<strong>文档质量、召回质量、排序质量、生成约束</strong>。</p>
+<ul>
+<li>文档先做清洗、去重、结构化切片，减少脏数据和重复数据；</li>
+<li>召回阶段通常会做 query rewrite、混合检索和 metadata 过滤；</li>
+<li>排序阶段加 rerank，把真正相关的 chunk 放到前面；</li>
+<li>生成阶段通过 prompt 约束模型必须基于证据回答。</li>
+</ul>
+<p>幻觉通常有三种来源：<strong>没召回到、召回错了、模型不按证据答</strong>。</p>
+<ul>
+<li>没召回到就优化切片和召回；</li>
+<li>召回错了就优化重排和过滤；</li>
+<li>模型乱答就加明确限制和拒答机制。</li>
+</ul>
+<p>线上更稳的方式是把召回分数或证据置信度作为门槛，达不到阈值就直接拒答，而不是硬生成。</p>
+<h2 id="14-单个对话消耗的-token-大概多少？"><a href="#14-单个对话消耗的-token-大概多少？" class="headerlink" title="14.单个对话消耗的 token 大概多少？"></a>14.单个对话消耗的 token 大概多少？</h2><p>​        没有固定值，要看系统 prompt 长度、历史轮数、检索上下文多少、工具描述多少、模型输出多长。普通单轮问答可能几百到一两千 token，带 RAG 后经常会上到两三千甚至五千以上。多轮对话如果带历史摘要、工具调用结果和多个检索片段，单次请求上万 token 也很常见。</p>
+<p>​        Agent 场景的 token 消耗通常比普通聊天更高，因为还包含工具 schema、状态信息、记忆和中间结果。线上一般会记录 prompt token、completion token、总 token、平均耗时、不同场景 token 分布，再做成本分析。</p>
+<h2 id="15-单轮或多轮对话-token-比较大怎么办？"><a href="#15-单轮或多轮对话-token-比较大怎么办？" class="headerlink" title="15.单轮或多轮对话 token 比较大怎么办？"></a>15.单轮或多轮对话 token 比较大怎么办？</h2><p>​        核心思路是裁剪、压缩、分流。单轮 token 大，通常是检索片段太多、工具描述太长、prompt 太啰嗦，可以减少 topK、先 rerank 再截断、把工具描述改成结构化 schema。多轮 token 大，通常是历史消息累积造成的，需要保留最近几轮原文，把更早历史压成摘要，长期偏好抽成结构化记忆。</p>
+<p>​        另外还可以做模型分级，让 query 改写、分类、路由、摘要这类轻任务用小模型，大模型只处理最终生成。输出端也要限制 max_tokens，避免回答过长。</p>
+<h2 id="16-算法和Infra工作有什么不同，侧重点分别是什么"><a href="#16-算法和Infra工作有什么不同，侧重点分别是什么" class="headerlink" title="16.算法和Infra工作有什么不同，侧重点分别是什么"></a>16.算法和Infra工作有什么不同，侧重点分别是什么</h2><ol>
+<li><p>关注对象不同</p>
+<ul>
+<li><p>算法：关心“模型为什么这样”，核心是<strong>效果、泛化、数据</strong></p>
+</li>
+<li><p>Infra：关心“系统为什么会挂”，核心是<strong>稳定、性能、成本</strong></p>
+</li>
+</ul>
+</li>
+<li><p>表现不同</p>
+<ul>
+<li><p>算法：loss不降，指标无法提升</p>
+</li>
+<li><p>infra：服务直接挂</p>
+</li>
+</ul>
+</li>
+<li><p>确定性</p>
+<ul>
+<li>算法是黑盒调试</li>
+<li>infra可以定位问题</li>
+</ul>
+</li>
+</ol>
+<h2 id="17-介绍MHA、GQA和MLA"><a href="#17-介绍MHA、GQA和MLA" class="headerlink" title="17.介绍MHA、GQA和MLA"></a>17.介绍MHA、GQA和MLA</h2><h4 id="MHA-Multi-Head-Attention-多头注意力"><a href="#MHA-Multi-Head-Attention-多头注意力" class="headerlink" title="MHA (Multi-Head Attention) - 多头注意力"></a><strong>MHA (Multi-Head Attention) - 多头注意力</strong></h4><p><strong>工作原理</strong>：</p>
+<ul>
+<li>将输入映射为H个头（Heads）。</li>
+<li>每个头都有自己独立的 查询矩阵 ( W^Q^)、键矩阵 ( W^K^ ) 和 值矩阵 ( W^V^ )。</li>
+<li>如果有 H 个头，就会生成 H 组独立的 Key 和 Value</li>
+</ul>
+<h4 id="GQA-Grouped-Query-Attention-分组查询注意力"><a href="#GQA-Grouped-Query-Attention-分组查询注意力" class="headerlink" title="GQA (Grouped-Query Attention) - 分组查询注意力"></a><strong>GQA (Grouped-Query Attention) - 分组查询注意力</strong></h4><p>由 Google 在 2023 年提出，旨在<strong>解决 MHA 显存过大和 MQA（Multi-Query Attention，所有头共享一组 KV，效果下降明显）效果太差的问题</strong></p>
+<ul>
+<li>将 H 个查询头（Query Heads）分成 G<em>G</em> 组。</li>
+<li>每组查询头共享同一组键（Key）和 值（Value）</li>
+</ul>
+<h4 id="MLA-Multi-Head-Latent-Attention-多头潜在注意力"><a href="#MLA-Multi-Head-Latent-Attention-多头潜在注意力" class="headerlink" title="MLA (Multi-Head Latent Attention) - 多头潜在注意力"></a><strong>MLA (Multi-Head Latent Attention) - 多头潜在注意力</strong></h4><p>即使是 GQA，当模型层数很深、序列极长（如 128k+）时，<strong>KV Cache 依然占据巨大显存，成为瓶颈</strong>。</p>
+<p><strong>工作原理</strong>：</p>
+<ul>
+<li><strong>低秩压缩</strong>：不直接存储庞大的 Key 和 Value 矩阵。</li>
+<li>它将 Key 和 Value 投影到一个<strong>低维的潜在向量（Latent Vector）</strong>（实际上是压缩h，通过down_k和down_v）空间进行存储。</li>
+<li>在计算注意力时，再从这个低维潜在向量动态地<strong>解耦恢复</strong>出完整的 Key 和 Value。</li>
+<li>简单来说：它把 KV Cache 进行了“有损压缩”，只在计算时才“解压”。</li>
+</ul>
+<h2 id="18-reflection"><a href="#18-reflection" class="headerlink" title="18.reflection"></a>18.reflection</h2><p>​    Reflection 是一种通过让模型对自身输出进行评估并迭代改进的机制。通常包括初始生成、自我评估和基于反馈的修正三个步骤。</p>
+<p>​    它可以通过多轮推理提升模型在复杂任务上的表现，例如代码生成和数学推理。常见实现包括 self-reflection、Reflexion 以及结合 CoT 或 ReAct 的方法。</p>
+<p>​    不过它的代价是增加推理成本和延迟，同时存在 critique 质量不稳定的问题。</p>
+<pre class="line-numbers language-python"><code class="language-python">Prompt → 初始答案 → 自我评估 → 修正 → 最终答案
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="19-给定-rand-7-（随机选取-1-7）实现-rand-10"><a href="#19-给定-rand-7-（随机选取-1-7）实现-rand-10" class="headerlink" title="19.给定 rand(7)（随机选取 1-7）实现 rand(10)"></a>19.给定 rand(7)（随机选取 1-7）实现 rand(10)</h2><p>丢两次。</p>
+<pre class="line-numbers language-python"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">(</span>rand7<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">7</span> <span class="token operator">+</span> <span class="token punctuation">(</span>rand7<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 生成 0~48</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="20-GRPO"><a href="#20-GRPO" class="headerlink" title="20.GRPO"></a>20.GRPO</h2><blockquote>
+<p>GRPO 通过在同一个 prompt 下采样多个候选输出，并利用这些输出之间的相对 reward 来构造 advantage，从而替代传统 PPO 中依赖的 value model，实现更简化的策略优化流程。</p>
 </blockquote>
-<h4 id="GPT与Bert差别："><a href="#GPT与Bert差别：" class="headerlink" title="GPT与Bert差别："></a>GPT与Bert差别：</h4><ul>
-<li><p>**架构差异:**GPT是单向解码器(Decoder-only),BERT是双向编码器(Encoder-only)。</p>
-</li>
-<li><p>**训练目标:**GPT通过自回归语言模型(AR)预测下一个词,BERT通过掩码语言模型(MLM)预测被掩盖的词。</p>
-</li>
-<li><p>**应用场景:**GPT擅长生成任务(如文本生成、对话系统),BERT擅长理解任务(如文本分类、命名实体识别).</p>
-</li>
-<li><p><strong>优势对比</strong>:GPT在生成连贯文本和零样本学习上表现优异,BERT在捕捉上下文语义和微调下游任务上更强。</p>
-</li>
-</ul>
-<h5 id="局限性"><a href="#局限性" class="headerlink" title="局限性:"></a>局限性:</h5><ul>
-<li><p>**GPT:**无法利用未来信息,生成内容可能偏离主题。</p>
-</li>
-<li><p>**BERT:**不适合直接生成文本,需额外设计生成式头部。</p>
-</li>
-</ul>
-<h2 id="2-Attention综合"><a href="#2-Attention综合" class="headerlink" title="2.Attention综合"></a>2.Attention综合</h2><p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260304193457279.png"></p>
 <ul>
-<li><p>QK^T^ 相乘进行点积，其优点</p>
-<ul>
-<li>并行，GPU友好(所以路径长度为1，比RNN快)</li>
-<li>比additive attention快（QK相加,过tanh）</li>
+<li>不需要 value model</li>
+<li>更稳定的相对优化（同组比较减少 reward scale 问题）</li>
+<li>更适合 LLM 多样性采样</li>
 </ul>
-</li>
-<li><p>缩放因子的功能</p>
-<ul>
-<li>防止梯度消失（原本QK^T^ 结果很大，然后经过softmax后落入梯度极小的区域）</li>
-<li>控制方差（点积后方差是d<del>k</del> ,通过缩放因子使其重新回到正态分布）</li>
-</ul>
-</li>
-<li><p>多头注意力</p>
-<ul>
-<li><p>原因：不同子空间关注不同关系</p>
-</li>
-<li><p>步骤：多组线性投影 → concat → 再投影</p>
-</li>
-</ul>
-<pre class="line-numbers language-python"><code class="language-python">Q <span class="token operator">=</span> linear<span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">.</span>view<span class="token punctuation">(</span>batch<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> h<span class="token punctuation">,</span> d_k<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># [B, L, h, d_k]</span>
-K <span class="token operator">=</span> linear<span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">.</span>permute<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># [B, h, d_k, L]</span>
-attention_scores <span class="token operator">=</span> torch<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>Q<span class="token punctuation">,</span> K<span class="token punctuation">)</span> <span class="token operator">/</span> sqrt<span class="token punctuation">(</span>d_k<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<blockquote>
-<p>1.头数选择经验公式:<br>$$<br>h = 2\log_2\left(\frac{d_{model}}{64}\right)<br>$$</p>
-<p>2.超过8头时建议采用参数共享策略</p>
-<p>3.长文本场景优先使用稀疏注意力</p>
-<p>4.工业级实现必须考虑显存优化(如KV Cache)</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>MASK</p>
-<ul>
-<li>padding mask</li>
-<li>causal mask</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-1-原始的self-attention缺陷："><a href="#2-1-原始的self-attention缺陷：" class="headerlink" title="2.1 原始的self-attention缺陷："></a>2.1 原始的self-attention缺陷：</h4><blockquote>
-<p>self-attention的时间复杂度和空间复杂度是O(n^2^)(Q、K之间进行点积以及注意力权重矩阵)，这导致序列过长时，算法速度会变慢，消耗很高内存。</p>
-</blockquote>
-<h4 id="2-2-flash-attention"><a href="#2-2-flash-attention" class="headerlink" title="2.2 flash-attention"></a>2.2 flash-attention</h4><blockquote>
-<p>训练阶段，主要关注 <strong>批量计算</strong>，面对的挑战是减少计算和内存开销</p>
-</blockquote>
-<p><strong>设计动机：</strong>加速注意力计算并减少内存占用，显存占用O(N)，不再存 attention score 矩阵。计算还是O(N^2^)</p>
-<p><strong>原理：</strong>使用<strong>平铺</strong>和<strong>重计算</strong>等技术，将QKV<strong>块切分</strong>后从HBM加载到SRAM执行注意力计算，将结果更新回HBM（减少HBM访问耗时）。</p>
-<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260303155405063.png"></p>
-<blockquote>
-<p>HBM: 高带宽内存接口（容量大、速度较慢）</p>
-<p>SRAM: 静态随机访问存储器（容量较小，速度较快）</p>
-</blockquote>
-<p>计算上，利用了softmax函数平移不变性，减去最大值防止越界（保证数值稳定性）</p>
-<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260303161519791.png"></p>
-<p>将x向量分成B个块，每个块k个元素，对每个分块先进行计算，SRAM里面需要处理的元素较少，处理完后将每个分块的结果进行组合，得到最终的softmax</p>
-<blockquote>
-<p>设全局最大值为 $m = \max(x_1, \dots, x_N)$，将序列分为两部分（Block 1 和 Block 2），局部最大值分别为 $m_1$ 和 $m_2$。</p>
-</blockquote>
-<p>$$<br>\begin{aligned}<br>y_i &amp;= \frac{\exp(x_i - m)}{\sum_{j=1}^{N} \exp(x_j - m)} \<br>&amp;= \frac{\exp(x_i - m + m_1 - m_1)}{\sum_{j=1}^{b_1} \exp(x_j - m + m_1 - m_1) + \sum_{j=b_1+1}^{b_1+b_2} \exp(x_j - m + m_2 - m_2)} \<br>&amp;= \frac{\exp(m_1 - m) \exp(x_i - m_1)}{\sum_{j=1}^{b_1} \exp(m_1 - m) \exp(x_j - m_1) + \sum_{j=b_1+1}^{b_1+b_2} \exp(m_2 - m) \exp(x_j - m_2)} \<br>&amp;= \frac{\exp(m_1 - m) \exp(x_i - m_1)}{\exp(m_1 - m) \sum_{j=1}^{b_1} \exp(x_j - m_1) + \exp(m_2 - m) \sum_{j=b_1+1}^{b_1+b_2} \exp(x_j - m_2)}<br>\end{aligned}<br>$$</p>
-<h4 id="2-3-KVcache"><a href="#2-3-KVcache" class="headerlink" title="2.3 KVcache"></a>2.3 KVcache</h4><blockquote>
-<p>推理阶段，主要挑战是 <strong>计算效率</strong> 和 <strong>延迟</strong></p>
-</blockquote>
-<p><strong>设计动机：</strong>优化推理性能（用空间换时间）</p>
-<p><strong>原理：</strong>自回归的特点是模型在每个时刻的输入都会拼接之前时间步的输出。self-attention主要的计算量在qkv的部分，由于每个时间步的输入都会对之前进行拼接，导致产生了大量的重复计算。</p>
-<p><strong>步骤</strong>：两阶段</p>
-<p>1.第一个token输出的过程中，KVcache为空。</p>
-<p>2.第二个token至最后一个token输出的过程中，前面的Key向量和Value向量会 被缓存，避免重复计算。（<strong>只计算新的Q和之前K, V之间的关系</strong>）</p>
-<p>为什么没有Q-cache?</p>
-<blockquote>
-<p>因为每个token的生成只依赖前一个Q和之前所有的K,V</p>
-</blockquote>
-<h4 id="2-4-KVcache显存占用计算"><a href="#2-4-KVcache显存占用计算" class="headerlink" title="2.4 KVcache显存占用计算"></a>2.4 KVcache显存占用计算</h4><p><strong>计算公式：</strong></p>
-<p>$$Seq_length \times batch_size \times [d_head \times n_head] \times layers \times 2 \times 2$$</p>
-<p><strong>参数释义：</strong></p>
-<ul>
-<li><strong>Seq_length</strong>：序列长度</li>
-<li><strong>batch_size</strong>：批处理大小</li>
-<li><strong>n_head</strong>：头数</li>
-<li><strong>d_head</strong>：每头权重矩阵维度</li>
-<li><strong>layers</strong>：Transformer 的层数</li>
-<li><strong>2</strong>：代表 K、V 两个张量</li>
-<li><strong>2</strong>：代表 float16 存储，每个占 2 字节</li>
-</ul>
-<p>缺陷：batch_size和layers对显存占用明显。</p>
-<h4 id="2-5-MQA和GQA"><a href="#2-5-MQA和GQA" class="headerlink" title="2.5 MQA和GQA"></a>2.5 MQA和GQA</h4><p>动机：KV-cache是空间换时间的思想，当模型较大序列较长时，为了考虑缓存大小。</p>
-<p>Multi-query-attention (<strong>MQA</strong>) 和 group-query-attention (<strong>GQA</strong>) 是为了减少kv缓存的。</p>
-<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/image-20260303175634966.png"></p>
-<p><strong>MQA</strong>：所有的Q都共享一个K和V，这样极大地减少了需要缓存的KV数量，但是不可避免地带来效果的损失。</p>
-<p><strong>GQA</strong>：进行了折中，不是所有的Q共享，将Q分成多个组，每个组共享一组KV。这样既减少了缓存占用，也保证了一定的效果。</p>
-<blockquote>
-<p>若Q直接差异较大，会出现损失</p>
-</blockquote>
-<h4 id="2-6-思考"><a href="#2-6-思考" class="headerlink" title="2.6 思考"></a>2.6 思考</h4><p>1.Attention 权重一定可解释吗</p>
-<p>研究表明（比如 Jain &amp; Wallace 2019）：</p>
-<ul>
-<li>可以人为构造完全不同的 attention 分布</li>
-<li>但模型输出几乎不变</li>
-</ul>
-<p>说明：</p>
-<blockquote>
-<p>attention ≠ explanation<br> attention 只是一个中间计算量，模型最终决策不是只由 attention weight 决定</p>
-</blockquote>
-<p>2.softmax 可以换成别的吗</p>
-<p>可以，softmax 只是稳定、可微、好优化的一个。</p>
-<p>softmax 的作用：</p>
-<ul>
-<li>归一化</li>
-<li>保证非负</li>
-<li>放大大值差距</li>
-</ul>
-<p>但它有问题：</p>
-<ul>
-<li>指数函数容易饱和</li>
-<li>attention 容易过于尖锐</li>
-</ul>
-<p>可以替换Sparsemax、Entmax</p>
-<p>3.Attention 会不会过平滑</p>
-<p>会，attention本质是加权平均。</p>
-<p>堆很多层之后：</p>
-<ul>
-<li>每层都在做 mixing</li>
-<li>表示逐渐被平均化</li>
-<li>区分度下降</li>
-</ul>
-<p>4.为什么大模型 attention 头会退化</p>
-<ul>
-<li>冗余表达，任务不需要那么多独立子空间</li>
-<li>梯度不均衡</li>
-<li>当维度足够大</li>
-</ul>
-<h2 id="3-Encoder-only模型"><a href="#3-Encoder-only模型" class="headerlink" title="3.Encoder-only模型"></a>3.Encoder-only模型</h2><h4 id="优势（和传统Transformer区别）："><a href="#优势（和传统Transformer区别）：" class="headerlink" title="优势（和传统Transformer区别）："></a>优势（和传统Transformer区别）：</h4><h5 id="一、任务适配性"><a href="#一、任务适配性" class="headerlink" title="一、任务适配性"></a>一、任务适配性</h5><p>传统 Transformer 架构设计初衷是为<strong>序列到序列任务</strong>（如机器翻译）服务，其 Encoder-Decoder 结构<strong>通过交叉注意力机制实现输入与输出的关联生成</strong>。</p>
-<p>然而，随着 NLP 研究重心从<strong>生成任务转向理解任务（如文本分类、问答、语义匹配）</strong>，Encoder-Only 架构展现出更强的针对性。</p>
-<ul>
-<li><strong>双向上下文建模</strong>：Encoder-Only 模型（如 BERT）通过<strong>双向自注意力机制同时捕捉前后文信息</strong>，而 Decoder 的掩码自注意力<strong>仅允许单向依赖</strong>，导致生成模型在理解任务中存在信息损失。例如，BERT 在 GLUE 基准的 9 项任务中刷新了 11 项 SOTA，其双向编码能力是关键。</li>
-<li><strong>任务泛化性</strong>：Encoder-Only 模型通过预训练 + 微调范式，只需在输出层添加特定任务头即可适配多种理解任务（如情感分析、实体抽取），而 Encoder-Decoder 模型需针对生成任务定制复杂的解码流程。</li>
-</ul>
-<h5 id="二、效率优化"><a href="#二、效率优化" class="headerlink" title="二、效率优化"></a>二、效率优化</h5><p><strong>Encoder-Only 架构在训练和推理效率上具有显著优势，这是其被广泛采用的重要技术动因：</strong></p>
-<ul>
-<li><strong>并行计算能力</strong>：Encoder-Only 模型可一次性处理完整输入序列，而 Decoder 的自回归生成需逐个 Token 计算，导致时间复杂度从 $O(n)$ 变为 $O(n^2)$（$n$ 为序列长度）。例如，ModernBERT 通过交替使用全局注意力和局部注意力，在处理 8192 Token 长文本时速度比 DeBERTa 快 3 倍，内存占用减少 80%。</li>
-<li><strong>参数效率</strong>：移除解码器模块后，模型参数量显著降低。以 BERT-Base（110M 参数）与同规模 Encoder-Decoder 模型（如 T5-Base，220M 参数）相比，Encoder-Only 架构节省近 50% 计算资源。这种轻量化设计尤其适合边缘设备和实时推理场景。</li>
-</ul>
-<h5 id="三、技术演进"><a href="#三、技术演进" class="headerlink" title="三、技术演进"></a>三、技术演进</h5><p>Encoder-Only架构崛起和NLP技术演进（多模态扩展、长序列）绑定。</p>
-<h5 id="四、生态驱动"><a href="#四、生态驱动" class="headerlink" title="四、生态驱动"></a>四、生态驱动</h5><p>Encoder-Only降低了技术门槛，企业可基于这些模型开展MLP应用。</p>
-<h4 id="缺陷："><a href="#缺陷：" class="headerlink" title="缺陷："></a>缺陷：</h4><ul>
-<li><p><strong>生成任务的局限性：</strong> 在需要创造性文本生成（如故事创作）或多轮对话场景中，Decoder-Only 模型（如 GPT）表现更优。</p>
-</li>
-<li><p><strong>长序列效率瓶颈：</strong> 即使采用 RoPE 和 Flash Attention，Encoder-Only 模型在处理数万 Token 时仍存在计算压力。</p>
-</li>
-<li><p><strong>混合架构的探索：</strong> 部分模型尝试融合 Encoder-Decoder 与 Encoder-Only 的优势。例如，T5 通过统一文本到文本框架，在生成任务中结合编码器的上下文理解能力和 Decoder 的生成能力。</p>
-</li>
-</ul>
-<h1 id="4-大模型量化"><a href="#4-大模型量化" class="headerlink" title="4.大模型量化"></a>4.大模型量化</h1><p><strong>目的：</strong>降低部署成本（可能会带来一定的效果损失）</p>
-<p>**定义:**将模型权重或激活值从高精度(如FP32)转换为低精度(如INT8)的技术,降低计算和存储开销。</p>
-<p><strong>核心原理:</strong></p>
-<ul>
-<li><p>动态范围校准:统计权重或激活值的分布范围,通过缩放因子(Scale)和零点(Zero Point)映射到低精度范围。</p>
-</li>
-<li><p>量化感知训练(QAT):在训练时模拟量化误差,提升模型对量化的鲁棒性。</p>
-</li>
-<li><p>后训练量化(PTQ):直接对预训练模型量化,依赖校准数据集调整参数。</p>
-</li>
-</ul>
-<h3 id="4-1-量化对象"><a href="#4-1-量化对象" class="headerlink" title="4.1 量化对象"></a>4.1 量化对象</h3><h4 id="量化方式"><a href="#量化方式" class="headerlink" title="量化方式"></a>量化方式</h4><blockquote>
-<p><strong>按量化执行阶段分为：</strong> 训练中量化（QAT, Quantization-Aware-Training）和训练后量化（PTQ, Post-Training-Quantization）。主流基本为 <strong>PTQ</strong>（难度较低）。</p>
-</blockquote>
-<h4 id="针对什么量化"><a href="#针对什么量化" class="headerlink" title="针对什么量化"></a>针对什么量化</h4><ul>
-<li><p><strong>PTQ 主要针对权重、激活值和 KV-Cache 量化</strong></p>
-</li>
-<li><p><strong>仅权重量化：</strong> 如 AWQ 和 GPTQ 中的 <strong>W4A16</strong>，<strong>W8A16</strong>（权重量化为 8 位，激活值仍为 BF16 或 FP16）</p>
-</li>
-<li><p><strong>权重、激活值都量化：</strong> 如 SmoothQuant 中的 <strong>W8A8</strong></p>
-</li>
-</ul>
-<h3 id="4-2-参数精度"><a href="#4-2-参数精度" class="headerlink" title="4.2 参数精度"></a>4.2 参数精度</h3><p>fp32：单精度</p>
-<p>fp16：半精度</p>
-<p>为了FP16提高训练的效率和性能，同时避免精度溢出和舍入误差的影响，一般采用fp16和fp32的混合精度训练。</p>
-<blockquote>
-<p>fp16和bf16，fp16精度高范围低，bf16精度低范围高</p>
-</blockquote>
-<h3 id="4-3-GPTQ"><a href="#4-3-GPTQ" class="headerlink" title="4.3 GPTQ"></a>4.3 GPTQ</h3><p>技术演进路径：<strong>OBD（剪枝） -&gt; OBS（剪枝） -&gt; OBQ（量化） -&gt; GPTQ（量化）</strong></p>
-<h5 id="1-OBD-Optimal-Brain-Damage"><a href="#1-OBD-Optimal-Brain-Damage" class="headerlink" title="(1) OBD (Optimal Brain Damage)"></a><strong>(1) OBD (Optimal Brain Damage)</strong></h5><ul>
-<li>网络训练好后，通过<strong>泰勒展开二阶信息</strong>对网络进行剪枝，使得删除掉的参数对结果影响最小。</li>
-<li>计算每个参数的二阶导数，进而计算出每个参数带来的**损失函数增加值 ($\Delta E$)**。</li>
-<li>剔除 $\Delta E$ 较小的参数。</li>
-<li>认为每个参数对损失函数变化带来的影响是<strong>独立</strong>的。</li>
-</ul>
-<h5 id="2-OBS-Optimal-Brain-Surgeon"><a href="#2-OBS-Optimal-Brain-Surgeon" class="headerlink" title="(2) OBS (Optimal Brain Surgeon)"></a><strong>(2) OBS (Optimal Brain Surgeon)</strong></h5><ul>
-<li>认为参数之间独立性不成立，<strong>需考虑交叉项</strong>。</li>
-<li>抹去一个权重 $W$ 后，计算出<strong>补偿 $q$</strong> 应用于其他权重上，寻找方法（<strong>海森矩阵逆矩阵</strong>）使其对整体的误差增加最少。</li>
-</ul>
-<h5 id="3-OBQ-Optimal-Brain-Quantization"><a href="#3-OBQ-Optimal-Brain-Quantization" class="headerlink" title="(3) OBQ (Optimal Brain Quantization)"></a>(3) OBQ (Optimal Brain Quantization)</h5><ul>
-<li><p>OBS 可以看做是一种极端的量化（参数为 0 和 1 两种状态）。</p>
-</li>
-<li><p>OBQ 引入<strong>缩放因子</strong>，在 OBS 的基础上减少因极端量化带来的效果损失。</p>
-</li>
-</ul>
-<h5 id="4-GPTQ"><a href="#4-GPTQ" class="headerlink" title="(4) GPTQ"></a>(4) GPTQ</h5><ul>
-<li><p>OBQ 速度太慢。量化 ResNet-50 约需一小时，量化大模型可能需要数天。</p>
-</li>
-<li><p>GPTQ 可以看做是 <strong>OBQ 的加速版</strong>。</p>
-</li>
-<li><p>OBQ独立量化权重矩阵W的每一行，每一行内部量化的时候按照 $\Delta E$ 最小的原则来选择量化的顺序。GPTQ认为对于参数量很大的层，这样<strong>严格选择顺序的量化结果和任意顺序的量化结果差别不大</strong>。因此对所有的行都使用同样的顺序进行量化。加速量化过程。</p>
-</li>
-<li><p>采用<strong>int4/fp16 (W4A16)</strong> 的混合量化方案，其中模型权重被量化为int4数值类型，而激活值则保留在float16，是一种仅权重量化方法</p>
-</li>
-</ul>
-<h3 id="4-4-AWQ"><a href="#4-4-AWQ" class="headerlink" title="4.4 AWQ"></a>4.4 AWQ</h3><p><strong>思想：</strong></p>
-<ul>
-<li>权重并不同等重要，仅有小部分显著权重对结果影响较大<ul>
-<li>随机挑选（显著权重）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       </li>
-<li>基于权重绝对值大小排序后，绝对值越大越显著</li>
-<li><strong>激活值越大越显著 ($Q = W_q \cdot X, K = W_k \cdot X, X$ 即为激活值) 【简化计算起见，按通道，即列计算】</strong></li>
-<li>效果：<ul>
-<li>随机挑选与对所有权重进行低比特量化差不多</li>
-<li>基于权重绝对值大小的挑选效果与随机挑选差不多</li>
-<li><strong>基于激活值大小挑选与 fp16 相比几乎没有精度损失</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>仅部分权重量化带来硬件工程问题：存储、取数计算复杂（一部分数据为int，一部分数据为浮点）</li>
-<li>为了<strong>硬件友好，对所有权重进行量化</strong>，但是对显著权重和非显著权重进行差异化缩放 (scaling) 【可降低量化误差】<ul>
-<li>对于显著权重乘以较大的 $s$；对于非显著权重，乘以较小的 $s$</li>
-<li>如何自动计算 $s$<ul>
-<li>量化函数不可微，无法通过梯度下降求解</li>
-<li>计算输入矩阵各列平均值作为缩放基础，并引入因子平衡显著通道和非显著通道</li>
-<li>因子通过 Fast Grid Search 方式寻找</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-5-QLora"><a href="#4-5-QLora" class="headerlink" title="4.5 QLora"></a>4.5 QLora</h3><p>使用量化思想对Lora进行优化的量化算法，可以显著降低训练所需的显存资源</p>
-<p><strong>三个主要优化点</strong></p>
-<ul>
-<li>定义<strong>4位标准浮点数模型</strong>（Normal Float 4-bit, <strong>NF4</strong>），结合<strong>分位数量化</strong>(根据权重的分布密度来分配刻度)和分块量化(如果某个块里有离群值，它只影响块内参数)（解决参数极大极小异常值；提高并行化）</li>
-<li><strong>双重量化</strong>，包含<strong>对普通参数的一次量化</strong>和<strong>对量化常数的再次量化</strong>（对所有scale再进行量化），进一步减小缓存</li>
-<li><strong>分页优化器</strong>（Page Optimizer），显存过高时用一部分内存代替显存</li>
-</ul>
-<h5 id="反量化"><a href="#反量化" class="headerlink" title="反量化"></a><strong>反量化</strong></h5><ul>
-<li>索引对应的Q中的分位数，乘以每个块的量化常数</li>
-</ul>
-<h5 id="双重量化"><a href="#双重量化" class="headerlink" title="双重量化"></a>双重量化</h5><ul>
-<li>保存时不仅要保存量化后的模型（4bit）,还要保存每个块的量化常数(fp32)</li>
-<li>双重量化就是对量化常数在进行一次8bit的量化</li>
-</ul>
-<h5 id="分页优化"><a href="#分页优化" class="headerlink" title="分页优化"></a>分页优化</h5><ul>
-<li>针对梯度检查点做的优化，防止在显存使用峰值时发生 OOM（Out of Memory）。QLoRA 分页优化是当显存不足时，将保存的部分梯度检查点转移到 CPU 内存上。</li>
-</ul>
-<p><strong>梯度检查点</strong></p>
-<ul>
-<li>解决模型训练时显存占用过高的一个方案</li>
-<li>训练时通常需要将所有前向传播的激活值保存以在模型反向传播时候使用。这样会带来额外的显存占用</li>
-<li>也可以不保存激活值，而是在计算梯度时重新计算，这样减少了缓存占用，但却增大了计算量，减慢了训练速度</li>
-<li>梯度检查点是折中方案，保存部分激活值，另一部分现算</li>
-</ul>
-<h2 id="5-混合精度训练"><a href="#5-混合精度训练" class="headerlink" title="5.混合精度训练"></a>5.混合精度训练</h2><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><h5 id="1-权重备份-Weight-Backup"><a href="#1-权重备份-Weight-Backup" class="headerlink" title="1.权重备份(Weight Backup):"></a>1.权重备份(Weight Backup):</h5><ul>
-<li>在训练开始前,将模型的权重从FP32格式备份到FP16格式。这样可以在前向传播和反向传播过程中使用FP16进行计算,减少显存占用。</li>
-<li>由于FP16的数值范围较小,容易发生溢出或下溢,因此需要保留FP32格式的权重备份,以便在需要时恢复权重。</li>
-</ul>
-<h5 id="2-损失放大-Loss-Scaling"><a href="#2-损失放大-Loss-Scaling" class="headerlink" title="2.损失放大(Loss Scaling):"></a>2.损失放大(Loss Scaling):</h5><ul>
-<li>由于FP16的数值范围较小,直接计算损失函数可能会导致梯度下溢(即梯度值变为0)。为了避免这种情况,需要对损失函数进行放大。</li>
-<li>具体做法是在计算损失函数时,将损失值乘以一个较大的常数(如2^16),然后再进行反向传播。这样可以确保梯度值不会因为FP16的数值范围限制而变为0。</li>
-<li>反向传播完成后,需要将梯度值除以相同的常数,以恢复原始的梯度值。</li>
-</ul>
-<h5 id="3-精度累加-Precision-Accumulated"><a href="#3-精度累加-Precision-Accumulated" class="headerlink" title="3.精度累加(Precision Accumulated):"></a>3.精度累加(Precision Accumulated):</h5><ul>
-<li>在反向传播过程中,梯度的累加操作需要使用FP32格式,以保证精度。</li>
-<li>具体做法是在计算梯度时,先将FP16格式的梯度转换为FP32格式,然后进行累加操作,最后再将累加结果转换回FP16格式。</li>
-</ul>
-<h5 id="3-动态损失缩放-Dynamic-Loss-Scaling"><a href="#3-动态损失缩放-Dynamic-Loss-Scaling" class="headerlink" title="3.动态损失缩放(Dynamic Loss Scaling):"></a>3.动态损失缩放(Dynamic Loss Scaling):</h5><ul>
-<li>为了进一步提高训练的稳定性和效率,可以使用动态损失缩放技术，以确保训练稳定性和效率。</li>
-</ul>
-<blockquote>
-<p>混合精度训练通过同时使用FP32和FP16浮点数,显著减少了显存占用和加快了计算速度,同时通过损失放大和精度累加等技术保证了训练的稳定性和精度。在实际项目中,混合精度训练已经成为训练大规模深度学习模型的标准方法之一。通过合理地应用混合精度训练,可以显著提高训练效率和模型性能,为深度学习模型的广泛应用提供了强有力的支持。</p>
-</blockquote>
-<h2 id="6-投机解码（Speculative-Decoding）"><a href="#6-投机解码（Speculative-Decoding）" class="headerlink" title="6.投机解码（Speculative Decoding）"></a>6.投机解码（Speculative Decoding）</h2><p>用一个小模型先“猜一段”，再让大模型一次性验证（并行），从而减少大模型调用次数。</p>
-<h2 id="7-上下文学习（In-context-Learning-ICL）"><a href="#7-上下文学习（In-context-Learning-ICL）" class="headerlink" title="7.上下文学习（In-context Learning, ICL）"></a>7.上下文学习（In-context Learning, ICL）</h2><p>在不更新参数的情况下，利用提示中的示例让模型在内部条件化地模拟一个学习器。</p>
 
                 
             </div>
@@ -944,7 +930,7 @@ attention_scores <span class="token operator">=</span> torch<span class="token p
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://WUHU-Z.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(1)/">http://WUHU-Z.github.io/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(1)/</a>
+                    <a href="http://WUHU-Z.github.io/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/">http://WUHU-Z.github.io/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -982,12 +968,8 @@ attention_scores <span class="token operator">=</span> torch<span class="token p
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">深度学习</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
-                                    <span class="chip bg-color">大模型</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
                                 </a>
                             
                         </div>
@@ -1031,17 +1013,18 @@ attention_scores <span class="token operator">=</span> torch<span class="token p
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85(2)/">
+                <a href="/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/34.jpg" class="responsive-img" alt="大模型的探索之旅(2)">
+                        <img src="/medias/featureimages/58.jpg" class="responsive-img" alt="拼多多面试大全">
                         
-                        <span class="card-title">大模型的探索之旅(2)</span>
+                        <span class="card-title">拼多多面试大全</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1051,30 +1034,27 @@ attention_scores <span class="token operator">=</span> torch<span class="token p
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-02-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
-                                    大模型
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                    面试
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
-                        <span class="chip bg-color">大模型</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
                 </div>
@@ -1088,13 +1068,13 @@ attention_scores <span class="token operator">=</span> torch<span class="token p
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Lama+%E5%88%86%E7%B1%BB%E5%99%A8%E4%B8%8B%E6%B8%B8/">
+                <a href="/%E7%AC%94%E8%AF%95%E5%90%88%E9%9B%86(1)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/50.jpg" class="responsive-img" alt="Lora微调大模型LLama3">
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="笔试合集(1)">
                         
-                        <span class="card-title">Lora微调大模型LLama3</span>
+                        <span class="card-title">笔试合集(1)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1105,14 +1085,14 @@ attention_scores <span class="token operator">=</span> torch<span class="token p
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-10-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    深度学习
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -1122,8 +1102,8 @@ attention_scores <span class="token operator">=</span> torch<span class="token p
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
                 </div>
