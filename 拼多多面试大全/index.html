@@ -620,7 +620,7 @@
 <li><p><strong>梯度消失</strong></p>
 <ul>
 <li>激活函数（sigmod）导致梯度消失</li>
-<li>权重初始化过大</li>
+<li>权重初始化过小</li>
 <li>网络太深</li>
 </ul>
 </li>
@@ -630,7 +630,7 @@
 </li>
 <li><p>权重衰减</p>
 </li>
-<li><p>正则化</p>
+<li><p>L2正则化</p>
 </li>
 </ul>
 </li>
@@ -685,7 +685,8 @@
 <li>显存消耗过大</li>
 </ul>
 </li>
-<li>Q-Former<ul>
+<li>Q-Former</li>
+<li><ul>
 <li>通过可学习的query去提取图像信息</li>
 </ul>
 </li>
@@ -715,13 +716,14 @@
 </ul>
 </li>
 </ul>
-<h3 id="如何检查图文一致性／不编造信息-？优先加哪些自动化检查？"><a href="#如何检查图文一致性／不编造信息-？优先加哪些自动化检查？" class="headerlink" title="如何检查图文一致性／不编造信息;？优先加哪些自动化检查？"></a>如何检查图文一致性／不编造信息;？优先加哪些自动化检查？</h3><ul>
+<h3 id="如何检查图文一致性／不编造信息？优先加哪些自动化检查？"><a href="#如何检查图文一致性／不编造信息？优先加哪些自动化检查？" class="headerlink" title="如何检查图文一致性／不编造信息？优先加哪些自动化检查？"></a>如何检查图文一致性／不编造信息？优先加哪些自动化检查？</h3><ul>
 <li><p><strong>实体存在性验证</strong></p>
 <ul>
 <li>提取模型回答中的名词实体、属性、数值、空间坐标，通过轻量级监测模型在原图中搜索，进行置信度比对</li>
 </ul>
 </li>
-<li><h5 id="多模型投票"><a href="#多模型投票" class="headerlink" title="多模型投票"></a><strong>多模型投票</strong></h5><ul>
+<li><p><strong>多模型投票</strong></p>
+<ul>
 <li>用两个不同架构的模型对同一张图生成描述，查看是否有冲突</li>
 </ul>
 </li>
@@ -762,22 +764,34 @@
 <li><strong>对齐 (RLHF/DPO)</strong> 让模型学会“怎么回答得<strong>更好</strong>“（更诚实、更安全、更符合人类偏好、更有用）。</li>
 </ul>
 <ol>
-<li>RLHF (Reinforcement Learning from Human Feedback)<ul>
+<li><p>RLHF (Reinforcement Learning from Human Feedback)</p>
+<ul>
 <li><strong>三步走</strong>：收集偏好数据 -&gt; 训练奖励模型 (Reward Model, RM) -&gt; 强化学习 (PPO) 优化策略。</li>
 <li><strong>特点</strong>：理论最完善，效果上限高，但工程极其复杂，训练不稳定，显存消耗巨大。</li>
 </ul>
 </li>
-<li>DPO (Direct Preference Optimization)<ul>
-<li><strong>一步走</strong>：数学推导证明，可以直接在偏好数据上优化策略模型，<strong>不需要显式训练奖励模型</strong>，也不需要复杂的 PPO 采样过程。</li>
-<li><strong>特点</strong>：稳定、高效、省显存，目前业界主流。</li>
+<li><p>DPO (Direct Preference Optimization)</p>
+<ul>
+<li><p><strong>一步走</strong>：数学推导证明，可以直接在偏好数据上优化策略模型，<strong>不需要显式训练奖励模型</strong>，也不需要复杂的 PPO 采样过程。</p>
+</li>
+<li><p><strong>特点</strong>：稳定、高效、省显存，目前业界主流。<br>$$<br>\mathcal{L}_{DPO}<br>= -\mathbb{E}\left[<br>\log \sigma \left(</p>
+<h2 id="beta-log-frac-pi-theta-y-w-mid-x-pi-text-ref-y-w-mid-x"><a href="#beta-log-frac-pi-theta-y-w-mid-x-pi-text-ref-y-w-mid-x" class="headerlink" title="\beta \log \frac{\pi_\theta(y_w \mid x)}{\pi_{\text{ref}}(y_w \mid x)}"></a>\beta \log \frac{\pi_\theta(y_w \mid x)}{\pi_{\text{ref}}(y_w \mid x)}</h2><p>\beta \log \frac{\pi_\theta(y_l \mid x)}{\pi_{\text{ref}}(y_l \mid x)}<br>\right)<br>\right]<br>$$</p>
+</li>
 </ul>
 </li>
+</ol>
+<blockquote>
+<p>给定一个提示词（Prompt）和两个回答（一个好<strong>Chosen</strong>，一个坏<strong>Rejected</strong>），调整模型参数，使得模型生成“好回答”的概率相对于“坏回答”的概率最大化</p>
+</blockquote>
+<p>​        贝塔用于控制对参考模型的约束程度，决定了模型在多大程度上可以偏离参考模型。</p>
+<p>​        sigma把损失值压缩到0~1表示选出正确偏好对的概率</p>
+<ol start="3">
 <li><strong>其他变体</strong>：KTO (基于 Kahneman-Tversky 效用理论，只需单条数据的标签而非成对比较)、ORPO (在 SFT 阶段直接融入偏好优化) 等。</li>
 </ol>
 <h4 id="为什么需要“奖励信号”-Reward-Signal"><a href="#为什么需要“奖励信号”-Reward-Signal" class="headerlink" title="为什么需要“奖励信号” (Reward Signal)"></a><strong>为什么需要“奖励信号” (Reward Signal)</strong></h4><ul>
 <li><p><strong>突破 NLL 的局部最优</strong></p>
 <ul>
-<li>通过强化学习（或 DPO 的隐式梯度）反向传播，强行调整模型参数，使其向“高分区域”移动，哪怕这意味着要降低某些局部 token 的概率。</li>
+<li>通过强化学习（或 DPO 的隐式梯度）反向传播，强行调整模型参数，使其向“高分区域”移动，哪怕这意味着要降低某些局部 token 的概率。突破数据的约束。</li>
 </ul>
 </li>
 <li><p><strong>处理“信用分配” (Credit Assignment) 问题</strong></p>
@@ -806,18 +820,19 @@
 <li>流量级回滚就是只回滚某个场景或某个实验桶，而不是全量切换。</li>
 </ul>
 <p>​        为了避免一次改动导致全局波动，通常会先小流量灰度，再看关键指标，比如回答正确率、拒答率、转人工率、异常率和 token 成本，没有问题再逐步扩大流量。</p>
+<p>灰度：<strong>新旧版本“同时存在”</strong></p>
 <h2 id="8-多语言场景怎么评估？如何做一套简单可执行的离线评测集？如何覆盖不同语言与类目"><a href="#8-多语言场景怎么评估？如何做一套简单可执行的离线评测集？如何覆盖不同语言与类目" class="headerlink" title="8.多语言场景怎么评估？如何做一套简单可执行的离线评测集？如何覆盖不同语言与类目"></a>8.多语言场景怎么评估？如何做一套简单可执行的离线评测集？如何覆盖不同语言与类目</h2><p>​        多语言评测不能只把中文题翻译一下就结束，必须覆盖不同语言真实表达习惯。做离线评测集时，先按语言拆，比如中文、英文、东南亚语种，再按业务类目拆，比如商品问答、规则说明、客服场景、售后场景、活动场景。每个语言和类目下都要覆盖高频问题、长尾问题、歧义问题、拒答问题和多轮问题。</p>
 <p>​        一套简单可执行的离线评测集可以先按“语言 × 类目 × 场景类型”做分层抽样，每一层挑一批真实 query，再标注标准答案或证据范围。评测时不只看答案文本是否完全一致，更看是否答对、是否引用了正确证据、是否遵守语言要求。多语言场景还要额外看语言漂移，比如用户用泰语提问，系统不要夹杂过多中文或英文。</p>
 <h2 id="9-A-B-实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？"><a href="#9-A-B-实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？" class="headerlink" title="9.A/B 实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？"></a>9.A/B 实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？</h2><p>​        A/B 实验怎么落地？分桶、周期、显著性怎么处理？遇到大促波动时如何解释实验结果？ A/B 实验首先要保证分桶稳定，不能用户今天在 A，明天在 B。<strong>一般按 user_id 或 device_id 做一致性哈希分桶</strong>，这样同一个用户在实验周期内始终落在同一个桶。<strong>周期上至少要覆盖业务波动的完整周期，比如工作日和周末</strong>，不然很容易被时段效应误导。     <strong>显著性通常看核心指标的样本量、均值差和置信区间，不能只看单日涨跌</strong>。</p>
 <h4 id="大促场景"><a href="#大促场景" class="headerlink" title="大促场景"></a>大促场景</h4><p>​        大促期间直接看整体指标（Aggregate Metrics）往往是失效的。因为大促会引入两个巨大的干扰变量：<strong>用户结构变化</strong>（大量羊毛党/低频用户涌入）和<strong>Query 分布漂移</strong>（咨询问题从“日常用法”突变为“发货/退款/优惠”）。</p>
 <p>​        大促期间的波动要单独分析，因为用户结构、问题分布、系统负载都会变，直接把大促期和普通期混着看很容易误判。更稳的做法是分层看：<strong>新老用户分层</strong>、<strong>活动与非活动分层</strong>、<strong>意图分层（将用户 Query 分为“售前咨询”、“售后维权”、“活动规则”）</strong></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="10-RAG-流程是什么"><a href="#10-RAG-流程是什么" class="headerlink" title="10.RAG 流程是什么"></a>10.RAG 流程是什么</h2><p>RAG 一般分离线和在线两部分。</p>
+<h2 id="10-RAG-流程是什么"><a href="#10-RAG-流程是什么" class="headerlink" title="10.RAG 流程是什么"></a>10.RAG 流程是什么</h2><p>RAG 一般分离线和在线两部分。</p>
 <ul>
 <li>离线侧先把文档接入，做清洗、去重、切片、embedding，然后写入向量库或混合检索库。</li>
 <li>在线侧用户问题进来后，先做 query 改写或者纠错，再做检索召回，取回候选片段后做 rerank，最后把问题和证据一起送给大模型生成答案。</li>
 </ul>
 <p>如果是 Agent 场景，RAG 不是独立模块，而是和工具调用、记忆、状态管理一起协同的。比如用户问规则类问题就直接走检索，问实时数据就调工具，问混合问题就先查知识再结合工具结果生成答案。</p>
-<h2 id="11-多-Agent-协作机制怎么做"><a href="#11-多-Agent-协作机制怎么做" class="headerlink" title="11.多 Agent 协作机制怎么做"></a>11.多 Agent 协作机制怎么做</h2><p>​        多 Agent 协作一般不是让每个 Agent 随机聊天，而是做职责拆分。最常见的是一个 Planner 或 Router <strong>负责拆解任务</strong>，再交给不同的<strong>执行 Agent</strong>。比如<strong>检索 Agent 负责查知识</strong>库，<strong>Tool Agent 负责调业务接口</strong>，<strong>Summary Agent 负责总结结果</strong>，<strong>Judge Agent 负责判断结果是否可用</strong>。</p>
+<h2 id="11-多-Agent-协作机制怎么做"><a href="#11-多-Agent-协作机制怎么做" class="headerlink" title="11.多 Agent 协作机制怎么做"></a>11.多 Agent 协作机制怎么做</h2><p>​        多 Agent 协作一般不是让每个 Agent 随机聊天，而是做<strong>职责拆分</strong>。最常见的是一个 Planner 或 Router <strong>负责拆解任务</strong>，再交给不同的<strong>执行 Agent</strong>。比如<strong>检索 Agent 负责查知识</strong>库，<strong>Tool Agent 负责调业务接口</strong>，<strong>Summary Agent 负责总结结果</strong>，<strong>Judge Agent 负责判断结果是否可用</strong>。</p>
 <p>​        这样拆的好处是每个 Agent 的 prompt 更短，职责更清楚，工具也更少，稳定性比一个大一统 Agent 更高。最后由一个总控把各个 Agent 的输出汇总，生成最终回答。</p>
 <h2 id="12-记忆架构怎么做"><a href="#12-记忆架构怎么做" class="headerlink" title="12.记忆架构怎么做"></a>12.记忆架构怎么做</h2><p>​        记忆一般分短期记忆、长期记忆和工作记忆。</p>
 <ul>
@@ -876,9 +891,10 @@
 </ul>
 <h4 id="GQA-Grouped-Query-Attention-分组查询注意力"><a href="#GQA-Grouped-Query-Attention-分组查询注意力" class="headerlink" title="GQA (Grouped-Query Attention) - 分组查询注意力"></a><strong>GQA (Grouped-Query Attention) - 分组查询注意力</strong></h4><p>由 Google 在 2023 年提出，旨在<strong>解决 MHA 显存过大和 MQA（Multi-Query Attention，所有头共享一组 KV，效果下降明显）效果太差的问题</strong></p>
 <ul>
-<li>将 H 个查询头（Query Heads）分成 G<em>G</em> 组。</li>
+<li>将 H 个查询头（Query Heads）分成 G组。</li>
 <li>每组查询头共享同一组键（Key）和 值（Value）</li>
 </ul>
+<p>MQA是只有一对Key和Value</p>
 <h4 id="MLA-Multi-Head-Latent-Attention-多头潜在注意力"><a href="#MLA-Multi-Head-Latent-Attention-多头潜在注意力" class="headerlink" title="MLA (Multi-Head Latent Attention) - 多头潜在注意力"></a><strong>MLA (Multi-Head Latent Attention) - 多头潜在注意力</strong></h4><p>即使是 GQA，当模型层数很深、序列极长（如 128k+）时，<strong>KV Cache 依然占据巨大显存，成为瓶颈</strong>。</p>
 <p><strong>工作原理</strong>：</p>
 <ul>
@@ -892,6 +908,9 @@
 <p>​    不过它的代价是增加推理成本和延迟，同时存在 critique 质量不稳定的问题。</p>
 <pre class="line-numbers language-python"><code class="language-python">Prompt → 初始答案 → 自我评估 → 修正 → 最终答案
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>Requery和Reflection    一个是<strong>对外再拿数据</strong>，一个是<strong>对内自我思考</strong></p>
+</blockquote>
 <h2 id="19-给定-rand-7-（随机选取-1-7）实现-rand-10"><a href="#19-给定-rand-7-（随机选取-1-7）实现-rand-10" class="headerlink" title="19.给定 rand(7)（随机选取 1-7）实现 rand(10)"></a>19.给定 rand(7)（随机选取 1-7）实现 rand(10)</h2><p>丢两次。</p>
 <pre class="line-numbers language-python"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">(</span>rand7<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">7</span> <span class="token operator">+</span> <span class="token punctuation">(</span>rand7<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 生成 0~48</span>
@@ -904,6 +923,245 @@
 <li>更稳定的相对优化（同组比较减少 reward scale 问题）</li>
 <li>更适合 LLM 多样性采样</li>
 </ul>
+<h2 id="21-常见的深度学习API"><a href="#21-常见的深度学习API" class="headerlink" title="21.常见的深度学习API"></a>21.常见的深度学习API</h2><p>从API抽象层级出发，区分“计算表达”“模型定义”“训练编排”“推理部署”四个维度</p>
+<h5 id="1-底层计算与编译层"><a href="#1-底层计算与编译层" class="headerlink" title="1.底层计算与编译层"></a>1.底层计算与编译层</h5><ul>
+<li>当前主流是 <strong>PyTorch 2.x (<code>torch.compile</code>)</strong> 和 <strong>JAX</strong>，它们通过即时编译技术自动优化计算图，开发者无需手动管理图结构。</li>
+</ul>
+<h5 id="2-中层模型构建API"><a href="#2-中层模型构建API" class="headerlink" title="2.中层模型构建API"></a>2.中层模型构建API</h5><ul>
+<li>**PyTorch (<code>nn.Module</code>)**：凭借动态图机制和灵活性，占据学术界和前沿研究的主导地位。</li>
+<li>**Keras (<code>tf.keras</code>)**：作为 TensorFlow 的高阶API，凭借简洁性在工业界快速原型开发中仍有一席之地。</li>
+</ul>
+<h5 id="3-高层训练与部署层（当前最活跃领域）"><a href="#3-高层训练与部署层（当前最活跃领域）" class="headerlink" title="3.高层训练与部署层（当前最活跃领域）"></a>3.高层训练与部署层（当前最活跃领域）</h5><ul>
+<li><strong>训练编排</strong>：<strong>Hugging Face <code>Transformers</code></strong> 和 <code>Accelerate</code> 已成为NLP及多模态领域的<strong>事实标准API</strong>，屏蔽了底层分布式训练的复杂性。</li>
+</ul>
+<blockquote>
+<p>Accelerate自动处理复杂的分布式训练和混合精度训练的样板代码,让你专注于模型和训练逻辑本身</p>
+</blockquote>
+<ul>
+<li><strong>推理服务</strong>：在生产环境中，<strong>vLLM</strong> 构成了关键的部署API层，负责将模型高效转化为服务。</li>
+</ul>
+<h2 id="22-RoBERTa"><a href="#22-RoBERTa" class="headerlink" title="22.RoBERTa"></a>22.RoBERTa</h2><p>核心贡献：即通过<strong>“暴力美学”</strong>（更大的数据、更久的训练）和<strong>工程细节的微调</strong>，挖掘出了 BERT 架构的极限</p>
+<ol>
+<li>移除NSP（Next Sentence Prediction）任务；</li>
+<li>采用更大规模、更高质量的训练数据（160GB纯文本，远超BERT的16GB）；</li>
+<li>使用更长的训练时间、更大的batch size（最大8K序列）、更多训练步数（300K步，BERT为125K）；</li>
+<li>动态掩码（Dynamic Masking）：每次向模型输入前实时生成掩码，而非预生成固定掩码；</li>
+<li>取消词频驱动的采样（即不再使用BERT中的“whole word masking”策略的特殊实现，但RoBERTa默认采用标准WordPiece掩码，并在部分实验中验证了whole word masking并非关键）；</li>
+<li>学习率预热后线性衰减，而非BERT的warmup+cosine decay；</li>
+<li>取消dropout（在部分大batch实验中发现其影响较小，实际代码中仍保留，但论文强调其非关键）</li>
+</ol>
+<h2 id="23-ROI和ROI2"><a href="#23-ROI和ROI2" class="headerlink" title="23.ROI和ROI2"></a>23.<strong>ROI</strong>和ROI2</h2><p>投资回报率</p>
+<ul>
+<li><strong>传统 ROI</strong> = 广告直接带来的 GMV / 广告费</li>
+<li><strong>ROI2 (全域 ROI)</strong> = <strong>直播间/店铺总 GMV</strong> / (广告费 + 变动成本) 或 仅看 总GMV/广告费（视平台定义略有不同，但核心是看整体盘子）</li>
+</ul>
+<blockquote>
+<p>ROI2 不再纠结于“这一块钱广告费换回了多少直接订单”，而是看“这一块钱广告费是否撬动了整个直播间的生意爆发（包括自然流量带来的订单）</p>
+</blockquote>
+<h3 id="增量推广"><a href="#增量推广" class="headerlink" title="增量推广"></a><strong>增量推广</strong></h3><p>通过科学实验设计（如A/B测试、随机对照试验RCT、差分法DID等），精准识别并仅针对“因本次推广行为而产生额外转化”的用户群体所开展的营销活动。</p>
+<p>其<strong>核心目标</strong>是度量和最大化“真正由推广带来的净增量效果”，剔除自然转化、品牌惯性、季节性波动等混杂因素。</p>
+<blockquote>
+<p>典型场景包括：向一组随机抽样的用户投放广告（实验组），另一组不投放（对照组），比较两组转化率之差，该差值即为增量转化率；再结合成本计算增量ROI（Incremental ROI = 增量毛利 / 推广投入）。</p>
+</blockquote>
+<h2 id="24-PLE"><a href="#24-PLE" class="headerlink" title="24.PLE"></a>24.PLE</h2><p>PLE <strong>渐进式分层提取</strong>（Progressive Layered Extraction）是一种专为多任务学习（Multi-Task Learning, MTL）设计的共享-特化结构建模范式，</p>
+<p><strong>核心思想</strong>是通过层级化、渐进式解耦任务专属参数与跨任务共享参数，有效缓解多任务间的负迁移（negative transfer）和跷跷板现象（seesaw effect）</p>
+<p><strong>核心是 CGC（Customized Gate Control  **定制化门控机制</strong>）结构，通过分离专家和共享专家来缓解冲突。**</p>
+<blockquote>
+<p><strong>通过多层的网络结构，逐步地从共享的专家网络中提取通用特征，并同时从特定的专家网络中提取任务独有的特征，从而实现多任务之间的平衡与优化</strong></p>
+</blockquote>
+<ol>
+<li>PLE本身已在阿里系推荐系统中大规模落地；</li>
+<li>后续提出的MMoE+PLE hybrid架构（如阿里2022年提出的PLE++）；</li>
+<li>腾讯2023年提出的DSelect-K（Dynamic Selective Expert Routing），它将专家选择从静态门控升级为任务自适应top-k稀疏路由，并引入梯度感知的专家负载均衡约束；</li>
+<li>Google 2024年提出的TAPAS（Task-Aware Parameter Allocation Strategy），采用元学习框架联合优化参数分配策略与任务权重，在Criteo-MTL benchmark上相对PLE提升+3.7% AUC平均增益。</li>
+</ol>
+<h3 id="与MMoE的差别"><a href="#与MMoE的差别" class="headerlink" title="与MMoE的差别"></a>与MMoE的差别</h3><p>MMoE（<strong>多门控混合专家</strong> Multi-gate Mixture-of-Experts）和PLE（Progressive Layered Extraction）都是多任务学习（MTL）中用于<strong>建模任务间共享与特异性关系的深度神经网络结构，</strong></p>
+<p><strong>核心区别在于：</strong>MMoE通过共享多个专家子网络 + 为每个任务独立设计门控网络（multi-gate），实现轻量级任务相关性建模，但未显式解耦共享与任务专属知识；</p>
+<p>而PLE在MMoE基础上引入“共享专家+任务专属专家”的分层双路径结构，并采用渐进式分层提取机制（progressive layering）与门控路由的联合优化，显式分离共享知识与任务私有知识，显著缓解负迁移（negative transfer）并提升多任务性能。</p>
+<h2 id="25-指标对比baseline提升主要来自于什么"><a href="#25-指标对比baseline提升主要来自于什么" class="headerlink" title="25.指标对比baseline提升主要来自于什么"></a>25.指标对比baseline提升主要来自于什么</h2><blockquote>
+<p>结合实际项目回答</p>
+</blockquote>
+<p>指标对比baseline提升主要来自于<strong>模型结构优化</strong>、<strong>特征工程增强</strong>、<strong>训练策略改进（如学习率调度、正则化、数据增强）</strong>、<strong>高质量标注数据引入</strong>、<strong>损失函数设计</strong>更贴合业务目标，以及后处理策略的精细化调整。其中最核心且可复现的贡献通常来自对问题本质的深入理解所驱动的针对性改进，而非单纯堆叠复杂模块。</p>
+<h2 id="26-模型拆分前后的结构变化"><a href="#26-模型拆分前后的结构变化" class="headerlink" title="26.模型拆分前后的结构变化"></a>26.模型拆分前后的结构变化</h2><p>模型拆分（Model Partitioning）是指<strong>将一个大型深度学习模型按层、按模块或按计算图节点，逻辑或物理地切分为多个子模块，并部署到不同设备（如多个GPU、CPU与GPU混合、边缘设备与云端协同等）上执行。</strong></p>
+<ul>
+<li><p>拆分前，模型是一个完整的、连续的计算图，所有参数和前向/反向计算都在单设备内存与计算单元中完成；</p>
+</li>
+<li><p>拆分后，模型结构变为分布式计算图：各子模块间通过显式的通信边（如张量传输）连接，引入了设备间数据移动（inter-device tensor transfer）、跨设备梯度传递、以及同步/异步执行调度机制，整体呈现为有向无环图（DAG）中带设备标签的子图划分。</p>
+</li>
+</ul>
+<blockquote>
+<p>从四个维度对比分析：</p>
+<p>（1）计算图拓扑结构（是否仍为单连通DAG？是否存在跨设备边？）；</p>
+<p>（2）内存布局（参数/激活/梯度是否跨设备分布？是否需序列化/反序列化？）；</p>
+<p>（3）执行流程（前向是否需等待远程输入？反向是否需跨设备梯度回传与规约？）；</p>
+<p>（4）系统接口（是否引入新的通信原语，如send/recv、all-gather、p2p all-reduce？）。</p>
+<p>结构变化本质是将“单机单图”映射为“多机多子图+通信超边”的异构执行图。</p>
+</blockquote>
+<blockquote>
+<p>ZeRO-1/2/3<strong>分别对优化器状态、梯度、模型参数进行分区存储</strong></p>
+</blockquote>
+<h2 id="27-Uplift模型"><a href="#27-Uplift模型" class="headerlink" title="27.Uplift模型"></a>27.Uplift模型</h2><p>Uplift模型（也称因果推断模型、增量建模模型或Treatment Effect模型）不是单一固定结构的模型，而是一类专门用于估计<strong>“干预（treatment）”对个体产生的净因果效应（uplift）</strong> 的机器学习模型。</p>
+<p>其核心输出是每个样本的<strong>条件平均处理效应（Conditional Average Treatment Effect, CATE）</strong>，即：τ(x) = E[Y(1) − Y(0) | X = x]，其中Y(1)为接受干预（如收到优惠券、看到广告、接受电话营销）下的潜在结果，</p>
+<p>Y(0)为未接受干预下的潜在结果，X为协变量（用户特征）。输入是特征向量X（可能含干预标识T），输出是一个标量预测值——即该用户因干预而产生的<strong>额外响应提升量</strong>（例如：购买概率提升0.12，或LTV增加86元）。</p>
+<h2 id="28-AUC"><a href="#28-AUC" class="headerlink" title="28.AUC"></a>28.AUC</h2><p><strong>随机选一个正样本 + 一个负样本，模型把正样本排在前面的概率</strong></p>
+<p>数值上：ROC 曲线下面积，ROC 曲线画的是：</p>
+<ul>
+<li>横轴：FPR（假正率）</li>
+<li>纵轴：TPR（真正率）</li>
+<li>FPR和TPR根据分类的阈值变化而变化</li>
+</ul>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="基于排序对（统计学本质）"><a href="#基于排序对（统计学本质）" class="headerlink" title="基于排序对（统计学本质）"></a>基于排序对（统计学本质）</h4><p>$$<br>\mathrm{AUC}<br>= \frac{1}{P \cdot N}<br>\sum_{i=1}^{P} \sum_{j=1}^{N}<br>\mathbf{1}\big( f(x_i^+) &gt; f(x_j^-) \big)<br>$$<br>P为正样本数量，N为负样本数量，其中简化为：<br>$$<br>\mathrm{AUC}<br>= \mathbb{P}\big( f(x^+) &gt; f(x^-) \big)<br>$$</p>
+<h4 id="工程常见累加式"><a href="#工程常见累加式" class="headerlink" title="工程常见累加式"></a>工程常见累加式</h4><p>$$<br>\mathrm{AUC}<br>= \sum_{k=1}^{M}<br>TPR_k \cdot (FPR_k - FPR_{k-1}),<br>\quad<br>FPR_0 = 0,; TPR_0 = 0<br>$$</p>
+<h3 id="AUUC"><a href="#AUUC" class="headerlink" title="AUUC"></a>AUUC</h3><p>因果推断 / uplift modeling（营销/推荐常用)。<strong>核心关注：推了有没有用</strong></p>
+<p>Uplift=P(Y∣T=1)−P(Y∣T=0)。uplift 曲线下面积:对累计曲线积分得到。</p>
+<h4 id="GAUC"><a href="#GAUC" class="headerlink" title="GAUC"></a>GAUC</h4><p><strong>每个用户各自算排序能力，再做平均</strong></p>
+<p><strong>按用户分组计算 AUC，再加权平均</strong></p>
+<p>$$GAUC = \sum_{u} w_u \cdot AUC_u$$</p>
+<h2 id="29-一共64匹马，8个跑道，如何找到前四"><a href="#29-一共64匹马，8个跑道，如何找到前四" class="headerlink" title="29.一共64匹马，8个跑道，如何找到前四"></a>29.一共64匹马，8个跑道，如何找到前四</h2><p>首先分八组得到小组内的排名（<strong>8场</strong>）</p>
+<p>然后八组的第一名进行排名（<strong>1场</strong>），此时获得A1为第一名。</p>
+<p>然后根据第一名的结果，从小组中筛选出A2,A3,A4,B1,B2,B3,C1,C2,D1，将A4排除后，看最后结果，得到前四。（<strong>1场</strong>）</p>
+<p><strong>最坏情况：</strong>若最后的结果是A2,A3,B1那么有可能A4仍要和B1再比一场</p>
+<h2 id="30-反向传播过程池化层参数如何更新"><a href="#30-反向传播过程池化层参数如何更新" class="headerlink" title="30.反向传播过程池化层参数如何更新"></a>30.反向传播过程池化层参数如何更新</h2><p>反向传播的目的是<strong>计算损失函数对网络中各层参数的梯度，并利用这些梯度通过优化算法（如SGD、Adam等）更新参数</strong>。</p>
+<p>然而，池化层（如最大池化、平均池化）并不包含任何需要学习的权重或偏置参数。</p>
+<p>它的作用是下采样，减少特征图的空间尺寸，从而降低计算量并增强平移不变性。由于没有参数，自然也就不涉及参数更新。</p>
+<h2 id="31-L1、L2范式"><a href="#31-L1、L2范式" class="headerlink" title="31. L1、L2范式"></a>31. L1、L2范式</h2><ul>
+<li><p><strong>L1：让参数变稀疏（很多变成0）</strong>–&gt;更干净</p>
+<ul>
+<li>文本分类（上万维特征，<strong>“没用的特征直接干掉”</strong>）</li>
+<li>生物信息（基因数据）</li>
+</ul>
+</li>
+<li><p><strong>L2：让参数变小（但很少变成0）</strong>–&gt;更稳定</p>
+<ul>
+<li>回归问题</li>
+<li>大多数深度学习默认用 L2</li>
+</ul>
+</li>
+</ul>
+<h4 id="L1-范式（L1-Regularization）"><a href="#L1-范式（L1-Regularization）" class="headerlink" title="L1 范式（L1 Regularization）"></a>L1 范式（L1 Regularization）</h4><p>$$<br>|w|<em>1 = \sum</em>{i=1}^{n} |w_i|<br>$$</p>
+<h4 id="L2-范式（L2-Regularization）–最常用"><a href="#L2-范式（L2-Regularization）–最常用" class="headerlink" title="L2 范式（L2 Regularization）–最常用"></a>L2 范式（L2 Regularization）–最常用</h4><p>$$<br>|w|<em>2^2 = \sum</em>{i=1}^{n} w_i^2<br>$$</p>
+<blockquote>
+<p>加入到损失函数中一般是前面加上lambda调节</p>
+<p>把 L1 / L2 加进损失函数，本质是在“惩罚复杂模型”，防止过拟合</p>
+</blockquote>
+<h2 id="32-模型经过离线哪些验证之后才上线的"><a href="#32-模型经过离线哪些验证之后才上线的" class="headerlink" title="32.模型经过离线哪些验证之后才上线的"></a>32.模型经过离线哪些验证之后才上线的</h2><h4 id="离线能力评测"><a href="#离线能力评测" class="headerlink" title="离线能力评测"></a>离线能力评测</h4><ol>
+<li>通用能力测评</li>
+<li>任务基准测试</li>
+<li> 对齐能力</li>
+</ol>
+<h4 id="对比测试"><a href="#对比测试" class="headerlink" title="对比测试"></a>对比测试</h4><ol>
+<li>A/B test（离线版本-新旧模型）</li>
+<li>人类偏好评测</li>
+</ol>
+<h4 id="安全与风险评估"><a href="#安全与风险评估" class="headerlink" title="安全与风险评估"></a>安全与风险评估</h4><ol>
+<li>有害内容测试</li>
+<li>数据泄漏测试</li>
+</ol>
+<h4 id="压力测试"><a href="#压力测试" class="headerlink" title="压力测试"></a>压力测试</h4><ol>
+<li>长文本稳定性</li>
+<li>负载测试</li>
+</ol>
+<h4 id="灰度上线前检查"><a href="#灰度上线前检查" class="headerlink" title="灰度上线前检查"></a>灰度上线前检查</h4><ol>
+<li>小流量发布，观察用户反馈</li>
+</ol>
+<h2 id="33-新模型灰度测试指标不稳定，这时候负向如何理解"><a href="#33-新模型灰度测试指标不稳定，这时候负向如何理解" class="headerlink" title="33.新模型灰度测试指标不稳定，这时候负向如何理解"></a>33.新模型灰度测试指标不稳定，这时候负向如何理解</h2><p>灰度测试指标不稳定时的“负向”，本质是：新模型在真实流量分布下的“期望收益低于旧模型”，但必须<strong>先排除噪声与分布偏移</strong>。</p>
+<ul>
+<li>方差问题（统计噪声）–&gt;用户少，行为随机性大</li>
+<li>分布偏移–&gt;早期用户更活跃</li>
+<li>冷启动–&gt;用户行为还没适应</li>
+</ul>
+<p>通过<strong>显著性、多指标一致性、分桶分析（重要）</strong>等方案判断是否需要回滚</p>
+<h2 id="34-双塔模型"><a href="#34-双塔模型" class="headerlink" title="34.双塔模型"></a>34.双塔模型</h2><p>在推荐系统/搜索召回里：</p>
+<p> 左塔：User Tower（用户塔），负责理解“你是谁”</p>
+<ul>
+<li>用户ID</li>
+<li>用户历史行为（点击、浏览、购买）</li>
+<li>用户画像（性别、年龄、兴趣）</li>
+</ul>
+<p>右塔：Item Tower（物品塔）,负责理解“这是什么东西”</p>
+<ul>
+<li>商品/视频/文章ID</li>
+<li>标题、内容、标签</li>
+<li>类目、文本特征</li>
+</ul>
+<p>优点：可以离线处理快速比较。</p>
+<h2 id="35-Approximate-Nearest-Neighbor（近似最近邻）"><a href="#35-Approximate-Nearest-Neighbor（近似最近邻）" class="headerlink" title="35.Approximate Nearest Neighbor（近似最近邻）"></a>35.Approximate Nearest Neighbor（近似最近邻）</h2><p>常见三类：</p>
+<ul>
+<li>基于树（KD-Tree / Ball Tree）适合低维（&lt;30维）</li>
+<li>基于哈希（LSH）<ul>
+<li>相似向量 → 高概率落同一个桶</li>
+</ul>
+</li>
+<li>图结构（主流：HNSW）<ul>
+<li>用“多层小世界图”做跳转搜索</li>
+<li>结构：<ul>
+<li>上层：稀疏图（快速跳远）</li>
+<li>下层：密集图（精细搜索）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="36-OneRec"><a href="#36-OneRec" class="headerlink" title="36.OneRec"></a>36.OneRec</h2><p><strong>直接一个模型从“用户 + 候选空间”输出推荐结果</strong>，而不需要召回（ANN / 双塔） → 粗排（LR / DNN）→ 精排（Deep model）→ 重排（规则/策略）</p>
+<ul>
+<li>统一标识学习–&gt;将各种信息通过同一模型进行编码</li>
+<li>全局打分函数–&gt;无需召回，直接输出排序分数</li>
+<li>端到端训练–&gt;rank_Loss</li>
+</ul>
+<p><strong>挑战</strong></p>
+<ul>
+<li>计算爆炸</li>
+<li>训练不稳定</li>
+<li>负采样更关键</li>
+</ul>
+<h2 id="37-这么多强化学习的算法，有什么心得？强化学习是怎么从最开始演变到现在的"><a href="#37-这么多强化学习的算法，有什么心得？强化学习是怎么从最开始演变到现在的" class="headerlink" title="37.这么多强化学习的算法，有什么心得？强化学习是怎么从最开始演变到现在的"></a>37.这么多强化学习的算法，有什么心得？强化学习是怎么从最开始演变到现在的</h2><p>本质：<strong>在不确定环境里，通过试错学会做长期最优决策</strong></p>
+<blockquote>
+<p>理论时代–&gt;经典强化学习算法（Actor-Critic，策略梯度）–&gt;深度学习网络首次应用（Q-learning）–&gt;Transformer+RLHF+世界模型为代表的“认知增强型RL“</p>
+</blockquote>
+<h4 id="On-policy（同策略）和off-policy（异策略）"><a href="#On-policy（同策略）和off-policy（异策略）" class="headerlink" title="On-policy（同策略）和off-policy（异策略）"></a>On-policy（同策略）和off-policy（异策略）</h4><p><strong>On-policy（同策略）和off-policy（异策略）是强化学习中按策略与数据采集策略是否一致划分的两大范式。</strong></p>
+<p>核心区别在于：</p>
+<ul>
+<li>on-policy算法要求用于更新策略的样本必须由当前待优化的策略π<em>θ（即最新参数下的策略）实时生成；</em></li>
+<li>off-policy算法允许复用历史数据（甚至由完全不同的行为策略β生成的轨迹），只要满足重要性采样或Q函数解耦等条件即可。</li>
+</ul>
+<p><em>GRPO（Generalized Reward-Predictive Policy Optimization）本质上是on-policy的，它继承自PPO框架，依赖当前策略rollout生成的完整轨迹进行优势估计与策略更新，不引入离线缓冲区或跨策略重要性权重修正。</em></p>
+<p><em>真正的on-policy实现需同时满足三个条件：</em></p>
+<p>（1）每次策略更新前必须用当前策略π_θ重新采集一批新轨迹（不能复用旧轨迹）；</p>
+<p>（2）价值函数（如V或Q）的训练也仅使用这批新轨迹中的状态-动作对；</p>
+<p>（3）所有梯度计算（包括策略梯度、优势估计、KL约束等）均基于该批次数据，且禁止任何形式的回放（replay）、优先采样（prioritized sampling）或跨轮次数据混合。</p>
+<blockquote>
+<p><strong>on-policy</strong>：必须用“当前策略”生成的数据训练</p>
+<p><strong>off-policy</strong>：可以用“别的策略”生成的数据训练</p>
+</blockquote>
+<h2 id="38-word2vec算法"><a href="#38-word2vec算法" class="headerlink" title="38.word2vec算法"></a>38.word2vec算法</h2><p>word2vec 是一种用于学习词向量（word embeddings）的浅层神经网络模型，包含两种主流架构CBOW / Skip-gram </p>
+<p><strong>任务；</strong>用一个词预测上下文，或者反过来。</p>
+<p><strong>结果：</strong>迫使模型将语义相似的词映射到向量空间中彼此接近的位置</p>
+<h2 id="39-OpenClaw"><a href="#39-OpenClaw" class="headerlink" title="39.OpenClaw"></a>39.OpenClaw</h2><p><strong>核心思想</strong>是通过统一的 Gateway 进程管理所有外部通讯平台的链接，通过AgentRuntime进行各个大模型的后台调用，所有产生的数据、记忆全部存储在本地磁盘上</p>
+<h4 id="记忆系统"><a href="#记忆系统" class="headerlink" title="记忆系统"></a>记忆系统</h4><p>OpenClaw 的记忆系统采用了一个<strong>双源记忆架构</strong>的设计，其将记忆整体分为了两类：每日日志（动态记忆）和长期记忆（静态记忆）。</p>
+<table>
+<thead>
+<tr>
+<th>记忆类型</th>
+<th>存储格式</th>
+<th>存储路径</th>
+<th>产生方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态记忆</td>
+<td>Markdown 文件</td>
+<td>~/.openclaw/workspace/MEMORY.md 和 memory/*.md</td>
+<td>手动创建 + 自动生成</td>
+</tr>
+<tr>
+<td>动态记忆</td>
+<td>JSONL 文件</td>
+<td>~/.openclaw/agents/{agentId}/sessions/*.jsonl</td>
+<td>自动记录</td>
+</tr>
+</tbody></table>
+<p>OpenClaw 所代表的应用，其对“记忆（Memory）”的定义是：持久<strong>存储在磁盘上的结构化信息</strong>。</p>
+<p>因此，只要有足够的存储空间，记忆就可以无限增长，能够跨会话保留，在使用时按需检索，且存储成本几乎为零。更为关键的是，这种记忆能够支持语音搜索，也就意味着不需要把所有历史信息都塞进上下文，只需要检索当前任务相关的片段。</p>
 
                 
             </div>
@@ -1013,18 +1271,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/">
+                <a href="/%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/58.jpg" class="responsive-img" alt="拼多多面试大全">
+                        <img src="/medias/featureimages/34.jpg" class="responsive-img" alt="后端准备">
                         
-                        <span class="card-title">拼多多面试大全</span>
+                        <span class="card-title">后端准备</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1034,9 +1291,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-23
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-03-31
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1049,7 +1306,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     

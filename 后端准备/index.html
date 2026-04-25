@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="暑假集训 day01, 隐迹札记">
+    <meta name="keywords" content="后端准备, 隐迹札记">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>暑假集训 day01 | 隐迹札记</title>
+    <title>后端准备 | 隐迹札记</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -423,12 +423,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/60.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/34.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">暑假集训 day01</h1>
+                    <h1 class="description center-align post-title">后端准备</h1>
                 </div>
             </div>
         </div>
@@ -544,8 +544,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                <span class="chip bg-color">面试</span>
                             </a>
                         
                     </div>
@@ -556,8 +556,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%9B%86%E8%AE%AD/" class="post-category">
-                                集训
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                面试
                             </a>
                         
                     </div>
@@ -569,7 +569,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-08-25
+                    2026-03-31
                 </div>
                 
 
@@ -590,397 +590,240 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h1><h2 id="树状数组详解"><a href="#树状数组详解" class="headerlink" title="树状数组详解"></a>树状数组详解</h2><p><strong>树状数组详解</strong></p>
-<p>视频推荐：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1LW411e7jo/?spm_id_from=333.788.recommend_more_video.0">【算法讲堂】【电子科技大学】【ACM】树状数组与ST表_哔哩哔哩_bilibili</a></p>
-<p>先来看几个问题吧。</p>
-<p><strong>1.什么是树状数组？</strong></p>
-<p>顾名思义，就是用数组来模拟树形结构呗。那么衍生出一个问题，为什么不直接建树？答案是没必要，因为树状数组能处理的问题就没必要建树。和Trie树的构造方式有类似之处。</p>
-<p><strong>2.树状数组可以解决什么问题</strong></p>
-<p>可以解决大部分基于区间上的更新以及求和问题。</p>
-<p><strong>3.树状数组和线段树的区别在哪里</strong></p>
-<p>树状数组可以解决的问题都可以用线段树解决，这两者的区别在哪里呢？树状数组的系数要少很多，就比如字符串模拟大数可以解决大数问题，也可以解决1+1的问题，但没人会在1+1的问题上用大数模拟。</p>
-<p><strong>4.树状数组的优点和缺点</strong></p>
-<p>修改和查询的复杂度都是O(logN)，而且相比线段树系数要少很多，比传统数组要快，而且容易写。</p>
-<p>缺点是遇到复杂的区间问题还是不能解决，功能还是有限。</p>
-<p><strong>一、树状数组介绍</strong></p>
-<p>二叉树大家一定都知道，如下图</p>
-<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master//845-81274925.png"></p>
-<p>如果每个父亲都存的是两个儿子的值，是不是就可以解决这类区间问题了呢。是的没错，但是这样的树形结构，叫做线段树。</p>
-<p>那真的的树形结构是怎样的，和上图类似，但省去了一些节点，以达到用数组建树。</p>
-<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/44-268531484.png"></p>
-<p>黑色数组代表原来的数组（下面用A[i]代替），红色结构代表我们的树状数组(下面用C[i]代替)，发现没有，每个位置只有一个方框，令每个位置存的就是子节点的值的和，则有</p>
-<ul>
-<li>C[1] = A[1];</li>
-<li>C[2] = A[1] + A[2];</li>
-<li>C[3] = A[3];</li>
-<li>C[4] = A[1] + A[2] + A[3] + A[4];</li>
-<li>C[5] = A[5];</li>
-<li>C[6] = A[5] + A[6];</li>
-<li>C[7] = A[7];</li>
-<li>C[8] = A[1] + A[2] + A[3] + A[4] + A[5] + A[6] + A[7] + A[8];</li>
+                <h1 id="1-HTTP和HTTPS的区别"><a href="#1-HTTP和HTTPS的区别" class="headerlink" title="1.HTTP和HTTPS的区别"></a>1.HTTP和HTTPS的区别</h1><p><strong>总结：</strong>HTTP 像明信片——谁都能偷看<strong>；</strong>HTTPS 像贴好身份证、加密又防篡改的快递箱，既保证内容机密，也验证“寄件人”身份。</p>
+<table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">HTTP</th>
+<th align="left">HTTPS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">端口默认</td>
+<td align="left">80</td>
+<td align="left">443</td>
+</tr>
+<tr>
+<td align="left">传输层</td>
+<td align="left">直接跑在 TCP 之上</td>
+<td align="left">先经 <strong>TLS</strong>（SSL）再走 TCP；TLS 1.3 已与 QUIC 融合到 HTTP/3</td>
+</tr>
+<tr>
+<td align="left">加密</td>
+<td align="left">❌ 明文</td>
+<td align="left">✅ 对称加密（AES/ChaCha20）</td>
+</tr>
+<tr>
+<td align="left">完整性校验</td>
+<td align="left">❌ 无</td>
+<td align="left">✅ MAC / AEAD，防篡改</td>
+</tr>
+<tr>
+<td align="left">身份认证</td>
+<td align="left">❌ 无</td>
+<td align="left">✅ 服务器证书（可选客户端证书）</td>
+</tr>
+<tr>
+<td align="left">防御能力</td>
+<td align="left">易遭窃听、伪造、劫持（MITM）</td>
+<td align="left">防窃听、防篡改、防冒充，但<strong>不</strong>解决业务逻辑漏洞</td>
+</tr>
+</tbody></table>
+<h2 id="HTTPS的握手过程"><a href="#HTTPS的握手过程" class="headerlink" title="HTTPS的握手过程"></a>HTTPS的握手过程</h2><p>HTTPS 的握手过程，本质上是先<strong>建立 TCP 连接，然后进行 TLS 握手来协商加密参数、验证服务器身份并生成会话密钥</strong>。</p>
+<h1 id="2-传输协议怎么选择？TCP-和-UDP-区别，UDP-优势是什么，TCP-如何建立连接，若使用-UDP-，如何在应用层支持可靠性"><a href="#2-传输协议怎么选择？TCP-和-UDP-区别，UDP-优势是什么，TCP-如何建立连接，若使用-UDP-，如何在应用层支持可靠性" class="headerlink" title="2.传输协议怎么选择？TCP 和 UDP 区别，UDP 优势是什么，TCP 如何建立连接，若使用 UDP ，如何在应用层支持可靠性"></a>2.传输协议怎么选择？TCP 和 UDP 区别，UDP 优势是什么，TCP 如何建立连接，若使用 UDP ，如何在应用层支持可靠性</h1><h4 id="场景："><a href="#场景：" class="headerlink" title="场景："></a>场景：</h4><ul>
+<li>TCP 适用于要求数据完整、有序、不丢失的场景（如HTTP、FTP、SMTP）；</li>
+<li>UDP 适用于对延迟敏感、可容忍少量丢包、需低开销或支持多播/广播的场景</li>
 </ul>
-<p>可以发现，这颗树是有规律的</p>
-<p><strong>C[i] = A[i - 2^k+1] + A[i - 2^k+2] + … + A[i];  //k为i的二进制中从最低位到高位连续零的长度</strong></p>
-<p>例如i = 8(1000)时候，k = 3，可自行验证。</p>
-<p>这个怎么实现求和呢，比如我们要找前7项和，那么应该是SUM = C[7] + C[6] + C[4];</p>
-<p>而根据上面的式子，容易的出<strong>SUMi = C[i] + C[i-2^k1] + C[(i - 2^k1) - 2^k2] + …..；</strong></p>
-<p>其实树状数组就是一个二进制上面的应用。</p>
-<p>现在新的问题来了2^k该怎么求呢，不难得出2^k = i&amp;(i^(i-1));但这个还是不好求出呀，前辈的智慧就出来了，2^k = i&amp;(-i);</p>
-<p>为什么呢？</p>
-<p>这里利用的负数的存储特性，负数是以补码存储的，对于整数运算 x&amp;(-x)有</p>
-<p>​    ● 当x为0时，即 0 &amp; 0，结果为0；</p>
-<p>​    ●当x为奇数时，最后一个比特位为1，取反加1没有进位，故x和-x除最后一位外前面的位正好相反，按位与前面位数结果为0。所以最后结果为1。</p>
-<p>​    ●当x为偶数，且为2的m次方时，x的二进制表示中只有一位是1（从右往左的第m+1位），其右边有m位0，故x取反加1后，从右到左第有m个0，第m+1位及其左边全是1。这样，x&amp; (-x) 得到的就是x。 </p>
-<p>​    ●当x为偶数，却不为2的m次方的形式时，可以写作x= y * (2^k)。其中，y的最低位为1。实际上就是把x用一个奇数左移k位来表示。这时，x的二进制表示最右边有k个0，从右往左第k+1位为1。当对x取反时，最右边的k位0变成1，第k+1位变为0；再加1，最右边的k位就又变成了0，第k+1位因为进位的关系变成了1。左边的位因为没有进位，正好和x原来对应的位上的值相反。二者按位与，得到：第k+1位上为1，左边右边都为0。结果为2^k。</p>
-<p>​    总结一下：x&amp;(-x)，当x为0时结果为0；x为奇数时，结果为1；x为偶数时，结果为x中2的最大次方的因子。</p>
-<p>而且这个有一个专门的称呼，叫做lowbit，即取2^k。</p>
-<p><strong>二、如何建立树状数组</strong></p>
-<p>上面已经解释了如何用树状数组求区间和，那么如果我们要更新某一个点的值呢，还是一样的，上面说了**C[i] = A[i - 2k+1] + A[i - 2k+2] + … + A[i]**，那么如果我们更新某个A[i]的值，则会影响到所有包含有A[i]位置。如果求A[i]包含哪些位置里呢，同理有</p>
-<p>A[i] 包含于 C[i + 2k]、C[(i + 2k) + 2k]…；</p>
-<p>好，现在已经搞清楚了更新和求和，就可以来建树状数组了。如果上面的求和、更新或者lowbit步骤还没搞懂的化，建议再思考弄懂再往下看。</p>
-<p>那么构造一个树状数组则为</p>
-<pre><code>int n;
-int a[1005],c[1005]; //对应原数组和树状数组
-
-int lowbit(int x)&#123;
-    return x&amp;(-x);
-&#125;
-
-void updata(int i,int k)&#123;    //在i位置加上k
-    while(i &lt;= n)&#123;
-        c[i] += k;
-        i += lowbit(i);
-    &#125;
-&#125;
-
-int getsum(int i)&#123;        //求A[1]~A[i]的和
-    int res = 0;
-    while(i &gt; 0)&#123;
-        res += c[i];
-        i -= lowbit(i);
-    &#125;
-    return res;
-&#125;
-</code></pre>
-<p>这样就构造了一个树状数组。下面看一道模板题目吧。</p>
-<p>题目链接：<a target="_blank" rel="noopener" href="https://vjudge.net/problem/HDU-1166">https://vjudge.net/problem/HDU-1166</a></p>
-<p>直接看代码吧</p>
-<pre><code>#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-int n,m;
-int a[50005],c[50005]; //对应原数组和树状数组
-
-int lowbit(int x)&#123;
-    return x&amp;(-x);
-&#125;
-
-void updata(int i,int k)&#123;    //在i位置加上k
-    while(i &lt;= n)&#123;
-        c[i] += k;
-        i += lowbit(i);
-    &#125;
-&#125;
-
-int getsum(int i)&#123;        //求A[1 - i]的和
-    int res = 0;
-    while(i &gt; 0)&#123;
-        res += c[i];
-        i -= lowbit(i);
-    &#125;
-    return res;
-&#125;
-
-int main()&#123;
-    int t;
-    cin&gt;&gt;t;
-    for(int tot = 1; tot &lt;= t; tot++)&#123;
-        cout &lt;&lt; &quot;Case &quot; &lt;&lt; tot &lt;&lt; &quot;:&quot; &lt;&lt; endl;
-        memset(a, 0, sizeof a);
-        memset(c, 0, sizeof c);
-        cin&gt;&gt;n;
-        for(int i = 1; i &lt;= n; i++)&#123;
-            cin&gt;&gt;a[i];
-            updata(i,a[i]);   //输入初值的时候，也相当于更新了值
-        &#125;
-
-        string s;
-        int x,y;
-        while(cin&gt;&gt;s &amp;&amp; s[0] != &#39;E&#39;)&#123;
-            cin&gt;&gt;x&gt;&gt;y;
-            if(s[0] == &#39;Q&#39;)&#123;    //求和操作
-                int sum = getsum(y) - getsum(x-1);    //x~y区间和也就等于1~y区间和减去1~(x-1)区间和
-                cout &lt;&lt; sum &lt;&lt; endl;
-            &#125;
-            else if(s[0] == &#39;A&#39;)&#123;
-                updata(x,y);
-            &#125;
-            else if(s[0] == &#39;S&#39;)&#123;
-                updata(x,-y);    //减去操作，即为加上相反数
-            &#125;
-        &#125;
-
-    &#125;
-    return 0;
-&#125;
-</code></pre>
-<p>这就是最简单的点更新区间求和了。</p>
-<p><strong>三、树状数组的几种变式(区间更新，区间查询)</strong></p>
-<p>上面介绍的是最普通的单点更新，区间查询，但如果有些时候是区间更新，单点求和怎么半，又或是区间更新，区间求和怎么办。这里将介绍各种情况该怎么写。</p>
-<p>如果上面的单点更新，区间查询还没看懂，建议再思考再往下看。</p>
-<p><strong>1**</strong>.单点更新、单点查询**</p>
-<p>传统数组可做</p>
-<p><strong>2.单点更新、区间查询</strong></p>
-<p>已讲解，详细看上面</p>
-<p><strong>3**</strong>.区间更新、单点查询**</p>
-<p>这就是第一个问题，如果题目是让你把x-y区间内的所有值全部加上k或者减去k，然后查询操作是问某个点的值，这种时候该怎么做呢。如果是像上面的树状数组来说，就必须把x-y区间内每个值都更新，这样的复杂度肯定是不行的，这个时候，就不能再用数据的值建树了，这里我们引入差分，利用差分建树。</p>
-<p>假设我们规定A[0] = 0;</p>
-<p>则有 <strong>(D[j] = A[j] - A[j-1])，</strong>即前面i项的差值和，这个有什么用呢？例如对于下面这个数组</p>
-<ul>
-<li>A[] = 1 2 3 5 6 9</li>
-<li>D[] = 1 1 1 2 1 3</li>
-</ul>
-<p>如果我们把[2,5]区间内值加上2，则变成了</p>
-<ul>
-<li>A[] = 1 4 5 7 8 9</li>
-<li>D[] = 1 3 1 2 1 1</li>
-</ul>
-<p>发现了没有，当某个区间[x,y]值改变了，区间内的差值是不变的，只有D[x]和D[y+1]的值发生改变，至于为什么我想我就不用解释了吧。</p>
-<p>所以我们就可以利用这个性质对D[]数组建立树状数组，代码为：</p>
-<pre><code>int n,m;
- 2 int a[50005] = &#123;0&#125;,c[50005]; //对应原数组和树状数组
- 3 
- 4 int lowbit(int x)&#123;
- 5     return x&amp;(-x);
- 6 &#125;
- 7 
- 8 void updata(int i,int k)&#123;    //在i位置加上k
- 9     while(i &lt;= n)&#123;
-10         c[i] += k;
-11         i += lowbit(i);
-12     &#125;
-13 &#125;
-14 
-15 int getsum(int i)&#123;        //求D[1 - i]的和，即A[i]值
-16     int res = 0;
-17     while(i &gt; 0)&#123;
-18         res += c[i];
-19         i -= lowbit(i);
-20     &#125;
-21     return res;
-22 &#125;
-23 
-24 int main()&#123;
-25     cin&gt;&gt;n;27     for(int i = 1; i &lt;= n; i++)&#123;
-28         cin&gt;&gt;a[i];
-29         updata(i,a[i] - a[i-1]);   //输入初值的时候，也相当于更新了值
-31     &#125;
-32     
-33     //[x,y]区间内加上k
-34     updata(x,k);    //A[x] - A[x-1]增加k
-35     updata(y+1,-k);        //A[y+1] - A[y]减少k
-36     
-37     //查询i位置的值
-38     int sum = getsum(i);
-39 
-40     return 0;
-41 &#125;
-</code></pre>
-<p>这样就把，原来要更新一个区间的值变成了只需要更新两个点。也很容易理解吧。</p>
-<p><strong>4.区间更新、区间查询</strong></p>
-<p>上面我们说的差值建树状数组，得到的是某个点的值，那如果我既要区间更新，又要区间查询怎么办。这里我们还是利用差分，由上面可知</p>
-<p>∑ni = 1A[i] = ∑ni = 1 ∑ij = 1D[j];</p>
-<p>则A[1]+A[2]+…+A[n]</p>
-<p>= (D[1]) + (D[1]+D[2]) + … + (D[1]+D[2]+…+D[n]) </p>
-<p>= n*D[1] + (n-1)*D[2] +… +D[n]</p>
-<p>= n * (D[1]+D[2]+…+D[n]) - (0<em>D[1]+1</em>D[2]+…+(n-1)*D[n])</p>
-<p>所以上式可以变为∑ni = 1A[i] = n<em>∑ni = 1D[i] - ∑ni = 1( D[i]</em>(i-1) );</p>
-<p>如果你理解前面的都比较轻松的话，这里也就知道要干嘛了，维护两个数状数组，sum1[i] = D[i]，sum2[i] = D[i]*(i-1);</p>
-<pre><code>int n,m;
-int a[50005] = &#123;0&#125;;
-int sum1[50005];    //(D[1] + D[2] + ... + D[n])
-int sum2[50005];    //(1*D[1] + 2*D[2] + ... + n*D[n])
-
-int lowbit(int x)&#123;
-    return x&amp;(-x);
-&#125;
-
-void updata(int i,int k)&#123;
-    int x = i;    //因为x不变，所以得先保存i值
-    while(i &lt;= n)&#123;
-        sum1[i] += k;
-        sum2[i] += k * (x-1);
-        i += lowbit(i);
-    &#125;
-&#125;
-
-int getsum(int i)&#123;        //求前缀和
-    int res = 0, x = i;
-    while(i &gt; 0)&#123;
-        res += x * sum1[i] - sum2[i];
-        i -= lowbit(i);
-    &#125;
-    return res;
-&#125;
-
-int main()&#123;
-    cin&gt;&gt;n;
-    for(int i = 1; i &lt;= n; i++)&#123;
-        cin&gt;&gt;a[i];
-        updata(i,a[i] - a[i-1]);   //输入初值的时候，也相当于更新了值
-    &#125;
-
-    //[x,y]区间内加上k
-    updata(x,k);    //A[x] - A[x-1]增加k
-    updata(y+1,-k);        //A[y+1] - A[y]减少k
-
-    //求[x,y]区间和
-    int sum = getsum(y) - getsum(x-1);
-
-    return 0;
-&#125;
-</code></pre>
-<p>再附赠两道模板题目，可以自行写一下以便理解</p>
-<p>区间修改、单点查询模板题目：<a target="_blank" rel="noopener" href="https://www.luogu.org/problem/show?pid=3368">https://www.luogu.org/problem/show?pid=3368</a></p>
-<p>区间修改、区间查询模板题目：<a target="_blank" rel="noopener" href="https://vjudge.net/problem/POJ-3468">https://vjudge.net/problem/POJ-3468</a></p>
-<h2 id="hdu1556"><a href="#hdu1556" class="headerlink" title="hdu1556"></a>hdu1556</h2><p><strong>题目：</strong></p>
-<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/7113399A82BD4C2ABC8922D69539BD9F.jpg"></p>
-<p><strong>理解：</strong></p>
-<ol>
-<li>首先，思考暴力做法，发现N过大，所以放弃</li>
-<li>由于发现每次每位依次+1过于麻烦，可以结合树状数组的概念，先将原数组所影响到的所有树状数组加上所应加的值，这里是区间更新，单点求和问题</li>
+<h4 id="优势："><a href="#优势：" class="headerlink" title="优势："></a>优势：</h4><p>UDP 的核心优势是无连接、无握手、无重传、无拥塞控制、头部开销小（仅8字节）、支持一对一/一对多/多对一通信。</p>
+<h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><p>TCP 通过三次握手建立连接：客户端发送SYN，服务器回复SYN+ACK，客户端再发ACK，双方进入ESTABLISHED状态。</p>
+<blockquote>
+<p>三次握手的核心目标是<strong>双向通信能力的可靠确认</strong>。第一次握手让服务器知道客户端“能发”；第二次握手让客户端知道服务器“能收也能发”（因为服务器在响应中既发了SYN又发了ACK）；但此时服务器还不知道客户端是否“能收”</p>
+</blockquote>
+<h1 id="3-应用层方面协议怎么设计，交换什么信息"><a href="#3-应用层方面协议怎么设计，交换什么信息" class="headerlink" title="3.应用层方面协议怎么设计，交换什么信息"></a>3.应用层方面协议怎么设计，交换什么信息</h1><p>应用层协议设计的核心是定义通信双方在特定业务场景下“<strong>说什么、怎么说、何时说、如何确认</strong>”，即需明确消息语义（交换什么信息）、语法结构（数据格式与编码）、时序规则（交互流程与状态机）、错误处理与可靠性保障机制</p>
+<blockquote>
+<p>物链网输会示用</p>
+</blockquote>
+<h1 id="4-Redis和数据库的关系"><a href="#4-Redis和数据库的关系" class="headerlink" title="4.Redis和数据库的关系"></a>4.Redis和数据库的关系</h1><ol>
+<li><strong>数据库 (MySQL等)**：作为</strong>主存储**。它基于磁盘，容量大、成本低，能保证数据的持久化和强一致性，支持复杂的事务和查询。它是数据的“唯一真理来源”。</li>
+<li><strong>Redis</strong>：作为<strong>缓存层</strong>。它基于内存，速度极快，但容量有限、成本较高。它存储的是从数据库中读取的“热点数据”副本，用于加速访问。</li>
 </ol>
-<p><strong>代码：</strong></p>
-<pre><code>#include &lt;iostream&gt;
-
-using namespace std;
-
-int n;
-
-int lowbit(int x)//计算2^k
-&#123;
-    return x&amp;(-x);
-&#125;
-
-void update(int i,int k,int a[])
-&#123;
-    while(i&lt;=n)
-    &#123;
-        a[i]+=k;
-        i+=lowbit(i);
-    &#125;
-&#125;
-/*
-void print(int a[])
-&#123;//向上更新，使所有包含了x的区间都更新一下
-    for(int i=1;i&lt;=n;i++)
-    &#123;
-        cout&lt;&lt;a[i]&lt;&lt;&#39; &#39;;
-    &#125;
-    cout&lt;&lt;endl;
-&#125;
-*/
-
-int getsum(int i,int a[])
-&#123;//向下查询
-    int res=0;
-    while(i&gt;0)
-    &#123;
-        res+=a[i];
-
-        i-=lowbit(i);
-    &#125;
-    return res;
-&#125;
-
-int main()
-&#123;
-   while(cin&gt;&gt;n,n)
-   &#123;
-       int a[n+1]=&#123;0&#125;;//起初差值为0
-       for(int i=1;i&lt;=n;i++)
-        &#123;
-            int f,s;
-            cin&gt;&gt;f&gt;&gt;s;
-            update(f,1,a);//小的差值增加
-           //print(a);
-            update(s+1,-1,a);//大的差值减少
-           // print(a);
-        &#125;
-       // cout&lt;&lt;&quot;_________________________&quot;&lt;&lt;endl;
-       //print(a);
-        for(int i=1;i&lt;=n;i++)
-            cout&lt;&lt;getsum(i,a)&lt;&lt;(i==n?&#39;\n&#39;:&#39; &#39;);
-   &#125;
-    return 0;
-&#125;
-</code></pre>
-<p><strong>题解：</strong>通过记录每一位与前一位之差，只改变第一位与最后一位后一个的数字，即可达到更新的目的</p>
-<h2 id="hdu1166"><a href="#hdu1166" class="headerlink" title="hdu1166"></a>hdu1166</h2><p><strong>题目：</strong></p>
-<p><img src="https://vagary-1314340209.cos.ap-chengdu.myqcloud.com/wuhu-z-master/A83E32DCF922473992A836540B921C80.jpg"></p>
-<p><strong>思路：</strong></p>
-<p>比起1556像是模板，对于3号命令要用求和相减</p>
-<p><strong>代码：</strong></p>
-<pre><code>#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-int n,m;
-int a[50005],c[50005]; //对应原数组和树状数组
-
-int lowbit(int x)&#123;
-    return x&amp;(-x);
-&#125;
-
-void updata(int i,int k)&#123;    //在i位置加上k
-    while(i &lt;= n)&#123;
-        c[i] += k;
-        i += lowbit(i);
-    &#125;
-&#125;
-
-int getsum(int i)&#123;        //求A[1 ~ i]的和
-    int res = 0;
-    while(i &gt; 0)&#123;
-        res += c[i];
-        i -= lowbit(i);
-    &#125;
-    return res;
-&#125;
-
-int main()&#123;
-    int t;
-    cin&gt;&gt;t;
-    for(int tot = 1; tot &lt;= t; tot++)&#123;
-        cout &lt;&lt; &quot;Case &quot; &lt;&lt; tot &lt;&lt; &quot;:&quot; &lt;&lt; endl;
-        memset(a, 0, sizeof a);
-        memset(c, 0, sizeof c);
-        cin&gt;&gt;n;
-        for(int i = 1; i &lt;= n; i++)&#123;
-            cin&gt;&gt;a[i];
-            updata(i,a[i]);   //输入初值的时候，也相当于更新了值
-        &#125;
-
-        string s;
-        int x,y;
-        while(cin&gt;&gt;s &amp;&amp; s[0] != &#39;E&#39;)&#123;
-            cin&gt;&gt;x&gt;&gt;y;
-            if(s[0] == &#39;Q&#39;)&#123;    //求和操作
-                int sum = getsum(y) - getsum(x-1);    //x~y区间和也就等于1~y区间和减去1~(x-1)区间和
-                cout &lt;&lt; sum &lt;&lt; endl;
-            &#125;
-            else if(s[0] == &#39;A&#39;)&#123;
-                updata(x,y);
-            &#125;
-            else if(s[0] == &#39;S&#39;)&#123;
-                updata(x,-y);    //减去操作，即为加上相反数
-            &#125;
-        &#125;
-
-    &#125;
-    return 0;
-&#125;
-</code></pre>
-<p><strong>题解：</strong>将题目看作为求前缀和的问题，然后对于要求的区间或单个营地相减解决 </p>
+<blockquote>
+<p>类似计组中cache与内存的关系，通过写直达+非写分配（防止污染cache）/写回+写分配</p>
+</blockquote>
+<h1 id="5-Redis的数据类型"><a href="#5-Redis的数据类型" class="headerlink" title="5.Redis的数据类型"></a>5.Redis的数据类型</h1><p>Redis核心数据类型包括：</p>
+<ol>
+<li><strong>String</strong>：存储文本、数字或二进制数据。</li>
+<li><strong>List</strong>：双向链表，支持队列和栈操作。</li>
+<li><strong>Hash</strong>：字段-值映射，适合存储对象。</li>
+<li><strong>Set</strong>：无序唯一集合，支持交并差运算。</li>
+<li><strong>Sorted Set</strong>：按分数排序的有序集合。扩展类型含Bitmaps、HyperLogLog、地理空间及Stream（消息队列）。</li>
+</ol>
+<h1 id="6-Redis分布式锁"><a href="#6-Redis分布式锁" class="headerlink" title="6.Redis分布式锁"></a>6.Redis分布式锁</h1><p>Redis分布式锁是一种在分布式系统中<strong>协调多个服务节点对共享资源进行互斥访问的机制</strong>，典型应用场景包括库存扣减、订单幂等处理、定时任务防重复执行、秒杀场景下的并发控制等。</p>
+<blockquote>
+<p>可以用redis锁实现多进程的同步</p>
+</blockquote>
+<blockquote>
+<p>服务端如何保持原子性：Redis 服务端通过单线程事件循环（基于 Reactor 模式）+ 命令的串行执行 + 内置数据结构的原子操作实现命令级原子性；对多命令原子性需求（如多个 key 操作），则依赖 Lua 脚本或事务（MULTI/EXEC）配合 WATCH 机制实现乐观锁语义下的条件原子性。</p>
+</blockquote>
+<h1 id="7-确保Redis与数据库双写一致性"><a href="#7-确保Redis与数据库双写一致性" class="headerlink" title="7.确保Redis与数据库双写一致性"></a>7.确保Redis与数据库双写一致性</h1><p>常用方法包括：先更新数据库再删缓存（Cache-Aside）、延迟双删（更新前后均删缓存并延迟二次删除）、基于消息队列异步同步、监听数据库，触发缓存更新，以及设置缓存过期时间兜底。需结合业务场景选择策略，配合重试机制确保最终一致性。</p>
+<table>
+<thead>
+<tr>
+<th align="left">策略</th>
+<th align="left">核心思想</th>
+<th align="left">适用场景</th>
+<th align="left">一致性级别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Cache Aside</td>
+<td align="left">读时优先读缓存，写时先更新数据库再删除缓存</td>
+<td align="left">通用场景（读多写少）</td>
+<td align="left">最终一致性</td>
+</tr>
+<tr>
+<td align="left">延迟双删</td>
+<td align="left">先删缓存，更新数据库后，延迟一段时间再次删除缓存</td>
+<td align="left">高并发读写、热点数据</td>
+<td align="left">最终一致性</td>
+</tr>
+<tr>
+<td align="left">消息队列异步同步</td>
+<td align="left">通过消息队列异步更新缓存，保证最终一致性</td>
+<td align="left">高吞吐、允许短暂延迟</td>
+<td align="left">最终一致性</td>
+</tr>
+<tr>
+<td align="left">分布式锁</td>
+<td align="left">写操作时加锁，确保同一数据串行更新</td>
+<td align="left">强一致性要求的高并发场景</td>
+<td align="left">强一致性</td>
+</tr>
+<tr>
+<td align="left">TCC 模式</td>
+<td align="left">业务层分阶段提交（Try-Confirm-Cancel），保证数据库和缓存操作的原子性</td>
+<td align="left">金融级强一致性场景</td>
+<td align="left">强一致性</td>
+</tr>
+</tbody></table>
+<h1 id="8-聚簇索引和非聚簇索引"><a href="#8-聚簇索引和非聚簇索引" class="headerlink" title="8.聚簇索引和非聚簇索引"></a>8.聚簇索引和非聚簇索引</h1><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>聚簇索引 (Clustered Index)</th>
+<th>非聚簇索引 (Non-Clustered / Secondary Index)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>本质</td>
+<td>索引即数据，数据与索引存储在一起</td>
+<td>索引与数据分离，索引只存主键值</td>
+</tr>
+<tr>
+<td>叶子节点内容</td>
+<td>存储完整的行数据</td>
+<td>存储索引列的值 + 主键值 (ID)</td>
+</tr>
+<tr>
+<td>数量限制</td>
+<td>每张表只能有 1 个</td>
+<td>每张表可以有多个</td>
+</tr>
+<tr>
+<td>查询效率</td>
+<td>极快（一次查找即可获取数据）</td>
+<td>需回表（先查索引得ID，再查聚簇索引得数据）</td>
+</tr>
+<tr>
+<td>物理存储</td>
+<td>决定了数据在磁盘上的物理排列顺序</td>
+<td>逻辑顺序，与数据物理存储顺序无关</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>主键查询、范围查询、排序</td>
+<td>辅助字段查询、覆盖索引查询</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Redis Hash 是一种“数据结构”</strong>（用来存数据的），而<strong>非聚簇索引是一种“查询加速机制”</strong>（用来查数据的）。</p>
+<p>一个本身就是数据，一个依附于数据</p>
+</blockquote>
+<h1 id="9-可重复读解决了什么问题"><a href="#9-可重复读解决了什么问题" class="headerlink" title="9.可重复读解决了什么问题"></a>9.可重复读解决了什么问题</h1><p>可重复读位于读已提交之上、串行化之下。</p>
+<p>其<strong>核心诉求</strong>是：同一个事务内多次执行相同的SELECT语句，应看到完全一致的结果集（即不会因其他事务的并发修改而改变）。</p>
+<p>可重复读（Repeatable Read）隔离级别主要解决了<strong>脏读</strong>和<strong>不可重复读问题</strong>，但不解决幻读问题；在MySQL的InnoDB引擎中，通过<strong>多版本并发控制（MVCC）配合间隙锁（Gap Lock）或临键锁（Next-Key Lock）</strong>，实际上在大多数场景下也避免了幻读，从而实现了“严格可重复读”。</p>
+<blockquote>
+<p>脏读（读到未提交的修改）–&gt;读到的是“草稿”，随时可能被回滚（作废）。</p>
+<p>不可重复读（同一行数据两次读取值不同，因被其他事务update/commit）–&gt;读到的是“已提交的真相”，但破坏了事务的一致性假设。</p>
+<p>“幻读”在SQL标准中特指：同一事务中，第一次SELECT得到N行，第二次相同SELECT得到N+1行（因其他事务INSERT了一行并提交）–&gt;读到的是“凭空出现/消失的行”，导致范围判断失效。</p>
+</blockquote>
+<h1 id="10-MVCC"><a href="#10-MVCC" class="headerlink" title="10.MVCC"></a>10.MVCC</h1><p><strong>核心思想</strong>：<strong>为数据行维护多个历史版本</strong>，让读操作和写操作可以并行执行，互不阻塞，从而大幅提升数据库的并发性能。</p>
+<h4 id="核心价值"><a href="#核心价值" class="headerlink" title="核心价值"></a><strong>核心价值</strong></h4><ul>
+<li><strong>读写不阻塞</strong>：读事务读取旧版本数据，写事务创建新版本数据，两者互不干扰，解决了传统锁机制中“读阻塞写、写阻塞读”的性能瓶颈。</li>
+<li><strong>实现事务隔离</strong>：它是实现 <code>READ COMMITTED</code>（读已提交）和 <code>REPEATABLE READ</code>（可重复读）这两种关键隔离级别的基础，有效避免了脏读和不可重复读问题。</li>
+</ul>
+<h1 id="11-间隙锁是什么，发挥什么作用"><a href="#11-间隙锁是什么，发挥什么作用" class="headerlink" title="11.间隙锁是什么，发挥什么作用"></a>11.间隙锁是什么，发挥什么作用</h1><p>间隙锁（Gap Lock）是MySQL InnoDB存储引擎中的一种行级锁类型，用于锁定索引记录之间的“间隙”（即不存在实际记录的索引区间），而非具体某一行。</p>
+<blockquote>
+<p>例如，在索引值为(1, 5, 10)的B+树中，间隙包括(-∞,1)、(1,5)、(5,10)、(10,+∞)，间隙锁可锁定其中任意一个开区间。</p>
+</blockquote>
+<h1 id="12-AOP-和-IOC"><a href="#12-AOP-和-IOC" class="headerlink" title="12.AOP 和 IOC"></a>12.AOP 和 IOC</h1><p><strong>IOC（控制反转）</strong> 是一种<strong>设计思想</strong>，它把对象的创建和管理权从代码中剥离，交给 Spring 容器，从而实现<strong>解耦</strong>；</p>
+<p><strong>AOP（面向切面编程）</strong> 是一种<strong>编程范式</strong>，它把日志、事务等通用的‘横切逻辑’从业务代码中抽取出来，实现<strong>复用</strong></p>
+<h1 id="13-进程线程"><a href="#13-进程线程" class="headerlink" title="13.进程线程"></a>13.进程线程</h1><ul>
+<li>进程是<strong>操作系统进行资源分配和调度</strong>的基本单位，拥有独立的内存空间（包括代码段、数据段、堆、栈等）、文件描述符、信号处理机制等系统资源；</li>
+<li>线程是<strong>CPU调度的基本单位</strong>，是进程内的一个执行流，同一进程内的多个线程共享该进程的虚拟地址空间（如全局变量、堆、代码段、已打开文件等），但每个线程拥有独立的栈空间、寄存器状态（如PC、SP）、线程ID、信号掩码和errno等私有资源。</li>
+</ul>
+<blockquote>
+<p><strong>进程 —— 相当于“工厂”或“容器”</strong></p>
+<p>*<em>线程 —— 相当于“工人”或“流水线”**</em></p>
+<p><strong>线程是组成进程的实体</strong>。一个进程可以包含多个线程，这些线程是<strong>并行</strong>或<strong>并发</strong>执行的，而不是像微指令那样按顺序拆解执行。</p>
+</blockquote>
+<h1 id="13-死锁条件和解除方法"><a href="#13-死锁条件和解除方法" class="headerlink" title="13.死锁条件和解除方法"></a>13.死锁条件和解除方法</h1><p><strong>死锁发生的四个必要条件是：</strong>互斥条件、占有并等待条件、非抢占条件（不可剥夺条件）、循环等待条件。</p>
+<p><strong>解除死锁的常用方法包括：</strong>终止进程（剥夺资源或回滚）、资源抢占（强制回收部分进程已占有的资源）、进程回退（基于检查点的撤销与恢复）、死锁检测与恢复（周期性检测+选择牺牲进程）</p>
+<h1 id="13-僵尸进程、孤儿进程"><a href="#13-僵尸进程、孤儿进程" class="headerlink" title="13.僵尸进程、孤儿进程"></a>13.僵尸进程、孤儿进程</h1><ul>
+<li><strong>僵尸进程</strong>：子进程先死（调用exit），父进程不收尸（没有接收子进程退出状态）。<ul>
+<li>占用进程号（PID）和进程控制块（PCB），<strong>大量僵尸进程</strong>会耗尽系统的 <strong>PID 资源</strong>，导致系统无法创建新进程</li>
+<li><strong>不能</strong>直接用 <code>kill -9</code> 杀死僵尸进程，因为它已经“死”了。</li>
+<li><strong>解决方法</strong>：杀死它的<strong>父进程</strong>，或者让父进程调用 <code>wait()</code> 回收。</li>
+</ul>
+</li>
+<li><strong>孤儿进程</strong>：父进程先死，子进程被领养（通常无害）。<ul>
+<li>通常无害</li>
+<li>会被系统中的 <strong>1 号进程</strong>自动“领养”</li>
+<li>当孤儿进程最终结束时，<code>init</code> 进程会负责调用 <code>wait()</code> 回收它的资源，防止它变成僵尸进程</li>
+</ul>
+</li>
+</ul>
+<h1 id="14-Kill-9-（SIGKILL-不能被捕获和忽略）若无法杀死另一个进程为什么（无权限）"><a href="#14-Kill-9-（SIGKILL-不能被捕获和忽略）若无法杀死另一个进程为什么（无权限）" class="headerlink" title="14.Kill -9 （SIGKILL 不能被捕获和忽略）若无法杀死另一个进程为什么（无权限）"></a>14.Kill -9 （SIGKILL 不能被捕获和忽略）若无法杀死另一个进程为什么（无权限）</h1><ul>
+<li>权限不足</li>
+<li>僵尸进程 </li>
+<li>不可中断睡眠（状态显示为D,底层问题难以解决–&gt;重启系统）</li>
+</ul>
+<h1 id="15-数据结构的底层"><a href="#15-数据结构的底层" class="headerlink" title="15.数据结构的底层"></a>15.数据结构的底层</h1><ol>
+<li>vector:动态数组（支持随机访问，不适合中间插入删除）</li>
+<li>list：双向链表（不支持随机访问，适合中间插入删除）</li>
+<li>deque：分段连续的动态数组（维护<strong>中控器（Map）</strong>，这是一个指针数组，每个指针指向一块<strong>固定大小的连续缓冲区</strong>）<ul>
+<li>queue和stack：作为容器适配器，默认使用deque，也可以使用vector和list</li>
+</ul>
+</li>
+<li>map / set / multimap / multiset<ul>
+<li>底层结构：红黑树（Red-Black Tree)是一种<strong>自平衡二叉搜索树</strong>。它通过复杂的旋转操作（左旋、右旋）和颜色变换，保证树的高度始终维持在 **O(log n)**。</li>
+<li><strong>优点</strong>：查找、插入、删除的时间复杂度稳定在 **O(log n)**；支持范围查询（如 <code>lower_bound</code>）；数据有序。</li>
+<li><strong>缺点</strong>：节点需要存储颜色、左右子节点指针，内存开销大；树节点的内存不连续，缓存不友好。</li>
+</ul>
+</li>
+<li>unordered_map / unordered_set<ul>
+<li>底层结构：哈希表（Hash Table）</li>
+<li><strong>优点</strong>：查找、插入、删除的平均时间复杂度为 **O(1)**，速度极快。</li>
+<li><strong>缺点</strong>：数据无序；哈希函数计算有开销；最坏情况下（哈希冲突严重）性能退化为 O(n)。</li>
+</ul>
+</li>
+<li>priority_queue<ul>
+<li>和queue，stack一样是容器适配器，底层是vector，也可选deque</li>
+<li>通过封装底层的容器，并配合<strong>堆算法</strong>（<code>push_heap</code>, <code>pop_heap</code> 等），对外提供了一个“永远只让优先级最高的元素出头”的接口。</li>
+</ul>
+</li>
+</ol>
 
                 
             </div>
@@ -1007,7 +850,7 @@ int main()&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://WUHU-Z.github.io/21%E6%9A%91%E5%81%87%E9%9B%86%E8%AE%ADday01/">http://WUHU-Z.github.io/21%E6%9A%91%E5%81%87%E9%9B%86%E8%AE%ADday01/</a>
+                    <a href="http://WUHU-Z.github.io/%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87/">http://WUHU-Z.github.io/%E5%90%8E%E7%AB%AF%E5%87%86%E5%A4%87/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1045,8 +888,8 @@ int main()&#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
+                                <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                                    <span class="chip bg-color">面试</span>
                                 </a>
                             
                         </div>
@@ -1094,13 +937,13 @@ int main()&#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/21%E6%9A%91%E5%81%87%E9%9B%86%E8%AE%ADday02/">
+                <a href="/%E5%8D%8E%E4%B8%BA%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/61.jpg" class="responsive-img" alt="暑假集训 day02">
+                        <img src="/medias/featureimages/58.jpg" class="responsive-img" alt="华为面试大全">
                         
-                        <span class="card-title">暑假集训 day02</span>
+                        <span class="card-title">华为面试大全</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1111,14 +954,14 @@ int main()&#123;
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-04-11
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9B%86%E8%AE%AD/" class="post-category">
-                                    集训
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                    面试
                                 </a>
                             
                             
@@ -1128,8 +971,8 @@ int main()&#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
                 </div>
@@ -1143,13 +986,13 @@ int main()&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E5%B7%B1%E4%B9%8B%E8%A7%81%EF%BC%888.3%EF%BC%89/">
+                <a href="/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/29.jpg" class="responsive-img" alt="啊哈算法的一己之见（8.3）">
+                        <img src="/medias/featureimages/58.jpg" class="responsive-img" alt="拼多多面试大全">
                         
-                        <span class="card-title">啊哈算法的一己之见（8.3）</span>
+                        <span class="card-title">拼多多面试大全</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1160,14 +1003,14 @@ int main()&#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%95%8A%E5%93%88%E7%AE%97%E6%B3%95/" class="post-category">
-                                    啊哈算法
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                    面试
                                 </a>
                             
                             
@@ -1177,8 +1020,8 @@ int main()&#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
+                        <span class="chip bg-color">面试</span>
                     </a>
                     
                 </div>

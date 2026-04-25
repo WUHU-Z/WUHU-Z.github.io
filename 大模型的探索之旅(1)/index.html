@@ -707,7 +707,7 @@ attention_scores <span class="token operator">=</span> torch<span class="token p
 <p><strong>原理：</strong>自回归的特点是模型在每个时刻的输入都会拼接之前时间步的输出。self-attention主要的计算量在qkv的部分，由于每个时间步的输入都会对之前进行拼接，导致产生了大量的重复计算。</p>
 <p><strong>步骤</strong>：两阶段</p>
 <p>1.第一个token输出的过程中，KVcache为空。</p>
-<p>2.第二个token至最后一个token输出的过程中，前面的Key向量和Value向量会 被缓存，避免重复计算。（<strong>只计算新的Q和之前K, V之间的关系</strong>）</p>
+<p>2.第二个token至最后一个token输出的过程中，前面的Key向量和Value向量会被缓存，避免重复计算。（<strong>只计算新的Q和之前K, V之间的关系</strong>）</p>
 <p>为什么没有Q-cache?</p>
 <blockquote>
 <p>因为每个token的生成只依赖前一个Q和之前所有的K,V</p>

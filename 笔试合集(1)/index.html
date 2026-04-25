@@ -839,6 +839,31 @@ int main() {
     return 0;
 }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="三面的一道简单题（求立方根）"><a href="#三面的一道简单题（求立方根）" class="headerlink" title="三面的一道简单题（求立方根）"></a>三面的一道简单题（求立方根）</h1><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>当时就想着二分，自作聪明划分成为0~x再判断符号，忘记这是一个单调函数了,蠢猪啊我草</p>
+<pre class="line-numbers language-c++"><code class="language-c++">#include <iostream>
+using namespace std;
+
+double cubeRoot(double x) {
+    double left = -1e6, right = 1e6;
+    double mid;
+
+    while (right - left > 1e-7) {
+        mid = (left + right) / 2;
+        if (mid * mid * mid < x)
+            left = mid;
+        else
+            right = mid;
+    }
+    return mid;
+}
+
+int main() {
+    double x;
+    cin >> x;
+    cout << cubeRoot(x) << endl;
+    return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
