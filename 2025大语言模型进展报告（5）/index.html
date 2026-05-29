@@ -1,0 +1,2685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="2025大语言模型进展报告（5）, 隐迹札记">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>2025大语言模型进展报告（5） | 隐迹札记</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+  <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+ 
+
+	<body>
+		<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">隐迹札记</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Others</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/chat">
+          
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Chat</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Movies</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Books</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Galleries</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">隐迹札记</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Others
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/chat " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Chat</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Movies</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Books</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Galleries</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+ 
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">2025大语言模型进展报告（5）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                <span class="chip bg-color">大模型</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                大模型
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-05-12
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="五、大语言模型的应用进展"><a href="#五、大语言模型的应用进展" class="headerlink" title="五、大语言模型的应用进展"></a>五、大语言模型的应用进展</h2><h3 id="5-1-任务应用、"><a href="#5-1-任务应用、" class="headerlink" title="5.1 任务应用、"></a>5.1 任务应用、</h3><h4 id="5-1-1-脑基座模型"><a href="#5-1-1-脑基座模型" class="headerlink" title="5.1.1  脑基座模型"></a>5.1.1  脑基座模型</h4><table>
+<thead>
+<tr>
+<th align="left">模型</th>
+<th align="left">核心贡献</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">NeuroLM</td>
+<td align="left">提出通用多任务框架，展现出强大的迁移能力。采用 Patch-based Masking 策略提升表征效率。</td>
+</tr>
+<tr>
+<td align="left">EEGPT</td>
+<td align="left">针对 EEG 低信噪比设计，提出抗噪掩码策略。引入时空对齐机制，显著提升跨被试鲁棒性。</td>
+</tr>
+<tr>
+<td align="left">BrainGPT</td>
+<td align="left">构建了 1.1B 参数的超大规模模型。证明自回归范式能有效捕捉长程脑电时序依赖。</td>
+</tr>
+<tr>
+<td align="left">WaveMind</td>
+<td align="left">首个对话式 EEG 大模型，构建了专门训练集。将 EEG 映射到统一语义空间，实现了开放域问答。</td>
+</tr>
+<tr>
+<td align="left">CodeBrain</td>
+<td align="left">引入时频解耦 Tokenizer，赋予模型神经生理学可解释性。结合仿生“小世界网络”设计多尺度注意力。</td>
+</tr>
+</tbody></table>
+<h5 id="大脑认知对大模型人机交互启示"><a href="#大脑认知对大模型人机交互启示" class="headerlink" title="大脑认知对大模型人机交互启示"></a>大脑认知对大模型人机交互启示</h5><table>
+<thead>
+<tr>
+<th align="left">启示维度</th>
+<th align="left">代表工作</th>
+<th align="left">主要贡献与意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">能效与计算范式</td>
+<td align="left">Xu et al.</td>
+<td align="left">指出 LLM 高能耗不可持续。确立了借鉴脑神经高效计算机制的演进方向。</td>
+</tr>
+<tr>
+<td align="left">底层架构仿生</td>
+<td align="left">Zhengzheng et al.</td>
+<td align="left">实现 100% 性能保留下的 33.4% 能效提升。证明了生物合理性与大规模计算可兼容。</td>
+</tr>
+<tr>
+<td align="left">认知功能模拟</td>
+<td align="left">Webb et al.</td>
+<td align="left">模仿大脑前额叶的冲突监测与状态预测机制。显著提升了多步推理与长程规划的任务表现。</td>
+</tr>
+</tbody></table>
+<h4 id="5-1-2-编程助手"><a href="#5-1-2-编程助手" class="headerlink" title="5.1.2 编程助手"></a>5.1.2 编程助手</h4><table>
+<thead>
+<tr>
+<th align="left">研发机构</th>
+<th align="left">产品名称</th>
+<th align="left">核心功能</th>
+<th align="left">优势特点</th>
+<th align="left">适用场景</th>
+<th align="left">支持平台</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Factory.AI</td>
+<td align="left">Droid</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">能在终端环境中完成复杂任务</td>
+<td align="left">软件开发</td>
+<td align="left">各种 Terminal, IDE, Web, Slack, Linear</td>
+</tr>
+<tr>
+<td align="left">Warp</td>
+<td align="left">Warp</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">AI 内嵌到终端中，可以自然地从 AI 交互</td>
+<td align="left">软件开发</td>
+<td align="left">MacOS, Linux, Windows</td>
+</tr>
+<tr>
+<td align="left">OpenAI</td>
+<td align="left">Codex</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">能在手机和云端上交互</td>
+<td align="left">软件开发</td>
+<td align="left">各种 Terminal, IDE, 云端, GitHub, 手机</td>
+</tr>
+<tr>
+<td align="left">Google</td>
+<td align="left">Gemini-cli</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">具备多模态能力，能截图 pdf 或者图片来生成 apps</td>
+<td align="left">软件开发</td>
+<td align="left">各种 Terminal</td>
+</tr>
+<tr>
+<td align="left">Verdent AI</td>
+<td align="left">Verdent</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">多个 Agent 并行工作，执行任务前主动交互明确需求；复杂工程可转化为 Plan Tree</td>
+<td align="left">软件开发</td>
+<td align="left">MacOS, Linux, Windows, VSCode</td>
+</tr>
+<tr>
+<td align="left">OpenHands</td>
+<td align="left">OpenHands</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">配套开源，可以进行定制（比如自行选择接入的模型）</td>
+<td align="left">软件开发</td>
+<td align="left">Terminal, 云端, 移动端</td>
+</tr>
+<tr>
+<td align="left">HKUDS</td>
+<td align="left">DeepCode</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">开源，采用多智能体协作框架；在 Paper2Code 上超越人类专家表现</td>
+<td align="left">软件开发</td>
+<td align="left">Paper2Code</td>
+</tr>
+<tr>
+<td align="left">Anysphere</td>
+<td align="left">Cursor</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">完善兼容 VS Code 插件生态和快捷键，支持一键切换模型；提供隐私保护模式、企业级数据安全机制；支持百万行级项目的镜像分析</td>
+<td align="left">软件开发，自然语言转代码，智能代码补全</td>
+<td align="left">MacOS, Linux, Windows, VSCode</td>
+</tr>
+<tr>
+<td align="left">微软与 OpenAI</td>
+<td align="left">Copilot</td>
+<td align="left">AI 编程辅助</td>
+<td align="left">深度集成 Microsoft 365、Azure 等微软生态；基于 OpenAI 大模型迭代，代码生成流畅性和上下文匹配度持续提升</td>
+<td align="left">个人开发者日常编码、企业级云开发、CRM 系统搭建</td>
+<td align="left">Web 浏览器、IDE、Windows 命令行</td>
+</tr>
+<tr>
+<td align="left">字节</td>
+<td align="left">True</td>
+<td align="left">Agent 化 IDE</td>
+<td align="left">覆盖全开发全流程，支持 MCP 协议扩展；遵循“本地优先”原则，保障数据隐私</td>
+<td align="left">中大型项目的自动化开发，跨工具协作，任务分步的复杂工程</td>
+<td align="left">MacOS, Linux, Windows, 独立 AI IDE</td>
+</tr>
+<tr>
+<td align="left">阿里</td>
+<td align="left">通义灵码</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">兼容主流 IDE、企业级知识库权限和策略，首创通过自反思“可信 AI 智能编码工具” 4+评级</td>
+<td align="left">日常代码开发与补全，问答与代码解释，Agent 模式下的任务执行</td>
+<td align="left">MacOS, Linux, Windows, 各种 IDE</td>
+</tr>
+<tr>
+<td align="left">腾讯</td>
+<td align="left">CodeBuddy</td>
+<td align="left">软件开发 Agent</td>
+<td align="left">中文支持行业领先、企业级工程化适配</td>
+<td align="left">中文开发者个人项目、中文团队协作开发，复杂工程项目开发</td>
+<td align="left">MacOS, Linux, Windows, 主流 IDE</td>
+</tr>
+<tr>
+<td align="left">Trelis</td>
+<td align="left">Taborine</td>
+<td align="left">AI 编程辅助</td>
+<td align="left">补全速度行业第一；嵌入式/底层开发适配（C/C++、Rust、汇编等准确率优）</td>
+<td align="left">极速开发效率的开发者，嵌入式/底层开发场景</td>
+<td align="left">MacOS, Linux, Windows, 主流 IDE</td>
+</tr>
+</tbody></table>
+<h4 id="5-1-3-写作助手"><a href="#5-1-3-写作助手" class="headerlink" title="5.1.3 写作助手"></a>5.1.3 写作助手</h4><h5 id="学术与科研写作-Academic-amp-Scientific-Writing"><a href="#学术与科研写作-Academic-amp-Scientific-Writing" class="headerlink" title="学术与科研写作 (Academic &amp; Scientific Writing)"></a>学术与科研写作 (Academic &amp; Scientific Writing)</h5><table>
+<thead>
+<tr>
+<th align="left">产品名称</th>
+<th align="left">核心定位</th>
+<th align="left">技术底座</th>
+<th align="left">功能亮点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Paperpal</td>
+<td align="left">语言润色与投稿合规性检查</td>
+<td align="left">专有模型（基于学术文献和编辑模式训练），上下文感知语法检查</td>
+<td align="left"><strong>提交准备度检查</strong>：模拟期刊审稿标准，深度集成 MS Word，显著降低拒稿率。</td>
+</tr>
+<tr>
+<td align="left">Jenni AI</td>
+<td align="left">交互式初稿撰写与自动补全</td>
+<td align="left">生成式 AI 补全引擎，RAG 实时查重与引用生成</td>
+<td align="left"><strong>交互式补全</strong>：类似 Gmail 智能补全但针对长文，用户可逐句确认或修改。</td>
+</tr>
+<tr>
+<td align="left">知网 AI</td>
+<td align="left">全流程科研助手与可信知识服务</td>
+<td align="left">华知大模型（Huazhi LLM），基于 CNKI 全库的增强检索（RAG）</td>
+<td align="left"><strong>可信增强</strong>：答案严格溯源至 CNKI 权威期刊/学位论文，杜绝幻觉。</td>
+</tr>
+<tr>
+<td align="left">Scifocus</td>
+<td align="left">综合型科研助手与论文结构化</td>
+<td align="left">集成专有知识库与公共数据库，自动化论文结构生成</td>
+<td align="left"><strong>实验设计辅助</strong>：生成详细大纲和实验设计建议，确保逻辑流。</td>
+</tr>
+<tr>
+<td align="left">Google NotebookLM</td>
+<td align="left">溯源型知识综合与科研助理</td>
+<td align="left">Gemini, Deep Research Agent</td>
+<td align="left"><strong>多模态溯源</strong>：严格基于上传文献回答（零幻觉），生成播客式音频概览与深度研报。</td>
+</tr>
+<tr>
+<td align="left">秘塔写作猫</td>
+<td align="left">中文原生写作与纠错平台</td>
+<td align="left">MetaLLM（自研大模型），NLP 纠错引擎</td>
+<td align="left"><strong>本土化润色</strong>：深度适配中文语法与标点规范，提供公文/学术语体转换与结构化续写。</td>
+</tr>
+<tr>
+<td align="left">星火科研助手</td>
+<td align="left">智能科研知识服务平台</td>
+<td align="left">讯飞星火大模型（X1），中科院文献情报中心数据</td>
+<td align="left"><strong>深度科研支持</strong>：联合中科院打造，提供基于权威数据的智能综述生成与模拟审稿人视角的论文预审功能。</td>
+</tr>
+</tbody></table>
+<h5 id="创意与叙事写作-Creative-amp-Narrative-Writing"><a href="#创意与叙事写作-Creative-amp-Narrative-Writing" class="headerlink" title="创意与叙事写作 (Creative &amp; Narrative Writing)"></a>创意与叙事写作 (Creative &amp; Narrative Writing)</h5><table>
+<thead>
+<tr>
+<th align="left">产品名称</th>
+<th align="left">系统定位</th>
+<th align="left">核心架构</th>
+<th align="left">AI 模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Sudowrite</td>
+<td align="left">结构化叙事脚手架</td>
+<td align="left"><strong>Story Bible</strong>：结构化存储角色与世界观，生成时动态注入。</td>
+<td align="left"><strong>动态路由集成</strong>：GPT-4o, Claude 3.5 及专有微调模型 Muse。系统根据任务类型自动选择最优模型。</td>
+</tr>
+<tr>
+<td align="left">NovelAI</td>
+<td align="left">生成式开放沙盒</td>
+<td align="left"><strong>Lorebook</strong>：基于关键词和正则表达式触发的上下文注入机制（RAG）。</td>
+<td align="left">基于 Llama3 和 NeoX (Kayra) 进行小说语料的深度继续预测训练。完全私有化部署，不依赖第三方 API。</td>
+</tr>
+<tr>
+<td align="left">CreativeFlow</td>
+<td align="left">情感计算增强型助手</td>
+<td align="left"><strong>情感共鸣分析器</strong>：确保写作击中预设情感目标。</td>
+<td align="left">推测基于主流商业 LLM API 进行二次开发，外挂情感分析模块与体裁适配器。</td>
+</tr>
+<tr>
+<td align="left">彩云小梦</td>
+<td align="left">AI RPG与世界模拟器</td>
+<td align="left">**DCFormer[532]**：动态可组合多头注意力，大幅提升参数效率与角色一致性。</td>
+<td align="left">基于自研小说续写通用模型“云锦天章”，专为互动叙事与角色扮演优化。</td>
+</tr>
+<tr>
+<td align="left">蛙蛙写作</td>
+<td align="left">长篇个性化叙事引擎</td>
+<td align="left"><strong>LPA</strong>：终身个性化模型，结合动态长短期记忆机制管理伏笔。</td>
+<td align="left">自研 Weaver 2.0，支持“小说-剧本”全链路转化与私有化风格养成。</td>
+</tr>
+</tbody></table>
+<h5 id="企业与营销写作-Enterprise-amp-Marketing"><a href="#企业与营销写作-Enterprise-amp-Marketing" class="headerlink" title="企业与营销写作 (Enterprise &amp; Marketing)"></a>企业与营销写作 (Enterprise &amp; Marketing)</h5><table>
+<thead>
+<tr>
+<th align="left">产品名称</th>
+<th align="left">系统定位</th>
+<th align="left">核心架构</th>
+<th align="left">AI 模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Jasper AI</td>
+<td align="left">品牌营销操作系统</td>
+<td align="left"><strong>Jasper IQ</strong>：专有品牌知识库，存储并检索风格指南、过往佳作与战略文档。</td>
+<td align="left">混合模型路由：动态路由至 GPT-4、Anthropic 或 Google 模型，并结合专有数据微调。</td>
+</tr>
+<tr>
+<td align="left">Copy.ai</td>
+<td align="left">GTM 自动化引擎</td>
+<td align="left"><strong>Workflow OS</strong>：基于提示词链的编排引擎，支持逻辑分支、循环及多模型调用。</td>
+<td align="left">多模型选择器：允许用户在工作流每个节点手动选择最适合模型（如 GPT-4 分析、Claude 3.5 写作）。</td>
+</tr>
+<tr>
+<td align="left">百度擎舵</td>
+<td align="left">AIGC 创意生产平台</td>
+<td align="left"><strong>DeepSeek Integrated</strong>：深度集成推理模型，支持从业务卖点到视频脚本的端到端生成，并赋能“商家智能体”进行业务对话。</td>
+<td align="left">DeepSeek + 文心一言：结合 DeepSeek 推理能力与文心大模型语义生成能力，实现“千人千面”营销素材生产。</td>
+</tr>
+</tbody></table>
+<h4 id="5-1-4-设计助手"><a href="#5-1-4-设计助手" class="headerlink" title="5.1.4 设计助手"></a>5.1.4 设计助手</h4><h5 id="生成式界面设计"><a href="#生成式界面设计" class="headerlink" title="生成式界面设计"></a>生成式界面设计</h5><table>
+<thead>
+<tr>
+<th align="left">产品名称</th>
+<th align="left">核心定位</th>
+<th align="left">技术底座</th>
+<th align="left">功能亮点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Gemini 3 Generative UI</td>
+<td align="left">动态生成完整用户界面的革命性系统</td>
+<td align="left">Gemini 3 Pro 多模态模型</td>
+<td align="left">实时生成交互式网页、工具和应用；Dynamic View 和 Visual Layout 双模式；90% 用户偏好超越传统网站</td>
+</tr>
+<tr>
+<td align="left">Google Antigravity</td>
+<td align="left">Agentic 开发平台，任务导向型 IDE</td>
+<td align="left">Gemini 3 Pro、Claude Sonnet 4.5 等多模型支持</td>
+<td align="left">多 Agent 编排；Chrome 浏览器自动化；设计转代码；3D 图形支持；预览期完全免费</td>
+</tr>
+<tr>
+<td align="left">Figma Make</td>
+<td align="left">提示词转应用的快速原型工具</td>
+<td align="left">Claude 3.7</td>
+<td align="left">导入设计库保持品牌一致性；Supabase 后端集成；生成 React/Tailwind 代码；AI 积分计费系统</td>
+</tr>
+<tr>
+<td align="left">Google Stitch</td>
+<td align="left">实验性 AI 驱动 UI 设计工具</td>
+<td align="left">Gemini 3</td>
+<td align="left">多屏幕原型连接；交互流程设计；从概念到工作原型快速转换；Prototypes 功能</td>
+</tr>
+<tr>
+<td align="left">Google Opal</td>
+<td align="left">自然语言构建 AI 小应用</td>
+<td align="left">Gemini 模型家族</td>
+<td align="left">可视化编辑器；工作流自动化；与 Gemini Gems 深度集成；无需编程即可创建应用</td>
+</tr>
+</tbody></table>
+<h5 id="PPT-与文稿智能生成"><a href="#PPT-与文稿智能生成" class="headerlink" title="PPT 与文稿智能生成"></a>PPT 与文稿智能生成</h5><table>
+<thead>
+<tr>
+<th align="left">产品名称</th>
+<th align="left">核心定位</th>
+<th align="left">技术底座</th>
+<th align="left">功能亮点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Gamma 3.0</td>
+<td align="left">AI 驱动的视觉叙事平台</td>
+<td align="left">多模态 AI 模型</td>
+<td align="left">Gamma Agent 实时网络研究与内容整合；API 支持批量个性化生成；Smart Diagrams 自动可视化；自然语言编辑指令；2025 年 9 月发布</td>
+</tr>
+<tr>
+<td align="left">Microsoft PowerPoint Agents</td>
+<td align="left">Office 生态 AI 协作代理</td>
+<td align="left">GPT-5 Chat + Code-optimized Reasoning</td>
+<td align="left">Chat 中直接生成完整演示文稿；Agent Mode 应用内自然语言编辑；组织数据深度关联；多阶段推理验证；2025 年 11 月发布</td>
+</tr>
+<tr>
+<td align="left">Microsoft Copilot in PowerPoint</td>
+<td align="left">应用内 AI 增强功能</td>
+<td align="left">GPT-5 系列模型</td>
+<td align="left">Explainer 功能即时解释复杂内容；Image Editor 图像编辑集；on-canvas 演讲稿生成；多语言翻译；2025 年 10-12 月滚动发布</td>
+</tr>
+<tr>
+<td align="left">Canva Magic Design for Presentations</td>
+<td align="left">品牌化演示生成工具</td>
+<td align="left">GPT-4 + 自研设计引擎</td>
+<td align="left">大纲预览与结构调整；Brand Kit 自动应用品牌规范；Magic Switch 多格式转换；Magic Write 语音与风格优化；持续迭代中</td>
+</tr>
+<tr>
+<td align="left">Gamma API</td>
+<td align="left">企业级自动化生成接口</td>
+<td align="left">RESTful API + Webhooks</td>
+<td align="left">与 Zapier/Make/Workato 集成；单模板生成 100+ 定制演示；CRM 数据自动转换为客户演示；会议转录自动生成总结文稿；2025 年 9 月 Beta 发布</td>
+</tr>
+</tbody></table>
+<h5 id="视觉内容创作与媒体生成工具"><a href="#视觉内容创作与媒体生成工具" class="headerlink" title="视觉内容创作与媒体生成工具"></a>视觉内容创作与媒体生成工具</h5><table>
+<thead>
+<tr>
+<th align="left">产品名称</th>
+<th align="left">核心定位</th>
+<th align="left">技术底座</th>
+<th align="left">功能亮点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Runway Gen-4 系列</td>
+<td align="left">专业级 AI 视频生成平台</td>
+<td align="left">自研视频生成模型</td>
+<td align="left">解决角色场景跨镜头一致性；单图生成多场景；现实物理模拟；Video Arena 排行榜第一</td>
+</tr>
+<tr>
+<td align="left">Nano Banana Pro</td>
+<td align="left">高保真图像生成与编辑模型</td>
+<td align="left">Gemini 3</td>
+<td align="left">工作室级视觉质量；复杂任务处理能力；从即兴艺术到专业级输出；Pro 版提供更强创意控制</td>
+</tr>
+<tr>
+<td align="left">Kling 2.6</td>
+<td align="left">音视频融合生成工具</td>
+<td align="left">—</td>
+<td align="left">一个提示词生成视频、声音和风格；音视频生成融合趋势代表；创意工具集成化</td>
+</tr>
+<tr>
+<td align="left">FLUX.2</td>
+<td align="left">开源图像生成模型</td>
+<td align="left">开源权重架构</td>
+<td align="left">文本渲染准确性；适合 UX 设计稿、包装设计；数据控制与合规性；支持离线部署和定制化</td>
+</tr>
+<tr>
+<td align="left">Adobe Firefly (2025 更新)</td>
+<td align="left">集成于 Creative Cloud 的生成式 AI 套件</td>
+<td align="left">Adobe 自研模型</td>
+<td align="left">Harmonize 场景融合；Premiere Pro 中的 AI Object Mask；跨应用 AI 功能；与专业工具深度整合</td>
+</tr>
+<tr>
+<td align="left">Figma 图像编辑工具</td>
+<td align="left">Figma 内置 AI 图像处理</td>
+<td align="left">—</td>
+<td align="left">Erase object 擦除对象；Isolate object 隔离编辑；Expand image 背景扩展；无需外部工具的完整工作流</td>
+</tr>
+</tbody></table>
+<h5 id="设计系统与品牌资产管理"><a href="#设计系统与品牌资产管理" class="headerlink" title="设计系统与品牌资产管理"></a>设计系统与品牌资产管理</h5><table>
+<thead>
+<tr>
+<th align="left">产品名称</th>
+<th align="left">核心定位</th>
+<th align="left">技术底座</th>
+<th align="left">功能亮点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Canva 设计模型</td>
+<td align="left">自研基础设计模型平台</td>
+<td align="left">Canva 自研设计理解模型</td>
+<td align="left">生成可编辑分层设计；跨格式工作（社交媒体、演示、网站）；3D 对象生成；艺术风格复制</td>
+</tr>
+<tr>
+<td align="left">Figma Buzz</td>
+<td align="left">品牌营销资产批量生成工具</td>
+<td align="left">基于 Figma 设计系统</td>
+<td align="left">营销团队快速创建素材；保持品牌一致性；非设计师友好；锁定核心品牌元素功能</td>
+</tr>
+<tr>
+<td align="left">Adobe Express AI Assistant</td>
+<td align="left">对话式设计创作平台</td>
+<td align="left">Adobe Firefly + 语义理解引擎</td>
+<td align="left">分层 AI 编辑；模板智能定制；跨 Adobe 生态整合；语义理解设计元素</td>
+</tr>
+<tr>
+<td align="left">Figma Sites</td>
+<td align="left">设计到网站发布平台</td>
+<td align="left">Figma + AI 响应式布局引擎</td>
+<td align="left">自动响应式布局生成；设计直接发布为网站；CSS 代码自动生成；营销页面快速上线</td>
+</tr>
+<tr>
+<td align="left">Figma Draw</td>
+<td align="left">增强矢量编辑与插图工具</td>
+<td align="left">—</td>
+<td align="left">原生矢量工具升级；笔刷和纹理填充；路径文字功能；高质量视觉设计能力</td>
+</tr>
+<tr>
+<td align="left">MockUp</td>
+<td align="left">项目演示快速生成工具</td>
+<td align="left">—</td>
+<td align="left">高质量专业演示；实用解决方案；2025 年 11 月发布；针对项目展示优化</td>
+</tr>
+</tbody></table>
+<h4 id="5-1-5-社会模拟"><a href="#5-1-5-社会模拟" class="headerlink" title="5.1.5 社会模拟"></a>5.1.5 社会模拟</h4><h5 id="模拟仿真平台"><a href="#模拟仿真平台" class="headerlink" title="模拟仿真平台"></a>模拟仿真平台</h5><table>
+<thead>
+<tr>
+<th align="left">工作</th>
+<th align="left">平台能力</th>
+<th align="left">关注点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">AgentSociety</td>
+<td align="left">万级代理、长时间运行、支持政策与社会冲击实验</td>
+<td align="left">以可复现社会实验为目标，对齐现实社会现象（极化、政策反馈等）</td>
+</tr>
+<tr>
+<td align="left">SocioVerse</td>
+<td align="left">世界模型级社会仿真平台，连接千万级真实用户池</td>
+<td align="left">显式建模环境、用户、交互与行为分布对齐，强调人群代表性</td>
+</tr>
+<tr>
+<td align="left">YuLan-OneSim</td>
+<td align="left">平台化社会模拟基础设施，无代码建模与十万级扩展</td>
+<td align="left">弱化具体对齐假设，强调工程通用性与快速场景构建</td>
+</tr>
+</tbody></table>
+<h5 id="可靠性与偏差"><a href="#可靠性与偏差" class="headerlink" title="可靠性与偏差"></a>可靠性与偏差</h5><table>
+<thead>
+<tr>
+<th align="left">工作</th>
+<th align="left">认知建模假设</th>
+<th align="left">认知建模可靠性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Promising</td>
+<td align="left">不提出具体模型，强调方法论反思</td>
+<td align="left">指出行为拟态的风险，呼吁因果与认知可解释性</td>
+</tr>
+<tr>
+<td align="left">Simulating</td>
+<td align="left">显式建模信念、目标与推理过程</td>
+<td align="left">强调认知状态可追踪、干预一致性与因果解释</td>
+</tr>
+</tbody></table>
+<h5 id="评测与数据基准"><a href="#评测与数据基准" class="headerlink" title="评测与数据基准"></a>评测与数据基准</h5><table>
+<thead>
+<tr>
+<th align="left">工作</th>
+<th align="left">评测对象</th>
+<th align="left">评测特点与发现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">SPIN-Bench</td>
+<td align="left">战略规划与社会推理能力</td>
+<td align="left">揭示大模型在长程、多主体互动中的系统性不足</td>
+</tr>
+<tr>
+<td align="left">SocioBench</td>
+<td align="left">跨国社会调查问卷中的态度分布</td>
+<td align="left">基于 ISSP 数据评估人群级价值与态度对齐偏差，揭示了大语言模型在处理动态交互和信息不确定性方面的局限性</td>
+</tr>
+<tr>
+<td align="left">SocialMaze</td>
+<td align="left">大语言模型社交推理能力</td>
+<td align="left">揭示了大语言模型在处理动态交互和信息不确定性方面的局限性</td>
+</tr>
+</tbody></table>
+<h4 id="5-1-6-心理咨询"><a href="#5-1-6-心理咨询" class="headerlink" title="5.1.6 心理咨询"></a>5.1.6 心理咨询</h4><h5 id="心理咨询数据资源"><a href="#心理咨询数据资源" class="headerlink" title="心理咨询数据资源"></a>心理咨询数据资源</h5><table>
+<thead>
+<tr>
+<th align="left">数据集</th>
+<th align="left">核心侧重/范式</th>
+<th align="left">关键特性与创新</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">IntentionESC</td>
+<td align="left">支持意图驱动</td>
+<td align="left">提出 ICECOT 机制，通过建模支持者的心理意图引导模型实现精准的策略选择。</td>
+</tr>
+<tr>
+<td align="left">SSCconv</td>
+<td align="left">社会交互模拟</td>
+<td align="left">整合求助者画像库与支持者认知推理链，模拟更具针对性的社会化交互动态。</td>
+</tr>
+<tr>
+<td align="left">COCOON</td>
+<td align="left">主动需求挖掘</td>
+<td align="left">遵循主动倾听原则，通过分析“情绪-感受-需求-记忆”链条识别用户的潜在需求。</td>
+</tr>
+<tr>
+<td align="left">Psy-Insight</td>
+<td align="left">可解释多任务</td>
+<td align="left">首个双语咨询语料库，提供细粒度的多任务标签及回合级推理注释以增强逻辑理解。</td>
+</tr>
+<tr>
+<td align="left">PsyDial</td>
+<td align="left">隐私数据重构</td>
+<td align="left">采用 RMRR 方法在彻底脱敏的前提下重构对话，保护隐私同时保留真实互动特征。</td>
+</tr>
+<tr>
+<td align="left">MusPsy</td>
+<td align="left">多疗程长咨询</td>
+<td align="left">突破单次会话限制，通过跟踪心理状态随疗程的演变轨迹模拟长程咨询的动态调整。</td>
+</tr>
+</tbody></table>
+<h5 id="心理咨询技术进展"><a href="#心理咨询技术进展" class="headerlink" title="心理咨询技术进展"></a>心理咨询技术进展</h5><ul>
+<li>基于临床推理与诊疗范式的方法</li>
+<li>基于临床推理与诊疗范式的方法</li>
+</ul>
+<h5 id="心理咨询基准评估"><a href="#心理咨询基准评估" class="headerlink" title="心理咨询基准评估"></a>心理咨询基准评估</h5><ul>
+<li>AnnaAgent 指出传统的静态画像难以捕捉咨询过程中来访者状态的动态演变。</li>
+<li>Ψ-Arena提出了一个交互式评估框架，通过模拟包含建立信任、诊断及方案探索的多阶段真实咨询流程，引入了涵盖来访者体验、督导专业性及咨询师自省的三方评估机制，并通过闭环反馈迭代优化模型的咨询能力。</li>
+<li>CounselBench 联合心理专家构建了大规模评估基准。</li>
+<li>CARE-Bench 提出了一个基于专家原则指导的多样化来访者模拟基准。</li>
+</ul>
+<h4 id="5-1-7-深度调研：Deep-Research"><a href="#5-1-7-深度调研：Deep-Research" class="headerlink" title="5.1.7 深度调研：Deep Research"></a>5.1.7 深度调研：Deep Research</h4><blockquote>
+<p>该体系不再仅关注单次问答的正确性，而是围绕复杂研究目标，支持多阶段规划、多轮证据获取、持续状态维护与结构化报告生成，逐步呈现出研究代理（Research Agent）的系统形态。</p>
+</blockquote>
+<p><img src="D:\typora_picture\image-20260512193643386.png" alt="image-20260512193643386"></p>
+<h4 id="5-1-8-AI-for-Research"><a href="#5-1-8-AI-for-Research" class="headerlink" title="5.1.8 AI for Research"></a>5.1.8 AI for Research</h4><p><img src="D:\typora_picture\image-20260512193717196.png" alt="image-20260512193717196"></p>
+<h5 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>研究方向</h5><p><img src="D:\typora_picture\image-20260512193734994.png" alt="image-20260512193734994"></p>
+<h3 id="5-2-行业应用"><a href="#5-2-行业应用" class="headerlink" title="5.2 行业应用"></a>5.2 行业应用</h3><h4 id="5-2-1-教育行业"><a href="#5-2-1-教育行业" class="headerlink" title="5.2.1 教育行业"></a>5.2.1 教育行业</h4><p><img src="D:\typora_picture\image-20260514191416226.png" alt="image-20260514191416226"></p>
+<h5 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h5><table>
+<thead>
+<tr>
+<th align="left">产品名称</th>
+<th align="left">应用场景</th>
+<th align="left">功能亮点</th>
+<th align="left">技术特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Khanmigo</td>
+<td align="left">K-12 辅导、教师备课</td>
+<td align="left">苏格拉底式引导、过程性提示；教师端备课/练习生成</td>
+<td align="left">基于 LLM 的对话式 tutoring；强调安全护栏与课堂语境约束</td>
+</tr>
+<tr>
+<td align="left">Duolingo Max</td>
+<td align="left">语言学习（个体化）</td>
+<td align="left">Roleplay 对话练习；Explain My Answer 错因解释</td>
+<td align="left">LLM 驱动的对话与解释生成；与学习路径/题库系统深度耦合</td>
+</tr>
+<tr>
+<td align="left">Quizlet Q-Chat</td>
+<td align="left">作业答疑、对话练习</td>
+<td align="left">对话式问答与练习生成；围绕学习卡/题库内容互动</td>
+<td align="left">LLM + 结构化学习内容库；对话编排与安全策略</td>
+</tr>
+<tr>
+<td align="left">Photomath</td>
+<td align="left">数学拍照题解析</td>
+<td align="left">拍照识题、分步解答、步骤讲解</td>
+<td align="left">OCR/视觉识别 + 数学符号解析；求解器/推理步骤生成（可与 LLM 结合增强解释）</td>
+</tr>
+<tr>
+<td align="left">CheggMate</td>
+<td align="left">高等教育、作业辅助</td>
+<td align="left">个性化学习路径；练习与解释；学习陪伴式交互</td>
+<td align="left">LLM（公开信息含 GPT-4 方向）+ Chegg 内容与学习工作流；个性化推荐</td>
+</tr>
+<tr>
+<td align="left">Coursera Coach</td>
+<td align="left">在线课程学习辅助</td>
+<td align="left">个性化问题解答、概念澄清、课程笔记与总结</td>
+<td align="left">LLM + 课程内容索引/检索；对话式学习助手嵌入平台</td>
+</tr>
+<tr>
+<td align="left">Udemy AI 助手</td>
+<td align="left">在线技能学习</td>
+<td align="left">AI 聊天辅助、技能映射建议、课程问答</td>
+<td align="left">LLM + 课程内容上下文；平台级嵌入式助手</td>
+</tr>
+</tbody></table>
+<h5 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h5><table>
+<thead>
+<tr>
+<th align="left">产品名称</th>
+<th align="left">应用场景</th>
+<th align="left">功能亮点</th>
+<th align="left">技术特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">讯飞星火 (教育)</td>
+<td align="left">中小学课堂、作业辅导、教研</td>
+<td align="left">课堂辅导、作业批改与讲解、学情分析；强调“教-学-评”闭环</td>
+<td align="left">自研大模型 + 教育数据/评测体系；推理增强（X1 系列）与端侧/平台化部署能力</td>
+</tr>
+<tr>
+<td align="left">豆包爱学</td>
+<td align="left">中小学课后辅导</td>
+<td align="left">拍照答疑、口算/作文批改、错题归因与诊断</td>
+<td align="left">多模态（图像识别+LLM）+ 学习诊断链路；面向规模用户的产品化与分发</td>
+</tr>
+<tr>
+<td align="left">文心大模型 (教育)</td>
+<td align="left">教材/考试、教学支持</td>
+<td align="left">教材与考试场景优化；虚拟教师与多角色互动</td>
+<td align="left">多模态与推理能力增强（4.5/X1）；平台化 API 与应用生态</td>
+</tr>
+<tr>
+<td align="left">人民网“自在”心理疏导大模型</td>
+<td align="left">校园心理健康</td>
+<td align="left">情绪支持、共情对话、心理科普与辅导</td>
+<td align="left">心理/对话安全策略 + 情绪识别/对话管理；教育平台集成与服务化</td>
+</tr>
+<tr>
+<td align="left">腾讯青少年大模型（未成年人模式）</td>
+<td align="left">适龄化学习与内容安全</td>
+<td align="left">未成年人模式、内容安全与防沉迷；生态覆盖广</td>
+<td align="left">适龄分级/安全策略 + 平台生态集成（微信/QQ 等）</td>
+</tr>
+<tr>
+<td align="left">猿辅导</td>
+<td align="left">K-12 课后辅导、自适应学习</td>
+<td align="left">拍照识题、AI 讲题与答疑、个性化练习推荐、学习诊断与错题巩固</td>
+<td align="left">大模型 + 自适应学习/知识图谱体系；题库检索与讲解生成协同；面向规模用户的系统化产品部署</td>
+</tr>
+<tr>
+<td align="left">松鼠 AI</td>
+<td align="left">K-12 自适应学习、个性化教学</td>
+<td align="left">知识点诊断、因材施教路径规划、个性化练习与讲解</td>
+<td align="left">智能自适应学习系统（IALS）；学习画像建模与动态难度控制；诊断-干预闭环优化</td>
+</tr>
+<tr>
+<td align="left">ChatGLM (Edu/高校应用方案)</td>
+<td align="left">高校课程、校内知识库</td>
+<td align="left">校内问答、课程助手、知识库检索与智能体</td>
+<td align="left">国产开源/可定制大模型路线；RAG/微调与本地化部署友好</td>
+</tr>
+</tbody></table>
+<h4 id="5-2-2-医疗行业"><a href="#5-2-2-医疗行业" class="headerlink" title="5.2.2 医疗行业"></a>5.2.2 医疗行业</h4><h5 id="在知识适配方面"><a href="#在知识适配方面" class="headerlink" title="在知识适配方面"></a>在知识适配方面</h5><table>
+<thead>
+<tr>
+<th align="left">技术维度</th>
+<th align="left">代表性工作</th>
+<th align="left">主要贡献</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">持续预训练</td>
+<td align="left">Med-PaLM 2</td>
+<td align="left">强基座 + 医学领域适配 + 提示集成精炼</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Me-LLaMA</td>
+<td align="left">生物医学文献与临床笔记等持续预训练和指令微调</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">MMedIns-Llama 3</td>
+<td align="left">大规模医学指令混合与多任务医学指令混合训练</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">MedFound</td>
+<td align="left">面向诊断决策偏好的推理微调与偏好对齐</td>
+</tr>
+<tr>
+<td align="left">可验证化的医学推理</td>
+<td align="left">AlphaMed</td>
+<td align="left">医学任务上纯强化学习训练</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">m1</td>
+<td align="left">强调对推理链关键步骤的评估</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Fleming-r1</td>
+<td align="left">“可验证推理”为目标，冷启动 + 强化学习</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">MedS3</td>
+<td align="left">提出自演化训练框架、引入软过程监督信号</td>
+</tr>
+<tr>
+<td align="left">全流程医疗 Agent</td>
+<td align="left">AMIE</td>
+<td align="left">模拟对话环境与反馈机制提升对话诊断能力</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Healthcare agent</td>
+<td align="left">提出面向问诊的 Agent 框架</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">DxDirector</td>
+<td align="left">将 LLM 从“被动应答工具”提升为“诊断流程组织者”</td>
+</tr>
+</tbody></table>
+<h5 id="医疗领域多模态的扩展"><a href="#医疗领域多模态的扩展" class="headerlink" title="医疗领域多模态的扩展"></a>医疗领域多模态的扩展</h5><table>
+<thead>
+<tr>
+<th align="left">技术维度</th>
+<th align="left">代表性工作</th>
+<th align="left">主要贡献</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">3D 影像理解</td>
+<td align="left">Vote-MI</td>
+<td align="left">缓解了通用 VLM 难以直接处理 3D 影像</td>
+</tr>
+<tr>
+<td align="left">基础模型层面</td>
+<td align="left">CONCH</td>
+<td align="left">面向病理图文对齐预训练</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">BiomedGPT</td>
+<td align="left">面向更广泛生物医学图文对齐预训练</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">TITAN</td>
+<td align="left">把“全切片自监督 + 多模态对齐”推向可复用底座</td>
+</tr>
+<tr>
+<td align="left">输出可控方面</td>
+<td align="left">MIMO</td>
+<td align="left">实现对关键结构/术语的精细对齐</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Med-MIM</td>
+<td align="left">补齐多图像理解与对照推理</td>
+</tr>
+</tbody></table>
+<h5 id="医疗领域的数据资源与基准构建"><a href="#医疗领域的数据资源与基准构建" class="headerlink" title="医疗领域的数据资源与基准构建"></a>医疗领域的数据资源与基准构建</h5><table>
+<thead>
+<tr>
+<th align="left">技术维度</th>
+<th align="left">代表性工作</th>
+<th align="left">主要贡献</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">综合医学认知与推理</td>
+<td align="left">JAMA Clinical Challenge &amp; Medbullets</td>
+<td align="left">问题构造更接近真实临床情境</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">AfriMed-QA</td>
+<td align="left">泛非语境下的多专科医疗问答</td>
+</tr>
+<tr>
+<td align="left">临床文本与电子病历</td>
+<td align="left">ArchEHR-QA</td>
+<td align="left">聚焦可读可溯的医疗问答</td>
+</tr>
+<tr>
+<td align="left">检索增强</td>
+<td align="left">DiN</td>
+<td align="left">标注不完美情况下的稳健性与泛化能力</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">M3Retrieve</td>
+<td align="left">多领域与多任务的多模态检索基准</td>
+</tr>
+<tr>
+<td align="left">临床工作流</td>
+<td align="left">MedChain</td>
+<td align="left">真实临床工作流的连续决策</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">MedAgentBoard</td>
+<td align="left">多智能体医疗任务评测框架</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">CURE-Bench</td>
+<td align="left">用药决策与治疗方案规划等临床决策</td>
+</tr>
+</tbody></table>
+<h4 id="5-2-3-金融"><a href="#5-2-3-金融" class="headerlink" title="5.2.3 金融"></a>5.2.3 金融</h4><h5 id="金融大模型在不同应用场景下的代表性工作汇总"><a href="#金融大模型在不同应用场景下的代表性工作汇总" class="headerlink" title="金融大模型在不同应用场景下的代表性工作汇总"></a>金融大模型在不同应用场景下的代表性工作汇总</h5><table>
+<thead>
+<tr>
+<th align="left">应用维度</th>
+<th align="left">用户群体</th>
+<th align="left">代表性工作</th>
+<th align="left">核心贡献/技术支撑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">智能投研与辅助分析</td>
+<td align="left">投资分析师</td>
+<td align="left">Beyond Summaries</td>
+<td align="left">协同生成图文并茂的专业研报</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Agentic Pipeline</td>
+<td align="left">模拟分析师从数据到观点的完整工作流</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">FinCoT</td>
+<td align="left">显式融入杜邦分析等专家逻辑</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">GraphRAG Analysis</td>
+<td align="left">利用图谱结构优化复杂叙事摘要</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Fin-DBQA</td>
+<td align="left">强化数据库推理与多轮问答追踪</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">散户投资者</td>
+<td align="left">Behavioral-Chains</td>
+<td align="left">生成兼顾损失厌恶等心理偏差的建议</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Generating News</td>
+<td align="left">根据股价因子自动生成财经新闻</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者</td>
+<td align="left">KULFi Framework</td>
+<td align="left">引入外部知识库增强隐性因果推理</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">CLRG</td>
+<td align="left">精准定位原因与结果的语义边界</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Concept-Based RAG</td>
+<td align="left">基于概念层级理解实现细粒度检索</td>
+</tr>
+<tr>
+<td align="left">量化交易与信贷决策</td>
+<td align="left">交易员/基金经理</td>
+<td align="left">FinDebate</td>
+<td align="left">多智能体辩论提升决策客观性</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Sam’s Fans</td>
+<td align="left">基于记忆框架构建动态交易阈值</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Enhancing PEAD</td>
+<td align="left">量化盈余公告后的股价漂移</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">300k/ns team</td>
+<td align="left">兼顾交易决策透明度与可解释性</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">信贷/评级人员</td>
+<td align="left">CreditLLM</td>
+<td align="left">少样本构建信贷产品专业助手</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Forecasting Ratings</td>
+<td align="left">探究 LLM 与传统 ML 在评级上的边界</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者/宽客</td>
+<td align="left">Modeling Interactions</td>
+<td align="left">文本关联构建动态图谱预测交易量</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Zero-Shot Extraction</td>
+<td align="left">零样本构建产业链与竞争图谱</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">FinMoE</td>
+<td align="left">稀疏激活架构降低高频推理成本</td>
+</tr>
+<tr>
+<td align="left">合规审计与金融风控</td>
+<td align="left">监管者/审计师</td>
+<td align="left">Chat Bankman-Fried</td>
+<td align="left">模拟高风险人物探测欺诈边界</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Fraud-10K</td>
+<td align="left">从年报微细措辞中检测欺诈迹象</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">SEC-QA</td>
+<td align="left">监管文件合规性问答系统评测</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">企业风控官</td>
+<td align="left">LAVA</td>
+<td align="left">自动化检测文档内部逻辑与数据矛盾</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Detecting Evasive</td>
+<td align="left">识别高管电话会中的闪烁其词</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者</td>
+<td align="left">AveniBench</td>
+<td align="left">综合金融智能安全与能力评测</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">FMD-Mllama</td>
+<td align="left">多模态推理粉碎金融谣言</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">FinEval-KR</td>
+<td align="left">解耦静态知识记忆与动态逻辑推理</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Fin. Literacy</td>
+<td align="left">利用 DSL 测试会计核心逻辑</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Capybara</td>
+<td align="left">利用 CoT 提升谣言验证逻辑严密性</td>
+</tr>
+</tbody></table>
+<h4 id="5-2-4-法律行业"><a href="#5-2-4-法律行业" class="headerlink" title="5.2.4 法律行业"></a>5.2.4 法律行业</h4><table>
+<thead>
+<tr>
+<th align="left">应用维度</th>
+<th align="left">用户群体</th>
+<th align="left">代表性工作</th>
+<th align="left">核心贡献/技术支撑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">法律推理与司法裁判</td>
+<td align="left">法院/法官</td>
+<td align="left">LFP</td>
+<td align="left">从原始证据直接预测法律事实</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">CLEAR</td>
+<td align="left">区分易混淆款项辅助法条适用</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">LexNum</td>
+<td align="left">解决赔偿金计算难题</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">L4MJ</td>
+<td align="left">神经符号架构保障逻辑</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">LegalReasoner</td>
+<td align="left">分步验证与结构化思维链</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">法律从业者</td>
+<td align="left">JUREX-4E</td>
+<td align="left">基于四要件说构建知识库</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">SyLeR</td>
+<td align="left">强制遵循三段论逻辑</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">GreekBarBench</td>
+<td align="left">复杂法律意见书起草基准</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者</td>
+<td align="left">Unilaw-R1</td>
+<td align="left">强化学习提升思维链质量</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Legal-R1</td>
+<td align="left">增加推理时间计算量范式</td>
+</tr>
+<tr>
+<td align="left">法律文书生成与辅助写作</td>
+<td align="left">法院/法官</td>
+<td align="left">LexKeyPlan</td>
+<td align="left">规划-检索-生成新范式</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">SLDS</td>
+<td align="left">生成高质量司法摘要</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">SwiLTrA-Bench</td>
+<td align="left">多司法管辖区文书互译</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">法律从业者</td>
+<td align="left">BriefMe</td>
+<td align="left">构建 IRAC 结构法律书状</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">CoCoLex</td>
+<td align="left">复制解码策略防止幻觉</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">社会公众</td>
+<td align="left">ClaimGen-CN</td>
+<td align="left">案情转化为规范诉讼请求</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">JUDGEBERT</td>
+<td align="left">生成通俗易懂法律指南</td>
+</tr>
+<tr>
+<td align="left">深度法律检索与 RAG</td>
+<td align="left">法院/法官</td>
+<td align="left">LegalSearchLM</td>
+<td align="left">基于要素生成检索判例</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">IL-PCSR</td>
+<td align="left">法条先例依懒排序</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">LexCLiPR</td>
+<td align="left">跨语言分段落判例检索</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">法律从业者</td>
+<td align="left">UniLR</td>
+<td align="left">统一检索法条类案及罪名</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">CitaLaw</td>
+<td align="left">强化生成内容引用能力</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">ACORD</td>
+<td align="left">针对合同条款的检索</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者</td>
+<td align="left">KOBLEX</td>
+<td align="left">参数化法条辅助多跳检索</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">GRAP</td>
+<td align="left">构建主张图验证法律逻辑</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">CogniBench</td>
+<td align="left">检测推理逻辑认知幻觉</td>
+</tr>
+<tr>
+<td align="left">企业合同审查与合规风控</td>
+<td align="left">企业/律师</td>
+<td align="left">LegalAgentBench</td>
+<td align="left">自动化执行尽职调查任务</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">PrivaCI-Bench</td>
+<td align="left">场景完整性理论检测隐私合规</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">ProvBench</td>
+<td align="left">合同冲突检测与条款推荐</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">税务/保险</td>
+<td align="left">SOLAR</td>
+<td align="left">形式化验证税务责任计算</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者</td>
+<td align="left">LegalCore</td>
+<td align="left">长文档跨段落事件共指消解</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">LexTime</td>
+<td align="left">识别法律事件时间顺序</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">社会公众</td>
+<td align="left">PAKTON</td>
+<td align="left">识别霸王条款与风险</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">ProvBench</td>
+<td align="left">快速理解签署文件风险点</td>
+</tr>
+</tbody></table>
+<h4 id="5-2-5-农业产业"><a href="#5-2-5-农业产业" class="headerlink" title="5.2.5 农业产业"></a>5.2.5 农业产业</h4><table>
+<thead>
+<tr>
+<th align="left">应用维度</th>
+<th align="left">用户群体</th>
+<th align="left">代表性工作</th>
+<th align="left">核心贡献/技术支撑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">育种研发与基因设计</td>
+<td align="left">科研机构</td>
+<td align="left">Breeding 5.0</td>
+<td align="left">AI 解码种质资源与育种飞轮</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">AgroNT</td>
+<td align="left">零样本预测基因突变影响</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">丰登大模型</td>
+<td align="left">生物育种知识整合</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">种业企业</td>
+<td align="left">MyGenAssist</td>
+<td align="left">加速育种研发内部平台</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Heritable Agriculture</td>
+<td align="left">预测基因组与环境交互</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者</td>
+<td align="left">AI Breeder for Crops</td>
+<td align="left">全基因组选择算法结合</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Prithvi</td>
+<td align="left">地理空间基础模型</td>
+</tr>
+<tr>
+<td align="left">田间作业与具身智能</td>
+<td align="left">农机企业</td>
+<td align="left">See &amp; Spray Ultimate</td>
+<td align="left">视觉大模型实时杂草识别</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Operations Center</td>
+<td align="left">软硬一体自主作业生态</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">天工开悟模型</td>
+<td align="left">感知-决策-控制一体化</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">科研机构</td>
+<td align="left">AgReason</td>
+<td align="left">农业推理基准与因果关系</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">AgriBench</td>
+<td align="left">多模态农业应用评估</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">PhenoBench</td>
+<td align="left">像素级作物杂草语义理解</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者</td>
+<td align="left">LLM-Based RL Agent</td>
+<td align="left">水分胁迫指数编码优化灌溉</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Synthetic Dataset</td>
+<td align="left">LLM 生成合成图像数据集</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">九壤耘星</td>
+<td align="left">旱区农业多模态数据整合</td>
+</tr>
+<tr>
+<td align="left">农艺决策与知识服务</td>
+<td align="left">农技推广</td>
+<td align="left">Farmer.Chat</td>
+<td align="left">RAG 技术克服幻觉风险</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">My Climate Advisor</td>
+<td align="left">气候适应性建议系统</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">神农大模型 3.0</td>
+<td align="left">千万级知识图谱与 36 智能体</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">农知大模型</td>
+<td align="left">文献溯源与智能伴读</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">科研机构</td>
+<td align="left">KALLM</td>
+<td align="left">双层知识注入策略</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">RL-LLM 融合</td>
+<td align="left">强化学习优化农事策略</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">狮子山模型</td>
+<td align="left">五维架构实时更新推理</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者</td>
+<td align="left">AgriEval</td>
+<td align="left">中文农业基准测评体系</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Agri-CM3</td>
+<td align="left">多模态农业管理评估</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">RAG 咖啡病害系统</td>
+<td align="left">实时检测与合规治理</td>
+</tr>
+<tr>
+<td align="left">供应链管理与金融风控</td>
+<td align="left">金融机构</td>
+<td align="left">云原生金融平台</td>
+<td align="left">信贷处理时间缩短 81%</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">AI 反欺诈模型</td>
+<td align="left">供应链金融安全保障</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">农业企业</td>
+<td align="left">Agent 供应链模拟</td>
+<td align="left">极端事件压力测试</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">农业耕地大模型 1.0</td>
+<td align="left">高标准农田监测预警</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">开发者</td>
+<td align="left">腾讯混元大模型</td>
+<td align="left">智慧温室与金融风控</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">百度云智一体</td>
+<td align="left">遥感气象地块级指导</td>
+</tr>
+</tbody></table>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Mr.Z</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://WUHU-Z.github.io/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%885%EF%BC%89/">http://WUHU-Z.github.io/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%885%EF%BC%89/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Mr.Z</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                    <span class="chip bg-color">大模型</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%886%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/53.jpg" class="responsive-img" alt="2025大语言模型进展报告（6）">
+                        
+                        <span class="card-title">2025大语言模型进展报告（6）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-05-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%884%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/41.jpg" class="responsive-img" alt="2025大语言模型进展报告（4）">
+                        
+                        <span class="card-title">2025大语言模型进展报告（4）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-05-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+ <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="7747893098"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2026</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Mr.Z</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/WUHU-Z" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ddd@mail.nwpu.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2632851304" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2632851304" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+ <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+ <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+		<script src="/libs/materialize/materialize.min.js"></script>
+		<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+		<script src="/libs/aos/aos.js"></script>
+		<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+		<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+		<script src="/js/matery.js"></script>
+
+		<!-- Baidu Analytics -->
+ <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+ 
+		<script
+			src="/libs/others/clicklove.js"
+			async="async"
+		></script>
+		 
+		<script
+			async
+			src="/libs/others/busuanzi.pure.mini.js"
+		></script>
+		      
+		<script
+			type="text/javascript"
+			size="150"
+			alpha="0.6"
+			zIndex="-1"
+			src="/libs/background/ribbon.min.js"
+			async="async"
+		></script>
+		 
+		<script
+			type="text/javascript"
+			src="/libs/background/ribbon-dynamic.js"
+			async="async"
+		></script>
+		 
+		<script
+			src="/libs/instantpage/instantpage.js"
+			type="module"
+		></script>
+		
+		<!-- 雪花特效 -->
+		
+		<script type="text/javascript" src="/libs/others/snow.js"></script>
+		
+
+		<script type="text/javascript">
+			var OriginTitile = document.title,
+				st;
+			document.addEventListener("visibilitychange", function () {
+				document.hidden
+					? ((document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！"),
+					  clearTimeout(st))
+					: ((document.title = "φ(゜▽゜*)♪咦，又好了！"),
+					  (st = setTimeout(function () {
+							document.title = OriginTitile;
+					  }, 3e3)));
+			});
+		</script>
+		
+		<script
+			type="text/javascript"
+			src="/libs/others/sakura.js"
+		></script>
+		
+	<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

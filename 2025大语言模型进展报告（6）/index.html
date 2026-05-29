@@ -1,0 +1,3296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="2025大语言模型进展报告（6）, 隐迹札记">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>2025大语言模型进展报告（6） | 隐迹札记</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+  <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+ 
+
+	<body>
+		<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">隐迹札记</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Others</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/chat">
+          
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Chat</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Movies</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Books</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Galleries</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">隐迹札记</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Others
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/chat " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Chat</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Movies</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Books</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Galleries</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+ 
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/53.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">2025大语言模型进展报告（6）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                <span class="chip bg-color">大模型</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                大模型
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-05-16
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="六、评测基准和模型进展"><a href="#六、评测基准和模型进展" class="headerlink" title="六、评测基准和模型进展"></a>六、评测基准和模型进展</h2><h3 id="6-1-新评测基准"><a href="#6-1-新评测基准" class="headerlink" title="6.1 新评测基准"></a>6.1 新评测基准</h3><h4 id="多轮对话评测基准"><a href="#多轮对话评测基准" class="headerlink" title="多轮对话评测基准"></a>多轮对话评测基准</h4><h5 id="长程交互评估基准"><a href="#长程交互评估基准" class="headerlink" title="长程交互评估基准"></a>长程交互评估基准</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">LongMem-Eval</td>
+<td align="left">500 个测试问题、基于动态多会话对话</td>
+<td align="left">英语</td>
+<td align="left">长期记忆评测</td>
+<td align="left">定义五项核心记忆能力：信息提取、多会话推理、知识更新、时间推理和抑制能力。评估模型在跨会话场景中的长期记忆表现。</td>
+</tr>
+<tr>
+<td align="left">MTRAG</td>
+<td align="left">110 个对话，平均 7.7 轮，共 842 个任务，涵盖四个领域</td>
+<td align="left">英语</td>
+<td align="left">多轮 RAG 对话评测</td>
+<td align="left">首个端到端人生成的多轮 RAG 基准，反映真实世界多维属性。评估完整 RAG 流程，包括检索和生成系统处理后续轮次、无法回答的问题、非独立问题和多领域的能力。由 IBM 发布。</td>
+</tr>
+<tr>
+<td align="left">EvoIF</td>
+<td align="left">动态生成，可扩展</td>
+<td align="left">英语</td>
+<td align="left">动态指令遵循评测</td>
+<td align="left">通过动态生成机制持续产生具有指令演化、主题切换和回溯等复杂行为的多轮对话，测试模型在长程交互中维持高保真指令遵循的极限。</td>
+</tr>
+</tbody></table>
+<h5 id="从结果评估到过程质量评估"><a href="#从结果评估到过程质量评估" class="headerlink" title="从结果评估到过程质量评估"></a>从结果评估到过程质量评估</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">RefineBench</td>
+<td align="left">1,000 个问题，涵盖 11 个领域 239 个主题</td>
+<td align="left">英语</td>
+<td align="left">精炼能力评测</td>
+<td align="left">使用基于检查清单的评估框架评估语言模型的精炼能力。评估两种模式:(1) 引导式精炼: 提供自然语言反馈;(2) 自我精炼: 模型自主改进。</td>
+</tr>
+<tr>
+<td align="left">InfoQuest</td>
+<td align="left">具体数量未公开</td>
+<td align="left">英语</td>
+<td align="left">开放式对话评测</td>
+<td align="left">提出三维评估框架: 对话吸引力、信息收集效率和社交适当性。评估模型在开放式对话中的用户体验质量, 从过程和结果两个层面进行综合评估。</td>
+</tr>
+<tr>
+<td align="left">MMReason</td>
+<td align="left">多领域长链数据</td>
+<td align="left">英语</td>
+<td align="left">多步推理过程正确性</td>
+<td align="left">针对长链推理的细粒度评估。它摒弃了仅评估最终答案的传统做法，专注于检测中间推理步骤的逻辑连贯性与正确性，识别“答案正确但过程错误”的幻觉。</td>
+</tr>
+<tr>
+<td align="left">AgentReward</td>
+<td align="left">1,300 条交互轨迹</td>
+<td align="left">英语</td>
+<td align="left">Agent 轨迹/步骤质量</td>
+<td align="left">专门评估 Agent 在 Web 环境完成任务的交互轨迹。它引入 LLM-as-a-Judge 来对 Agent 的每一步操作（进行奖励评分，评估其决策过程的有效性而不仅仅是任务成功率。</td>
+</tr>
+</tbody></table>
+<h5 id="2025-年针对性多轮对话能力评估基准"><a href="#2025-年针对性多轮对话能力评估基准" class="headerlink" title="2025 年针对性多轮对话能力评估基准"></a>2025 年针对性多轮对话能力评估基准</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Multi-Challenge</td>
+<td align="left">273 条</td>
+<td align="left">英语</td>
+<td align="left">多维综合挑战</td>
+<td align="left">评估四类挑战:(1) 指令保持: 全对话周期约束遵循;(2) 推理记忆: 关联离散历史信息;(3) 版本编辑: 处理动态修改;(4) 自洽性: 解决矛盾信息。</td>
+</tr>
+<tr>
+<td align="left">Struct-Flow</td>
+<td align="left">未公开</td>
+<td align="left">英语</td>
+<td align="left">结构化流指令</td>
+<td align="left">针对多轮对话的结构依赖性，定义了 6 种层级化交互关系（如回溯、扩展、精炼），评估模型在特定结构约束下的长程指令遵循能力。</td>
+</tr>
+<tr>
+<td align="left">Advanced-IP</td>
+<td align="left">1,645 条</td>
+<td align="left">英语</td>
+<td align="left">细粒度指令遵循</td>
+<td align="left">采用基于评分细则 (Rubric-based) 的评估框架，引入系统提示词 (System Prompt) 变量，专注于多轮场景下复杂指令的分解与验证，解决指令遗忘问题。</td>
+</tr>
+</tbody></table>
+<h4 id="工具使用评测基准"><a href="#工具使用评测基准" class="headerlink" title="工具使用评测基准"></a>工具使用评测基准</h4><h5 id="函数调用准确性与工具组合能力评测基准对比"><a href="#函数调用准确性与工具组合能力评测基准对比" class="headerlink" title="函数调用准确性与工具组合能力评测基准对比"></a>函数调用准确性与工具组合能力评测基准对比</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">BFCL V4</td>
+<td align="left">4,951 个测试用例（3,951 单轮 +1,000 多轮）</td>
+<td align="left">多语言</td>
+<td align="left">函数调用</td>
+<td align="left">Berkeley 推出的全面函数调用评测基准，支持单轮、多轮、并行调用，涵盖 Python/Java/JavaScript 等多种语言，采用 AST 评估方法，V4 版本新增网页搜索、记忆管理和格式敏感性评估</td>
+</tr>
+<tr>
+<td align="left">ComplexFunc-Bench</td>
+<td align="left">1,000 个样本（600 单域 +400 跨域）</td>
+<td align="left">Python</td>
+<td align="left">复杂函数调用</td>
+<td align="left">专注于复杂场景的函数调用基准，包含多步骤调用、用户约束、参数推理、长参数值（超 500 tokens）和 128k 长上下文等五大挑战维度</td>
+</tr>
+<tr>
+<td align="left">Tool-Comp</td>
+<td align="left">485 个样本（287 企业版 +198 聊天版）</td>
+<td align="left">Python</td>
+<td align="left">组合工具使用</td>
+<td align="left">Scale AI 发布的组合工具使用基准，强调依赖工具调用（前一工具输出作为后续输入），包含 11 个企业工具和 2 个通用工具，提供人工验证的最终答案和过程监督标签</td>
+</tr>
+<tr>
+<td align="left">MCP-Mark</td>
+<td align="left">127 个高质量任务</td>
+<td align="left">跨环境</td>
+<td align="left">MCP 协议使用</td>
+<td align="left">评估 Model Context Protocol 使用的综合基准，涵盖 Notion、GitHub、文件系统、PostgreSQL 和 Playwright 五大环境，强调 CRUD 操作的完整性，平均每任务需 16.2 轮执行和 17.4 次工具调用</td>
+</tr>
+<tr>
+<td align="left">MCP-Bench</td>
+<td align="left">28 个 MCP 服务器、250 个工具</td>
+<td align="left">跨域</td>
+<td align="left">多步骤任务</td>
+<td align="left">基于 MCP 协议的真实多步骤任务基准，连接金融、旅游、科学计算、学术搜索等领域的实时 MCP 服务器，测试跨工具协调、精确参数控制和多跳规划能力</td>
+</tr>
+</tbody></table>
+<h5 id="真实场景下的交互式任务执行"><a href="#真实场景下的交互式任务执行" class="headerlink" title="真实场景下的交互式任务执行"></a>真实场景下的交互式任务执行</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">τ-Bench</td>
+<td align="left">两个域（零售、航空）</td>
+<td align="left">自然语言</td>
+<td align="left">用户交互</td>
+<td align="left">模拟用户与 Agent 的动态对话，测试 Agent 在客户服务场景中遵循领域政策、收集信息和解决问题的能力，引入 pass@k 指标评估多次运行的可靠性</td>
+</tr>
+<tr>
+<td align="left">τ²-Bench</td>
+<td align="left">三个域（零售、航空、电信）</td>
+<td align="left">自然语言</td>
+<td align="left">双控环境</td>
+<td align="left">扩展 τ-Bench，引入双控场景（Agent 和用户均可操作工具）、新增电信故障排查域，测试 Agent 在用户主动参与工具操作时的协调能力</td>
+</tr>
+<tr>
+<td align="left">ColBench</td>
+<td align="left">后端编码和前端设计任务</td>
+<td align="left">编程语言</td>
+<td align="left">协作推理</td>
+<td align="left">评估 LLM 作为协作 Agent 与模拟人类伙伴的多轮工作能力，需要逐步协作：模型提出代码/设计草案、接收反馈并迭代改进，模拟真实开发工作流</td>
+</tr>
+<tr>
+<td align="left">OSWorld-Human</td>
+<td align="left">37 个任务的人类基准</td>
+<td align="left">GUI 操作</td>
+<td align="left">效率评估</td>
+<td align="left">专注于评估计算机使用 Agent 的效率，通过详细步骤分解分析发现规划和反思步骤占总延迟的 75-94%，提供人工标注的最小步骤基准</td>
+</tr>
+</tbody></table>
+<h5 id="通用智能助手的综合能力评测基准对比"><a href="#通用智能助手的综合能力评测基准对比" class="headerlink" title="通用智能助手的综合能力评测基准对比"></a>通用智能助手的综合能力评测基准对比</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Humanity’s Last Exam</td>
+<td align="left">2,500 个问题</td>
+<td align="left">多模态</td>
+<td align="left">专家级推理</td>
+<td align="left">挑战 LLM 达到专家级人类推理和知识水平的多模态基准，涵盖数学、人文和自然科学等多个领域，过滤掉可通过网页搜索或记忆提示轻易回答的问题</td>
+</tr>
+<tr>
+<td align="left">Multi-Challenge</td>
+<td align="left">多轮对话场景</td>
+<td align="left">自然语言</td>
+<td align="left">多轮对话</td>
+<td align="left">针对前沿 LLM 的真实多轮对话评估基准，测试可靠版本编辑和自洽性等能力，专门设计对当前最强模型仍具挑战性的任务</td>
+</tr>
+<tr>
+<td align="left">Frontier-Math</td>
+<td align="left">数百个极难问题</td>
+<td align="left">英语</td>
+<td align="left">数学推理</td>
+<td align="left">由 Epoch AI 于 2025 年推出，包含数以百计需要数小时甚至数天才能解决的未公开数学难题，测试模型在极端复杂逻辑下的综合建模能力。</td>
+</tr>
+</tbody></table>
+<h4 id="智能体评测基准"><a href="#智能体评测基准" class="headerlink" title="智能体评测基准"></a>智能体评测基准</h4><h5 id="交互与工具使用能力评估基准对比"><a href="#交互与工具使用能力评估基准对比" class="headerlink" title="交互与工具使用能力评估基准对比"></a>交互与工具使用能力评估基准对比</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">BrowseComp</td>
+<td align="left">1,266 个问题</td>
+<td align="left">英语</td>
+<td align="left">Web 浏览</td>
+<td align="left">OpenAI 2025 年发布，评估 Agent 在互联网中定位难以发现信息的能力，需要浏览数十至数百个网站进行持续性和创造性搜索</td>
+</tr>
+<tr>
+<td align="left">MCPVerse</td>
+<td align="left">550+ 真实工具，14.7 万动作空间</td>
+<td align="left">英语</td>
+<td align="left">真实工具调用</td>
+<td align="left">2025 年最新发布的大规模、真实可执行工具基准。基于“模型上下文协议”（MCP）构建，采用基于结果的实时评估，测试 Agent 在超大规模动作空间下的精确工具选择与调用。</td>
+</tr>
+<tr>
+<td align="left">WebBench</td>
+<td align="left">2,000+ 交互轨迹</td>
+<td align="left">英语/多语言</td>
+<td align="left">Web 自动化</td>
+<td align="left">专门评估 Agent 在真实网站（如电商、金融、OA 系统）中完成端到端任务的成功率。它引入了动态环境反馈，关注 Agent 应对网页布局突变和反爬虫机制时的鲁棒性。</td>
+</tr>
+</tbody></table>
+<h5 id="垂直领域应用能力评估基准对比"><a href="#垂直领域应用能力评估基准对比" class="headerlink" title="垂直领域应用能力评估基准对比"></a>垂直领域应用能力评估基准对比</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">领域</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">FinGAIA</td>
+<td align="left">407 个任务，8 大业务场景</td>
+<td align="left">中/英</td>
+<td align="left">金融</td>
+<td align="left">腾讯与复旦发布，首个金融全流程 Agent 基准。通过模拟真实的证券、基金、银行工作流，考核 Agent 在数据解读、政策解读及复杂投资决策中的可靠性。</td>
+</tr>
+<tr>
+<td align="left">Finance-Agent</td>
+<td align="left">537 个专业问题</td>
+<td align="left">英语</td>
+<td align="left">金融</td>
+<td align="left">Vals AI 发布，专注评估 Agent 担任“初级金融分析师”的能力，涵盖财务报表分析、市场研究预测及参考审计。</td>
+</tr>
+<tr>
+<td align="left">VLAIR</td>
+<td align="left">500+ 样本，7 类任务</td>
+<td align="left">英语</td>
+<td align="left">法律</td>
+<td align="left">首个法律 AI 工具综合评估，由 Reed Smith 等顶级律所参与，评估数据提取、文档问答、摘要等任务，AI 在 4/7 任务上超越人类律师</td>
+</tr>
+<tr>
+<td align="left">MedAgent-Bench</td>
+<td align="left">300 个临床任务，100 个患者档案，70 万 + 记录</td>
+<td align="left">英语</td>
+<td align="left">医疗健康</td>
+<td align="left">Stanford 发布，首个真实 EHR 环境中的 LLM 代理基准，包含 FHIR 兼容的交互式环境，测试检索数据、医嘱等临床任务</td>
+</tr>
+<tr>
+<td align="left">Health-Bench</td>
+<td align="left">5,000 个对话</td>
+<td align="left">多语言 (49 种)</td>
+<td align="left">医疗健康</td>
+<td align="left">OpenAI 发布，由 262 位来自 60 个国家的医生创建，涵盖 26 个医学专科，每个对话都有定制评分标准（48,562 个独特评估标准）</td>
+</tr>
+<tr>
+<td align="left">Auto-Code-Bench</td>
+<td align="left">3,920 个问题</td>
+<td align="left">多语言 (20 种)</td>
+<td align="left">软件工程</td>
+<td align="left">Tencent 发布，LLM 自动生成和验证的代码基准，消除人工干预，保持难度平衡分布，持续演化评估</td>
+</tr>
+<tr>
+<td align="left">Asta-Bench</td>
+<td align="left">2,400+ 问题，11 个基准</td>
+<td align="left">英语</td>
+<td align="left">科学研究</td>
+<td align="left">AI2 发布的全面科学研究基准，涵盖文献理解、代码执行、数据分析、端到端发现四个领域，评估成本和质量</td>
+</tr>
+<tr>
+<td align="left">Paper-Bench</td>
+<td align="left">未明确规模</td>
+<td align="left">英语</td>
+<td align="left">科学研究</td>
+<td align="left">OpenAI 发布，评估 AI 代理从零开始复现研究论文主要贡献的能力，包含评分标准和自动化评估</td>
+</tr>
+<tr>
+<td align="left">CLASSic Frame-work</td>
+<td align="left">2,100+ 消息，7 个行业</td>
+<td align="left">英语</td>
+<td align="left">企业应用</td>
+<td align="left">Aisera 发布，企业级 Agent 评估框架，涵盖成本、延迟、准确性、稳定性、安全性五个维度，包含 IT、HR、客服等场景</td>
+</tr>
+</tbody></table>
+<h5 id="多智能体协作与推理能力评估基准对比"><a href="#多智能体协作与推理能力评估基准对比" class="headerlink" title="多智能体协作与推理能力评估基准对比"></a>多智能体协作与推理能力评估基准对比</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Multi-Agent-Bench</td>
+<td align="left">多领域任务集</td>
+<td align="left">英语</td>
+<td align="left">综合协作</td>
+<td align="left">2025 年发布，评估多 Agent 系统在多样化交互场景中的协作与竞争，使用里程碑式 KPI 指标，测试星型、链式、树形、图形等多种拓扑结构</td>
+</tr>
+<tr>
+<td align="left">AgentsNet</td>
+<td align="left">5 类问题，可扩展至 100 个 Agent</td>
+<td align="left">英语</td>
+<td align="left">网络协作</td>
+<td align="left">2025 年发布，基于分布式系统和图论的经典问题（图着色、顶点覆盖、匹配、选举、共识），评估 Agent 自组织、协调和通信能力</td>
+</tr>
+<tr>
+<td align="left">CREW-Wildfire</td>
+<td align="left">程序生成环境</td>
+<td align="left">英语</td>
+<td align="left">大规模协作</td>
+<td align="left">2025 年发布，野火灾害响应场景的开源基准，支持异构 Agent、复杂动态地形，测试大规模协作中的感知、规划和任务委派能力</td>
+</tr>
+<tr>
+<td align="left">SOTOPIA-</td>
+<td align="left">社交场景集</td>
+<td align="left">英语</td>
+<td align="left">社交智能</td>
+<td align="left">2025 年更新版本，创建沉浸式社交模拟，测试 Agent 理解社会规范、展示同理心、伦理推理和文化适应的能力</td>
+</tr>
+<tr>
+<td align="left">Agent-Bench</td>
+<td align="left">8 个环境</td>
+<td align="left">英语</td>
+<td align="left">多环境交互</td>
+<td align="left">2023 年发布持续更新至 2025 年，跨操作系统、数据库、知识图谱、数字卡牌游戏和 Web 界面的多维度基准，评估规划、推理、工具使用和决策能力</td>
+</tr>
+<tr>
+<td align="left">Latent-MAS</td>
+<td align="left">9 个基准任务</td>
+<td align="left">英语</td>
+<td align="left">潜在空间协作</td>
+<td align="left">2025 年发布，评估 Agent 在连续潜在空间中的直接协作能力，跨数学推理、常识理解和代码生成任务，相比文本协作提升准确率达 14.6%</td>
+</tr>
+<tr>
+<td align="left">ReSoS</td>
+<td align="left">图结构任务</td>
+<td align="left">英语</td>
+<td align="left">结构化推理</td>
+<td align="left">2025 年发布，基于可组合图的任务（节点=子任务，边=依赖关系），通过增加图大小或 Agent 数量评估可扩展性和协调协议敏感性</td>
+</tr>
+</tbody></table>
+<h4 id="多模态评测基准"><a href="#多模态评测基准" class="headerlink" title="多模态评测基准"></a>多模态评测基准</h4><h5 id="视频理解与时序推理评测基准对比"><a href="#视频理解与时序推理评测基准对比" class="headerlink" title="视频理解与时序推理评测基准对比"></a>视频理解与时序推理评测基准对比</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">LVBench</td>
+<td align="left">1,000 视频 / 9,000+ QA</td>
+<td align="left">英文</td>
+<td align="left">长视频理解</td>
+<td align="left">首个极长视频理解基准，视频平均时长 2 小时，评估六大核心时序理解能力，包括长期记忆和跨片段推理</td>
+</tr>
+<tr>
+<td align="left">ALLVB</td>
+<td align="left">1,376 视频 / 252K QA</td>
+<td align="left">英文</td>
+<td align="left">长视频多任务</td>
+<td align="left">全方位长视频理解基准，整合 9 大视频理解任务，平均视频时长近 2 小时，采用 GPT-4o 自动标注流程</td>
+</tr>
+<tr>
+<td align="left">Video-MME</td>
+<td align="left">900 视频 / 2,700 QA</td>
+<td align="left">英文</td>
+<td align="left">综合评估</td>
+<td align="left">首个多模态 LLM 视频分析综合评估基准，包含短视频和长视频子集，评估时序推理能力</td>
+</tr>
+<tr>
+<td align="left">MT-Video-Bench</td>
+<td align="left">987 多轮对话</td>
+<td align="left">英文</td>
+<td align="left">多轮对话</td>
+<td align="left">多轮对话视频理解基准，评估感知力和交互性六大核心能力，对应运动分析和视频智能辅导等场景</td>
+</tr>
+<tr>
+<td align="left">VR-Bench</td>
+<td align="left">960 长视频 / 8,243 QA</td>
+<td align="left">英文</td>
+<td align="left">多步推理</td>
+<td align="left">长叙事视频多步推理基准，平均时长 1.6 小时，包含 25,106 个带时间戳推理步骤</td>
+</tr>
+<tr>
+<td align="left">Video-TT</td>
+<td align="left">1,000 视频 / 5,000 QA</td>
+<td align="left">英文</td>
+<td align="left">综合推理</td>
+<td align="left">视频思维链测试基准，评估高级视频推理和理解，确保问题复杂并提供推理依据</td>
+</tr>
+<tr>
+<td align="left">V-STaR</td>
+<td align="left">时空推理任务</td>
+<td align="left">英文</td>
+<td align="left">时空推理</td>
+<td align="left">Video-LLM 视频时空推理基准，评估时序定位和物体追踪等时空感知任务</td>
+</tr>
+</tbody></table>
+<h5 id="文档理解与结构化信息提取评测基准对比"><a href="#文档理解与结构化信息提取评测基准对比" class="headerlink" title="文档理解与结构化信息提取评测基准对比"></a>文档理解与结构化信息提取评测基准对比</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">OmniDoc-Bench</td>
+<td align="left">1,729 页 (v1.5)</td>
+<td align="left">多语言</td>
+<td align="left">文档解析</td>
+<td align="left">综合文档解析评估基准，涵盖 9 类文档、4 种布局、3 种语言，包含 15 类块级和 4 类跨度级标注</td>
+</tr>
+<tr>
+<td align="left">IDP Leaderboard</td>
+<td align="left">统一评估框架</td>
+<td align="left">多语言</td>
+<td align="left">智能文档处理</td>
+<td align="left">智能文档处理统一排行榜，涵盖 OCR、KIE、分类、QA、表格提取和置信度评估</td>
+</tr>
+<tr>
+<td align="left">TIU-Bench</td>
+<td align="left">多页文档</td>
+<td align="left">英文</td>
+<td align="left">文本密集推理</td>
+<td align="left">文本图像理解基准，评估完整图像解析和文档 VQA 能力，处理密集文本内容</td>
+</tr>
+<tr>
+<td align="left">WildDoc</td>
+<td align="left">真实拍摄文档</td>
+<td align="left">英文</td>
+<td align="left">野外文档理解</td>
+<td align="left">首个自然环境文档理解基准，包含不同光照和物理变形条件下拍摄的文档图像</td>
+</tr>
+</tbody></table>
+<h5 id="多模态推理与科学问题求解评测基准对比"><a href="#多模态推理与科学问题求解评测基准对比" class="headerlink" title="多模态推理与科学问题求解评测基准对比"></a>多模态推理与科学问题求解评测基准对比</h5><table>
+<thead>
+<tr>
+<th align="left">基准名称</th>
+<th align="left">数据规模</th>
+<th align="left">语言</th>
+<th align="left">类型</th>
+<th align="left">介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">EMMA</td>
+<td align="left">2,788 问题</td>
+<td align="left">英文</td>
+<td align="left">增强多模态推理</td>
+<td align="left">增强多模态推理基准，涵盖数学、物理、化学和编程，评估视觉-文本深度融合推理能力</td>
+</tr>
+<tr>
+<td align="left">MMMU-Pro</td>
+<td align="left">增强版 MMMU</td>
+<td align="left">英文</td>
+<td align="left">鲁棒性评估</td>
+<td align="left">MMMU 的鲁棒性增强版本，提供更具挑战性的多模态 AI 评估</td>
+</tr>
+<tr>
+<td align="left">MV-MATH</td>
+<td align="left">2,009 问题 / 11 学科</td>
+<td align="left">英文</td>
+<td align="left">多视觉数学推理</td>
+<td align="left">多视觉情境数学推理评估，每题集成多张交错图像，评估 K-12 数学推理</td>
+</tr>
+<tr>
+<td align="left">VC-Bench</td>
+<td align="left">1,720 问题 / 6,697 图像</td>
+<td align="left">英文</td>
+<td align="left">显式视觉依赖</td>
+<td align="left">多模态数学推理基准，评估显式视觉依赖，平均每道题 3.9 张图像，覆盖 6 个认知领域</td>
+</tr>
+<tr>
+<td align="left">Math-Scape</td>
+<td align="left">真实场景数学</td>
+<td align="left">英文</td>
+<td align="left">真实世界数学</td>
+<td align="left">真实世界数学领域基准，评估模型处理复杂真实数学挑战的能力</td>
+</tr>
+<tr>
+<td align="left">MME-SCI</td>
+<td align="left">多语言科学</td>
+<td align="left">多语言</td>
+<td align="left">科学综合评价</td>
+<td align="left">多语言多模态科学基准，支持跨语言一致性评估，覆盖多个科学学科</td>
+</tr>
+<tr>
+<td align="left">mmJEE-Eval</td>
+<td align="left">1,460 问题 (2019-2025)</td>
+<td align="left">英/印地语</td>
+<td align="left">科学竞赛评估</td>
+<td align="left">双语多模态科学推理基准，源自印度 JEE 考试，涵盖物理、化学、数学预科水平</td>
+</tr>
+</tbody></table>
+<h3 id="6-2-模型生态进展"><a href="#6-2-模型生态进展" class="headerlink" title="6.2 模型生态进展"></a>6.2 模型生态进展</h3><h4 id="新闭源模型"><a href="#新闭源模型" class="headerlink" title="新闭源模型"></a>新闭源模型</h4><table>
+<thead>
+<tr>
+<th align="left">模型名称</th>
+<th align="left">发布机构</th>
+<th align="left">类型</th>
+<th align="left">参数数量 (Est.)</th>
+<th align="left">MMLU-Pro (5-shot)</th>
+<th align="left">HumanEval (Pass@1)</th>
+<th align="left">MATH (Pass@1)</th>
+<th align="left">LMSYS Elo (Overall)</th>
+<th align="left">推理成本 ($/1M In/Out)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GPT-5.2 (Thinking)</td>
+<td align="left">OpenAI</td>
+<td align="left">闭源</td>
+<td align="left">未公开 (MoE)</td>
+<td align="left">93.5%</td>
+<td align="left">96.5%</td>
+<td align="left">98.2%</td>
+<td align="left">1420</td>
+<td align="left">$5.00 / $25.00</td>
+</tr>
+<tr>
+<td align="left">Gemini 3 Pro</td>
+<td align="left">Google</td>
+<td align="left">闭源</td>
+<td align="left">未公开</td>
+<td align="left">90.5%</td>
+<td align="left">94.2%</td>
+<td align="left">95.8%</td>
+<td align="left">1405</td>
+<td align="left">$2.00 / $12.00</td>
+</tr>
+<tr>
+<td align="left">Claude 4.5 Opus</td>
+<td align="left">Anthropic</td>
+<td align="left">闭源</td>
+<td align="left">未公开</td>
+<td align="left">93.4%</td>
+<td align="left">95.0%</td>
+<td align="left">94.5%</td>
+<td align="left">1410</td>
+<td align="left">$15.00 / $75.00</td>
+</tr>
+<tr>
+<td align="left">Grok 4</td>
+<td align="left">xAI</td>
+<td align="left">闭源</td>
+<td align="left">~1.5T</td>
+<td align="left">91.6%</td>
+<td align="left">92.8%</td>
+<td align="left">93.0%</td>
+<td align="left">1395</td>
+<td align="left">$2.50 / $10.00</td>
+</tr>
+<tr>
+<td align="left">DeepSeek-R1</td>
+<td align="left">DeepSeek</td>
+<td align="left">开源</td>
+<td align="left">671B (MoE)</td>
+<td align="left">90.3%</td>
+<td align="left">93.5%</td>
+<td align="left">96.1%</td>
+<td align="left">1388</td>
+<td align="left">$0.50 / $2.15</td>
+</tr>
+<tr>
+<td align="left">Llama 4 Maverick</td>
+<td align="left">Meta</td>
+<td align="left">开源</td>
+<td align="left">405B (Dense)</td>
+<td align="left">80.5%</td>
+<td align="left">89.5%</td>
+<td align="left">88.0%</td>
+<td align="left">1340</td>
+<td align="left">$0.89 / $0.89</td>
+</tr>
+<tr>
+<td align="left">Qwen 3 235B</td>
+<td align="left">Alibaba</td>
+<td align="left">开源</td>
+<td align="left">235B (MoE)</td>
+<td align="left">84.4%</td>
+<td align="left">91.2%</td>
+<td align="left">92.5%</td>
+<td align="left">1355</td>
+<td align="left">$0.30 / $3.00</td>
+</tr>
+<tr>
+<td align="left">Mistral Large 3</td>
+<td align="left">Mistral</td>
+<td align="left">开源</td>
+<td align="left">未公开</td>
+<td align="left">85.1%</td>
+<td align="left">90.0%</td>
+<td align="left">89.2%</td>
+<td align="left">1362</td>
+<td align="left">$2.00 / $6.00</td>
+</tr>
+</tbody></table>
+<h5 id="最新闭源模型性能综合对比表"><a href="#最新闭源模型性能综合对比表" class="headerlink" title="最新闭源模型性能综合对比表"></a>最新闭源模型性能综合对比表</h5><table>
+<thead>
+<tr>
+<th align="left">核心维度</th>
+<th align="left">OpenAI GPT-5.2 / o3</th>
+<th align="left">Anthropic Claude Opus 4.5</th>
+<th align="left">Google Gemini 3 Pro / Flash</th>
+<th align="left">xAI Grok 4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>设计哲学</strong></td>
+<td align="left">双模态路由：追求逻辑深度与应用广度的平衡，强调 B 端落地与错误率控制。</td>
+<td align="left">工匠精神与操作：追求代码质量的极致与人机交互的自然性 (Computer Use)。</td>
+<td align="left">原生融合：追求感知的统一性，打造无缝的多模态交互与 Agent 自主性。</td>
+<td align="left">算力与实时：追求实时信息获取与纯粹的逻辑强推，强调少过滤的直率表达。</td>
+</tr>
+<tr>
+<td align="left"><strong>推理能力</strong></td>
+<td align="left">o3: 极强 (GPQA 98.4%)。适合科研攻关。</td>
+<td align="left">Opus 4.5 Thinking: 极强。思维链透明可调试，擅长长逻辑任务。</td>
+<td align="left">Gemini 3 Pro: 极强。综合推理持平 GPT-5.2，擅长视觉推理。</td>
+<td align="left">Grok 4 (Think): 强。数学能力突出 (AIME 87.5%)，泛化略弱。</td>
+</tr>
+<tr>
+<td align="left"><strong>编程能力</strong></td>
+<td align="left">SWE-Bench: 80.0%。稳定可靠，适合企业级重构。</td>
+<td align="left">SWE-Bench: 80.9% (第一)。Web 开发首选，生成的代码结构最清晰。</td>
+<td align="left">Antigravity: 强。优势在于 IDE 内的全栈自主规划与执行。</td>
+<td align="left">Grok Code: 极客向。擅长解释底层逻辑，适合硬核调试。</td>
+</tr>
+<tr>
+<td align="left"><strong>多模态</strong></td>
+<td align="left">非原生为主：文本/代码极强，视/听依赖组件拼接。</td>
+<td align="left">视觉增强：图文理解极强，支持通过视觉操作电脑界面 (UI Navigation)。</td>
+<td align="left">原生架构：文/图/音/视频一体化。能“看懂”长视频和物理规律。</td>
+<td align="left">视觉增强：支持图文理解，但视频和音频能力较弱。</td>
+</tr>
+<tr>
+<td align="left"><strong>特色功能</strong></td>
+<td align="left">Operator: 智能路由，自动判断任务难度。</td>
+<td align="left">Computer Use: 直接控制鼠标键盘操作电脑，自动化测试神器。</td>
+<td align="left">原生视频理解：2M 窗口直接处理长电影；Antigravity IDE。</td>
+<td align="left">Real-time X: 实时接入推特数据流，资讯最快。</td>
+</tr>
+<tr>
+<td align="left"><strong>定价策略</strong></td>
+<td align="left">高端溢价：o3 与 Pro 版较贵，主打 B 端。</td>
+<td align="left">贵族定价：Opus 4.5 定价较高 ($5~$15/1M)，主打高价值生产力。</td>
+<td align="left">激进定价：Flash 版本 ($0.5/1M) 极具破坏力，抢占流量。</td>
+<td align="left">会员捆绑：X Premium 订阅包含，API 定价中等。</td>
+</tr>
+</tbody></table>
+<h5 id="最新开源模型性能综合对比表"><a href="#最新开源模型性能综合对比表" class="headerlink" title="最新开源模型性能综合对比表"></a>最新开源模型性能综合对比表</h5><table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">Meta Llama 4 (Scout/Maverick)</th>
+<th align="left">DeepSeek V3 / R1</th>
+<th align="left">Qwen 3 / 2.5 Coder</th>
+<th align="left">Mistral Large 3</th>
+<th align="left">Google Gemma 3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>架构范式</strong></td>
+<td align="left">MoE + Early Fusion：原生多模态，iRoPE 支持 10M 上下文。</td>
+<td align="left">MLA + FPS + Pure RL：极致的算法效率与纯强化学习推理。</td>
+<td align="left">MoE + Native Multimodal：强大的工具调用与编码能力。</td>
+<td align="left">MoE (41B/675B)：企业级稳定性与多语言优化。</td>
+<td align="left">(端侧)：轻量级原生多模态，适配消费级硬件。</td>
+</tr>
+<tr>
+<td align="left"><strong>核心强项</strong></td>
+<td align="left">生态标准：最广泛的部署支持，长文档与图文理解能力行业领先。</td>
+<td align="left">推理/性价比：数学逻辑媲美 o1，API 与训练成本极低，中文能力极强。</td>
+<td align="left">编程/Agent：Coder 版本是开源界公认的编程首选，工具调用灵活。</td>
+<td align="left">合规/多语言：欧洲语言理解最佳，RAG 系统稳定性高。</td>
+<td align="left">端侧部署：4B/12B 版本适合在手机/PC 本地运行，隐私性好。</td>
+</tr>
+<tr>
+<td align="left"><strong>编程能力</strong></td>
+<td align="left">强：通用编程能力出色，但在特定代码库 (Repo-level) 任务上略逊于 Qwen。</td>
+<td align="left">极强 (R1)：擅长竞赛级算法题，但在工程级项目构建上不如 Qwen 均衡。</td>
+<td align="left">Top Tier：在 LiveCodeBench 和 SWE-Bench 上表现统治级，开发者口碑最佳。</td>
+<td align="left">稳健：CodeStral 分支表现优异，适合企业内部代码补全。</td>
+<td align="left">辅助级：适合本地简单的脚本编写和代码解释，响应极快。</td>
+</tr>
+<tr>
+<td align="left"><strong>部署门槛</strong></td>
+<td align="left">Maverick (400B)：需大量计算集群，H100/B200 集群。Scout (109B)：量化后单机多卡可跑。</td>
+<td align="left">V3 (671B)：模型巨大，需大量存算集群，但 MLA 优化了推理成本。蒸馏版：1.5B-70B 极易部署。</td>
+<td align="left">32B 版本：黄金尺寸，消费级双卡 (4090) 可跑，性价比极高。</td>
+<td align="left">Large 3：需高端服务器 (FPS 优化后需 H100)。</td>
+<td align="left">极低：1B-12B 覆盖从手机到笔记本，量化版极度亲民。</td>
+</tr>
+<tr>
+<td align="left"><strong>适用场景</strong></td>
+<td align="left">企业私有云基座、长文档分析、多模态搜索、通用任务。</td>
+<td align="left">科学计算、逻辑推理、低成本 API 替代、数学辅导、教育。</td>
+<td align="left">代码助手 (Copilot)、自动化 Agent、视觉分析工具。</td>
+<td align="left">欧洲企业合规应用、多语言客服、金融文档分析。</td>
+<td align="left">手机端 AI 助理、本地隐私敏感任务、IoT 设备智能。</td>
+</tr>
+</tbody></table>
+<h4 id="国产开源模型的崛起"><a href="#国产开源模型的崛起" class="headerlink" title="国产开源模型的崛起"></a>国产开源模型的崛起</h4><h5 id="国内外开源大模型多维度对比分析"><a href="#国内外开源大模型多维度对比分析" class="headerlink" title="国内外开源大模型多维度对比分析"></a>国内外开源大模型多维度对比分析</h5><table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">差异特征描述</th>
+<th align="left">代表模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>研发战略范式</strong></td>
+<td align="left">国外依赖 Scaling Laws 堆砌算力资源；国内追求有限算力下的极致性能。</td>
+<td align="left">Mistral vs DeepSeek</td>
+</tr>
+<tr>
+<td align="left"><strong>算力与成本</strong></td>
+<td align="left">国外维持高训练成本与定价，售卖稀缺资源；国内将推理价格压至较低成本，具备性价比优势。</td>
+<td align="left">GPT-4o vs DeepSeek</td>
+</tr>
+<tr>
+<td align="left"><strong>开源生态协议</strong></td>
+<td align="left">国外开源常带商业限制，意图构建护城河；国内倾向 Apache 2.0 宽松协议，旨在成为全球基础设施。</td>
+<td align="left">Llama vs Qwen</td>
+</tr>
+</tbody></table>
+<h3 id="6-3-综合能力排行榜汇总"><a href="#6-3-综合能力排行榜汇总" class="headerlink" title="6.3 综合能力排行榜汇总"></a>6.3 综合能力排行榜汇总</h3><h4 id="语言能力（Language）评测调研"><a href="#语言能力（Language）评测调研" class="headerlink" title="语言能力（Language）评测调研"></a>语言能力（Language）评测调研</h4><h5 id="各大模型在-Arena-Hard-Auto-上的排行榜"><a href="#各大模型在-Arena-Hard-Auto-上的排行榜" class="headerlink" title="各大模型在 Arena Hard Auto 上的排行榜"></a>各大模型在 Arena Hard Auto 上的排行榜</h5><blockquote>
+<p>ArenaHardAuto 属于自动化高难度评测流程，它从 ChatbotArena 的真实用户对话日志中抽取 500 个最具挑战性的技术与逻辑问题，再采用“强模型担任裁判”的 LLM-as-a-Judge 机制进行成对比较，把评测从实验室题库拉回真实交互现场</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>得分</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>92.5</td>
+<td>综合对话体验最佳，逻辑连贯性强</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPT-5.2 (High)</td>
+<td>闭源</td>
+<td>91.2</td>
+<td>在复杂指令遵循上极具优势</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude 4.5 Opus</td>
+<td>闭源</td>
+<td>89.7</td>
+<td>代码与长文写作深受开发者喜爱</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Grok 4.1 Thinking</td>
+<td>闭源</td>
+<td>88.4</td>
+<td>个性化与幽默感得分较高</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DeepSeek V3.2</td>
+<td>开源</td>
+<td>85.0</td>
+<td>极具性价比的开源推理模型</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Llama 4 Maverick</td>
+<td>开源</td>
+<td>82.0</td>
+<td>依然是开源社区的基石</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Qwen3-Max</td>
+<td>闭源</td>
+<td>~81.5</td>
+<td>英文对话能力显著提升</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Mistral Large 3</td>
+<td>开源</td>
+<td>78.0%</td>
+<td>欧洲语言处理能力强</td>
+</tr>
+</tbody></table>
+<h5 id="各大模型在-BFCL-上的排行榜"><a href="#各大模型在-BFCL-上的排行榜" class="headerlink" title="各大模型在 BFCL 上的排行榜"></a>各大模型在 BFCL 上的排行榜</h5><blockquote>
+<p>BFCL 引入了基于抽象语法树（AST）的评估方法。它不仅检查模型是否输出了函数名，还深入验证参数类型、结构嵌套以及在多轮对话中保持状态的能力</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>准确率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Claude 4.5 Opus</td>
+<td>闭源</td>
+<td>95.8%</td>
+<td>极少出现格式错误，复杂参数理解力 SOTA</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>94.5%</td>
+<td>依然是工业界工具调用的标准选择</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Grok 4.1 (Tool)</td>
+<td>闭源</td>
+<td>93.0%</td>
+<td>针对工具调用进行了专门微调</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>92.1%</td>
+<td>在多模态工具链上表现更好</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Llama 4 Maverick</td>
+<td>开源</td>
+<td>89.4%</td>
+<td>开源模型中工具调用能力最强</td>
+</tr>
+<tr>
+<td>6</td>
+<td>DeepSeek V3.2</td>
+<td>开源</td>
+<td>85.0%</td>
+<td>较上一代有大幅提升</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Qwen3-Coder</td>
+<td>开源</td>
+<td>83.5%</td>
+<td>在代码相关 API 调用上表现出色</td>
+</tr>
+</tbody></table>
+<h5 id="各大模型在-RULER-上的排行榜"><a href="#各大模型在-RULER-上的排行榜" class="headerlink" title="各大模型在 RULER 上的排行榜"></a>各大模型在 RULER 上的排行榜</h5><blockquote>
+<p>RULER 的定位很明确：专门用来“打假”长上下文</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>平均得分</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>94.2%</td>
+<td>在 1M+ 长度下几乎无衰减，统治级表现</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>89.5%</td>
+<td>在 400k 范围内表现极其稳定</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude 4.5 Opus</td>
+<td>闭源</td>
+<td>88.0%</td>
+<td>长文理解逻辑性强</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Llama 4 Scout</td>
+<td>开源</td>
+<td>86.5%</td>
+<td>令人惊讶的千万级上下文支持</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Qwen3-Max</td>
+<td>开源</td>
+<td>~85.6%</td>
+<td>长文档处理能力稳健</td>
+</tr>
+<tr>
+<td>6</td>
+<td>DeepSeek V3.2</td>
+<td>开源</td>
+<td>79.9%</td>
+<td>引入稀疏注意力机制降低了成本</td>
+</tr>
+</tbody></table>
+<h4 id="图像与视频（Vision-amp-Video）多模态评测调研"><a href="#图像与视频（Vision-amp-Video）多模态评测调研" class="headerlink" title="图像与视频（Vision &amp; Video）多模态评测调研"></a>图像与视频（Vision &amp; Video）多模态评测调研</h4><h5 id="VCR-Visual-Commonsense-Reasoning"><a href="#VCR-Visual-Commonsense-Reasoning" class="headerlink" title="VCR (Visual Commonsense Reasoning)"></a>VCR (Visual Commonsense Reasoning)</h5><blockquote>
+<p>VCR（视觉常识推理）要求模型不仅回答“图里发生了什么”（Q→A）， 还要从四个选项中选出“为什么”（QA→R）。把描述与解释捆成一条链，促 使模型面对视觉世界的因果逻辑与社会常识。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>准确率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>GPT-5.2 (Vision)</td>
+<td>闭源</td>
+<td>92.8%</td>
+<td>极其强大的常识推理能力</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Qwen3-Max</td>
+<td>闭源</td>
+<td>91.9%</td>
+<td>展现了极强的视觉理解</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>91.4%</td>
+<td>原生多模态架构，表现稳定</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Claude 4.5</td>
+<td>闭源</td>
+<td>90.5%</td>
+<td>细节捕捉能力强</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DeepSeek Janus Pro</td>
+<td>开源</td>
+<td>88.0%</td>
+<td>解耦视觉编码器设计带来了意外之喜</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Llama 4 Maverick</td>
+<td>开源</td>
+<td>82.3%</td>
+<td>主要是 OCR 强，推理稍弱</td>
+</tr>
+</tbody></table>
+<h5 id="MVBench-Multi-modal-Video-Benchmark"><a href="#MVBench-Multi-modal-Video-Benchmark" class="headerlink" title="MVBench (Multi-modal Video Benchmark)"></a>MVBench (Multi-modal Video Benchmark)</h5><blockquote>
+<p>MVBench 是一个视频理解专项综合基准，它覆盖 20 种不同的时序任务，采用静态转动态方法生成高质量评测题，目的是检验模型是否真的理解“时间”。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>平均得分</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>89.2%</td>
+<td>视频理解的王者，原生处理长视频流</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>86.5%</td>
+<td>短视频理解能力极强</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude 4.5</td>
+<td>闭源</td>
+<td>84.3%</td>
+<td>-</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Qwen2.5-VL-72B</td>
+<td>开源</td>
+<td>73.6%</td>
+<td>开源视频理解的最佳选择</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Llama 4 Maverick</td>
+<td>开源</td>
+<td>~68.0%</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h5 id="Video-MMMU"><a href="#Video-MMMU" class="headerlink" title="Video-MMMU"></a>Video-MMMU</h5><blockquote>
+<p>Video-MMMU 把难度进一步推高。该基准包含 300 个来自大学课程与专业讲座的长视频，考的不是“看一眼回答”，而是“看完再总结”</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>准确率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>87.6%</td>
+<td>唯一能高效从长视频中提取知识</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>84.1%</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude 4.5</td>
+<td>闭源</td>
+<td>82.5%</td>
+<td>-</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Qwen3-VL</td>
+<td>开源</td>
+<td>76.8%</td>
+<td>表现不俗，具备一定的专业视频理解力</td>
+</tr>
+</tbody></table>
+<h4 id="语音能力（Speech）评测调研"><a href="#语音能力（Speech）评测调研" class="headerlink" title="语音能力（Speech）评测调研"></a>语音能力（Speech）评测调研</h4><h5 id="Open-ASR-Leaderboard"><a href="#Open-ASR-Leaderboard" class="headerlink" title="Open ASR Leaderboard"></a>Open ASR Leaderboard</h5><blockquote>
+<p>OpenASRLeaderboard 的价值在于它把“准确”与“快”同时拉进同一套标尺，不仅关注传统字错率（WER），还引入逆实时因子（RTFx）衡量推理速度，全面评估语音转写的准确性与效率。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>WER (Clean/Noisy)</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Mistral Voxtral Small</td>
+<td>开源</td>
+<td>2.1% / 3.8%</td>
+<td>惊人的低错误率，超越了 GPT-4o</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gemini 3 Deep Think</td>
+<td>闭源</td>
+<td>2.3% / 5.1%</td>
+<td>在复杂噪音环境下表现优异</td>
+</tr>
+<tr>
+<td>3</td>
+<td>GPT-5.2 Audio</td>
+<td>闭源</td>
+<td>2.5% / 5.4%</td>
+<td>交互体验好，但纯识别率略低</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Whisper V3 Large</td>
+<td>开源</td>
+<td>2.4% / 3.9%</td>
+<td>依然是强大的基准，但已被后浪超越</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Canary Qwen 2.5B</td>
+<td>开源</td>
+<td>5.63% (Avg)</td>
+<td>极高性价比，适合边缘端部署</td>
+</tr>
+</tbody></table>
+<h4 id="编程能力（Programming）评测调研"><a href="#编程能力（Programming）评测调研" class="headerlink" title="编程能力（Programming）评测调研"></a>编程能力（Programming）评测调研</h4><h5 id="SWE-bench-Verified"><a href="#SWE-bench-Verified" class="headerlink" title="SWE-bench Verified"></a>SWE-bench Verified</h5><blockquote>
+<p>普林斯顿大学的研究团队发布了 SWE-bench，并在随后推出了 SWE-bench Verified——一个由人类专家严格筛选的子集，确保测试问题的有效性和非歧义性。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>解决率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Claude Opus 4.5</td>
+<td>闭源</td>
+<td>80.9%</td>
+<td>当前 SOTA，工程化能力极强</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPT-5.2 (Thinking)</td>
+<td>闭源</td>
+<td>80.0%</td>
+<td>逻辑修复能力顶级，紧随其后</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>76.2%</td>
+<td>长上下文优势在大型 Repo 中明显</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GPT-5.1 / o3</td>
+<td>闭源</td>
+<td>~66.0%</td>
+<td>上一代推理模型水平</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DeepSeek V3.2</td>
+<td>开源</td>
+<td>66.0%</td>
+<td>开源界第一，超越 Llama</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Grok 4</td>
+<td>闭源</td>
+<td>60.5%</td>
+<td>相比前代大幅提升，但在工程细节略逊</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Qwen 3 Coder 30B</td>
+<td>开源</td>
+<td>51.6%</td>
+<td>30B 尺寸下的极佳表现</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Mistral Large 3</td>
+<td>开源</td>
+<td>46.8%</td>
+<td>配合专用 Agent 框架表现尚可</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Llama 4 Maverick</td>
+<td>开源</td>
+<td>21.04%</td>
+<td>令人意外的低分，似乎未针对 Agent 优化</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Gemma 3</td>
+<td>开源</td>
+<td>~</td>
+<td>缺乏针对此高难度基准的公开数据</td>
+</tr>
+</tbody></table>
+<h5 id="LiveCodeBench"><a href="#LiveCodeBench" class="headerlink" title="LiveCodeBench"></a>LiveCodeBench</h5><blockquote>
+<p>LiveCodeBench 采用了一种动态更新的机制，专门收集模型训练截止日期之后发布的竞赛编程题目（来自 LeetCode, AtCoder,Codeforces）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>Pass@1</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>GPT-5.2 (High)</td>
+<td>闭源</td>
+<td>53.1%</td>
+<td>处理未见难题能力最强</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>49.0%</td>
+<td>算法逻辑稳健</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DeepSeek V3.2</td>
+<td>开源</td>
+<td>48-50%</td>
+<td>开源模型在纯算法上的突破</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Claude 3.7 Sonnet</td>
+<td>闭源</td>
+<td>~45%</td>
+<td>依然强劲，适合日常开发</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Llama 4 Maverick</td>
+<td>开源</td>
+<td>43.4%</td>
+<td>算法能力优于其工程能力</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Grok 4 Mini</td>
+<td>闭源</td>
+<td>~40%</td>
+<td>小参数模型中的佼佼者</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Qwen 2.5 Coder 32B</td>
+<td>开源</td>
+<td>31.4%</td>
+<td>小参数代码模型标杆</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Mistral Large 3</td>
+<td>开源</td>
+<td>~</td>
+<td>暂无最新 LiveCodeBench 数据</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Gemma 3</td>
+<td>开源</td>
+<td>~29.7%</td>
+<td>27B 版本表现一般</td>
+</tr>
+</tbody></table>
+<h5 id="BigCodeBench"><a href="#BigCodeBench" class="headerlink" title="BigCodeBench"></a>BigCodeBench</h5><blockquote>
+<p>一个国际团队于 2024 年发布了 Big-CodeBench——一个全面、多样且极具挑战性的编程比较基准。该基准要求大语言模型跨 139 个库和 7 大领域调用多重函数调用，涵盖 1,140 项细粒度任务。(<strong>当前人工智能系统在该基准上表现欠佳</strong>)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>Pass@1</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Claude 3.7 Sonnet</td>
+<td>闭源</td>
+<td>35.8%</td>
+<td>在复杂指令遵循上表现最佳</td>
+</tr>
+<tr>
+<td>2</td>
+<td>OpenAI o1</td>
+<td>闭源</td>
+<td>35.5%</td>
+<td>推理能力在此依然有效</td>
+</tr>
+<tr>
+<td>3</td>
+<td>OpenAI o3-mini</td>
+<td>闭源</td>
+<td>35.5%</td>
+<td>小模型表现惊人</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DeepSeek R1</td>
+<td>开源</td>
+<td>35.1%</td>
+<td>紧咬闭源顶尖模型</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>~</td>
+<td>数据待更新，预计在第一梯队</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>~</td>
+<td>数据待更新</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Llama 4</td>
+<td>开源</td>
+<td>~</td>
+<td>暂无针对性数据</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Qwen 3</td>
+<td>开源</td>
+<td>~</td>
+<td>暂无针对性数据</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Grok 4</td>
+<td>闭源</td>
+<td>~</td>
+<td>暂无针对性数据</td>
+</tr>
+</tbody></table>
+<h4 id="数学能力（Mathematics）评测调研"><a href="#数学能力（Mathematics）评测调研" class="headerlink" title="数学能力（Mathematics）评测调研"></a>数学能力（Mathematics）评测调研</h4><h5 id="AIME-2025"><a href="#AIME-2025" class="headerlink" title="AIME 2025"></a>AIME 2025</h5><blockquote>
+<p>美国数学邀请赛 (AIME) 长期以来被视为高中数学竞赛的标杆，要求参赛者在没有计算器的情况下解决极其复杂的整数问题</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>准确率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>GPT-5.2 (Thinking)</td>
+<td>闭源</td>
+<td>100%</td>
+<td>完美解决，已达上限</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>95.8%</td>
+<td>极少数边缘错误</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Grok 4</td>
+<td>闭源</td>
+<td>93.3%</td>
+<td>数学能力极其出色</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DeepSeek R1/V3.2</td>
+<td>开源</td>
+<td>93.1%</td>
+<td>开源最强，匹敌闭源</td>
+</tr>
+<tr>
+<td>5</td>
+<td>OpenAI o3</td>
+<td>闭源</td>
+<td>87.5%</td>
+<td>依然强大，但在 2025 年已非最强</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Qwen 2.5 Math</td>
+<td>开源</td>
+<td>~85%</td>
+<td>专精数学的模型</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Mistral Large 3</td>
+<td>开源</td>
+<td>40.0%</td>
+<td>通用模型在数学上的短板</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Llama 4 Maverick</td>
+<td>开源</td>
+<td>~</td>
+<td>数据未明确，推测低于 Qwen</td>
+</tr>
+</tbody></table>
+<h5 id="FrontierMath"><a href="#FrontierMath" class="headerlink" title="FrontierMath"></a>FrontierMath</h5><blockquote>
+<p>Epoch AI 联合 60 多位数学家推出了 Fron-tierMath。该基准包含数百个从未发表过的、专家级的原创数学问题，涵盖代数几何、数论等现代数学分支</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>准确率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>40.3%</td>
+<td>遥遥领先，展现初级研究能力</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPT-5.1 (Thinking)</td>
+<td>闭源</td>
+<td>26.7%</td>
+<td>较 5.2 有显著差距</td>
+</tr>
+<tr>
+<td>3</td>
+<td>OpenAI o3</td>
+<td>闭源</td>
+<td>25.0%</td>
+<td>曾是 SOTA，现居中游</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>~</td>
+<td>缺乏具体 Tier 1-3 分数，预计较低</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Claude 3.7 Sonnet</td>
+<td>闭源</td>
+<td>&lt; 20%</td>
+<td>非数学特化模型</td>
+</tr>
+<tr>
+<td>-</td>
+<td>DeepSeek R1</td>
+<td>开源</td>
+<td>~</td>
+<td>尚无针对此超难基准的公开测试</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Grok 4</td>
+<td>闭源</td>
+<td>~</td>
+<td>尚无公开测试数据</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Llama 4</td>
+<td>开源</td>
+<td>~</td>
+<td>尚无公开测试数据</td>
+</tr>
+</tbody></table>
+<h5 id="MMMLU-Multimodal-Multi-task"><a href="#MMMLU-Multimodal-Multi-task" class="headerlink" title="MMMLU (Multimodal Multi-task)"></a>MMMLU (Multimodal Multi-task)</h5><blockquote>
+<p>MMMLU（大规模多任务多模态理解）基准旨在测试模型跨越文本与视觉的综合推理能力。它不仅要求模型读懂题目，还要看懂题目中的图示，并将视觉信息转化为数学约束条件.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>准确率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>91.8%</td>
+<td>原生多模态架构优势明显</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>89.6%</td>
+<td>视觉推理能力极强，略逊 Gemini</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Grok 4</td>
+<td>闭源</td>
+<td>78.0%</td>
+<td>视觉能力相对较弱</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Qwen 3-VL</td>
+<td>开源</td>
+<td>~80%</td>
+<td>开源多模态首选</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Llama 4 Maverick</td>
+<td>开源</td>
+<td>52.2% (MMMU Pro)</td>
+<td>早期融合架构，但分数一般</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Claude 3.5 Sonnet</td>
+<td>闭源</td>
+<td>~</td>
+<td>缺乏 MMMU 专项数据</td>
+</tr>
+<tr>
+<td>-</td>
+<td>DeepSeek V3</td>
+<td>开源</td>
+<td>~</td>
+<td>视觉非其核心强项</td>
+</tr>
+</tbody></table>
+<h4 id="推理能力（Reasoning）评测调研"><a href="#推理能力（Reasoning）评测调研" class="headerlink" title="推理能力（Reasoning）评测调研"></a>推理能力（Reasoning）评测调研</h4><h5 id="MMLU-Pro"><a href="#MMLU-Pro" class="headerlink" title="MMLU-Pro"></a>MMLU-Pro</h5><blockquote>
+<p>MMLU-Pro 是对经典版本的全面升级。它通过两项关键优化提升评估 有效性：一是将选项从 4 个增加到 10 个，大幅降低了随机猜对的概率；二 是新增大量需多步推理的题目，弱化简单记忆类题目占比。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型名称</th>
+<th>类型</th>
+<th>准确率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>90.10%</td>
+<td>跨过 90% 门槛，STEM 领域近乎满分</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gemini 3 Flash</td>
+<td>闭源</td>
+<td>88.59%</td>
+<td>极高的推理效率，小参数量却有超强逻辑</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude Opus 4.1</td>
+<td>闭源</td>
+<td>87.92%</td>
+<td>开启“思维链 (Thinking)”模式后极度严谨</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Claude Sonnet 4.5</td>
+<td>闭源</td>
+<td>87.36%</td>
+<td>性价比之王，广泛应用于复杂工程任务</td>
+</tr>
+<tr>
+<td>5</td>
+<td>iAsk Pro</td>
+<td>闭源</td>
+<td>85.85%</td>
+<td>针对事实回答优化的垂直黑马</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GPT-5.0</td>
+<td>闭源</td>
+<td>86.51%</td>
+<td>综合能力均衡，指令遵循能力最强</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DeepSeek-V3.2</td>
+<td>开源</td>
+<td>85.00%</td>
+<td>全球开源模型第一，推理能力对齐顶级闭源</td>
+</tr>
+<tr>
+<td>8</td>
+<td>GLM-4.6 / 5.0 (测试版)</td>
+<td>开源</td>
+<td>84.60%</td>
+<td>智谱 AI 出品，中英文多任务处理极佳</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Qwen3-235B</td>
+<td>开源</td>
+<td>84.40%</td>
+<td>阿里出品，在数学、代码推理上有独特优势</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Llama 4 (70B/405B)</td>
+<td>开源</td>
+<td>82.10%</td>
+<td>生态兼容性最强，推理稳定性极高</td>
+</tr>
+</tbody></table>
+<h5 id="GPQA-Diamond"><a href="#GPQA-Diamond" class="headerlink" title="GPQA Diamond"></a>GPQA Diamond</h5><blockquote>
+<p>GPQA Diamond 基准应运而生。它由生物学、物理学和化学领域的博士专家编写，题目难度极高，即使是拥有博士学位的非本专业专家在可以使用谷歌搜索的情况下，正确率也仅为 34%。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>准确率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>92.4%</td>
+<td>科学推理之王</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>91.9%</td>
+<td>与 GPT-5.2 差距极小</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Grok 4 Heavy</td>
+<td>闭源</td>
+<td>88.4%</td>
+<td>专家级知识储备</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Claude Opus 4.5</td>
+<td>闭源</td>
+<td>~87%</td>
+<td>表现强劲</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DeepSeek R1</td>
+<td>开源</td>
+<td>81.0%</td>
+<td>开源模型中的科学专家</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Qwen 2.5 Max</td>
+<td>开源</td>
+<td>~</td>
+<td>优于 DeepSeek V3</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Llama 4 Maverick</td>
+<td>开源</td>
+<td>69.8%</td>
+<td>科学推理相对较弱</td>
+</tr>
+</tbody></table>
+<h5 id="ARC-AGI-Abstraction-and-Reasoning-Corpus"><a href="#ARC-AGI-Abstraction-and-Reasoning-Corpus" class="headerlink" title="ARC-AGI (Abstraction and Reasoning Corpus)"></a>ARC-AGI (Abstraction and Reasoning Corpus)</h5><blockquote>
+<p>ARC-AGI-2 是其更难的版本，专门用于抵御暴力破解。该基准属于纯粹的智商测试，与训练数据的记忆无关。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>分数</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>GPT-5.2 (Thinking)</td>
+<td>闭源</td>
+<td>52.9%</td>
+<td>抽象推理能力的重大突破</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gemini 3 Deep Think</td>
+<td>闭源</td>
+<td>45.1%</td>
+<td>深度思考模式有效</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude Opus 4.5</td>
+<td>闭源</td>
+<td>37.6%</td>
+<td>依然优于大多数人类</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>31.1%</td>
+<td>~</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Grok 4 (Refine)</td>
+<td>闭源</td>
+<td>29.4%</td>
+<td>~</td>
+</tr>
+<tr>
+<td>-</td>
+<td>DeepSeek R1</td>
+<td>开源</td>
+<td>~</td>
+<td>暂无官方 ARC-2 数据</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Llama 4</td>
+<td>开源</td>
+<td>~</td>
+<td>暂无数据</td>
+</tr>
+</tbody></table>
+<h5 id="Humanity’s-Last-Exam-HLE"><a href="#Humanity’s-Last-Exam-HLE" class="headerlink" title="Humanity’s Last Exam (HLE)"></a>Humanity’s Last Exam (HLE)</h5><blockquote>
+<p>人工智能安全中心（Center for AI Safety）联合 Scale AI 发布了 Humanity’sLast Exam（HLE）基准。</p>
+<p>该基准汇集了 2,500 个由全球各领域顶尖专家设计的、极其晦涩且跨学科的难题，旨在测试模型在人类知识边界上的综合能力。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>准确率</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Grok 4 Heavy</td>
+<td>闭源</td>
+<td>50.7%</td>
+<td>意外的冠军，知识覆盖面极广</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>45.8%</td>
+<td>表现非常均衡</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gemini 3 Flash</td>
+<td>闭源</td>
+<td>43.5%</td>
+<td>性价比极高的推理能力</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>34.5%</td>
+<td>在冷门知识上略显不足</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DeepSeek V3.1</td>
+<td>开源</td>
+<td>30%</td>
+<td>开源最佳</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Claude Opus 4.5</td>
+<td>闭源</td>
+<td>25.2%</td>
+<td>可能受限于安全微调</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Llama 4</td>
+<td>开源</td>
+<td>~</td>
+<td>暂无数据</td>
+</tr>
+</tbody></table>
+<h4 id="智能体能力（Agents）评测调研"><a href="#智能体能力（Agents）评测调研" class="headerlink" title="智能体能力（Agents）评测调研"></a>智能体能力（Agents）评测调研</h4><h5 id="GAIA-General-AI-Assistants-benchmark"><a href="#GAIA-General-AI-Assistants-benchmark" class="headerlink" title="GAIA (General AI Assistants benchmark)"></a>GAIA (General AI Assistants benchmark)</h5><blockquote>
+<p>GAIA 基准旨在评估通用 AI 助手的实战能力。它包含了一系列概念上简单但在操作上繁琐的任务，这些任务往往需要模型组合使用搜索、计算器、代码解释器等多种工具。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型 / Agent</th>
+<th>类型</th>
+<th>分数</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Su Zero + SQ Pro</td>
+<td>-</td>
+<td>97.8%</td>
+<td>多模型集成方案 (GPT+Gemini+Claude)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lemon Agent</td>
+<td>-</td>
+<td>96.7%</td>
+<td>基于 GPT-5 和 o3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>~92%</td>
+<td>单模型表现极佳，工具编排能力强</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GPT-5</td>
+<td>闭源</td>
+<td>~</td>
+<td>强力的 Agent 基座</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Claude 3.5 Sonnet</td>
+<td>闭源</td>
+<td>~</td>
+<td>也是极受欢迎的 Agent 核心</td>
+</tr>
+<tr>
+<td>-</td>
+<td>DeepSeek V3</td>
+<td>开源</td>
+<td>~</td>
+<td>逐步在 Agent 领域崭露头角</td>
+</tr>
+</tbody></table>
+<h5 id="WebArena-amp-OSWorld"><a href="#WebArena-amp-OSWorld" class="headerlink" title="WebArena &amp; OSWorld"></a>WebArena &amp; OSWorld</h5><blockquote>
+<p>WebArena 和 OSWorld 是评估这种能力的先驱基准。WebArena 专注于网页浏览，要求模型在模拟的电商、论坛等网站中完成复杂的购物或管理任务。OSWorld 则更进一步，要求模型控制 Ubuntu 操作系统，使用终端、办公软件等完成跨应用任务。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>OSWorld 得分</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Qwen 3 VL</td>
+<td>开源</td>
+<td>66.7%</td>
+<td>视觉定位能力极强，GUI 操作之王</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Claude Opus 4.5</td>
+<td>闭源</td>
+<td>66.3%</td>
+<td>计算机使用（Computer Use）功能的先驱</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude 3.5 Sonnet</td>
+<td>闭源</td>
+<td>61.4%</td>
+<td>依然是高性价比选择</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>~</td>
+<td>网页理解能力最强</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Grok 4.1 Thinking</td>
+<td>闭源</td>
+<td>~</td>
+<td>网页交互能力不俗</td>
+</tr>
+<tr>
+<td>-</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>~</td>
+<td>在此类操作任务上数据较少</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Llama 4</td>
+<td>开源</td>
+<td>~</td>
+<td>暂无数据</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>模型</th>
+<th>类型</th>
+<th>WebArena 得分</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Gemini 3 Pro</td>
+<td>闭源</td>
+<td>1490</td>
+<td>网页理解能力最强</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Grok 4.1 Thinking</td>
+<td>闭源</td>
+<td>1477</td>
+<td>网页交互能力不俗</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude Opus 4.5</td>
+<td>闭源</td>
+<td>1469</td>
+<td>计算机使用功能的先驱</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Claude 3.5 Sonnet</td>
+<td>闭源</td>
+<td>1450</td>
+<td>依然是高性价比选择</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Qwen 3 VL</td>
+<td>开源</td>
+<td>~</td>
+<td>视觉定位能力极强，GUI 操作之王</td>
+</tr>
+<tr>
+<td>-</td>
+<td>GPT-5.2</td>
+<td>闭源</td>
+<td>~</td>
+<td>在此类操作任务上数据较少</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Llama 4</td>
+<td>开源</td>
+<td>~</td>
+<td>暂无数据</td>
+</tr>
+</tbody></table>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Mr.Z</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://WUHU-Z.github.io/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%886%EF%BC%89/">http://WUHU-Z.github.io/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%886%EF%BC%89/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Mr.Z</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                    <span class="chip bg-color">大模型</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%887%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/34.jpg" class="responsive-img" alt="2025大语言模型进展报告（7）">
+                        
+                        <span class="card-title">2025大语言模型进展报告（7）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-05-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%885%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="2025大语言模型进展报告（5）">
+                        
+                        <span class="card-title">2025大语言模型进展报告（5）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-05-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+ <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="7747893098"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2026</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Mr.Z</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/WUHU-Z" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ddd@mail.nwpu.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2632851304" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2632851304" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+ <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+ <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+		<script src="/libs/materialize/materialize.min.js"></script>
+		<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+		<script src="/libs/aos/aos.js"></script>
+		<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+		<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+		<script src="/js/matery.js"></script>
+
+		<!-- Baidu Analytics -->
+ <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+ 
+		<script
+			src="/libs/others/clicklove.js"
+			async="async"
+		></script>
+		 
+		<script
+			async
+			src="/libs/others/busuanzi.pure.mini.js"
+		></script>
+		      
+		<script
+			type="text/javascript"
+			size="150"
+			alpha="0.6"
+			zIndex="-1"
+			src="/libs/background/ribbon.min.js"
+			async="async"
+		></script>
+		 
+		<script
+			type="text/javascript"
+			src="/libs/background/ribbon-dynamic.js"
+			async="async"
+		></script>
+		 
+		<script
+			src="/libs/instantpage/instantpage.js"
+			type="module"
+		></script>
+		
+		<!-- 雪花特效 -->
+		
+		<script type="text/javascript" src="/libs/others/snow.js"></script>
+		
+
+		<script type="text/javascript">
+			var OriginTitile = document.title,
+				st;
+			document.addEventListener("visibilitychange", function () {
+				document.hidden
+					? ((document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！"),
+					  clearTimeout(st))
+					: ((document.title = "φ(゜▽゜*)♪咦，又好了！"),
+					  (st = setTimeout(function () {
+							document.title = OriginTitile;
+					  }, 3e3)));
+			});
+		</script>
+		
+		<script
+			type="text/javascript"
+			src="/libs/others/sakura.js"
+		></script>
+		
+	<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

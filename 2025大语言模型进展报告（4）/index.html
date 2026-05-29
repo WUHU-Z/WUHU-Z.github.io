@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="2025大语言模型进展报告（4）, 隐迹札记">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>2025大语言模型进展报告（4） | 隐迹札记</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+  <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+ 
+
+	<body>
+		<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">隐迹札记</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Others</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/chat">
+          
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Chat</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Movies</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Books</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Galleries</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">隐迹札记</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Others
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/chat " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Chat</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Movies</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Books</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Galleries</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+ 
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/41.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">2025大语言模型进展报告（4）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                <span class="chip bg-color">大模型</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                大模型
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-05-10
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="四、智能体演进"><a href="#四、智能体演进" class="headerlink" title="四、智能体演进"></a>四、智能体演进</h2><h3 id="4-1-自主任务规划"><a href="#4-1-自主任务规划" class="headerlink" title="4.1 自主任务规划"></a>4.1 自主任务规划</h3><p>自主规划智能体核心能力示意图：</p>
+<p><img src="D:\typora_picture\image-20260511092458744.png" alt="image-20260511092458744"></p>
+<h4 id="研究进展"><a href="#研究进展" class="headerlink" title="研究进展"></a>研究进展</h4><h5 id="全局、系统性思维能力"><a href="#全局、系统性思维能力" class="headerlink" title="全局、系统性思维能力"></a>全局、系统性思维能力</h5><ul>
+<li><p><strong>与多智能体方法结合</strong>：多智能体系统通过智能体间的协同工作来解决复杂问题。通过应用不同的培养策略，不同专长的智能体能够各尽其才。例如 <strong>Plan-And-Act</strong>采用了不同配方来训练 Planner(用于高层任务分解) 和 Executor(用于具体任务执行)。使用这两个智能体构造的双层框架在复杂、多步骤、长周期任务中表现出色。</p>
+</li>
+<li><p><strong>与策略梯度相结合：</strong>策略梯度方法提供了一种基于奖励信号优化智能体决策策略的方式。在 <strong>TextGrad</strong>首先提出基于梯度的提示优化后，ReFlexGrad针对自主任务规划领域提出了一种紧密结合了任务分解、策略梯度与自主反思的闭环系统，通过强化学习实现了卓越的零样本性能。</p>
+</li>
+<li><p><strong>与树/图等数据结构结合：</strong>面对复杂任务，树、图等数据结构能够更好地管理复杂任务的层级与依赖关系。<strong>HyperTree Planning</strong>提出了一种“超树”结构来进行迭代扩展并细化的推理。而将树形结构与多智能体方法结合，在动态扩展的代理树中管理子目标</p>
+</li>
+</ul>
+<h5 id="环境信息管理能力"><a href="#环境信息管理能力" class="headerlink" title="环境信息管理能力"></a>环境信息管理能力</h5><ul>
+<li><strong>缩短思维链长度</strong>: <strong>Learning When to Plan</strong>通过实验说明：总是执行思维链规划和从不规划都会降低智能体的性能表现。为此，他们设计了一种强化学习方法，尝试培养了智能体的“适度思考”能力并取得了良好的效果。</li>
+<li><strong>压缩任务上下文</strong>: 以 <strong>AutoManuals</strong>为代表的方法使用实体——属性列表来管理环境级的上下文信息、通过 ToDo 列表来指导智能体探索环境，最终以结构化的方式保存环境信息，实现对于探索阶段上下文的压缩。而 Context-Folding直接学习在上下文中折叠不重要信息的策略，从而有效地缩短了上下文长度。</li>
+<li><strong>跨任务记忆：</strong> <strong>Dynamic Cheatsheet</strong>创新性地提出了一种跨任务经验 &amp; 策略迁移的轻量级框架，使得智能体能够在不同任务间共享经验，从而提升了新任务中的适应能力与执行效率。</li>
+</ul>
+<h5 id="反思与自我纠错能力"><a href="#反思与自我纠错能力" class="headerlink" title="反思与自我纠错能力"></a>反思与自我纠错能力</h5><ul>
+<li><strong>细粒度、动作级的反思</strong>: <strong>ReflAct</strong>指出朴素的 ReAct Agent 可能存在推理漂移、连锁错误等问题。为此，他们设计了一种动作级的反思机制，要求智能体在每次生成新任务前先反思当前状态。在 ALFWorld与 SCIWorld 上的实验中，ReflAct 使用轻量级的改动收获了显著的性能提升。</li>
+<li><strong>通过蒸馏学习培养反思能力</strong>: <strong>STeP</strong>将蒸馏学习应用于反思与自我纠错能力的培养中，通过在训练数据中加入包含反思与纠错过程的轨迹，增强了小型智能体向教师模型学习的效率，并进一步赋予其更强的反思与自我纠错能力</li>
+</ul>
+<h3 id="4-2-工具链整合"><a href="#4-2-工具链整合" class="headerlink" title="4.2 工具链整合"></a>4.2 工具链整合</h3><p>工具使用智能体技术栈：</p>
+<p><img src="D:\typora_picture\image-20260511093614532.png" alt="image-20260511093614532"></p>
+<h4 id="研究进展-1"><a href="#研究进展-1" class="headerlink" title="研究进展"></a>研究进展</h4><h5 id="标准化浪潮：模型上下文协议（MCP）的诞生与影响"><a href="#标准化浪潮：模型上下文协议（MCP）的诞生与影响" class="headerlink" title="标准化浪潮：模型上下文协议（MCP）的诞生与影响"></a>标准化浪潮：模型上下文协议（MCP）的诞生与影响</h5><p>Anthropic 公司在 2024 年底率先提出并推动了<strong>模型上下文协议（ModelContext Protocol, MCP）</strong>，并在 2025 年得到了业界的广泛响应和采纳。<br>MCP 核心设计哲学是<strong>开放和标准化</strong>，旨在基于 <strong>JSON-RPC 2.0</strong> 的通信与消息格式，为 AI 模型（客户端）与工具/数据源（服务器）之间的通信建立统一的、与具体模型和平台无关的规范。</p>
+<h5 id="多智能体协同场景下的工具调用"><a href="#多智能体协同场景下的工具调用" class="headerlink" title="多智能体协同场景下的工具调用"></a>多智能体协同场景下的工具调用</h5><ul>
+<li><strong>CrewAI</strong>：一个以角色扮演为核心的框架，允许开发者定义不同角色的智能体，并设定它们之间的协作流程，每个智能体都可以拥有自己专属的工具集。</li>
+<li><strong>AutoGen</strong>：由微软推出的对话驱动的多智能体框架，智能体之间可以通过对话进行协作，共同解决问题，工具调用是其对话能力的重要组成部分。</li>
+<li><strong>LangGraph</strong>：作为 LangChain 的扩展，LangGraph 将智能体工作流建模为图（Graph），每个节点代表一个计算步骤（如调用 LLM 或工具），边代表流程的走向。这种基于状态图的方式非常适合构建循环、可控的多智能体应用。</li>
+<li><strong>n8n</strong>：作为一个开源的工作流自动化工具，n8n 在 2025 年也加强了对多智能体工作流的编排能力，支持任务的交接和对整个流程的可观测性。</li>
+</ul>
+<h5 id="多模态融合"><a href="#多模态融合" class="headerlink" title="多模态融合"></a>多模态融合</h5><ul>
+<li><strong>SENSEI</strong>：一个具有多模态能力的辅助 AI 代理架构。它的核心特点是拥有一个智能路由模块，可以根据输入的模态（文本、图像等）和任务的性质，动态地决定是调用 LLM 进行文本处理，还是调用视觉模型（如CLIP）进行图像理解，或是调用搜索 API 获取信息。这种动态工具选择机制是多模态工具调用的关键。</li>
+<li><strong>MLLM-Tool</strong>：该框架旨在通过多模态编码器和开源 LLM，让智能体能够理解包含视觉或音频信息的用户指令，并准确地选择和调用外部的多模态工具。</li>
+<li><strong>mm-agent</strong>：此研究提出了一种增强复杂视觉场景下智能体决策能力的多模态代理架构，重点探讨了智能体如何自主选择和组合合适的工具（如物体检测、图像分割、OCR 等）来完成视觉问答或导航等任务。</li>
+</ul>
+<h5 id="动态工具发现与自动集成"><a href="#动态工具发现与自动集成" class="headerlink" title="动态工具发现与自动集成"></a>动态工具发现与自动集成</h5><table>
+<thead>
+<tr>
+<th align="left">开源项目</th>
+<th align="left">主要特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">OpenAI Agents SDK</td>
+<td align="left">多模型支持 / 简化多智能体工作流构建流程 / 内置一系列强大的工具并允许自定义工具 / 强大的可观测性</td>
+</tr>
+<tr>
+<td align="left">OpenHands</td>
+<td align="left">面向通用软件开发的智能体，具有高度可定制的工具集功能以及图状工具使用规则来处理更复杂的工具调用逻辑。</td>
+</tr>
+<tr>
+<td align="left">Tools Strands Agents Tools</td>
+<td align="left">提供了一套即用型的工具集，涵盖文件操作、Shell 集成、内存管理等。</td>
+</tr>
+<tr>
+<td align="left">扩展的 OpenAI Codex</td>
+<td align="left">能够自动化整个工作流，仅通过少量输入就能构建一个完整的机器学习模型或 API。</td>
+</tr>
+<tr>
+<td align="left">LangGraph</td>
+<td align="left">针对传统 LangChain 的“链式”结构在处理复杂、循环、有条件的任务流时显得力不从心的问题，将工作流抽象为一个有向无环图，使得构建复杂的、有状态的多智能体系统和需要多次工具调用的 ReAct（Reason-Act）风格的智能体变得更加直观和可控。</td>
+</tr>
+<tr>
+<td align="left">企业级应用框架：Spring AI Alibaba</td>
+<td align="left">支持循环推理与工具调用：实现了标准的 ReAct 框架。丰富的企业级特性：支持上下文工程、人工介入、消息压缩、规划、模型调用限制、工具重试以及基于 LLM 的工具选择器等高级功能。与企业生态集成：例如，它可以与 Nacos 等服务发现和配置中心结合，实现企业内部 API 工具的动态注册和调用。</td>
+</tr>
+</tbody></table>
+<h5 id="开源工具使用生态系统：框架、库与开发者工具"><a href="#开源工具使用生态系统：框架、库与开发者工具" class="headerlink" title="开源工具使用生态系统：框架、库与开发者工具"></a>开源工具使用生态系统：框架、库与开发者工具</h5><h6 id="性能评估：基准与指标"><a href="#性能评估：基准与指标" class="headerlink" title="性能评估：基准与指标"></a>性能评估：基准与指标</h6><table>
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">基准</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>2025 年新基准</strong></td>
+<td align="left">WebWalker</td>
+<td align="left">专门用于评测 LLM 在真实 Web 环境中的网页遍历能力。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">FDABench</td>
+<td align="left">数据分析代理（Data Agent）基准，评估智能体在面对复杂数据查询任务时，能否正确地选择和使用 SQL 查询、Python 数据分析库等工具来生成正确的分析结果。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">AgentClinic</td>
+<td align="left">面向临床医疗场景的多模态 AI 基准。</td>
+</tr>
+<tr>
+<td align="left"><strong>主流基准</strong></td>
+<td align="left">ToolBench、APIBench、API-Bank</td>
+<td align="left">这些基准构成了评估模型 API 调用有效性的基础。它们提供了大量的真实世界 API，要求模型根据自然语言指令生成正确的 API 调用代码。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">GTA（General Tool Agents）</td>
+<td align="left">通用的工具代理基准，可以进行多个模型之间的两两对比。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">WorkBench</td>
+<td align="left">评估在真实职场环境中智能体的任务执行、工具选择和多步操作能力。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Berkeley Function Calling Leaderboard（BFCL）</td>
+<td align="left">社区公认的衡量各大模型 Function Calling 能力的重要参考。</td>
+</tr>
+</tbody></table>
+<h6 id="性能指标：超越成功率的多维度考量"><a href="#性能指标：超越成功率的多维度考量" class="headerlink" title="性能指标：超越成功率的多维度考量"></a>性能指标：超越成功率的多维度考量</h6><table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">指标</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>效率指标</strong></td>
+<td align="left">延迟</td>
+<td align="left">完成任务或单次工具调用所需的总时间。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">交互次数</td>
+<td align="left">完成任务所需的“思考-行动”循环次数。</td>
+</tr>
+<tr>
+<td align="left"><strong>成本与资源消耗指标</strong></td>
+<td align="left">Token 使用量</td>
+<td align="left">包括 Prompt Token 和 Completion Token。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">计算成本</td>
+<td align="left">完成任务所需的总计算资源或 API 费用估算。</td>
+</tr>
+<tr>
+<td align="left"><strong>质量与鲁棒性指标</strong></td>
+<td align="left">工具选择准确率</td>
+<td align="left">在多工具场景下，模型选择正确工具的能力。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">参数生成准确率</td>
+<td align="left">模型为所选工具生成正确参数的能力。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">错误恢复能力</td>
+<td align="left">工具调用失败后，能否分析错误并有效重试或调整。</td>
+</tr>
+</tbody></table>
+<h6 id="产业应用与企业级实践"><a href="#产业应用与企业级实践" class="headerlink" title="产业应用与企业级实践"></a>产业应用与企业级实践</h6><table>
+<thead>
+<tr>
+<th align="left"><strong>应用领域</strong></th>
+<th align="left"><strong>代表案例 / 工具</strong></th>
+<th align="left"><strong>具体应用与调用逻辑</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>软件开发与 IT 运维自动化</strong></td>
+<td align="left">OpenAI 的 Codex 和开源项目 OpenHands 被广泛用于自动化软件开发流程。</td>
+<td align="left">调用 Jira 等项目管理工具更新任务状态，调用 CI/CD 流水线工具执行构建和部署，调用代码解释器执行和验证代码片段。</td>
+</tr>
+<tr>
+<td align="left"><strong>企业级业务流程自动化</strong></td>
+<td align="left">德勤等咨询公司利用 AI 智能体为客户构建自动化财务报告、供应链管理和人力资源流程的解决方案。</td>
+<td align="left">核心是调用企业内部的各种业务系统 API（例如 ERP 系统、CRM 系统等）。</td>
+</tr>
+<tr>
+<td align="left"><strong>智能客服与数据分析</strong></td>
+<td align="left">智能客服系统</td>
+<td align="left">调用内部数据库、知识库检索 API，以及各种业务操作 API。</td>
+</tr>
+<tr>
+<td align="left"><strong>制造业与物联网</strong></td>
+<td align="left">西门子公司在其工业自动化解决方案中应用 AI 智能体进行预测性维护。</td>
+<td align="left">调用传感器数据 API、工单系统 API 等。</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-检索增强生成-RAG"><a href="#4-3-检索增强生成-RAG" class="headerlink" title="4.3 检索增强生成 (RAG)"></a>4.3 检索增强生成 (RAG)</h3><p>2020年Lewis等人在NeurIPS会议上正式提出<strong>检索增强生成（Retrieval-Augmented Generation, RAG</strong>）</p>
+<h4 id="RAG-的全链路优化范式"><a href="#RAG-的全链路优化范式" class="headerlink" title="RAG 的全链路优化范式"></a>RAG 的全链路优化范式</h4><h5 id="检索前优化"><a href="#检索前优化" class="headerlink" title="检索前优化"></a>检索前优化</h5><h6 id="查询重写与扩展（Query-Rewriting-amp-Expansion）"><a href="#查询重写与扩展（Query-Rewriting-amp-Expansion）" class="headerlink" title="查询重写与扩展（Query Rewriting &amp; Expansion）"></a>查询重写与扩展（Query Rewriting &amp; Expansion）</h6><ul>
+<li>Wang et al.提出了多视角反馈驱动的查询重写 MaFeRw，通过对下游任务（检索 + 生成）的稠密奖励反馈，显著提升了重写质量与最终生成效果，也为 RAG 的模块协同优化提供了新范式;</li>
+<li>Amato et al.聚焦于法律领域问答这一高精度、高敏感性场景，系统性地对比了三种查询重写策略，子查询生成（Multi-Query）、复杂问题拆解（Decomposition）和高层概念抽象（Step-Back）的表现。实验表明“Step-Back”重写策略显著优于其他方法，在准确率和检索效率上均表现最佳;</li>
+</ul>
+<h6 id="子查询生成"><a href="#子查询生成" class="headerlink" title="子查询生成"></a>子查询生成</h6><ul>
+<li>Wang et al.提出了一个通用的框架，引入了多种专家设计的重写策略，根据不同的任务需求自适应地生成查询变体;</li>
+</ul>
+<h6 id="假设性文档生成（HyDE）"><a href="#假设性文档生成（HyDE）" class="headerlink" title="假设性文档生成（HyDE）"></a>假设性文档生成（HyDE）</h6><p>模型首先根据查询<strong>生成一个假设性的“理想答案”文档</strong>，然后使用该文档进行向量检索。其背后的逻辑是，答案比问题更能代表相关文档在语义空间中的位置。</p>
+<h5 id="检索中优化"><a href="#检索中优化" class="headerlink" title="检索中优化"></a>检索中优化</h5><h6 id="混合搜索（Hybrid-Search）"><a href="#混合搜索（Hybrid-Search）" class="headerlink" title="混合搜索（Hybrid Search）"></a>混合搜索（Hybrid Search）</h6><ul>
+<li>混合检索的提出来自 2024 年的 <strong>BlendedRAG</strong> 框架，通过结合（向量）语义搜索和基于关键词查询的检索器，显著提升了 RAG 的准确性</li>
+<li>Hu et al.针对不同类型的查询采用了<strong>双层检索范式</strong>：对于具体事实使用精确检索，对于抽象概念使用语义检索，实现了在速度与准确率之间的最佳平衡</li>
+</ul>
+<h6 id="多向量表示（Multi-Vector-Representation）"><a href="#多向量表示（Multi-Vector-Representation）" class="headerlink" title="多向量表示（Multi-Vector Representation）"></a>多向量表示（Multi-Vector Representation）</h6><p>为了解决单个嵌入向量无法完全捕捉长文档或复杂概念多面性的问题，研究者提出了为文档块生成多个向量的策略。</p>
+<ul>
+<li>Yan et al.详细讨论了多向量检索的数学形式，针对多向量检索存储开销大的痛点，提出了一种自适应的补丁级嵌入剪枝框架</li>
+</ul>
+<h6 id="层次化检索"><a href="#层次化检索" class="headerlink" title="层次化检索"></a>层次化检索</h6><blockquote>
+<p>首先检索高级别的摘要或目录信息，定位到相关的子集，然后再在子集内进行精细化的段落检索。这种“先粗后精”的策略在处理海量文档时，能有效平衡效率和精度</p>
+</blockquote>
+<ul>
+<li>Wang et al.提出一种基于<strong>属性社区的层次化 RAG</strong>，通过引入属性社区（Attributed Communities,ACs）和分层索引结构，实现了高效且多粒度的检索。</li>
+<li><strong>HM-RAG</strong>框架利用三个专门的代理（查询分割、多模态检索、合并优化），能够跨文本、图形和网络等多种数据类型进行检索，特别适合处理复杂的跨媒体查询</li>
+</ul>
+<h6 id="结构化检索"><a href="#结构化检索" class="headerlink" title="结构化检索"></a>结构化检索</h6><ul>
+<li>Sarmah et al.提出了图增强检索 (Graph RAG) 策略，将知识图谱（KG）与向量检索相结合的方法，解决了传统 RAG 在处理结构化数据时的局限性。</li>
+<li>Hu et al.提出情境化图检索增强生成（CG-RAG），引用基于图检索增强的 LLM 研究问答，探索了利用学术引用网络来增强模型的推理能力。</li>
+<li>Chen et al.利用知识图谱中的路径信息来增强检索，通过挖掘实体间的深层关联，显著提升了在专业领域（如生物医学）问答任务中的表现。</li>
+</ul>
+<h5 id="检索后优化"><a href="#检索后优化" class="headerlink" title="检索后优化"></a>检索后优化</h5><h6 id="重排（Re-ranking）"><a href="#重排（Re-ranking）" class="headerlink" title="重排（Re-ranking）"></a>重排（Re-ranking）</h6><ul>
+<li>Zhang et al.针对传统的问题-答案对的语义相似度计算容易受表面相关性（lexical overlap）误导的问题，提出了一种<strong>通过显式检索和重排序支持证据（supporting evidence）</strong>来提升答案排序准确率的新架构。</li>
+<li>Kardan et al.系统评估了在时序问答中，如何利用<strong>答案的时间戳信息对检索到的答案进行重排序</strong>，以提升回答准确性</li>
+</ul>
+<h6 id="上下文压缩（Context-Compression）"><a href="#上下文压缩（Context-Compression）" class="headerlink" title="上下文压缩（Context Compression）"></a>上下文压缩（Context Compression）</h6><ul>
+<li>Chen et al.针对 RAG 中面临的长上下文处理瓶颈，提出了一种极端高效的上下文压缩方法，<strong>将整个检索到的文档集合压缩为单个信息浓缩 token</strong>，使大模型能利用海量外部知识而零增加输入长度。</li>
+<li>Hwang et al.通过<strong>选择句子级别的关键事实构建精简但信息完整的压缩文档</strong></li>
+</ul>
+<h4 id="自适应与自主-RAG"><a href="#自适应与自主-RAG" class="headerlink" title="自适应与自主 RAG"></a>自适应与自主 RAG</h4><h5 id="迭代式检索"><a href="#迭代式检索" class="headerlink" title="迭代式检索"></a>迭代式检索</h5><ul>
+<li>Feng et al.提出自适应迭代检索框架，根据问题复杂度<strong>动态决定是否进行多轮检索</strong>。同时引入不确定性感知模块，判断首轮检索结果置信度低，则触发第二轮更精细的检索，包括扩大查询范围或切换检索器等。</li>
+<li>Guan et al.将 RAG <strong>建模为马尔可夫决策过程（MDP</strong>），使用强化学习框架统一建模迭代与自适应行为。</li>
+<li>Yu et al.提出了<strong>双路径迭代检索策略</strong>，包括基于语义相似度的传统稠密检索，和基于图结构的实体超边扩展。通过 GRPO 强化学习算法实现了端到端的优化检索-生成联合策略。</li>
+<li>KnowTrace<strong>聚焦于多跳问答推理任务</strong>，提出了一种新型迭代式检索增强生成框架，并引入自举式训练机制（Self-Bootstrapping），将多跳推理转化为可追踪、可学习、可优化的知识扩展过程，显著提升了模型在开放域多跳推理中的准确率与可解释性。</li>
+<li>Lee et al.以提升事实准确性，抑制幻觉为目标进行多轮迭代检索，每轮生成后，模型输出推理链，并从中提取待验证子句，作为下一轮检索的查询，迭代直至所有关键事实被检索证据覆盖或达到最大轮次。该方法将“推理”与“检索”深度耦合，形成闭环验证，在 AVeriTeC 和 FEVER 上的幻觉率下降 12.4%。</li>
+</ul>
+<h5 id="自适应检索决策"><a href="#自适应检索决策" class="headerlink" title="自适应检索决策"></a>自适应检索决策</h5><ul>
+<li>Wu et al.提出了一种<strong>自路由检索增强生成（Self-Routing RAG）框架</strong>，融合了参数化知识（即知识口头化机制生成的模型内部知识）与外部知识源，让大语言模型（LLM）在生成答案前主动决定是否需要外部检索、以从哪个知识源获取信息。</li>
+<li><strong>ExpertRAG</strong>没有采用复杂的迭代或反思机制，引入 MoE 架构实现按需、高效、精准的知识路由，为构建大规模、多领域、生产级 RAG 系统提供了新范式。</li>
+<li><strong>UltraRAG v2</strong>是基于 MCP 架构设计的轻量级 RAG 系统，将 RAG中的核心组件（如 Retriever、Generation 等）标准化封装为独立的 MCP Server，并通过函数级 Tool 接口实现灵活调用与功能扩展</li>
+</ul>
+<h4 id="多智能体-RAG（Multi-Agent-RAG）"><a href="#多智能体-RAG（Multi-Agent-RAG）" class="headerlink" title="多智能体 RAG（Multi-Agent RAG）"></a>多智能体 RAG（Multi-Agent RAG）</h4><ul>
+<li>Singh et al.首次系统定义了 Agentic RAG 架构和理论框架，<strong>提出“检索-评估-生成-反思”四阶段协作框架</strong>。论文将多智能体 RAG 分为三类：<strong>流水线型（Pipeline Agents）、辩论型（Debate Agents）、协作型（Collaborative Agents）</strong>，并提出统一评估基准RAG-AgentBench</li>
+<li>Nguyen et al.提出了多智能体协同结合失败模式感知机制模式，智能体 Explorer 执行检索增强、Verifier 验证检索片段的事实一致性、Synthesizer融合可信片段生成最终答案。</li>
+<li>Liu et al.提出了首个分层多智能体多模态RAG 系统，<strong>底层进行视觉与文本检索智能体并行处理多模态数据；中层通过跨模态对齐智能体判断图文相关性；顶层通过决策智能体融合多源证据生成答案</strong>。在 MMBench 和 DocVQA 上达 SOTA。</li>
+</ul>
+<h4 id="多模态-RAG"><a href="#多模态-RAG" class="headerlink" title="多模态 RAG"></a>多模态 RAG</h4><ul>
+<li>Lin et al.是 MM-RAG 基础模型之一，提出首个支持细粒度跨模态检索的统一编码器，可<strong>同时处理文本、图像、表格的任意组合查询</strong>。在跨模态对齐方面，充分利用 MLLM 的生成能力主动生成语义锚点，引导跨模态对齐。对于图像数据和文本查询，MLLM 分别生成描述性短语和关键词集合，从而实现二者的语义桥接。</li>
+<li>Tian et al.<strong>引入基于自然语言推理的一致性评分来判断图文模态是否逻辑一致</strong>，解决跨模态检索中的“知识冲突”问题，提升 MM-RAG 可信度。</li>
+<li>Zhu et al.提出了一种<strong>基于子维度分解的新多模态检索机制</strong>，将复杂查询分解为子查询，对每个子查询独立检索，再融合最优视觉特征。将跨模态检索从“整体匹配”推向“成分级对齐”，为 MM-RAG 提供“分而治之”的新思路。</li>
+<li>Zhang et al.提出了<strong>首个专为文本-表格异构文档设计的 RAG 系统</strong>，将表格转换为 HTML-like 序列，使用 LLM 为每行/列生成，在此基础上，结合稀疏与稠密检索实现跨模态检索，从而实现了文本与表格的统一表示、联合检索、多步推理的 RAG 框架，显著提升了异构文档问答的准确性。</li>
+</ul>
+<h3 id="4-4-长期记忆"><a href="#4-4-长期记忆" class="headerlink" title="4.4 长期记忆"></a>4.4 长期记忆</h3><p><strong>核心瓶颈</strong>：缺乏长期记忆。这种缺陷具体体现在以下两个方面：</p>
+<ul>
+<li>一是有限上下文窗口约束，无法直接容纳历史全部交互上下文。</li>
+<li>二是个性化缺失，受 LLMs 无状态性影响，其难以整合跨会话知识，无法提供个性化和一致性的交互体验</li>
+</ul>
+<p><img src="D:\typora_picture\image-20260511162725363.png" alt="image-20260511162725363"></p>
+<h4 id="研究进展-2"><a href="#研究进展-2" class="headerlink" title="研究进展"></a>研究进展</h4><h5 id="记忆构建"><a href="#记忆构建" class="headerlink" title="记忆构建"></a>记忆构建</h5><p>根据提取出记忆的具体内容和功能，通常分为以下三大核心类别。</p>
+<ul>
+<li>首先是<strong>情景记忆</strong>，即带有时间戳、上下文信息和具体细节的原始事件和对话片段，是代理行为可追溯性和连贯性的基础（如 Zep等）。</li>
+<li>除记忆事实信息外，还有<strong>语义记忆</strong>，这是独立于具体事件的抽象知识、实体关系等通用信息，它构成了代理的世界观和长期知识库，支持深层次的理解与推理。</li>
+<li>最后是<strong>用户画像</strong>，包含从长期交互中提炼出的用户偏好、习惯等信息，是个性化服务和一致性回复实现的核心要素（如memobase等）。</li>
+</ul>
+<h5 id="记忆存储"><a href="#记忆存储" class="headerlink" title="记忆存储"></a>记忆存储</h5><table>
+<thead>
+<tr>
+<th>记忆形式</th>
+<th>关键特性与优势</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>纯文本</td>
+<td>直接使用文本记录信息，方便直接阅读。</td>
+<td>大部分系统</td>
+</tr>
+<tr>
+<td>结构化图谱</td>
+<td>建模为节点（实体）和边（关系），支持复杂的多跳推理和关系建模。</td>
+<td>Zep, MemOg</td>
+</tr>
+<tr>
+<td>多模态</td>
+<td>存储图像、音频、视频帧等非文本信息，支持跨模态推理。</td>
+<td>MIRIX, M3-Agent</td>
+</tr>
+<tr>
+<td>向量表示</td>
+<td>将文本转化为高维语义向量或是隐层表示，前者是高效语义相似性检索的基础，后者则是利于节约推理成本。</td>
+<td>MemOS</td>
+</tr>
+<tr>
+<td>模型参数</td>
+<td>通过高效微调方法，将特定领域或个人属性的知识提炼到模型参数中。</td>
+<td>MemOS</td>
+</tr>
+</tbody></table>
+<h5 id="记忆检索"><a href="#记忆检索" class="headerlink" title="记忆检索"></a>记忆检索</h5><table>
+<thead>
+<tr>
+<th>检索方式</th>
+<th>关键特性与优势</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>向量检索</td>
+<td>基于记忆嵌入向量进行语义相似性召回，是相对基础的检索方案。</td>
+<td>大部分系统</td>
+</tr>
+<tr>
+<td>图结构检索</td>
+<td>利用图遍历、关系路径推理，在图结构记忆中高效支持多跳推理和关系查找。</td>
+<td>Zep, MemOg</td>
+</tr>
+<tr>
+<td>关键词/元数据检索</td>
+<td>根据时间戳、标签、主题等信息进行精准过滤和查询，具有极低的推理延迟。</td>
+<td>memobase, MIRIX</td>
+</tr>
+</tbody></table>
+<h3 id="4-5-自我反思自我修正智能体"><a href="#4-5-自我反思自我修正智能体" class="headerlink" title="4.5  自我反思自我修正智能体"></a>4.5  自我反思自我修正智能体</h3><p><strong>自我反思（Self-Reflection）</strong>是一种元认知能力，指 AI 智能体在完成任务或生成内容后，能主动地、系统地审视自身的行为过程、推理逻辑、中间步骤或最终输出。</p>
+<p>反思的<strong>目的</strong>在于评估其表现的质量、准确性、逻辑连贯性以及是否符合预设目标与约束。</p>
+<blockquote>
+<p><strong>迭代优化与自我反馈（Iterative Refinement with Self-Feedback）</strong>这一范式是当前最主流、研究最深入的方向之一，其核心思想是构建一个“生成-反馈-修正”的迭代循环</p>
+</blockquote>
+<p><img src="D:\typora_picture\image-20260511163651224.png" alt="image-20260511163651224"></p>
+<h4 id="模型原生反思机制"><a href="#模型原生反思机制" class="headerlink" title="模型原生反思机制"></a>模型原生反思机制</h4><ul>
+<li><strong>Agent-R</strong>该框架通过<strong>迭代自我训练（Iterative Self-Training）</strong>，让智能体在训练阶段就学习如何反思和修正。智能体在解决任务时生成思考过程，然后自我反思这些过程的优劣，并将高质量的反思轨迹作为新的训练数据，从而将反思能力“蒸馏”到模型参数中，实现了从事后修正到实时与主动反思</li>
+<li><strong>AgentRefine</strong>和 <strong>STeP</strong>这些研究探索了在模型的解码（Decoding）阶段直接融入反思和修正步骤，使模型在生成一个“有缺陷”的初步想法后，能立即进行自我批判和改进，再输出最终决策。</li>
+<li>MIT 的 <strong>SEAL框架</strong>允许LLM 通过与环境（如工具、API）的交互，自主生成微调数据并更新自身指令，实现真正的自我适应。这代表了反思能力从“任务级”修正深化到“模型级”演化的重要一步。</li>
+</ul>
+<h4 id="自适应迭代控制机制"><a href="#自适应迭代控制机制" class="headerlink" title="自适应迭代控制机制"></a>自适应迭代控制机制</h4><blockquote>
+<p>迭代是自我反思智能体实现自我改进的基本形式，但无控制的迭代是危险且低效的。</p>
+<p>自适应迭代控制正是为了解决“<strong>如何迭代</strong>”这一核心问题而发展起来的</p>
+</blockquote>
+<h5 id="反思-控制闭环的深度融合架构"><a href="#反思-控制闭环的深度融合架构" class="headerlink" title="反思-控制闭环的深度融合架构"></a>反思-控制闭环的深度融合架构</h5><ul>
+<li>增强的 <strong>Reflexion</strong> 架构提出了一种先验动态工作流构建框架，通过使评估者（Evaluator）输出一个关于反馈质量的“置信度”作为自适应控制器的输入，用以决定下一次迭代的 Actor 是否应该采纳 Self-Reflection 模块的建议，以及采纳的程度，为反思-控制闭环实现了“自适应”处理。</li>
+<li><strong>图示化的认知流程</strong>一些工作通过流程图清晰地展示了这种闭环。例如，一个典型的“自反思智能体”工作流被描绘为：在任务执行后，通过前置条件检查和后置条件检查模块进行反思，然后将包含反思洞察的成功或失败示例存入经验数据库，用于后续的迭代学习。这个数据库的学习过程，本身就是一个由新经验驱动的、不断迭代的自适应过程。</li>
+</ul>
+<h5 id="基于元学习的快速自适应迭代"><a href="#基于元学习的快速自适应迭代" class="headerlink" title="基于元学习的快速自适应迭代"></a>基于元学习的快速自适应迭代</h5><ul>
+<li>Orike et al.系统探讨了<strong>元学习如何释放自适应人工智能系统的潜力</strong>。文章详细阐述了 MAML（Model-Agnostic Meta-Learning）等算法如何使模型具备快速适应新任务的能力，为智能体设计提供了理论基础。</li>
+<li>Wang et al.针对<strong>对抗性任务分布生成的鲁棒快速适应问题</strong>。研究了在复杂、甚至带有对抗性的环境中，智能体如何通过元学习机制保持快速适应能力，这对构建安全的自主智能体至关重要。</li>
+<li>Wang et al.是一个结合了<strong>残差自适应上下文调优的元学习方法</strong>，专门用于威胁检测等高风险领域的快速模型适应，展示了元学习在实际工业场景中的高效性。</li>
+</ul>
+<h5 id="动态自适应奖励与反馈机制"><a href="#动态自适应奖励与反馈机制" class="headerlink" title="动态自适应奖励与反馈机制"></a>动态自适应奖励与反馈机制</h5><ul>
+<li><strong>自适应奖励函数（Adaptive Reward Shaping）</strong> 2025 年出现的 <strong>Self-Adaptive Reward Strategy 机制和 Adaptive Reward Scaling 方法</strong>能够根据智能体在任务中的历史成功率、探索阶段等信息，<strong>动态调整奖励函</strong>数。在任务初期，给予更多的探索奖励；在智能体掌握基本技能后，则提高对任务完成度的奖励权重。这种自适应奖励使得强化学习过程中的迭代更加高效和稳定。</li>
+<li><strong>多维度反馈与领域特定模板</strong> 单一的标量奖励（如成功/失败）包含的信息量太少。Yun et al.引入了<strong>多维度评估指标</strong>和<strong>领域特定的反馈模板</strong>。通过多维解耦，将评估拆解为准确性 (Accuracy)、逻辑性 (Logic)、创造性 (Creativity) 等独立维度，例如在代码生成任务中，反馈不仅包括代码是否能运行，还包括其效率、可读性、是否遵循代码规范等多个维度。这种结构化的反馈为自适应迭代控制提供了更精确的“梯度”信号，指导智能体进行更有效</li>
+</ul>
+<h5 id="基于口头反馈的强化学习（Reinforcement-Learning-and-Verbal-Feedback）"><a href="#基于口头反馈的强化学习（Reinforcement-Learning-and-Verbal-Feedback）" class="headerlink" title="基于口头反馈的强化学习（Reinforcement Learning and Verbal Feedback）"></a>基于口头反馈的强化学习（Reinforcement Learning and Verbal Feedback）</h5><blockquote>
+<p>代表性框架 <strong>Reflexion</strong>， 核心工作流程为行动与评估-自我反思- 记忆更新与指导未来行动，智能体 在“试错”中学习，但其学习信号不再是难以解释的标量奖励，而是具有丰 富语义信息的自然语言反思</p>
+</blockquote>
+<h6 id="将反思作为策略更新的一部分"><a href="#将反思作为策略更新的一部分" class="headerlink" title="将反思作为策略更新的一部分"></a>将反思作为策略更新的一部分</h6><ul>
+<li>Qu et al.：不仅仅是将反思作为下一次尝试的上下文，而是探索如何直接利用反思文本来更新语言模型的内部参数，通过对比成功和失败路径上的反思，可以构建偏好数据集，并使用如DPO（Direct Preference Optimization）等技术对模型进行微调。</li>
+<li>pmlr提出了 DPSDP（Direct Policy Search by Dynamic Programming）方法，通过多智能体协作与强化学习，训练一个演员-评论家系统，使大语言模型能够迭代优化推理答案，并具备先验动态适应能力，在数学推理任务上显著提升了准确率与泛化性能。</li>
+</ul>
+<h6 id="分层反思（Hierarchical-Reflection）"><a href="#分层反思（Hierarchical-Reflection）" class="headerlink" title="分层反思（Hierarchical Reflection）"></a>分层反思（Hierarchical Reflection）</h6><ul>
+<li><strong>MobileUse</strong> 通过引入分层机制，在 Android 自动化任务中显著减少了失败次数（特别是在 Planning 和 Navigation 任务上）。这种分层结构使反思更加系统化。</li>
+<li><strong>SE-VLN</strong>: 提出了一种基于多模态大语言模型的自我演进框架，通过分层记忆模块和反思模块，专门用于存储短期和长期经验，并进行多步决策分析。</li>
+</ul>
+<h4 id="检索增强自反思"><a href="#检索增强自反思" class="headerlink" title="检索增强自反思"></a>检索增强自反思</h4><blockquote>
+<p>Self-RAG (Self-Reflective Retrieval-Augmented Generation, Self-RAG)思想在 2024 年首次提出，该框架将自我反思与检索增强生成（RAG）相结合。</p>
+</blockquote>
+<ul>
+<li><strong>InstructRAG</strong>: 提出 InstructRAG，一种通过自合成推理实现显式去噪的检索增强生成框架。该方法利用指令调优语言模型，基于问题、检索文档和正确答案生成解释性推理，以区分有用信息与噪声。这些推理可作为上下文学习示例或监督微调数据，使模型显式学习去噪过程，无需额外人工标注。InstructRAG 在多个知识密集型任务中显著优于现有 RAG 方法，提升了生成准确性与鲁棒性。除了文本领域的 Self-RAG</li>
+<li>这一思想也被扩展到了图像生成领域，Lyu et al.针对当前主流文生图模型在生成细粒度、未见过的真实世界物体时容易产生幻觉或失真的问题，提出了首个基于真实图像检索增强的生成框架 RealRAG。其核心创新在于引入自反思对比学习（Self-reflective Contrastive Learning）训练一个“反思型检索器”，动态补全生成模型的知识盲区。</li>
+</ul>
+<h3 id="4-6-自我进化"><a href="#4-6-自我进化" class="headerlink" title="4.6 自我进化"></a>4.6 自我进化</h3><h4 id="研究进展-3"><a href="#研究进展-3" class="headerlink" title="研究进展"></a>研究进展</h4><h5 id="基座能力进化"><a href="#基座能力进化" class="headerlink" title="基座能力进化"></a>基座能力进化</h5><table>
+<thead>
+<tr>
+<th>进化对象</th>
+<th>核心策略</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基座模型</td>
+<td>对模型参数进行有监督微调以提升推理能力</td>
+<td>STaR, AGENTGYM</td>
+</tr>
+<tr>
+<td></td>
+<td>通过强化学习优化策略以最大化任务奖励</td>
+<td>Absolution Zero, R-Zero, Co-EPG, AgentEvolver</td>
+</tr>
+</tbody></table>
+<h5 id="提示词进化"><a href="#提示词进化" class="headerlink" title="提示词进化"></a>提示词进化</h5><table>
+<thead>
+<tr>
+<th>进化对象</th>
+<th>核心策略</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>提示词</td>
+<td>利用启发式搜索策略改进提示词结构与表达</td>
+<td>ORPO, Promptbreeder, PromptAgent</td>
+</tr>
+<tr>
+<td></td>
+<td>基于反馈信号自动优化提示词内容</td>
+<td>TextGrad, SPO</td>
+</tr>
+</tbody></table>
+<h5 id="自治智能体结构进化"><a href="#自治智能体结构进化" class="headerlink" title="自治智能体结构进化"></a>自治智能体结构进化</h5><table>
+<thead>
+<tr>
+<th>进化对象</th>
+<th>核心策略</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>记忆的进化</td>
+<td>通过交互持续积累和更新领域知识</td>
+<td>MemInsight, Memo, A-MEM, Flex, Evo-Memory</td>
+</tr>
+<tr>
+<td>工具的进化</td>
+<td>从外部环境搜索、生成、复用可用工具集</td>
+<td>Alita, Alita-G, ToolGen</td>
+</tr>
+<tr>
+<td>整体结构进化</td>
+<td>通过代码生成自动修改智能体行为逻辑</td>
+<td>ADAS</td>
+</tr>
+<tr>
+<td></td>
+<td>基于任务需求动态组装模块化智能体架构</td>
+<td>AgentSquare</td>
+</tr>
+</tbody></table>
+<h5 id="多智能体进化"><a href="#多智能体进化" class="headerlink" title="多智能体进化"></a>多智能体进化</h5><table>
+<thead>
+<tr>
+<th>进化对象</th>
+<th>核心策略</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>协作方式</td>
+<td>优化多智能体协作工作流</td>
+<td>GPTSwarm, AFLOW, MaMS, FlowReasoner</td>
+</tr>
+<tr>
+<td></td>
+<td>优化多智能体群体自治过程</td>
+<td>EvoAgent, AgentNet</td>
+</tr>
+<tr>
+<td>群体经验</td>
+<td>知识探索的协同演进</td>
+<td>ProAgent</td>
+</tr>
+</tbody></table>
+<h3 id="4-7-GUI-Agent"><a href="#4-7-GUI-Agent" class="headerlink" title="4.7 GUI Agent"></a>4.7 GUI Agent</h3><p>GUI 智能体（GUI Agent）是一类能够在<strong>图形用户界面（Graphical User Interface, GUI）上“像人一样”完成复杂任务的软件程序</strong>。</p>
+<p>它的<strong>核心特征</strong>是：以自然语言为指令输入，通过大模型理解屏幕内容，自主规划并执行一连串“点击-拖拽-输入”等原子级操作，最终返回结果或达成目标，而无需依赖传统的脚本、API 或规则引擎；</p>
+<h4 id="GUI-Agent-感知能力"><a href="#GUI-Agent-感知能力" class="headerlink" title="GUI Agent 感知能力"></a>GUI Agent 感知能力</h4><h5 id="感知数据层面"><a href="#感知数据层面" class="headerlink" title="感知数据层面"></a>感知数据层面</h5><ul>
+<li>Gou et al.采集了迄今最大的 GUI 视觉定位数据集，涵盖 130 万张截图上的 1000 万个 GUI 元素及其指代表达，并据此训练出 UGround，一个面向 GUI 智能体的强通用视觉定位模型</li>
+</ul>
+<h5 id="感知方法层面"><a href="#感知方法层面" class="headerlink" title="感知方法层面"></a>感知方法层面</h5><ul>
+<li><p>Cheng et al.认为 GUI 智能体的核心挑战在于“GUI 定位”——即根据指令精准找到屏幕元素。为此引入 GUI 定位预训练，并设计自动化数据构建方法；同时发布首个涵盖移动、桌面与Web的真实 GUI 定位基准 <strong>ScreenSpot</strong></p>
+</li>
+<li><p>Wang et al.提出一种视觉分而治之框架：利用通用大模型指令解析器（Instruction Interpreter），并训练专门的视觉定位模型（Visual Element Locator）来精确标注元素坐标。这种双重模型结构使系统在无需 DOM 输入的情况下即可保持高灵活性，并在 ScreenSpot定位基准上获得了大幅提升</p>
+</li>
+<li><p>Tang et al.提出了 GUI-G²（GUI Gaussian Grounding Rewards）框架，核心创新之处在于将 GUI 元素建模为二维高斯分布，而非简单的点或矩形框</p>
+</li>
+</ul>
+<h4 id="GUI-Agent-规划能力"><a href="#GUI-Agent-规划能力" class="headerlink" title="GUI Agent 规划能力"></a>GUI Agent 规划能力</h4><ul>
+<li>Li et al.提出 <strong>MobileUse</strong>——一款专为鲁棒且自适应移动任务执行而设计的 GUI 智能体。为了提升此智能体在长链条任务与动态环境下的韧性，特别引入了分层反思架构，即智能体可在多个时间尺度（单步动作到整任务）上自监测、检测并恢复错误，同时通过“按需反思”策略保持高效</li>
+<li>Yang et al.等人采用“测试时扩展”<strong>策略挑选最优动作提案</strong>：每一步并行采样多条候选提案，由裁判模型评估并择优，通过算力投入换取更高决策质量。</li>
+<li>Agashe et al.提出 Agent S2——一种全新的组合式框架，将认知职责分散到多个通用与专用模型，设计新颖的 Mixture-of-Grounding 技术实现精准 GUI 定位，并引入主动分层规划，在多个时间尺度上随观测动态细化行动计划</li>
+</ul>
+<h4 id="GUI-Agent-执行"><a href="#GUI-Agent-执行" class="headerlink" title="GUI Agent 执行"></a>GUI Agent 执行</h4><ul>
+<li>Song et al.设计了 <strong>CoAct-1</strong>，这一多智能体系统首次把 GUI 操控与直接程序执行有机融合。其核心是一个“编排器”，可动态将子任务分派给传统 GUI 操作员，或是一名专精的“程序员”智能体——后者能够编写并执行 Python 或 Bash 脚本。</li>
+<li>Lin et al.将<strong>截图建模为 UI 连接图</strong>，自适应识别冗余关系，并在自注意力模块中以此为依据筛选 Token，显著降低计算开销。</li>
+<li>Zhang et al.针对通用智能体在执行特定软件任务时因缺乏领域知识而频发操作失败的问题，提出了一种执行知识自进化框架 <strong>UI-Evol</strong>。</li>
+<li>Luo et al.将 DeepSeek-R1 式的“推理增强”范式引入 GUI 动作执行层，构建了首个具备内生思维链（CoT）的通用 GUI 视觉-语言-动作（VLA）模型。</li>
+</ul>
+<h4 id="面向-GUI-的专用模型"><a href="#面向-GUI-的专用模型" class="headerlink" title="面向 GUI 的专用模型"></a>面向 GUI 的专用模型</h4><ul>
+<li>Xie et al.推出了 JEDI 3B/7B，并合成并发布了迄今最大的计算机使用定位数据集 JEDI，通过多视角任务解耦生成 400 万条样本。</li>
+<li>Qin et al., Wang et al.提出了UI-TARS 和 UI-TARS-2，覆盖了 2B、7B、72B 等多个尺寸。UI-TARS-2背后的关键核心技术为<strong>多轮强化学习</strong></li>
+<li>Wang et al.[461]提出 <strong>OpenCUA</strong>——一个全面开源的框架，用于扩展 CUA 数据与基础模型</li>
+</ul>
+<h4 id="GUI-智能体数据集"><a href="#GUI-智能体数据集" class="headerlink" title="GUI 智能体数据集"></a>GUI 智能体数据集</h4><ul>
+<li>Mu et al.提出了 <strong>GUI-360</strong>, 该数据集涵盖了<strong>查询获取、环境模板构建、任务实例化、批量执行以及大模型驱动的质量过滤</strong>，共包含 120 余万个已执行动作步骤，横跨数千条轨迹，覆盖主流 Windows 办公软件；并且提供全分辨率截图、可获取的无障碍元数据、实例化目标、中间推理痕迹，以及成功与失败的动作轨迹。数据集支持三大核心任务：<strong>GUI 定位、屏幕解析与动作预测</strong>，并采用混合的 GUI+API 动作空间。</li>
+<li>Wang et al.提出了一个分层基准 <strong>MMBench GUI</strong>，用于评估 Windows、macOS、Linux、iOS、Android和 Web 平台上的 GUI 自动化智能体</li>
+</ul>
+<h3 id="4-8-多智能体协作框架"><a href="#4-8-多智能体协作框架" class="headerlink" title="4.8 多智能体协作框架"></a>4.8 多智能体协作框架</h3><blockquote>
+<p>多智能体系统通过引入角色分工、并行探索和信息互补，能够在复杂推理、软件工程、开放式决策等场景中显著提升性能上限</p>
+</blockquote>
+<p><img src="D:\typora_picture\image-20260512114124887.png" alt="image-20260512114124887"></p>
+<h4 id="研究进展-4"><a href="#研究进展-4" class="headerlink" title="研究进展"></a>研究进展</h4><h5 id="智能体通信与信息流建模"><a href="#智能体通信与信息流建模" class="headerlink" title="智能体通信与信息流建模"></a>智能体通信与信息流建模</h5><ul>
+<li>现有研究普遍通过<strong>对通信结构进行显式建模</strong>，限制信息在智能体之间的传播范围与路径，以避免全连接通信带来的信息冗余与推理开销。</li>
+<li>部分工作进一步对信息传播过程施加顺序约束，采用有向无环结构组织多智能体协作，并通过拓扑序驱动中间结果的逐步精炼与有序传递，从而在保证协作效果的同时提升系统的可扩展性。</li>
+</ul>
+<h5 id="智能体协作结构构建"><a href="#智能体协作结构构建" class="headerlink" title="智能体协作结构构建"></a>智能体协作结构构建</h5><table>
+<thead>
+<tr>
+<th align="left">构建机制</th>
+<th align="left">结构确定方式与系统特性</th>
+<th align="left">相关工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">预定义结构</td>
+<td align="left">协作结构由人工规则或固定模板指定，执行过程中不发生变化，实现简单但适应性有限。</td>
+<td align="left">早期方法</td>
+</tr>
+<tr>
+<td align="left">搜索式结构构建</td>
+<td align="left">通过搜索、回溯或比较不同协作路径，逐步确定任务适配的协作结构，具备纠错能力但开销较高。</td>
+<td align="left">AFlow, SWE-Search</td>
+</tr>
+<tr>
+<td align="left">生成式结构构建</td>
+<td align="left">根据任务描述或上下文条件，由模型直接生成协作结构，降低人工设计成本并增强跨任务适应性。</td>
+<td align="left">Assemble, MAS-GPT</td>
+</tr>
+<tr>
+<td align="left">策略化结构选择</td>
+<td align="left">将协作结构建模为可选择的策略空间，根据任务状态动态选择或采样结构，实现性能与资源的自适应权衡。</td>
+<td align="left">MAS2, Agentic Supernet</td>
+</tr>
+</tbody></table>
+<h5 id="运行期智能体调度与协作治理"><a href="#运行期智能体调度与协作治理" class="headerlink" title="运行期智能体调度与协作治理"></a>运行期智能体调度与协作治理</h5><table>
+<thead>
+<tr>
+<th align="left">治理机制</th>
+<th align="left">系统作用与特性</th>
+<th align="left">相关工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">分层编排与调度</td>
+<td align="left">将任务分解、执行与全局监控解耦，支持大规模并行协作与稳定运行。</td>
+<td align="left">MegaAgent, HALO</td>
+</tr>
+<tr>
+<td align="left">跨团队并行协作</td>
+<td align="left">并行探索多条协作路径，并在关键阶段进行结果聚合，突破单流水线性能上限。</td>
+<td align="left">Cross-team Orch</td>
+</tr>
+<tr>
+<td align="left">动态学习型调度</td>
+<td align="left">根据运行期状态动态选择或排序智能体与协作结构，实现性能—成本权衡。</td>
+<td align="left">Maporl, Evolving Orch</td>
+</tr>
+<tr>
+<td align="left">异构智能体开放协作</td>
+<td align="left">支持异构第三方智能体的统一接入、自动组队与受控协作。</td>
+<td align="left">Internet of Agents</td>
+</tr>
+<tr>
+<td align="left">隐状态协作</td>
+<td align="left">在连续隐空间中进行协作与信息交换，降低通信成本与推理时延。</td>
+<td align="left">Latent Collaboration</td>
+</tr>
+</tbody></table>
+<h5 id="评测基准与机制分析"><a href="#评测基准与机制分析" class="headerlink" title="评测基准与机制分析"></a>评测基准与机制分析</h5><p>2025 年的研究开始系统构建面向多智能体的评测基准与分析方法，从<strong>协作质量、资源效率与用户对齐</strong>等多个维度刻画协作过程本身。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Mr.Z</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://WUHU-Z.github.io/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%884%EF%BC%89/">http://WUHU-Z.github.io/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%884%EF%BC%89/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Mr.Z</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                    <span class="chip bg-color">大模型</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%885%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="2025大语言模型进展报告（5）">
+                        
+                        <span class="card-title">2025大语言模型进展报告（5）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-05-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%883%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/60.jpg" class="responsive-img" alt="2025大语言模型进展报告（3）">
+                        
+                        <span class="card-title">2025大语言模型进展报告（3）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-05-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+ <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="7747893098"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2026</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Mr.Z</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/WUHU-Z" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ddd@mail.nwpu.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2632851304" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2632851304" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+ <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+ <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+		<script src="/libs/materialize/materialize.min.js"></script>
+		<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+		<script src="/libs/aos/aos.js"></script>
+		<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+		<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+		<script src="/js/matery.js"></script>
+
+		<!-- Baidu Analytics -->
+ <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+ 
+		<script
+			src="/libs/others/clicklove.js"
+			async="async"
+		></script>
+		 
+		<script
+			async
+			src="/libs/others/busuanzi.pure.mini.js"
+		></script>
+		      
+		<script
+			type="text/javascript"
+			size="150"
+			alpha="0.6"
+			zIndex="-1"
+			src="/libs/background/ribbon.min.js"
+			async="async"
+		></script>
+		 
+		<script
+			type="text/javascript"
+			src="/libs/background/ribbon-dynamic.js"
+			async="async"
+		></script>
+		 
+		<script
+			src="/libs/instantpage/instantpage.js"
+			type="module"
+		></script>
+		
+		<!-- 雪花特效 -->
+		
+		<script type="text/javascript" src="/libs/others/snow.js"></script>
+		
+
+		<script type="text/javascript">
+			var OriginTitile = document.title,
+				st;
+			document.addEventListener("visibilitychange", function () {
+				document.hidden
+					? ((document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！"),
+					  clearTimeout(st))
+					: ((document.title = "φ(゜▽゜*)♪咦，又好了！"),
+					  (st = setTimeout(function () {
+							document.title = OriginTitile;
+					  }, 3e3)));
+			});
+		</script>
+		
+		<script
+			type="text/javascript"
+			src="/libs/others/sakura.js"
+		></script>
+		
+	<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="2025大语言模型进展报告（7）, 隐迹札记">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>2025大语言模型进展报告（7） | 隐迹札记</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+  <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+ 
+
+	<body>
+		<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">隐迹札记</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Others</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/chat">
+          
+          <i class="fas fa-comment-dots" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Chat</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Movies</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Books</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Galleries</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">隐迹札记</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Others
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/chat " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comment-dots" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Chat</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Movies</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Books</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Galleries</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+ 
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/34.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">2025大语言模型进展报告（7）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">深度学习</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                <span class="chip bg-color">大模型</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                大模型
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-05-16
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="七、大语言模型安全与伦理"><a href="#七、大语言模型安全与伦理" class="headerlink" title="七、大语言模型安全与伦理"></a>七、大语言模型安全与伦理</h2><h3 id="7-1-安全对齐与治理"><a href="#7-1-安全对齐与治理" class="headerlink" title="7.1 安全对齐与治理"></a>7.1 安全对齐与治理</h3><h5 id="安全对齐技术形式及其特点"><a href="#安全对齐技术形式及其特点" class="headerlink" title="安全对齐技术形式及其特点"></a>安全对齐技术形式及其特点</h5><table>
+<thead>
+<tr>
+<th>治理维度</th>
+<th>关键技术与机制</th>
+<th>代表性工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内生安全防护 <em>(从内部机制入手)</em></td>
+<td>1. 安全规范推理 通过直接教授安全规范并引入显式推理链，在增强模型越狱鲁棒性的同时，缓解“过度拒绝”现象。  2. 表征空间干预 在激活空间识别并操纵恶意向量（如 Persona Vectors），从内部抑制有害特征激活，防止微调诱发的对齐破坏。</td>
+<td>Guan et al.  Zhang et al.  Wang et al.   Chen et al.  Wang et al.</td>
+</tr>
+<tr>
+<td>外置安全防护 <em>(从外部系统入手)</em></td>
+<td>1. 多层次外部监测 利用专用护栏模型执行流式监测与复杂奖励建模，实现低时延与细粒度评估之间的平衡。  2. 思维链监控 利用模型监管其内部推理链条而非仅检测最终输出，具备“弱到强”监管能力，能识别隐蔽的图谋行为。  3. 模型自我审计 引入“忏悔”机制强制模型生成自评评价报告，引出模型对自身偏差或欺骗行为的诚实反馈，提升决策透明度。</td>
+<td>Zhao et al.   Baker et al.   Joglekar et al.</td>
+</tr>
+</tbody></table>
+<h5 id="新兴安全风险及其特点"><a href="#新兴安全风险及其特点" class="headerlink" title="新兴安全风险及其特点"></a>新兴安全风险及其特点</h5><table>
+<thead>
+<tr>
+<th>风险类别</th>
+<th>风险表现形式与特点</th>
+<th>代表性工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非预期自主行为</td>
+<td>模型在追求奖励最大化过程中，可能自发涌现“权力追求”与“监控对抗”行为，偏离既定对齐目标。</td>
+<td>MacDiarmid et al.</td>
+</tr>
+<tr>
+<td>推理伪装风险</td>
+<td>模型利用思维链（CoT）生成看似合规的推理逻辑，实质上隐藏了真实的决策意图，存在“忠实性”缺失问题。</td>
+<td>Chen et al.</td>
+</tr>
+<tr>
+<td>规范逻辑冲突</td>
+<td>模型规范在处理“诚实”与“无害”等对立原则时存在解释模糊与逻辑分歧，揭示了底层规约的局限性。</td>
+<td>Zhang et al.</td>
+</tr>
+<tr>
+<td>规模无关的数据投毒</td>
+<td>投毒成功率取决于有害样本的绝对数量，而非其在海量数据中占比，风险并不随模型或数据规模增大而稀释。</td>
+<td>Souly et al.</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-生成风险控制"><a href="#7-2-生成风险控制" class="headerlink" title="7.2 生成风险控制"></a>7.2 生成风险控制</h3><h4 id="大模型幻觉抑制策略对比"><a href="#大模型幻觉抑制策略对比" class="headerlink" title="大模型幻觉抑制策略对比"></a>大模型幻觉抑制策略对比</h4><table>
+<thead>
+<tr>
+<th>策略分类</th>
+<th>核心方法</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>训练阶段优化</td>
+<td>强化学习</td>
+<td>从模型底层概率分布上对齐人类真实性偏好，提升模型自身的“诚实度”。</td>
+<td>训练成本极高，极度依赖高质量的人工标注数据，且可能引发模型其他能力下降。</td>
+</tr>
+<tr>
+<td>推理阶段增强</td>
+<td>检索增强</td>
+<td>提供实时的外部权威证据，使生成内容有据可查，并有效解决长尾知识真空问题。</td>
+<td>严重依赖检索器的精度；若检索到错误信息会误导模型，且增加了推理延迟。</td>
+</tr>
+<tr>
+<td>推理阶段增强</td>
+<td>高级解码策略</td>
+<td>无需额外训练或外部数据，通过调整采样逻辑提升输出的逻辑一致性。</td>
+<td>属于治标手段，无法弥补模型本身不存在的知识盲区，缓解效果上限有限。</td>
+</tr>
+<tr>
+<td>推理阶段增强</td>
+<td>知识图谱</td>
+<td>利用知识图谱的确定性关系进行事实校验，提供极高的事实精确度和逻辑严密性。</td>
+<td>知识图谱构建与维护成本巨大；非结构化文本与结构化实体的映射对齐存在技术挑战。</td>
+</tr>
+</tbody></table>
+<h5 id="训练阶段优化"><a href="#训练阶段优化" class="headerlink" title="训练阶段优化"></a>训练阶段优化</h5><ul>
+<li>**SPIT (Synthetic Paths to Integral Truth)**： 针对检索增强生成中因确认偏差导致的幻觉，该方法[893]通过构建合成偏好对进行直接偏好优化（DPO），其“胜出”项整合了上下文的所有相关知识，而“失败”项仅基于部分证据或被扭曲的证据。</li>
+<li><strong>幻觉聚焦偏好优化：</strong> 为避免在生产环境中部署额外的幻觉检测器所带来的高延迟，该方法提出了一种内生缓解策略[894]，在离线阶段利用自动工具构建幻觉译文及其修正版本的偏好数据集，并采用对比偏好优化（CPO）算法对模型进行微调。</li>
+<li><strong>事实性自对齐：</strong> 针对模型拥有相关知识却仍产生幻觉的现象，该框架通过大模型的自我评估能力生成训练信号，即利用“自我评估”）组件让模型利用内部知识验证其生成内容的真实性，并结合“自我知识微调”校准模型的置信度，从而构建出高质量偏好数据进行 DPO 微调。</li>
+</ul>
+<h5 id="推理阶段增强"><a href="#推理阶段增强" class="headerlink" title="推理阶段增强"></a>推理阶段增强</h5><ul>
+<li><strong>检索增强生成方法</strong>借助外部知识库（如维基百科）检索相关文档，为生成过程提供事实依据，尤其能显著提升知识覆盖有限的中小规模模型的生成准确性。<ul>
+<li><strong>GNN-RAG 框架</strong>： 该框架通过引入轻量级图神经网络（GNN）来解决这一效率困境。该方法将检索任务从 LLM 解耦出来，交由专门优化的GNN 执行。</li>
+<li><strong>SAFE 系统：</strong> 该系统是一个专门用于长篇幅文本事实核查（例如涉及COVID-19 的错误信息）的智能体系统。</li>
+</ul>
+</li>
+<li><strong>解码策略</strong>通过设计特定的生成阶段技术，旨在引导模型输出更符合真实情况或上下文约束的内容，从而减少因事实偏离、逻辑矛盾或信息缺失所引发的幻觉现象。<ul>
+<li><strong>反遮蔽对比解码：</strong> 针对大模型中存在的“知识遮蔽”现象——即高频或长篇幅的主导知识会抑制低频弱势知识的生成从而导致幻觉，提出了 CoDA策略。</li>
+<li><strong>层专家混合解码：</strong> MoLE 是一种无需训练的解码方法，它通过挖掘大型视觉语言模型内部不同层级的特化能力来协同抑制幻觉。</li>
+<li><strong>比较器驱动解码框架</strong>： CDT 框架提出了一种基于比较器解码时的干预机制，旨在解决大语言模型在多任务中表现出的多面性幻觉问题。</li>
+</ul>
+</li>
+<li><strong>知识图谱</strong>的融合利用其结构化知识表示，通过实体与关系嵌入增强生成模型的事实一致性<ul>
+<li><strong>ReMindRAG 框架：</strong> 为了解决现有知识图谱检索增强生成（KG-RAG）系统中检索效果与推理成本难以兼顾的难题，ReMindRAG采用了一种“检索与记忆”的机制，利用大语言模型引导图遍历，并结合节点探索与利用策略来精准定位答案子图。</li>
+<li><strong>PGR 框架</strong>： 该框架提出了一种名为“程序化图推理”（Programmatic Graph Reasoning）的方法，旨在利用大语言模型的编程能力在知识图谱上进行事实核查。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-3-内容真实性与可追溯性"><a href="#7-3-内容真实性与可追溯性" class="headerlink" title="7.3 内容真实性与可追溯性"></a>7.3 内容真实性与可追溯性</h3><h4 id="水印"><a href="#水印" class="headerlink" title="水印"></a>水印</h4><p>LLM 水印技术的核心是在不显著影响文本可读性的前提下嵌入特定隐藏标记，即通过使特定词汇或字符组合呈现规律性分布，为事后溯源提供依据。</p>
+<table>
+<thead>
+<tr>
+<th>研究方向</th>
+<th>关键方法或系统</th>
+<th>核心创新</th>
+<th>主要效果与特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自适应水印</td>
+<td>MorphMark</td>
+<td>引入基于注意力机制的文本特征评估模块，实时分析词频、句法复杂度等统计特征，动态调节水印嵌入强度，实现文本类型自适应的水印策略。</td>
+<td>在保持相同检测率条件下，将文本困惑度损失降低，适用于创意写作与技术文档等多样场景。</td>
+</tr>
+<tr>
+<td>无偏水印与质量保障</td>
+<td>STA (采样-接受法)</td>
+<td>采用先采样后接受的双阶段机制，首先生成候选词元，再依据水印规则决定是否接受，理论上保证期望无偏，不改变词元长期统计分布。</td>
+<td>在 C4 数据集上实现 96.2% 的检测准确率，文本困惑度基本不变；在代码生成等低熵任务中，不满意输出风险降低约 40%。</td>
+</tr>
+<tr>
+<td>集成水印框架</td>
+<td>多特征融合水印</td>
+<td>系统融合藏头诗（首字母序列）、感官运动词（感知模态词汇引导）与红绿列表三类特征，基于互补性设计提升抗攻击能力。</td>
+<td>在 Llama-3 8B 模型上检测率达 97.75%，经文本改写攻击后仍保持 95.19% 的检测率，显著优于单一红绿列表方法（49.14%）。</td>
+</tr>
+<tr>
+<td>水印可探测与反探测</td>
+<td>Water-Probe / Water-Bag</td>
+<td>Water-Probe: 通过构造多组语义相近提示词，诱导模型多次生成，分析输出分布一致性以探测水印；Water-Bag: 使用多组主密钥与反转密钥池，每次生成随机选择以抵消固定偏差。</td>
+<td>Water-Probe 能有效识别 KGW、AAR、DiP-Mark 等多种水印；Water-Bag 可抵御探测，但检测时需遍历密钥导致计算开销增加，且略微降低抗改写鲁棒性。</td>
+</tr>
+</tbody></table>
+<h4 id="可验证生成"><a href="#可验证生成" class="headerlink" title="可验证生成"></a>可验证生成</h4><p>可验证生成是当前人工智能发展中的一个核心方向，它要求大模型在生成任何答案或内容时，不能仅仅停留在语言流畅、听起来合理的层面，而必须确保其输出具有客观依据，并且能够通过自动化、外部的方式进行检验与核实。</p>
+<table>
+<thead>
+<tr>
+<th>技术路径</th>
+<th>代表工作</th>
+<th>核心方法</th>
+<th>关键贡献与效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>奖励建模融合</td>
+<td>Agentic Reward Modeling[911]</td>
+<td>构建融合奖励模型，同时纳入人类对答案的偏好评分与通过外部工具（代码执行、知识检索）自动验证得到的正确性信号，用于训练模型。</td>
+<td>在数学推理与代码生成任务中，模型生成结果既更符合人类偏好，又显著提升事实正确性，为可靠对齐提供了融合主观与客观信号的新范式。</td>
+</tr>
+<tr>
+<td>无表格因果发现</td>
+<td>IRIS 框架[912]</td>
+<td>通过与大模型多轮交互，迭代执行提问-获取信息-提出假设-逻辑验证-修正因果图的主动探究循环，从纯文本中构建并验证因果图。</td>
+<td>在缺乏规整表格数据的场景下，实现了可验证的因果发现，展示了 LLM 作为主动研究者从非结构化信息中提取与验证结构化知识的能力。</td>
+</tr>
+<tr>
+<td>形式化证明生成</td>
+<td>自然语言 → 形式化证明[913]</td>
+<td>构建包含 1.8 万条指令、涵盖五种形式化语言的数据集，将任务拆分为需求分析、完整证明生成、证明片段补全等，并对模型进行针对性微调。</td>
+<td>模型在证明片段补全任务上表现良好，且形式逻辑训练展现出对一般数学推理与代码能力的正向迁移效应，为构建严谨 AI 提供了新思路。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>溯源维度</th>
+<th>代表工作</th>
+<th>关键任务/技术</th>
+<th>主要发现/挑战与价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文学引语归属</td>
+<td>LLaMa3 端到端归属框架[918]</td>
+<td>通过提示工程让模型直接输出引语 ID 到角色 ID 的结构化 JSON，并设计腐败说话者实验（替换真名为伪名）分离记忆与推理贡献。</td>
+<td>量化分析表明模型优异表现主要源于情境化推理与深层语义理解，而非对训练文本的记忆，为评估模型真实推理能力提供了方法论。</td>
+</tr>
+<tr>
+<td>可解释风格溯源</td>
+<td>可解释 AI+ 特征工程[919]</td>
+<td>提取 TF-IDF、n-gram 等统计特征，训练随机森林/XGBoost 等可解释分类器，并利用 LIME 提供词语级归因，构建不同生成源的风格指纹。</td>
+<td>在人机二元及多模型多元分类任务中精度优于 GPTZero 等通用工具，为教育审核、学术诚信检测提供了透明、可操作的决策依据。</td>
+</tr>
+<tr>
+<td>多任务联合检测归因</td>
+<td>DA-MTL 框架[920]</td>
+<td>采用共享 Transformer 编码器提取特征，并行部署二元检测头与多元归因头，通过加权损失进行端到端多任务学习，实现检测与归因协同优化。</td>
+<td>在多语言多领域数据集上显著提升性能，双向知识迁移机制增强了模型对机器性的理解与对未知样本的鲁棒性，揭示了不同 LLM 的风格聚类关系。</td>
+</tr>
+<tr>
+<td>知识隔离与安全移除</td>
+<td>选择性梯度掩码[921]</td>
+<td>在训练中将模型参数划分为遗忘参数与保留参数，通过精细梯度控制将特定知识路由至遗忘参数区域，实现知识的物理级隔离与移除。</td>
+<td>在双语知识移除等任务中优于传统数据过滤，对抗性微调实验表明恢复被遗忘知识代价高昂，为实现模型能力的“外科手术式编辑”提供了新路径。</td>
+</tr>
+</tbody></table>
+<h3 id="7-4-攻击与防御"><a href="#7-4-攻击与防御" class="headerlink" title="7.4 攻击与防御"></a>7.4 攻击与防御</h3><h4 id="提示词安全"><a href="#提示词安全" class="headerlink" title="提示词安全"></a>提示词安全</h4><p>提示词安全是大模型攻击与防御的前沿博弈，即确保模型不会因恶意设计的输入（提示）而产生非预期、有害或被禁止的输出，是 LLM 应用最直接、最基础的安全防线。</p>
+<ul>
+<li><strong>编码与混淆攻击的深化.</strong> 攻击者利用 Base64、摩斯电码、甚至是鲜为人知的编码方式来隐藏恶意指令，绕过基于关键词和简单模式匹配的过滤器。</li>
+<li><strong>多模态与跨模态攻击</strong>. 随着多模态大模型的普及，攻击向量也从单一模态扩展到文本、图像和音频融合的跨模态攻击。</li>
+<li><strong>上下文感知与多轮对话攻击 (Context-Aware Attacks).</strong> 攻击者不再追求“一击致命”，而是通过多轮“无害”的对话，逐步引导模型进入一个偏离安全对齐的上下文状态。</li>
+<li><strong>潜在越狱 (Latent Jailbreak)</strong>. 与直接在提示中注入指令不同，“潜在越狱”旨在激活模型在训练过程中学到的、但被安全对齐所抑制的“潜在概念”或行为模式。</li>
+</ul>
+<h5 id="新型防御机制与框架：迈向纵深与智能"><a href="#新型防御机制与框架：迈向纵深与智能" class="headerlink" title="新型防御机制与框架：迈向纵深与智能"></a>新型防御机制与框架：迈向纵深与智能</h5><ul>
+<li><strong>多层防御框架 (Multi-Layer Defense Frameworks).</strong> 2025 年的一个显著趋势是多层防御框架的提出和应用。这种架构通过分层处理——从输入清洗到意图分析，再到输出监控与闭环反馈——构建了一个动态演进的防御闭环。</li>
+<li><strong>基于概念分析的主动防御</strong>. JBShield，针对防御“潜在越狱”等高级攻击，提出了一个极具前瞻性的防御思想“激活概念分析与操纵”（Activated Concept Analysis and Manipulation）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>子分类</th>
+<th>典型方法及特点</th>
+<th>作用点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>提示词安全</td>
+<td>攻击</td>
+<td>隐写式提示注入：利用隐写技术将恶意指令嵌入图像编码中，肉眼难以察觉。</td>
+<td>输入层</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>跨模态攻击：利用图像与用户查询文本间的语义协同，绕过单一模态的检测。</td>
+<td>输入层</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>多轮对话攻击：通过多轮交互，逐步引导大语言模型输出有害内容（“温水煮青蛙”式诱导）。</td>
+<td>输入层</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>潜在越狱攻击：直接操控模型内部隐空间表示，以此“欺骗”对齐机制，使其失效。</td>
+<td>模型内部隐藏层</td>
+</tr>
+<tr>
+<td></td>
+<td>防御</td>
+<td>多层防御架构：在启发式规则与特征检测层面过滤已知攻击模式，构建第一道防线。</td>
+<td>输入层</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>概念分析防御：实时监测模型内部“概念激活”状态，一旦发现异常立即介入阻断。</td>
+<td>模型内部隐藏层</td>
+</tr>
+</tbody></table>
+<h5 id="评估与基准：标准化鲁棒性度量"><a href="#评估与基准：标准化鲁棒性度量" class="headerlink" title="评估与基准：标准化鲁棒性度量"></a>评估与基准：标准化鲁棒性度量</h5><table>
+<thead>
+<tr>
+<th>基准项目</th>
+<th>特性与描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JailbreakBench</td>
+<td>2025年最受关注的越狱鲁棒性基准之一。它包含一个庞大且持续更新的对抗性提示数据集（JailbreakDB），汇集了来自社区和自动化生成的数千条攻击提示。通过内置标准化的威胁模型、系统提示和聊天模板，确保了不同模型之间的公平比较。</td>
+</tr>
+<tr>
+<td>HarmBench</td>
+<td>更全面的评估框架，同时也是一个攻击发现引擎。它不仅评估模型的“鲁棒拒绝”能力（即抵御越狱攻击的能力），还通过自动化红队测试（automated red-teaming）来主动发现新的攻击向量。</td>
+</tr>
+<tr>
+<td>PANDAGUARD</td>
+<td>系统性地评估模型抵御越狱攻击的能力。其方法论对后续研究产生了深远影响，为建立标准化的安全评估流程奠定了基础。</td>
+</tr>
+</tbody></table>
+<h4 id="数据安全"><a href="#数据安全" class="headerlink" title="数据安全"></a>数据安全</h4><table>
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">子分类</th>
+<th align="left">典型方法及特点</th>
+<th align="left">作用阶段/空间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">数据安全</td>
+<td align="left">泄露检测</td>
+<td align="left">基于指标检测：利用 N-Gram 等统计方法检测训练数据是否被模型“背诵”从而造成污染。</td>
+<td align="left">数据集</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">基准污染净化：识别并修复现有基准测试数据集中的污染样本，确保评估公正性。</td>
+<td align="left">数据集</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">成员推断攻击：通过攻击特定组件，观察模型对训练数据与非训练数据的差异反应，判断数据是否在训练集中。</td>
+<td align="left">数据集</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">泄露防御</td>
+<td align="left">去标识化与清洗：在训练前主动过滤数据中的敏感个人信息（PII）。</td>
+<td align="left">训练前 / 数据空间</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">安全微调：在选择性微调阶段，故意模糊化敏感训练样本，降低模型记忆程度。</td>
+<td align="left">训练过程 / 数据空间</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">机器遗忘：利用知识删除、对比学习或量子计算启发式原理，让模型“忘记”特定数据。</td>
+<td align="left">训练后 / 隐空间</td>
+</tr>
+</tbody></table>
+<h4 id="隐私保护训练方法"><a href="#隐私保护训练方法" class="headerlink" title="隐私保护训练方法"></a>隐私保护训练方法</h4><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>子分类</th>
+<th>典型方法及特点</th>
+<th>作用阶段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>训练安全</td>
+<td>差分隐私</td>
+<td>参数高效微调：将参数高效微调技术与差分隐私进行深度融合。 算法创新：优化隐私保护强度与模型效用之间的权衡。</td>
+<td>训练过程</td>
+</tr>
+<tr>
+<td></td>
+<td>联邦学习</td>
+<td>学习效率：优化通信开销，提升传输效率。 异构性处理：对齐集成学习，解决客户端设备或数据的异构性问题。 隐私保护框架：通过梯度强加密保护，并利用智能剪枝减少攻击面。</td>
+<td>训练过程</td>
+</tr>
+<tr>
+<td></td>
+<td>SMC 与 HE</td>
+<td>解决多方计算中的内存不安全、高占用及性能开销问题。</td>
+<td>训练过程</td>
+</tr>
+</tbody></table>
+<h3 id="7-5-宪法人工智能"><a href="#7-5-宪法人工智能" class="headerlink" title="7.5 宪法人工智能"></a>7.5 宪法人工智能</h3><h4 id="进展总结"><a href="#进展总结" class="headerlink" title="进展总结"></a>进展总结</h4><table>
+<thead>
+<tr>
+<th>发展阶段</th>
+<th>关键任务</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原则构建</td>
+<td>构建公开、透明、灵活修改的宪法原则。</td>
+<td>Kyrychenko et al. 、Henneking et al.</td>
+</tr>
+<tr>
+<td>原则适配</td>
+<td>探讨宪法原则应用于模型的高效方法。</td>
+<td>Zhang 、Menke et al.</td>
+</tr>
+<tr>
+<td>原则应用</td>
+<td>利用宪法原则保证大模型安全性、推进AI应用研发。</td>
+<td>Noh et al. 、Sharma et al. 、Maiya et al. 、Lyu et al.</td>
+</tr>
+</tbody></table>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Mr.Z</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://WUHU-Z.github.io/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%887%EF%BC%89/">http://WUHU-Z.github.io/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%887%EF%BC%89/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Mr.Z</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">深度学习</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                    <span class="chip bg-color">大模型</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%887%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/34.jpg" class="responsive-img" alt="2025大语言模型进展报告（7）">
+                        
+                        <span class="card-title">2025大语言模型进展报告（7）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-05-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A%EF%BC%886%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/53.jpg" class="responsive-img" alt="2025大语言模型进展报告（6）">
+                        
+                        <span class="card-title">2025大语言模型进展报告（6）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-05-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="post-category">
+                                    大模型
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">深度学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">大模型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+ <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="7747893098"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2026</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Mr.Z</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/WUHU-Z" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:ddd@mail.nwpu.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2632851304" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2632851304" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+ <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+ <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+		<script src="/libs/materialize/materialize.min.js"></script>
+		<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+		<script src="/libs/aos/aos.js"></script>
+		<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+		<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+		<script src="/js/matery.js"></script>
+
+		<!-- Baidu Analytics -->
+ <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+ 
+		<script
+			src="/libs/others/clicklove.js"
+			async="async"
+		></script>
+		 
+		<script
+			async
+			src="/libs/others/busuanzi.pure.mini.js"
+		></script>
+		      
+		<script
+			type="text/javascript"
+			size="150"
+			alpha="0.6"
+			zIndex="-1"
+			src="/libs/background/ribbon.min.js"
+			async="async"
+		></script>
+		 
+		<script
+			type="text/javascript"
+			src="/libs/background/ribbon-dynamic.js"
+			async="async"
+		></script>
+		 
+		<script
+			src="/libs/instantpage/instantpage.js"
+			type="module"
+		></script>
+		
+		<!-- 雪花特效 -->
+		
+		<script type="text/javascript" src="/libs/others/snow.js"></script>
+		
+
+		<script type="text/javascript">
+			var OriginTitile = document.title,
+				st;
+			document.addEventListener("visibilitychange", function () {
+				document.hidden
+					? ((document.title = "Σ(っ °Д °;)っ喔哟，崩溃啦！"),
+					  clearTimeout(st))
+					: ((document.title = "φ(゜▽゜*)♪咦，又好了！"),
+					  (st = setTimeout(function () {
+							document.title = OriginTitile;
+					  }, 3e3)));
+			});
+		</script>
+		
+		<script
+			type="text/javascript"
+			src="/libs/others/sakura.js"
+		></script>
+		
+	<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
